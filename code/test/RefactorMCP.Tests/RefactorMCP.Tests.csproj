@@ -5,9 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
+	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	  <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,8 +36,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageVersion Update="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
-  </ItemGroup>
+
 
 </Project>

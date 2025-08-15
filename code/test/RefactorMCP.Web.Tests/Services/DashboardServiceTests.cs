@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 
 using RefactorMCP.Web.Models;
 using RefactorMCP.Web.Services;
+using RefactorMCP.Core.Abstractions;
 
 namespace RefactorMCP.Web.Tests.Services;
 
@@ -76,10 +77,10 @@ public class DashboardServiceTests
         // Assert
         activities.Should().NotBeNull();
         activities.Should().NotBeEmpty();
-        
+
         var activityList = activities.ToList();
         activityList.Should().HaveCountGreaterThan(0);
-        
+
         // Check the structure of returned activities
         var firstActivity = activityList.First();
         firstActivity.ToolName.Should().NotBeNullOrEmpty();
@@ -111,13 +112,13 @@ public class DashboardServiceTests
         health.IsHealthy.Should().BeTrue();
         health.Status.Should().Be("All systems operational");
         health.Components.Should().NotBeEmpty();
-        
+
         // Check specific components
         health.Components.Should().ContainKey("RefactoringService");
         health.Components.Should().ContainKey("McpServer");
         health.Components.Should().ContainKey("Database");
         health.Components.Should().ContainKey("Logging");
-        
+
         // All components should be healthy in the mock implementation
         health.Components.Values.Should().OnlyContain(c => c.IsHealthy);
         health.Components.Values.Should().OnlyContain(c => c.Status == "Healthy");
@@ -130,7 +131,7 @@ public class DashboardServiceTests
         var health = await _service.GetSystemHealthAsync();
 
         // Assert
-        health.Components.Values.Should().OnlyContain(c => 
+        health.Components.Values.Should().OnlyContain(c =>
             c.LastChecked > DateTime.Now.AddMinutes(-1));
     }
 }

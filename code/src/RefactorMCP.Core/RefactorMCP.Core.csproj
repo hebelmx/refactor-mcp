@@ -45,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
     <Folder Include="Extensions\" />
     <Folder Include="Logging\" />
   </ItemGroup>

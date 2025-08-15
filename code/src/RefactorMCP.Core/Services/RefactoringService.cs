@@ -5,10 +5,10 @@ using System.Text.Json;
 
 namespace RefactorMCP.Core.Services;
 
-internal class RefactoringService : IRefactoringService
+public class RefactoringService : IRefactoringService
 {
     private readonly ILogger<RefactoringService> _logger;
-    
+
     public RefactoringService(ILogger<RefactoringService> logger)
     {
         _logger = logger;
@@ -16,7 +16,7 @@ internal class RefactoringService : IRefactoringService
 
     public async Task<RefactoringResult> ExecuteRefactoringAsync(RefactoringRequest request, CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("Executing refactoring: {ToolName} on solution: {SolutionPath}", 
+        _logger.LogInformation("Executing refactoring: {ToolName} on solution: {SolutionPath}",
             request.ToolName, request.SolutionPath);
 
         try
@@ -24,7 +24,7 @@ internal class RefactoringService : IRefactoringService
             // This will be implemented to call the internal tool methods
             // For now, return a placeholder result
             await Task.Delay(100, cancellationToken);
-            
+
             return new RefactoringResult(
                 Success: false,
                 Message: $"Tool {request.ToolName} not yet implemented in core service"
@@ -43,14 +43,14 @@ internal class RefactoringService : IRefactoringService
 
     public async Task<RefactoringResult> ExtractMethodAsync(string solutionPath, string filePath, int startLine, int endLine, string newMethodName, CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("Extracting method {MethodName} from {FilePath} lines {StartLine}-{EndLine}", 
+        _logger.LogInformation("Extracting method {MethodName} from {FilePath} lines {StartLine}-{EndLine}",
             newMethodName, filePath, startLine, endLine);
 
         try
         {
             // TODO: Implement using ExtractMethod tool
             await Task.Delay(100, cancellationToken);
-            
+
             return new RefactoringResult(
                 Success: false,
                 Message: "Extract method not yet implemented"
@@ -69,14 +69,14 @@ internal class RefactoringService : IRefactoringService
 
     public async Task<RefactoringResult> MoveMethodAsync(string solutionPath, string sourceFilePath, string methodName, string targetClassName, CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("Moving method {MethodName} from {SourceFile} to {TargetClass}", 
+        _logger.LogInformation("Moving method {MethodName} from {SourceFile} to {TargetClass}",
             methodName, sourceFilePath, targetClassName);
 
         try
         {
             // TODO: Implement using MoveMethod tools
             await Task.Delay(100, cancellationToken);
-            
+
             return new RefactoringResult(
                 Success: false,
                 Message: "Move method not yet implemented"
@@ -95,14 +95,14 @@ internal class RefactoringService : IRefactoringService
 
     public async Task<RefactoringResult> IntroduceVariableAsync(string solutionPath, string filePath, int line, int column, string variableName, CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("Introducing variable {VariableName} at {FilePath}:{Line}:{Column}", 
+        _logger.LogInformation("Introducing variable {VariableName} at {FilePath}:{Line}:{Column}",
             variableName, filePath, line, column);
 
         try
         {
             // TODO: Implement using IntroduceVariable tool
             await Task.Delay(100, cancellationToken);
-            
+
             return new RefactoringResult(
                 Success: false,
                 Message: "Introduce variable not yet implemented"
@@ -139,7 +139,7 @@ internal class RefactoringService : IRefactoringService
     public async Task<IEnumerable<string>> ListAvailableToolsAsync()
     {
         await Task.Delay(10);
-        
+
         // TODO: Implement tool discovery from internal tools
         return new[]
         {

@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Logging;
+using RefactorMCP.Core.Services;
+using RefactorMCP.Core.Abstractions;
 
 namespace RefactorMCP.Core.Tests.Services;
 

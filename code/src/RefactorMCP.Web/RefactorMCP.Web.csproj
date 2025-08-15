@@ -12,6 +12,8 @@
 
   <ItemGroup>
 	<PackageReference Include="MudBlazor" />
+	<PackageReference Include="Moq" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
 	<PackageReference Include="Extensions.MudBlazor.StaticInput" />
 	<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
 	<PackageReference Include="Microsoft.Extensions.Hosting" />
