@@ -1,9 +1,9 @@
 {
-  "plan_timestamp": "2025-08-15T16:00:14.082958",
+  "plan_timestamp": "2025-08-15T15:55:31.426805",
   "scanner_version": "2.0",
   "source_path": "F:\\Dynamic\\Refactor\\refactor-mcp",
   "destination_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\code",
-  "scan_duration_seconds": 0.407418,
+  "scan_duration_seconds": 0.221673,
   "configuration": {
     "scan_settings": {
       "calculate_hashes": true,
@@ -58,7 +58,13 @@
         "test-results",
         "coverage",
         "_site",
-        "docs/_build"
+        "docs/_build",
+        "scripts",
+        "tools",
+        "scanner_logs",
+        "migration_logs",
+        "PythonScript",
+        "archive"
       ],
       "exclude_patterns": [
         "**/bin/**",
@@ -66,13 +72,19 @@
         "**/.vs/**",
         "**/*.log",
         "**/*.tmp",
-        "**/packages/**"
+        "**/packages/**",
+        "**/scripts/**",
+        "**/tools/**",
+        "**/scanner_logs/**",
+        "**/migration_logs/**",
+        "**/PythonScript/**",
+        "Directory.Build.props"
       ],
       "include_only_extensions": [],
       "force_include_files": [
         "*.sln",
         "*.csproj",
-        "*.props",
+        "Directory.Packages.props",
         "*.targets",
         "*.config",
         "*.cs",
@@ -86,6 +98,10 @@
         "*.yml",
         "*.yaml",
         "*.xml"
+      ],
+      "force_exclude_files": [
+        "Directory.Build.props",
+        "RefactorMCP.sln"
       ]
     },
     "analysis_settings": {
@@ -96,18 +112,16 @@
     }
   },
   "statistics": {
-    "total_files_discovered": 1484,
-    "files_to_migrate": 772,
-    "files_excluded": 712,
+    "total_files_discovered": 1480,
+    "files_to_migrate": 676,
+    "files_excluded": 804,
     "files_with_errors": 0,
-    "duplicate_files": 131,
-    "total_size_bytes": 246412806,
-    "total_size_mb": 234.9975643157959
+    "duplicate_files": 104,
+    "total_size_bytes": 2812978,
+    "total_size_mb": 2.6826648712158203
   },
   "project_analysis": {
-    "solution_files": [
-      "RefactorMCP.sln"
-    ],
+    "solution_files": [],
     "project_files": [
       "test\\RefactorMCP.Core.Tests\\RefactorMCP.Core.Tests.csproj",
       "test\\RefactorMCP.MCP.Server.Tests\\RefactorMCP.MCP.Server.Tests.csproj",
@@ -130,135 +144,55 @@
         "count": 63,
         "total_size_mb": 0.1858224868774414
       },
-      ".sh": {
-        "count": 30,
-        "total_size_mb": 0.13858699798583984
-      },
-      ".json": {
-        "count": 23,
-        "total_size_mb": 9.519196510314941
-      },
       ".md": {
-        "count": 21,
-        "total_size_mb": 0.1118154525756836
-      },
-      ".py": {
-        "count": 12,
-        "total_size_mb": 0.09395122528076172
+        "count": 17,
+        "total_size_mb": 0.10126209259033203
       },
       ".csproj": {
         "count": 11,
         "total_size_mb": 0.015161514282226562
       },
-      ".br": {
-        "count": 8,
-        "total_size_mb": 0.193939208984375
+      ".json": {
+        "count": 10,
+        "total_size_mb": 0.43135929107666016
       },
-      ".gz": {
-        "count": 8,
-        "total_size_mb": 0.2895774841308594
-      },
-      ".txt": {
-        "count": 5,
-        "total_size_mb": 0.016330718994140625
-      },
-      ".css": {
-        "count": 4,
-        "total_size_mb": 2.270709991455078
-      },
-      ".js": {
-        "count": 4,
-        "total_size_mb": 0.20843505859375
+      ".py": {
+        "count": 3,
+        "total_size_mb": 0.009757041931152344
       },
       "": {
-        "count": 3,
-        "total_size_mb": 0.023769378662109375
-      },
-      ".props": {
         "count": 2,
-        "total_size_mb": 0.011921882629394531
+        "total_size_mb": 0.02373981475830078
       },
       ".yml": {
         "count": 2,
         "total_size_mb": 0.0011615753173828125
       },
-      ".ps1": {
-        "count": 2,
-        "total_size_mb": 0.022292137145996094
-      },
       ".cshtml": {
         "count": 2,
         "total_size_mb": 0.0011882781982421875
       },
-      ".config": {
-        "count": 2,
-        "total_size_mb": 0.06976890563964844
-      },
-      ".web": {
-        "count": 2,
-        "total_size_mb": 153.19527435302734
+      ".props": {
+        "count": 1,
+        "total_size_mb": 0.0036716461181640625
       },
       ".png": {
         "count": 1,
         "total_size_mb": 0.198455810546875
       },
-      ".sln": {
-        "count": 1,
-        "total_size_mb": 0.008426666259765625
-      },
       ".ruleset": {
         "count": 1,
         "total_size_mb": 0.015234947204589844
       },
-      ".ts": {
-        "count": 1,
-        "total_size_mb": 0.004298210144042969
-      },
       ".ico": {
         "count": 1,
         "total_size_mb": 0.014387130737304688
-      },
-      ".consoleapp": {
-        "count": 1,
-        "total_size_mb": 66.70639514923096
       }
     },
     "directory_stats": {
-      "scripts\\archive\\publish-web": {
-        "count": 3,
-        "total_size_mb": 76.60601139068604
-      },
-      "scripts\\archive\\publish-web-updated": {
-        "count": 3,
-        "total_size_mb": 76.60601139068604
-      },
-      "scripts\\archive\\publish-console": {
-        "count": 2,
-        "total_size_mb": 66.74127960205078
-      },
-      "src\\PythonScript": {
-        "count": 7,
-        "total_size_mb": 9.121787071228027
-      },
-      "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor": {
-        "count": 6,
-        "total_size_mb": 0.7406654357910156
-      },
-      "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor": {
-        "count": 6,
-        "total_size_mb": 0.7406654357910156
-      },
-      "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor": {
-        "count": 6,
-        "total_size_mb": 0.7406654357910156
-      },
-      "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor": {
-        "count": 6,
-        "total_size_mb": 0.7406654357910156
-      },
       ".": {
-        "count": 13,
-        "total_size_mb": 0.6977567672729492
+        "count": 10,
+        "total_size_mb": 0.6752634048461914
       },
       "src\\RefactorMCP.ConsoleApp\\Tools": {
         "count": 35,
@@ -287,10 +221,6 @@
       "src\\OldCode\\Move": {
         "count": 4,
         "total_size_mb": 0.07752037048339844
-      },
-      "scripts": {
-        "count": 15,
-        "total_size_mb": 0.07733821868896484
       },
       "src\\RefactorMCP.Core\\Move": {
         "count": 4,
@@ -328,10 +258,6 @@
         "count": 8,
         "total_size_mb": 0.044501304626464844
       },
-      "scripts\\troubleshooting": {
-        "count": 10,
-        "total_size_mb": 0.042278289794921875
-      },
       "src\\RefactorMCP.UI\\Components\\Account\\Pages\\Manage": {
         "count": 13,
         "total_size_mb": 0.04031848907470703
@@ -347,10 +273,6 @@
       "test\\RefactorMCP.Tests\\Roslyn": {
         "count": 10,
         "total_size_mb": 0.03656578063964844
-      },
-      "scripts\\archive\\publish-console-safer": {
-        "count": 1,
-        "total_size_mb": 0.03488445281982422
       },
       "src\\RefactorMCP.ConsoleApp\\SyntaxWalkers": {
         "count": 24,
@@ -368,17 +290,9 @@
         "count": 3,
         "total_size_mb": 0.029334068298339844
       },
-      "scripts\\maintenance": {
-        "count": 6,
-        "total_size_mb": 0.025885581970214844
-      },
       "docs\\architecture": {
         "count": 4,
         "total_size_mb": 0.02400684356689453
-      },
-      "scripts\\setup": {
-        "count": 3,
-        "total_size_mb": 0.02308177947998047
       },
       "src\\OldTests\\Roslyn\\Rewriters": {
         "count": 20,
@@ -387,10 +301,6 @@
       "test\\RefactorMCP.Tests\\Roslyn\\Rewriters": {
         "count": 20,
         "total_size_mb": 0.017938613891601562
-      },
-      "scanner_logs": {
-        "count": 5,
-        "total_size_mb": 0.016330718994140625
       },
       "test\\RefactorMCP.Tests": {
         "count": 12,
@@ -428,14 +338,6 @@
         "count": 3,
         "total_size_mb": 0.008989334106445312
       },
-      "scripts\\archive\\publish-deploy": {
-        "count": 2,
-        "total_size_mb": 0.008374214172363281
-      },
-      "scripts\\archive\\publish-web-json-fixed": {
-        "count": 2,
-        "total_size_mb": 0.008374214172363281
-      },
       "test\\RefactorMCP.Web.Tests": {
         "count": 3,
         "total_size_mb": 0.008284568786621094
@@ -468,10 +370,6 @@
         "count": 1,
         "total_size_mb": 0.00614166259765625
       },
-      "scripts\\testing": {
-        "count": 2,
-        "total_size_mb": 0.005888938903808594
-      },
       "test\\RefactorMCP.Core.Tests": {
         "count": 3,
         "total_size_mb": 0.0058078765869140625
@@ -496,10 +394,6 @@
         "count": 6,
         "total_size_mb": 0.00457763671875
       },
-      "scripts\\common": {
-        "count": 2,
-        "total_size_mb": 0.004563331604003906
-      },
       "src\\RefactorMCP.Core": {
         "count": 2,
         "total_size_mb": 0.0043888092041015625
@@ -511,14 +405,6 @@
       "test\\RefactorMCP.Tests\\SyntaxWalkers": {
         "count": 5,
         "total_size_mb": 0.004309654235839844
-      },
-      "tools\\vscode-extension\\src": {
-        "count": 1,
-        "total_size_mb": 0.004298210144042969
-      },
-      "tools\\vscode-extension": {
-        "count": 4,
-        "total_size_mb": 0.0030841827392578125
       },
       "src\\OldTests\\Roslyn\\Walkers": {
         "count": 3,
@@ -619,26 +505,9 @@
       "src\\RefactorMCP.Web\\Properties": {
         "count": 1,
         "total_size_mb": 0.000274658203125
-      },
-      "scripts\\archive": {
-        "count": 1,
-        "total_size_mb": 0.0002727508544921875
       }
     },
-    "large_files": [
-      {
-        "path": "scripts\\archive\\publish-web\\RefactorMCP.Web",
-        "size_mb": 76.59763717651367
-      },
-      {
-        "path": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
-        "size_mb": 76.59763717651367
-      },
-      {
-        "path": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp",
-        "size_mb": 66.70639514923096
-      }
-    ],
+    "large_files": [],
     "project_structure": {}
   },
   "migration_candidates": [
@@ -663,17 +532,6 @@
       "modified_date": "2025-08-15T10:39:37.746746",
       "directory": ".",
       "hash": "3ed58faf8d0c93ae35c414ec060eae5ad3e50d148845570b1bede95975716ada"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\Directory.Build.props",
-      "relative_path": "Directory.Build.props",
-      "file_name": "Directory.Build.props",
-      "extension": ".props",
-      "size_bytes": 8651,
-      "size_mb": 0.008250236511230469,
-      "modified_date": "2025-08-15T14:19:16.979913",
-      "directory": ".",
-      "hash": "309f15314330b7bc902bdf9d568ae76a52dc809ed60cc527ab4ecbad841579dd"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\Directory.Packages.props",
@@ -724,22 +582,11 @@
       "relative_path": "migration_plan.json",
       "file_name": "migration_plan.json",
       "extension": ".json",
-      "size_bytes": 441436,
-      "size_mb": 0.4209861755371094,
-      "modified_date": "2025-08-15T15:55:31.658615",
+      "size_bytes": 442361,
+      "size_mb": 0.42186832427978516,
+      "modified_date": "2025-08-15T15:52:13.266611",
       "directory": ".",
-      "hash": "d6cfd6afb889b18ed52879f03c7a0df6e54f808a59f791c782726aa97959034b"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\POST_MIGRATION_CHECKLIST.md",
-      "relative_path": "POST_MIGRATION_CHECKLIST.md",
-      "file_name": "POST_MIGRATION_CHECKLIST.md",
-      "extension": ".md",
-      "size_bytes": 6938,
-      "size_mb": 0.0066165924072265625,
-      "modified_date": "2025-08-15T16:00:05.144697",
-      "directory": ".",
-      "hash": "393fe7c271d37b05b23f4ed2214a448e2463b0b82f2ccc7111a43736c884181b"
+      "hash": "fad852ea55620de501f2be4ff7f522169ac8e253acefbcc12557446c3d132247"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\README.md",
@@ -753,26 +600,15 @@
       "hash": "85ac25c116b49f1d2230550dbac53c10ab3e79827964a5118af657bc987c527d"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\RefactorMCP.sln",
-      "relative_path": "RefactorMCP.sln",
-      "file_name": "RefactorMCP.sln",
-      "extension": ".sln",
-      "size_bytes": 8836,
-      "size_mb": 0.008426666259765625,
-      "modified_date": "2025-08-15T15:39:23.841128",
-      "directory": ".",
-      "hash": "d7e92ef65e0e51d008efce7f2ebecfecd30ad030d1113b4cf15f2ecf4c4c0314"
-    },
-    {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_config.json",
       "relative_path": "scanner_config.json",
       "file_name": "scanner_config.json",
       "extension": ".json",
-      "size_bytes": 2165,
-      "size_mb": 0.0020647048950195312,
-      "modified_date": "2025-08-15T15:59:27.443234",
+      "size_bytes": 2079,
+      "size_mb": 0.0019826889038085938,
+      "modified_date": "2025-08-15T15:55:22.872303",
       "directory": ".",
-      "hash": "fa1c877151c32e4522280646c1137c75d8823000b8d4d9e61ded95839b9f10e8"
+      "hash": "2c28b30226ea9a0887eb4ea0bd8bea2408a50cff03356cdd957819495eb479d6"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\stylecop.ruleset",
@@ -828,281 +664,6 @@
       "modified_date": "2025-08-15T10:35:41.998567",
       "directory": "pythonScripts",
       "hash": "dca4f81b84693e3e06d0c5d57eb01a892302d44d2b6d6cd54e95ced31cde7416"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_154248.txt",
-      "relative_path": "scanner_logs\\scan_summary_20250815_154248.txt",
-      "file_name": "scan_summary_20250815_154248.txt",
-      "extension": ".txt",
-      "size_bytes": 3536,
-      "size_mb": 0.0033721923828125,
-      "modified_date": "2025-08-15T15:42:50.018228",
-      "directory": "scanner_logs",
-      "hash": "29ff64f4e3614f0022c4f0fbdcf15defd3c9d6dd5c3959ec23e73f0a07d42468"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155100.txt",
-      "relative_path": "scanner_logs\\scan_summary_20250815_155100.txt",
-      "file_name": "scan_summary_20250815_155100.txt",
-      "extension": ".txt",
-      "size_bytes": 3536,
-      "size_mb": 0.0033721923828125,
-      "modified_date": "2025-08-15T15:51:01.229625",
-      "directory": "scanner_logs",
-      "hash": "1f3bcd2df8e33408547d345c6fda7ddd34fad18c9826ea593b4337cefd64790f"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155132.txt",
-      "relative_path": "scanner_logs\\scan_summary_20250815_155132.txt",
-      "file_name": "scan_summary_20250815_155132.txt",
-      "extension": ".txt",
-      "size_bytes": 3536,
-      "size_mb": 0.0033721923828125,
-      "modified_date": "2025-08-15T15:51:33.298816",
-      "directory": "scanner_logs",
-      "hash": "77d63f3aea6be027002c1bbfd5e64cd84471bab9abd7308ae7e4c78b5f70d965"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155213.txt",
-      "relative_path": "scanner_logs\\scan_summary_20250815_155213.txt",
-      "file_name": "scan_summary_20250815_155213.txt",
-      "extension": ".txt",
-      "size_bytes": 3270,
-      "size_mb": 0.0031185150146484375,
-      "modified_date": "2025-08-15T15:52:13.272612",
-      "directory": "scanner_logs",
-      "hash": "2bc8eba1333887b3bdc4d777afd495aaccb92effeaf99f2cae20136a1ab64219"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155531.txt",
-      "relative_path": "scanner_logs\\scan_summary_20250815_155531.txt",
-      "file_name": "scan_summary_20250815_155531.txt",
-      "extension": ".txt",
-      "size_bytes": 3246,
-      "size_mb": 0.0030956268310546875,
-      "modified_date": "2025-08-15T15:55:31.664622",
-      "directory": "scanner_logs",
-      "hash": "f13fdb2afe839f253358ff28215e3396d74d48e9f73dc3270aba7e397daa3256"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\5s-maintenance.sh",
-      "relative_path": "scripts\\5s-maintenance.sh",
-      "file_name": "5s-maintenance.sh",
-      "extension": ".sh",
-      "size_bytes": 1434,
-      "size_mb": 0.0013675689697265625,
-      "modified_date": "2025-08-15T10:01:08.550366",
-      "directory": "scripts",
-      "hash": "23cca44f3771c8a2b06fdf4d87decc2137f5053a3bafbe0073e13155ba3cb015"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build-comprehensive.ps1",
-      "relative_path": "scripts\\build-comprehensive.ps1",
-      "file_name": "build-comprehensive.ps1",
-      "extension": ".ps1",
-      "size_bytes": 16263,
-      "size_mb": 0.015509605407714844,
-      "modified_date": "2025-08-15T10:36:32.466544",
-      "directory": "scripts",
-      "hash": "84cf95ffd7b0f636e240dd6367c7a04635c5f74e8d7b57f6ee08b27e1f96fa49"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build-comprehensive.sh",
-      "relative_path": "scripts\\build-comprehensive.sh",
-      "file_name": "build-comprehensive.sh",
-      "extension": ".sh",
-      "size_bytes": 14086,
-      "size_mb": 0.013433456420898438,
-      "modified_date": "2025-08-15T10:37:31.191463",
-      "directory": "scripts",
-      "hash": "df08ae9f74a5e74e69f47ac9a5c77c5795a64c6d8f87140cb12ac730acf87a3c"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build.ps1",
-      "relative_path": "scripts\\build.ps1",
-      "file_name": "build.ps1",
-      "extension": ".ps1",
-      "size_bytes": 7112,
-      "size_mb": 0.00678253173828125,
-      "modified_date": "2025-08-15T10:40:09.287479",
-      "directory": "scripts",
-      "hash": "84ee296bdd8aa7aecb75e3d552a18752677627afaa2462db9a53b3d673b286ca"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build.sh",
-      "relative_path": "scripts\\build.sh",
-      "file_name": "build.sh",
-      "extension": ".sh",
-      "size_bytes": 5588,
-      "size_mb": 0.005329132080078125,
-      "modified_date": "2025-08-15T10:40:32.013028",
-      "directory": "scripts",
-      "hash": "7fdaecc60e759dd11a76389650521ca1d1ecc19f6f828317fd014b0631a036af"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\cpm.py",
-      "relative_path": "scripts\\cpm.py",
-      "file_name": "cpm.py",
-      "extension": ".py",
-      "size_bytes": 4956,
-      "size_mb": 0.004726409912109375,
-      "modified_date": "2025-08-15T10:22:34.996028",
-      "directory": "scripts",
-      "hash": "6448b11a3fc25e70687e1f07549ad2106641423906728c589d2e959ec9fdbda9"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\enable_cpm.py",
-      "relative_path": "scripts\\enable_cpm.py",
-      "file_name": "enable_cpm.py",
-      "extension": ".py",
-      "size_bytes": 3445,
-      "size_mb": 0.0032854080200195312,
-      "modified_date": "2025-08-15T10:31:17.409009",
-      "directory": "scripts",
-      "hash": "49e01b50bd515c5fc63e6f9d0f3cf722138bfab06194f1be351adc8b8f847a00"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\fix_references.py",
-      "relative_path": "scripts\\fix_references.py",
-      "file_name": "fix_references.py",
-      "extension": ".py",
-      "size_bytes": 3753,
-      "size_mb": 0.0035791397094726562,
-      "modified_date": "2025-08-15T10:18:22.081484",
-      "directory": "scripts",
-      "hash": "a3265afcaac7570d7896dde575383fd8e7d72a34a085eb0618318f4940fd751d"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\manual-setup.sh",
-      "relative_path": "scripts\\manual-setup.sh",
-      "file_name": "manual-setup.sh",
-      "extension": ".sh",
-      "size_bytes": 3175,
-      "size_mb": 0.0030279159545898438,
-      "modified_date": "2025-08-15T10:01:06.573271",
-      "directory": "scripts",
-      "hash": "fa00265f27af73e3ddd2bfac4233fd683476bd950c99a09a974e7097ec3427c3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\organize-scripts.sh",
-      "relative_path": "scripts\\organize-scripts.sh",
-      "file_name": "organize-scripts.sh",
-      "extension": ".sh",
-      "size_bytes": 8328,
-      "size_mb": 0.00794219970703125,
-      "modified_date": "2025-08-15T10:01:06.574274",
-      "directory": "scripts",
-      "hash": "9cbaba6019e9c5b56b5e4ee448143ed7822bee130078efb2b3dc68d839c3ea7b"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\README.md",
-      "relative_path": "scripts\\README.md",
-      "file_name": "README.md",
-      "extension": ".md",
-      "size_bytes": 2564,
-      "size_mb": 0.002445220947265625,
-      "modified_date": "2025-08-15T10:01:08.550366",
-      "directory": "scripts",
-      "hash": "0739fc9c3f004667c6688d06ce70f2a9bc5ba9563bb00665f23e50dcf753de95"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\refactor-mcp-manager.sh",
-      "relative_path": "scripts\\refactor-mcp-manager.sh",
-      "file_name": "refactor-mcp-manager.sh",
-      "extension": ".sh",
-      "size_bytes": 2096,
-      "size_mb": 0.0019989013671875,
-      "modified_date": "2025-08-15T10:01:08.561366",
-      "directory": "scripts",
-      "hash": "0c4d51834fc8eb4f17ab3d5842c8f05c22d90bd7a9b5ed446764ba217b9ab87c"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\reorganize.py",
-      "relative_path": "scripts\\reorganize.py",
-      "file_name": "reorganize.py",
-      "extension": ".py",
-      "size_bytes": 1740,
-      "size_mb": 0.001659393310546875,
-      "modified_date": "2025-08-15T10:16:00.205682",
-      "directory": "scripts",
-      "hash": "4280c42b5b136866ed4c096b953f03db662e479ab36daaf21c22af6d2086beb3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup-seq-compose.sh",
-      "relative_path": "scripts\\setup-seq-compose.sh",
-      "file_name": "setup-seq-compose.sh",
-      "extension": ".sh",
-      "size_bytes": 3974,
-      "size_mb": 0.0037899017333984375,
-      "modified_date": "2025-08-15T10:01:08.573552",
-      "directory": "scripts",
-      "hash": "9eb429ec71976d92ef4af2ceca387bb3c896c6b613425da09b67f12b29a1b5a2"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\update_references.py",
-      "relative_path": "scripts\\update_references.py",
-      "file_name": "update_references.py",
-      "extension": ".py",
-      "size_bytes": 2581,
-      "size_mb": 0.0024614334106445312,
-      "modified_date": "2025-08-15T10:17:39.057497",
-      "directory": "scripts",
-      "hash": "57d9b54115aa65407730b9ea74bcc7a50e203407ae0946f1c006bba0baa1cce4"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\.gitignore",
-      "relative_path": "tools\\vscode-extension\\.gitignore",
-      "file_name": ".gitignore",
-      "extension": "",
-      "size_bytes": 31,
-      "size_mb": 2.956390380859375e-05,
-      "modified_date": "2025-08-03T20:57:54.424922",
-      "directory": "tools\\vscode-extension",
-      "hash": "974aa67ff1c9bc86570ae4dd4e7d03b87ed8085085daf927da80f84c4693ade3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\package.json",
-      "relative_path": "tools\\vscode-extension\\package.json",
-      "file_name": "package.json",
-      "extension": ".json",
-      "size_bytes": 1642,
-      "size_mb": 0.0015659332275390625,
-      "modified_date": "2025-08-03T20:57:54.427427",
-      "directory": "tools\\vscode-extension",
-      "hash": "fed3f86fd49914931f4fc80176db3416d21a293c97f80997249e99a047ba0f84"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\README.md",
-      "relative_path": "tools\\vscode-extension\\README.md",
-      "file_name": "README.md",
-      "extension": ".md",
-      "size_bytes": 1278,
-      "size_mb": 0.0012187957763671875,
-      "modified_date": "2025-08-03T20:57:54.425922",
-      "directory": "tools\\vscode-extension",
-      "hash": "bb49b8533a7d3452a375a559cee204727c3e685ecc38cd0a0790cb8f8b411d7c"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\tsconfig.json",
-      "relative_path": "tools\\vscode-extension\\tsconfig.json",
-      "file_name": "tsconfig.json",
-      "extension": ".json",
-      "size_bytes": 283,
-      "size_mb": 0.00026988983154296875,
-      "modified_date": "2025-08-03T20:57:54.429432",
-      "directory": "tools\\vscode-extension",
-      "hash": "e2edee4222da62d00e83a58d09f6cf4fe036238865cd3eea4766c32058e280e1"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\src\\extension.ts",
-      "relative_path": "tools\\vscode-extension\\src\\extension.ts",
-      "file_name": "extension.ts",
-      "extension": ".ts",
-      "size_bytes": 4507,
-      "size_mb": 0.004298210144042969,
-      "modified_date": "2025-08-03T20:57:54.428432",
-      "directory": "tools\\vscode-extension\\src",
-      "hash": "a7e70cb535f18dbae9252d6a4904db50c9509366b171bd9f0516fb2e72015259"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\test\\RefactorMCP.Core.Tests\\GlobalUsings.cs",
@@ -2709,83 +2270,6 @@
       "modified_date": "2025-08-15T11:47:10.543445",
       "directory": "src\\OldTests",
       "hash": "91b3620b61c0fc7ef91625f26fb41cc1614526d25603c2c7f937bfcb206a8ca6"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_executor_phase2.py",
-      "relative_path": "src\\PythonScript\\migration_executor_phase2.py",
-      "file_name": "migration_executor_phase2.py",
-      "extension": ".py",
-      "size_bytes": 15503,
-      "size_mb": 0.014784812927246094,
-      "modified_date": "2025-08-13T20:52:36.458024",
-      "directory": "src\\PythonScript",
-      "hash": "4f1d0f92f15a3707c907813ddbf7f27a86ba5a7c61fdbf0572e32348b83ffcb3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_plan.json",
-      "relative_path": "src\\PythonScript\\migration_plan.json",
-      "file_name": "migration_plan.json",
-      "extension": ".json",
-      "size_bytes": 8744180,
-      "size_mb": 8.339099884033203,
-      "modified_date": "2025-07-27T16:19:46.893536",
-      "directory": "src\\PythonScript",
-      "hash": "3fd91ae1363fd86098bb29ac898d2667f349a5a89ca24fe88da86d9e31984587"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_report_20250727_163005.json",
-      "relative_path": "src\\PythonScript\\migration_report_20250727_163005.json",
-      "file_name": "migration_report_20250727_163005.json",
-      "extension": ".json",
-      "size_bytes": 747221,
-      "size_mb": 0.7126054763793945,
-      "modified_date": "2025-07-27T16:30:36.936075",
-      "directory": "src\\PythonScript",
-      "hash": "17438595c717e795a0ba9d6090bb8a782d479e16aeb017e3ae7a4d49114ca9ef"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\scanner_config.json",
-      "relative_path": "src\\PythonScript\\scanner_config.json",
-      "file_name": "scanner_config.json",
-      "extension": ".json",
-      "size_bytes": 1677,
-      "size_mb": 0.0015993118286132812,
-      "modified_date": "2025-08-15T16:00:14.082656",
-      "directory": "src\\PythonScript",
-      "hash": "32070283e9e2837085bb953b2941bb1d8ab5ba397db1ab844babd43228f14cc8"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_migration_executor.py",
-      "relative_path": "src\\PythonScript\\solution_migration_executor.py",
-      "file_name": "solution_migration_executor.py",
-      "extension": ".py",
-      "size_bytes": 28673,
-      "size_mb": 0.027344703674316406,
-      "modified_date": "2025-08-15T15:43:27.985700",
-      "directory": "src\\PythonScript",
-      "hash": "21a12a5a4c42875bc2b2c751ca2817a1af4bdeca46ae5a5a452f4be4bbf7591f"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_migration_scanner.py",
-      "relative_path": "src\\PythonScript\\solution_migration_scanner.py",
-      "file_name": "solution_migration_scanner.py",
-      "extension": ".py",
-      "size_bytes": 27188,
-      "size_mb": 0.025928497314453125,
-      "modified_date": "2025-08-15T15:52:06.714960",
-      "directory": "src\\PythonScript",
-      "hash": "cf06bc4a710cea188aa160b0ef7f99b9d137a6135f4a1e7bfd1e4080da440b51"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_scanner_analyzer_fixed.py",
-      "relative_path": "src\\PythonScript\\solution_scanner_analyzer_fixed.py",
-      "file_name": "solution_scanner_analyzer_fixed.py",
-      "extension": ".py",
-      "size_bytes": 445,
-      "size_mb": 0.00042438507080078125,
-      "modified_date": "2025-08-13T20:49:41.702689",
-      "directory": "src\\PythonScript",
-      "hash": "5d37b8db2d6b159d8251a9162730e4ea8617495ae1ec16afd60f60e5a102ca3c"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\RefactorMCP.ConsoleApp\\Program.cs",
@@ -8288,677 +7772,6 @@
       "hash": "2bf0df0068d5a58ef206678e40ba8b68fde33de69cd773149f22c37906530145"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\README.md",
-      "relative_path": "scripts\\archive\\README.md",
-      "file_name": "README.md",
-      "extension": ".md",
-      "size_bytes": 286,
-      "size_mb": 0.0002727508544921875,
-      "modified_date": "2025-08-15T10:01:08.552366",
-      "directory": "scripts\\archive",
-      "hash": "b9c71d169e1b45a7a309c8e82eae19e1a027a0076152d794a46023914e77b295"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\common\\colors.sh",
-      "relative_path": "scripts\\common\\colors.sh",
-      "file_name": "colors.sh",
-      "extension": ".sh",
-      "size_bytes": 1608,
-      "size_mb": 0.00153350830078125,
-      "modified_date": "2025-08-15T10:01:08.554368",
-      "directory": "scripts\\common",
-      "hash": "1a412c393f491870b013214f551fc78c098062a1d795d2e0943b2f9a1295613b"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\common\\utils.sh",
-      "relative_path": "scripts\\common\\utils.sh",
-      "file_name": "utils.sh",
-      "extension": ".sh",
-      "size_bytes": 3177,
-      "size_mb": 0.0030298233032226562,
-      "modified_date": "2025-08-15T10:01:08.555368",
-      "directory": "scripts\\common",
-      "hash": "1034765157c41edb6d8292c76bfa04540e3f38f89171a17448463666114cf3f0"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\change-ports.sh",
-      "relative_path": "scripts\\maintenance\\change-ports.sh",
-      "file_name": "change-ports.sh",
-      "extension": ".sh",
-      "size_bytes": 6006,
-      "size_mb": 0.0057277679443359375,
-      "modified_date": "2025-08-15T10:01:08.556366",
-      "directory": "scripts\\maintenance",
-      "hash": "fb98511818a68ba48540df33fb40077226ce2badbe3ec093e55e7106d7722062"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\deploy-http-mcp.sh",
-      "relative_path": "scripts\\maintenance\\deploy-http-mcp.sh",
-      "file_name": "deploy-http-mcp.sh",
-      "extension": ".sh",
-      "size_bytes": 1396,
-      "size_mb": 0.001331329345703125,
-      "modified_date": "2025-08-15T10:01:08.557367",
-      "directory": "scripts\\maintenance",
-      "hash": "6ae1c2a6e1de34cb47a7f69b9891d39768c7c4cfaec8e67a0a75cd1797098527"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\deploy-refactor-mcp.sh",
-      "relative_path": "scripts\\maintenance\\deploy-refactor-mcp.sh",
-      "file_name": "deploy-refactor-mcp.sh",
-      "extension": ".sh",
-      "size_bytes": 7360,
-      "size_mb": 0.00701904296875,
-      "modified_date": "2025-08-15T10:01:08.558366",
-      "directory": "scripts\\maintenance",
-      "hash": "a1ba12b1b56f462c761f5ac4182d17a9746adc344425f6b01fe5474ea6d89c6c"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\fix-json-serialization.sh",
-      "relative_path": "scripts\\maintenance\\fix-json-serialization.sh",
-      "file_name": "fix-json-serialization.sh",
-      "extension": ".sh",
-      "size_bytes": 5335,
-      "size_mb": 0.005087852478027344,
-      "modified_date": "2025-08-15T10:01:08.559366",
-      "directory": "scripts\\maintenance",
-      "hash": "e5c5f0e3d89d4456f453e72ab8edce3c28867ef1199dc73ebd6b07638ddda2e1"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\fix-navigation-pages.sh",
-      "relative_path": "scripts\\maintenance\\fix-navigation-pages.sh",
-      "file_name": "fix-navigation-pages.sh",
-      "extension": ".sh",
-      "size_bytes": 2876,
-      "size_mb": 0.002742767333984375,
-      "modified_date": "2025-08-15T10:01:08.559366",
-      "directory": "scripts\\maintenance",
-      "hash": "0991947acaebb02a6e4b481c1ea8a8e8c2aa15966c1717757275937339e48311"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\manage-docker-compose.sh",
-      "relative_path": "scripts\\maintenance\\manage-docker-compose.sh",
-      "file_name": "manage-docker-compose.sh",
-      "extension": ".sh",
-      "size_bytes": 4170,
-      "size_mb": 0.0039768218994140625,
-      "modified_date": "2025-08-15T10:01:08.560366",
-      "directory": "scripts\\maintenance",
-      "hash": "e13f90feb3a56ee18bb7b75618d14933c4322a3e1a3e1f62c91e7805b6b31dd2"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-docker-compose.sh",
-      "relative_path": "scripts\\setup\\setup-docker-compose.sh",
-      "file_name": "setup-docker-compose.sh",
-      "extension": ".sh",
-      "size_bytes": 5515,
-      "size_mb": 0.005259513854980469,
-      "modified_date": "2025-08-15T10:01:08.562366",
-      "directory": "scripts\\setup",
-      "hash": "ceeb9c58875360ffc3a52f52565b75b6316995a550097fefea77c0a4e53478ec"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-self-contained.sh",
-      "relative_path": "scripts\\setup\\setup-self-contained.sh",
-      "file_name": "setup-self-contained.sh",
-      "extension": ".sh",
-      "size_bytes": 6970,
-      "size_mb": 0.0066471099853515625,
-      "modified_date": "2025-08-15T10:01:08.563367",
-      "directory": "scripts\\setup",
-      "hash": "57c6fa18f74eeaabe81c700db7312739f128cdf0aeaceec76998f46e32afeb50"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-services.sh",
-      "relative_path": "scripts\\setup\\setup-services.sh",
-      "file_name": "setup-services.sh",
-      "extension": ".sh",
-      "size_bytes": 11718,
-      "size_mb": 0.011175155639648438,
-      "modified_date": "2025-08-15T10:01:08.564366",
-      "directory": "scripts\\setup",
-      "hash": "b2463e181000428e51500f8199c9ace27fd4187ef90d7ce6c6343edd15a0549f"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\testing\\start-services-manual.sh",
-      "relative_path": "scripts\\testing\\start-services-manual.sh",
-      "file_name": "start-services-manual.sh",
-      "extension": ".sh",
-      "size_bytes": 1290,
-      "size_mb": 0.0012302398681640625,
-      "modified_date": "2025-08-15T10:01:08.564366",
-      "directory": "scripts\\testing",
-      "hash": "2579c48d142187454c180ddc543b2053786feda0f62afda0654e02d9345ee4b6"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\testing\\test-mcp-api.sh",
-      "relative_path": "scripts\\testing\\test-mcp-api.sh",
-      "file_name": "test-mcp-api.sh",
-      "extension": ".sh",
-      "size_bytes": 4885,
-      "size_mb": 0.004658699035644531,
-      "modified_date": "2025-08-15T10:01:08.565546",
-      "directory": "scripts\\testing",
-      "hash": "288958da449da315c1ee60cf1f65a9c6ea120ad77c7adafa02273121821e8b9a"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\cleanup-podman.sh",
-      "relative_path": "scripts\\troubleshooting\\cleanup-podman.sh",
-      "file_name": "cleanup-podman.sh",
-      "extension": ".sh",
-      "size_bytes": 5096,
-      "size_mb": 0.00485992431640625,
-      "modified_date": "2025-08-15T10:01:08.566556",
-      "directory": "scripts\\troubleshooting",
-      "hash": "2c669cbbaf30b604b8f797d980f3117cd4ee11bec2cdc03483dc4ec597c85cbe"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\debug-crash.sh",
-      "relative_path": "scripts\\troubleshooting\\debug-crash.sh",
-      "file_name": "debug-crash.sh",
-      "extension": ".sh",
-      "size_bytes": 4676,
-      "size_mb": 0.004459381103515625,
-      "modified_date": "2025-08-15T10:01:08.567552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "203df704312340b232012c48a0a891593ab3a9d8b1724107a662836ac290fc15"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\debug-docker-env.sh",
-      "relative_path": "scripts\\troubleshooting\\debug-docker-env.sh",
-      "file_name": "debug-docker-env.sh",
-      "extension": ".sh",
-      "size_bytes": 1921,
-      "size_mb": 0.0018320083618164062,
-      "modified_date": "2025-08-15T10:01:08.567552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "6f20ce4d67fbe24863b6d358770cd5b102ae8cab678c3e55e6ca132f7408801f"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-container-conflicts.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-container-conflicts.sh",
-      "file_name": "fix-container-conflicts.sh",
-      "extension": ".sh",
-      "size_bytes": 3660,
-      "size_mb": 0.003490447998046875,
-      "modified_date": "2025-08-15T10:01:08.568552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "d027d84af3604a5b4972325d288e0ba017b02365592c66caefc77526a5892952"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-core-dump.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-core-dump.sh",
-      "file_name": "fix-core-dump.sh",
-      "extension": ".sh",
-      "size_bytes": 4705,
-      "size_mb": 0.004487037658691406,
-      "modified_date": "2025-08-15T10:01:08.569552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "a232e07a489804655d03777ba9ea1b3d33fc040ad112281bfe9fe42623574951"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-https-issue.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-https-issue.sh",
-      "file_name": "fix-https-issue.sh",
-      "extension": ".sh",
-      "size_bytes": 5672,
-      "size_mb": 0.00540924072265625,
-      "modified_date": "2025-08-15T10:01:08.570551",
-      "directory": "scripts\\troubleshooting",
-      "hash": "b13c5fefc67a641917f16b651452229e0c241c2138cf087e805de54292e1bf68"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-https-with-cert.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-https-with-cert.sh",
-      "file_name": "fix-https-with-cert.sh",
-      "extension": ".sh",
-      "size_bytes": 7222,
-      "size_mb": 0.0068874359130859375,
-      "modified_date": "2025-08-15T10:01:08.570551",
-      "directory": "scripts\\troubleshooting",
-      "hash": "2d8762f8e8223f61bc764331a30d96b01090623ced0186ccfc814bb33218955a"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-port-conflict.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-port-conflict.sh",
-      "file_name": "fix-port-conflict.sh",
-      "extension": ".sh",
-      "size_bytes": 3531,
-      "size_mb": 0.0033674240112304688,
-      "modified_date": "2025-08-15T10:01:08.571552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "c69e2433909f7b0862161eefe856c7807a5a5961c26315d40beee72200ae9f64"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-service.sh",
-      "relative_path": "scripts\\troubleshooting\\fix-service.sh",
-      "file_name": "fix-service.sh",
-      "extension": ".sh",
-      "size_bytes": 2119,
-      "size_mb": 0.0020208358764648438,
-      "modified_date": "2025-08-15T10:01:08.572552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "4c9b53ae2cc2ef9cb2a8516dec4e27980ee76d221a0f4a2c843eb4aaf9195bb0"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\force-docker-reset.sh",
-      "relative_path": "scripts\\troubleshooting\\force-docker-reset.sh",
-      "file_name": "force-docker-reset.sh",
-      "extension": ".sh",
-      "size_bytes": 5730,
-      "size_mb": 0.0054645538330078125,
-      "modified_date": "2025-08-15T10:01:08.573552",
-      "directory": "scripts\\troubleshooting",
-      "hash": "c91e80302301bd972f6d4ff7eb76dbc3f8bacc5bc01c6cbc2b0ad1fe1110ae79"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp",
-      "relative_path": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp",
-      "file_name": "RefactorMCP.ConsoleApp",
-      "extension": ".ConsoleApp",
-      "size_bytes": 69946725,
-      "size_mb": 66.70639514923096,
-      "modified_date": "2025-08-15T10:01:07.129809",
-      "directory": "scripts\\archive\\publish-console",
-      "hash": "c10675039cdc21bd4a022f723d09e1759ec1b1f8d7225fb1d4ab883b2942c449"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp.dll.config",
-      "relative_path": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp.dll.config",
-      "file_name": "RefactorMCP.ConsoleApp.dll.config",
-      "extension": ".config",
-      "size_bytes": 36579,
-      "size_mb": 0.03488445281982422,
-      "modified_date": "2025-08-15T10:01:07.132809",
-      "directory": "scripts\\archive\\publish-console",
-      "hash": "44946e0af1e938b63511b2e466798a3e548b77dbd4f934f9cc8d8bb89535b7cc"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console-safer\\RefactorMCP.ConsoleApp.dll.config",
-      "relative_path": "scripts\\archive\\publish-console-safer\\RefactorMCP.ConsoleApp.dll.config",
-      "file_name": "RefactorMCP.ConsoleApp.dll.config",
-      "extension": ".config",
-      "size_bytes": 36579,
-      "size_mb": 0.03488445281982422,
-      "modified_date": "2025-08-15T10:01:06.575275",
-      "directory": "scripts\\archive\\publish-console-safer",
-      "hash": "44946e0af1e938b63511b2e466798a3e548b77dbd4f934f9cc8d8bb89535b7cc"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\appsettings.json",
-      "relative_path": "scripts\\archive\\publish-deploy\\appsettings.json",
-      "file_name": "appsettings.json",
-      "extension": ".json",
-      "size_bytes": 514,
-      "size_mb": 0.0004901885986328125,
-      "modified_date": "2025-08-15T10:01:07.135808",
-      "directory": "scripts\\archive\\publish-deploy",
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "relative_path": "scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "file_name": "RefactorMCP.Web.staticwebassets.endpoints.json",
-      "extension": ".json",
-      "size_bytes": 8267,
-      "size_mb": 0.007884025573730469,
-      "modified_date": "2025-08-15T10:01:07.134809",
-      "directory": "scripts\\archive\\publish-deploy",
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\appsettings.json",
-      "relative_path": "scripts\\archive\\publish-web\\appsettings.json",
-      "file_name": "appsettings.json",
-      "extension": ".json",
-      "size_bytes": 514,
-      "size_mb": 0.0004901885986328125,
-      "modified_date": "2025-08-15T10:01:08.536705",
-      "directory": "scripts\\archive\\publish-web",
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\RefactorMCP.Web",
-      "relative_path": "scripts\\archive\\publish-web\\RefactorMCP.Web",
-      "file_name": "RefactorMCP.Web",
-      "extension": ".Web",
-      "size_bytes": 80318444,
-      "size_mb": 76.59763717651367,
-      "modified_date": "2025-08-15T10:01:08.533704",
-      "directory": "scripts\\archive\\publish-web",
-      "hash": "6792295c04c33d101ed6622450958a444e4b4a73e4e21e96e90f3a7f0ec20b34"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "relative_path": "scripts\\archive\\publish-web\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "file_name": "RefactorMCP.Web.staticwebassets.endpoints.json",
-      "extension": ".json",
-      "size_bytes": 8267,
-      "size_mb": 0.007884025573730469,
-      "modified_date": "2025-08-15T10:01:08.535704",
-      "directory": "scripts\\archive\\publish-web",
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\appsettings.json",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\appsettings.json",
-      "file_name": "appsettings.json",
-      "extension": ".json",
-      "size_bytes": 514,
-      "size_mb": 0.0004901885986328125,
-      "modified_date": "2025-08-15T10:01:07.149809",
-      "directory": "scripts\\archive\\publish-web-json-fixed",
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "file_name": "RefactorMCP.Web.staticwebassets.endpoints.json",
-      "extension": ".json",
-      "size_bytes": 8267,
-      "size_mb": 0.007884025573730469,
-      "modified_date": "2025-08-15T10:01:07.148808",
-      "directory": "scripts\\archive\\publish-web-json-fixed",
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\appsettings.json",
-      "relative_path": "scripts\\archive\\publish-web-updated\\appsettings.json",
-      "file_name": "appsettings.json",
-      "extension": ".json",
-      "size_bytes": 514,
-      "size_mb": 0.0004901885986328125,
-      "modified_date": "2025-08-15T10:01:07.851234",
-      "directory": "scripts\\archive\\publish-web-updated",
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
-      "relative_path": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
-      "file_name": "RefactorMCP.Web",
-      "extension": ".Web",
-      "size_bytes": 80318444,
-      "size_mb": 76.59763717651367,
-      "modified_date": "2025-08-15T10:01:07.847250",
-      "directory": "scripts\\archive\\publish-web-updated",
-      "hash": "6792295c04c33d101ed6622450958a444e4b4a73e4e21e96e90f3a7f0ec20b34"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "relative_path": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "file_name": "RefactorMCP.Web.staticwebassets.endpoints.json",
-      "extension": ".json",
-      "size_bytes": 8267,
-      "size_mb": 0.007884025573730469,
-      "modified_date": "2025-08-15T10:01:07.850233",
-      "directory": "scripts\\archive\\publish-web-updated",
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "file_name": "MudBlazor.min.css",
-      "extension": ".css",
-      "size_bytes": 595253,
-      "size_mb": 0.5676774978637695,
-      "modified_date": "2025-08-15T10:01:07.858601",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "file_name": "MudBlazor.min.css.br",
-      "extension": ".br",
-      "size_bytes": 40580,
-      "size_mb": 0.038700103759765625,
-      "modified_date": "2025-08-15T10:01:07.858601",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "file_name": "MudBlazor.min.css.gz",
-      "extension": ".gz",
-      "size_bytes": 64446,
-      "size_mb": 0.06146049499511719,
-      "modified_date": "2025-08-15T10:01:07.860780",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "file_name": "MudBlazor.min.js",
-      "extension": ".js",
-      "size_bytes": 54640,
-      "size_mb": 0.0521087646484375,
-      "modified_date": "2025-08-15T10:01:07.861779",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "file_name": "MudBlazor.min.js.br",
-      "extension": ".br",
-      "size_bytes": 10260,
-      "size_mb": 0.009784698486328125,
-      "modified_date": "2025-08-15T10:01:07.861779",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "file_name": "MudBlazor.min.js.gz",
-      "extension": ".gz",
-      "size_bytes": 11465,
-      "size_mb": 0.010933876037597656,
-      "modified_date": "2025-08-15T10:01:07.862781",
-      "directory": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor",
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "file_name": "MudBlazor.min.css",
-      "extension": ".css",
-      "size_bytes": 595253,
-      "size_mb": 0.5676774978637695,
-      "modified_date": "2025-08-15T10:01:07.156809",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "file_name": "MudBlazor.min.css.br",
-      "extension": ".br",
-      "size_bytes": 40580,
-      "size_mb": 0.038700103759765625,
-      "modified_date": "2025-08-15T10:01:07.156809",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "file_name": "MudBlazor.min.css.gz",
-      "extension": ".gz",
-      "size_bytes": 64446,
-      "size_mb": 0.06146049499511719,
-      "modified_date": "2025-08-15T10:01:07.158808",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "file_name": "MudBlazor.min.js",
-      "extension": ".js",
-      "size_bytes": 54640,
-      "size_mb": 0.0521087646484375,
-      "modified_date": "2025-08-15T10:01:07.159809",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "file_name": "MudBlazor.min.js.br",
-      "extension": ".br",
-      "size_bytes": 10260,
-      "size_mb": 0.009784698486328125,
-      "modified_date": "2025-08-15T10:01:07.160809",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "file_name": "MudBlazor.min.js.gz",
-      "extension": ".gz",
-      "size_bytes": 11465,
-      "size_mb": 0.010933876037597656,
-      "modified_date": "2025-08-15T10:01:07.160809",
-      "directory": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor",
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "file_name": "MudBlazor.min.css",
-      "extension": ".css",
-      "size_bytes": 595253,
-      "size_mb": 0.5676774978637695,
-      "modified_date": "2025-08-15T10:01:08.543717",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "file_name": "MudBlazor.min.css.br",
-      "extension": ".br",
-      "size_bytes": 40580,
-      "size_mb": 0.038700103759765625,
-      "modified_date": "2025-08-15T10:01:08.543717",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "file_name": "MudBlazor.min.css.gz",
-      "extension": ".gz",
-      "size_bytes": 64446,
-      "size_mb": 0.06146049499511719,
-      "modified_date": "2025-08-15T10:01:08.545705",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "file_name": "MudBlazor.min.js",
-      "extension": ".js",
-      "size_bytes": 54640,
-      "size_mb": 0.0521087646484375,
-      "modified_date": "2025-08-15T10:01:08.546705",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "file_name": "MudBlazor.min.js.br",
-      "extension": ".br",
-      "size_bytes": 10260,
-      "size_mb": 0.009784698486328125,
-      "modified_date": "2025-08-15T10:01:08.547706",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "relative_path": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "file_name": "MudBlazor.min.js.gz",
-      "extension": ".gz",
-      "size_bytes": 11465,
-      "size_mb": 0.010933876037597656,
-      "modified_date": "2025-08-15T10:01:08.547706",
-      "directory": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor",
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "file_name": "MudBlazor.min.css",
-      "extension": ".css",
-      "size_bytes": 595253,
-      "size_mb": 0.5676774978637695,
-      "modified_date": "2025-08-15T10:01:07.142808",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "file_name": "MudBlazor.min.css.br",
-      "extension": ".br",
-      "size_bytes": 40580,
-      "size_mb": 0.038700103759765625,
-      "modified_date": "2025-08-15T10:01:07.143809",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "file_name": "MudBlazor.min.css.gz",
-      "extension": ".gz",
-      "size_bytes": 64446,
-      "size_mb": 0.06146049499511719,
-      "modified_date": "2025-08-15T10:01:07.144808",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "file_name": "MudBlazor.min.js",
-      "extension": ".js",
-      "size_bytes": 54640,
-      "size_mb": 0.0521087646484375,
-      "modified_date": "2025-08-15T10:01:07.145808",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "file_name": "MudBlazor.min.js.br",
-      "extension": ".br",
-      "size_bytes": 10260,
-      "size_mb": 0.009784698486328125,
-      "modified_date": "2025-08-15T10:01:07.147809",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "relative_path": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "file_name": "MudBlazor.min.js.gz",
-      "extension": ".gz",
-      "size_bytes": 11465,
-      "size_mb": 0.010933876037597656,
-      "modified_date": "2025-08-15T10:01:07.147809",
-      "directory": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor",
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430"
-    },
-    {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\docs\\architecture\\functionality.md",
       "relative_path": "docs\\architecture\\functionality.md",
       "file_name": "functionality.md",
@@ -9142,6 +7955,16 @@
       "reason": "Excluded extension: .log"
     },
     {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\Directory.Build.props",
+      "relative_path": "Directory.Build.props",
+      "reason": "Force excluded: Directory.Build.props"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\RefactorMCP.sln",
+      "relative_path": "RefactorMCP.sln",
+      "reason": "Force excluded: RefactorMCP.sln"
+    },
+    {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\RefactorMCP.sln.DotSettings.user",
       "relative_path": "RefactorMCP.sln.DotSettings.user",
       "reason": "Excluded extension: .user"
@@ -9204,37 +8027,157 @@
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\migration_logs\\migration_dryrun_20250815_154333.log",
       "relative_path": "migration_logs\\migration_dryrun_20250815_154333.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: migration_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\migration_logs\\migration_dryrun_20250815_155243.log",
       "relative_path": "migration_logs\\migration_dryrun_20250815_155243.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: migration_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scanner_20250815_154248.log",
       "relative_path": "scanner_logs\\scanner_20250815_154248.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scanner_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scanner_20250815_155100.log",
       "relative_path": "scanner_logs\\scanner_20250815_155100.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scanner_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scanner_20250815_155132.log",
       "relative_path": "scanner_logs\\scanner_20250815_155132.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scanner_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scanner_20250815_155213.log",
       "relative_path": "scanner_logs\\scanner_20250815_155213.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scanner_logs"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scanner_20250815_155531.log",
       "relative_path": "scanner_logs\\scanner_20250815_155531.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scanner_logs"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_154248.txt",
+      "relative_path": "scanner_logs\\scan_summary_20250815_154248.txt",
+      "reason": "In excluded directory: scanner_logs"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155100.txt",
+      "relative_path": "scanner_logs\\scan_summary_20250815_155100.txt",
+      "reason": "In excluded directory: scanner_logs"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155132.txt",
+      "relative_path": "scanner_logs\\scan_summary_20250815_155132.txt",
+      "reason": "In excluded directory: scanner_logs"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scanner_logs\\scan_summary_20250815_155213.txt",
+      "relative_path": "scanner_logs\\scan_summary_20250815_155213.txt",
+      "reason": "In excluded directory: scanner_logs"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\5s-maintenance.sh",
+      "relative_path": "scripts\\5s-maintenance.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build-comprehensive.ps1",
+      "relative_path": "scripts\\build-comprehensive.ps1",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build-comprehensive.sh",
+      "relative_path": "scripts\\build-comprehensive.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build.ps1",
+      "relative_path": "scripts\\build.ps1",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\build.sh",
+      "relative_path": "scripts\\build.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\cpm.py",
+      "relative_path": "scripts\\cpm.py",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\enable_cpm.py",
+      "relative_path": "scripts\\enable_cpm.py",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\fix_references.py",
+      "relative_path": "scripts\\fix_references.py",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\manual-setup.sh",
+      "relative_path": "scripts\\manual-setup.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\organize-scripts.sh",
+      "relative_path": "scripts\\organize-scripts.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\README.md",
+      "relative_path": "scripts\\README.md",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\refactor-mcp-manager.sh",
+      "relative_path": "scripts\\refactor-mcp-manager.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\reorganize.py",
+      "relative_path": "scripts\\reorganize.py",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup-seq-compose.sh",
+      "relative_path": "scripts\\setup-seq-compose.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\update_references.py",
+      "relative_path": "scripts\\update_references.py",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\.gitignore",
+      "relative_path": "tools\\vscode-extension\\.gitignore",
+      "reason": "In excluded directory: tools"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\package.json",
+      "relative_path": "tools\\vscode-extension\\package.json",
+      "reason": "In excluded directory: tools"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\README.md",
+      "relative_path": "tools\\vscode-extension\\README.md",
+      "reason": "In excluded directory: tools"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\tsconfig.json",
+      "relative_path": "tools\\vscode-extension\\tsconfig.json",
+      "reason": "In excluded directory: tools"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\tools\\vscode-extension\\src\\extension.ts",
+      "relative_path": "tools\\vscode-extension\\src\\extension.ts",
+      "reason": "In excluded directory: tools"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\test\\RefactorMCP.Tests\\RefactorMCP.Tests.csproj.Backup.tmp",
@@ -9242,399 +8185,269 @@
       "reason": "Excluded extension: .tmp"
     },
     {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_executor_phase2.py",
+      "relative_path": "src\\PythonScript\\migration_executor_phase2.py",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_plan.json",
+      "relative_path": "src\\PythonScript\\migration_plan.json",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migration_report_20250727_163005.json",
+      "relative_path": "src\\PythonScript\\migration_report_20250727_163005.json",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_migration_executor.py",
+      "relative_path": "src\\PythonScript\\solution_migration_executor.py",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_migration_scanner.py",
+      "relative_path": "src\\PythonScript\\solution_migration_scanner.py",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\solution_scanner_analyzer_fixed.py",
+      "relative_path": "src\\PythonScript\\solution_scanner_analyzer_fixed.py",
+      "reason": "In excluded directory: PythonScript"
+    },
+    {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\RefactorMCP.UI\\RefactorMCP.UI.csproj.user",
       "relative_path": "src\\RefactorMCP.UI\\RefactorMCP.UI.csproj.user",
       "reason": "Excluded extension: .user"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\scanner_logs\\scanner_20250815_160014.log",
-      "relative_path": "src\\PythonScript\\scanner_logs\\scanner_20250815_160014.log",
-      "reason": "Excluded extension: .log"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\README.md",
+      "relative_path": "scripts\\archive\\README.md",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\common\\colors.sh",
+      "relative_path": "scripts\\common\\colors.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\common\\utils.sh",
+      "relative_path": "scripts\\common\\utils.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\change-ports.sh",
+      "relative_path": "scripts\\maintenance\\change-ports.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\deploy-http-mcp.sh",
+      "relative_path": "scripts\\maintenance\\deploy-http-mcp.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\deploy-refactor-mcp.sh",
+      "relative_path": "scripts\\maintenance\\deploy-refactor-mcp.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\fix-json-serialization.sh",
+      "relative_path": "scripts\\maintenance\\fix-json-serialization.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\fix-navigation-pages.sh",
+      "relative_path": "scripts\\maintenance\\fix-navigation-pages.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\maintenance\\manage-docker-compose.sh",
+      "relative_path": "scripts\\maintenance\\manage-docker-compose.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-docker-compose.sh",
+      "relative_path": "scripts\\setup\\setup-docker-compose.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-self-contained.sh",
+      "relative_path": "scripts\\setup\\setup-self-contained.sh",
+      "reason": "In excluded directory: scripts"
+    },
+    {
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\setup\\setup-services.sh",
+      "relative_path": "scripts\\setup\\setup-services.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
       "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\temp\\cpm_autogen.log",
       "relative_path": "scripts\\temp\\cpm_autogen.log",
-      "reason": "Excluded extension: .log"
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\ProjectEvaluation\\refactormcp.metadata.v9.bin",
-      "relative_path": ".vs\\ProjectEvaluation\\refactormcp.metadata.v9.bin",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\testing\\start-services-manual.sh",
+      "relative_path": "scripts\\testing\\start-services-manual.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\ProjectEvaluation\\refactormcp.projects.v9.bin",
-      "relative_path": ".vs\\ProjectEvaluation\\refactormcp.projects.v9.bin",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\testing\\test-mcp-api.sh",
+      "relative_path": "scripts\\testing\\test-mcp-api.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\ProjectEvaluation\\refactormcp.strings.v9.bin",
-      "relative_path": ".vs\\ProjectEvaluation\\refactormcp.strings.v9.bin",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\cleanup-podman.sh",
+      "relative_path": "scripts\\troubleshooting\\cleanup-podman.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\DesignTimeBuild\\.dtbcache.v2",
-      "relative_path": ".vs\\RefactorMCP\\DesignTimeBuild\\.dtbcache.v2",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\debug-crash.sh",
+      "relative_path": "scripts\\troubleshooting\\debug-crash.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\FileContentIndex\\0a2a3b66-2a5c-4b88-be0d-bc4cc6c5c3e5.vsidx",
-      "relative_path": ".vs\\RefactorMCP\\FileContentIndex\\0a2a3b66-2a5c-4b88-be0d-bc4cc6c5c3e5.vsidx",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\debug-docker-env.sh",
+      "relative_path": "scripts\\troubleshooting\\debug-docker-env.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\FileContentIndex\\4955386b-cd50-453a-941f-59239f295793.vsidx",
-      "relative_path": ".vs\\RefactorMCP\\FileContentIndex\\4955386b-cd50-453a-941f-59239f295793.vsidx",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-container-conflicts.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-container-conflicts.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\FileContentIndex\\67de1a11-a14f-427f-8ff5-bd175cdb2a59.vsidx",
-      "relative_path": ".vs\\RefactorMCP\\FileContentIndex\\67de1a11-a14f-427f-8ff5-bd175cdb2a59.vsidx",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-core-dump.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-core-dump.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\FileContentIndex\\b0bfbf1a-a5e3-45ef-af60-24b9b1e5f237.vsidx",
-      "relative_path": ".vs\\RefactorMCP\\FileContentIndex\\b0bfbf1a-a5e3-45ef-af60-24b9b1e5f237.vsidx",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-https-issue.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-https-issue.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\FileContentIndex\\edef0d55-02b0-46df-869c-83d9c113a4a3.vsidx",
-      "relative_path": ".vs\\RefactorMCP\\FileContentIndex\\edef0d55-02b0-46df-869c-83d9c113a4a3.vsidx",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-https-with-cert.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-https-with-cert.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\v17\\.futdcache.v2",
-      "relative_path": ".vs\\RefactorMCP\\v17\\.futdcache.v2",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-port-conflict.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-port-conflict.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\v17\\.suo",
-      "relative_path": ".vs\\RefactorMCP\\v17\\.suo",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\fix-service.sh",
+      "relative_path": "scripts\\troubleshooting\\fix-service.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\v17\\DocumentLayout.backup.json",
-      "relative_path": ".vs\\RefactorMCP\\v17\\DocumentLayout.backup.json",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\troubleshooting\\force-docker-reset.sh",
+      "relative_path": "scripts\\troubleshooting\\force-docker-reset.sh",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\v17\\DocumentLayout.json",
-      "relative_path": ".vs\\RefactorMCP\\v17\\DocumentLayout.json",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp",
+      "relative_path": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\v17\\HierarchyCache.v1.txt",
-      "relative_path": ".vs\\RefactorMCP\\v17\\HierarchyCache.v1.txt",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp.dll.config",
+      "relative_path": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp.dll.config",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\CopilotIndices\\17.14.995.13737\\CodeChunks.db",
-      "relative_path": ".vs\\RefactorMCP\\CopilotIndices\\17.14.995.13737\\CodeChunks.db",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-console-safer\\RefactorMCP.ConsoleApp.dll.config",
+      "relative_path": "scripts\\archive\\publish-console-safer\\RefactorMCP.ConsoleApp.dll.config",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\CopilotIndices\\17.14.995.13737\\SemanticSymbols.db",
-      "relative_path": ".vs\\RefactorMCP\\CopilotIndices\\17.14.995.13737\\SemanticSymbols.db",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\appsettings.json",
+      "relative_path": "scripts\\archive\\publish-deploy\\appsettings.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\RefactorMCP\\copilot-chat\\54277fe2\\sessions\\ab93b600-1bc8-4ab2-b0d8-8a9aed42fac9",
-      "relative_path": ".vs\\RefactorMCP\\copilot-chat\\54277fe2\\sessions\\ab93b600-1bc8-4ab2-b0d8-8a9aed42fac9",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "relative_path": "scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\state.mpack",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\state.mpack",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\appsettings.json",
+      "relative_path": "scripts\\archive\\publish-web\\appsettings.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\20829E50723E55356289916660FB5160",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\20829E50723E55356289916660FB5160",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\RefactorMCP.Web",
+      "relative_path": "scripts\\archive\\publish-web\\RefactorMCP.Web",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\3D54CA80B8ADD5BD9CEF6D970D8B6E2E",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\3D54CA80B8ADD5BD9CEF6D970D8B6E2E",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "relative_path": "scripts\\archive\\publish-web\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\3DCF28761C6B8971991BEB92B2C952BD",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\3DCF28761C6B8971991BEB92B2C952BD",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\appsettings.json",
+      "relative_path": "scripts\\archive\\publish-web-json-fixed\\appsettings.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\475CFB45012EF72B36341FCC273C084F",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\475CFB45012EF72B36341FCC273C084F",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "relative_path": "scripts\\archive\\publish-web-json-fixed\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\A968A2BF99C34AAAAC0314BA94395BD4",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\A968A2BF99C34AAAAC0314BA94395BD4",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\appsettings.json",
+      "relative_path": "scripts\\archive\\publish-web-updated\\appsettings.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\B105F18845960D97C764040B912C06AF",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\B105F18845960D97C764040B912C06AF",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
+      "relative_path": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\B72FB4A38C79F9D8BFE6350292E6A958",
-      "relative_path": ".vs\\CopilotSnapshots\\00B693ABC81BB24AB0D88A9AED42FAC9\\7C32619514FE5C45A12825F7E149782A\\B72FB4A38C79F9D8BFE6350292E6A958",
-      "reason": "In excluded directory: .vs"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "relative_path": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web.staticwebassets.endpoints.json",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\applypatch-msg.sample",
-      "relative_path": ".git\\hooks\\applypatch-msg.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\commit-msg.sample",
-      "relative_path": ".git\\hooks\\commit-msg.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\fsmonitor-watchman.sample",
-      "relative_path": ".git\\hooks\\fsmonitor-watchman.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\post-update.sample",
-      "relative_path": ".git\\hooks\\post-update.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-applypatch.sample",
-      "relative_path": ".git\\hooks\\pre-applypatch.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-commit.sample",
-      "relative_path": ".git\\hooks\\pre-commit.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
+      "relative_path": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-merge-commit.sample",
-      "relative_path": ".git\\hooks\\pre-merge-commit.sample",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
+      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
+      "reason": "In excluded directory: scripts"
     },
     {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-push.sample",
-      "relative_path": ".git\\hooks\\pre-push.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-rebase.sample",
-      "relative_path": ".git\\hooks\\pre-rebase.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\pre-receive.sample",
-      "relative_path": ".git\\hooks\\pre-receive.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\prepare-commit-msg.sample",
-      "relative_path": ".git\\hooks\\prepare-commit-msg.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\push-to-checkout.sample",
-      "relative_path": ".git\\hooks\\push-to-checkout.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\sendemail-validate.sample",
-      "relative_path": ".git\\hooks\\sendemail-validate.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\hooks\\update.sample",
-      "relative_path": ".git\\hooks\\update.sample",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\info\\exclude",
-      "relative_path": ".git\\info\\exclude",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\logs\\HEAD",
-      "relative_path": ".git\\logs\\HEAD",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\heads\\FactorX",
-      "relative_path": ".git\\refs\\heads\\FactorX",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\heads\\Fear",
-      "relative_path": ".git\\refs\\heads\\Fear",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\heads\\main",
-      "relative_path": ".git\\refs\\heads\\main",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\heads\\mcpweb",
-      "relative_path": ".git\\refs\\heads\\mcpweb",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\remotes\\origin\\FactorX",
-      "relative_path": ".git\\refs\\remotes\\origin\\FactorX",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\remotes\\origin\\Fear",
-      "relative_path": ".git\\refs\\remotes\\origin\\Fear",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\remotes\\origin\\HEAD",
-      "relative_path": ".git\\refs\\remotes\\origin\\HEAD",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\remotes\\origin\\mcpweb",
-      "relative_path": ".git\\refs\\remotes\\origin\\mcpweb",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\refs\\remotes\\origin\\mcpWeb1",
-      "relative_path": ".git\\refs\\remotes\\origin\\mcpWeb1",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\00\\3fc35880b6da8e9e957cf5a195928af5412468",
-      "relative_path": ".git\\objects\\00\\3fc35880b6da8e9e957cf5a195928af5412468",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\00\\d7d41aeb241b4def7f2b8c13ca01b020502097",
-      "relative_path": ".git\\objects\\00\\d7d41aeb241b4def7f2b8c13ca01b020502097",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\01\\7e31d38be672c52bae6ca37f5bdde75294c814",
-      "relative_path": ".git\\objects\\01\\7e31d38be672c52bae6ca37f5bdde75294c814",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\01\\f9ee80c113c4e79380ecb8c15b9f63c4d6fbad",
-      "relative_path": ".git\\objects\\01\\f9ee80c113c4e79380ecb8c15b9f63c4d6fbad",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\03\\9f29633c8329b53820180a108baad97a63fcc3",
-      "relative_path": ".git\\objects\\03\\9f29633c8329b53820180a108baad97a63fcc3",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\04\\67c5b4f5cf5d9333159a9d88ac54d4610d16d4",
-      "relative_path": ".git\\objects\\04\\67c5b4f5cf5d9333159a9d88ac54d4610d16d4",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\05\\2767d92091f60f71cb0548a5c2d0016169f8e8",
-      "relative_path": ".git\\objects\\05\\2767d92091f60f71cb0548a5c2d0016169f8e8",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\05\\6993ae1ee96b84c4f3d7949e196bb1d5077189",
-      "relative_path": ".git\\objects\\05\\6993ae1ee96b84c4f3d7949e196bb1d5077189",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\05\\88aeecb29a8d3e74249e10571ed0342b5fa4b3",
-      "relative_path": ".git\\objects\\05\\88aeecb29a8d3e74249e10571ed0342b5fa4b3",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\05\\d73b5a2d6a3c3dd0c324253ad5edc91b669ea7",
-      "relative_path": ".git\\objects\\05\\d73b5a2d6a3c3dd0c324253ad5edc91b669ea7",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\06\\6a73ec26cc76d4b254530e88d33a5066a066ab",
-      "relative_path": ".git\\objects\\06\\6a73ec26cc76d4b254530e88d33a5066a066ab",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\06\\6a8ccc2593e6251becf75edb28129a6780ab1d",
-      "relative_path": ".git\\objects\\06\\6a8ccc2593e6251becf75edb28129a6780ab1d",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\07\\482a21cd3bc84e42f205756356fcaa2755453e",
-      "relative_path": ".git\\objects\\07\\482a21cd3bc84e42f205756356fcaa2755453e",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\07\\6b410add50306c631786edd8eb83147eec4ced",
-      "relative_path": ".git\\objects\\07\\6b410add50306c631786edd8eb83147eec4ced",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\07\\8cdd43b76a3389bd6f0c38c8295cec48471638",
-      "relative_path": ".git\\objects\\07\\8cdd43b76a3389bd6f0c38c8295cec48471638",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\07\\955cdf0a55e8ccb010d7fe95779ace11af365a",
-      "relative_path": ".git\\objects\\07\\955cdf0a55e8ccb010d7fe95779ace11af365a",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\08\\1f0e7b0ca7aa6a9747435c5f87263ef7fa9c9e",
-      "relative_path": ".git\\objects\\08\\1f0e7b0ca7aa6a9747435c5f87263ef7fa9c9e",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\08\\5f1f3c6e8f779c641a555b4a1927c5086c3159",
-      "relative_path": ".git\\objects\\08\\5f1f3c6e8f779c641a555b4a1927c5086c3159",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\08\\6e7d58b8ff9184ba48b7c73f2469dc6ebe08a8",
-      "relative_path": ".git\\objects\\08\\6e7d58b8ff9184ba48b7c73f2469dc6ebe08a8",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\08\\dc4885fe8ff8c22ab4dbbfa151f9bacf8aeb3b",
-      "relative_path": ".git\\objects\\08\\dc4885fe8ff8c22ab4dbbfa151f9bacf8aeb3b",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\09\\7b4f4eefcf32d827f2805e31341a293963d730",
-      "relative_path": ".git\\objects\\09\\7b4f4eefcf32d827f2805e31341a293963d730",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\09\\bb2b5bc93dd19219a32e3495136473d9a85824",
-      "relative_path": ".git\\objects\\09\\bb2b5bc93dd19219a32e3495136473d9a85824",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\0a\\ce40613edb7c8d27ba7a2dbafd556d2856fec1",
-      "relative_path": ".git\\objects\\0a\\ce40613edb7c8d27ba7a2dbafd556d2856fec1",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\0b\\008e995ac583705a6bc3d0e91d24f5016765e2",
-      "relative_path": ".git\\objects\\0b\\008e995ac583705a6bc3d0e91d24f5016765e2",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\0b\\8ad9c12c938ea2aeaeee0e2ca5717a622237aa",
-      "relative_path": ".git\\objects\\0b\\8ad9c12c938ea2aeaeee0e2ca5717a622237aa",
-      "reason": "In excluded directory: .git"
-    },
-    {
-      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\.git\\objects\\0c\\208ae9181e5e5717e47ec1bd59368aebc6066e",
-      "relative_path": ".git\\objects\\0c\\208ae9181e5e5717e47ec1bd59368aebc6066e",
-      "reason": "In excluded directory: .git"
+      "absolute_path": "F:\\Dynamic\\Refactor\\refactor-mcp\\scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
+      "relative_path": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
+      "reason": "In excluded directory: scripts"
     }
   ],
   "duplicate_files": [
@@ -10261,168 +9074,6 @@
       "original": "src\\RefactorMCP.ConsoleApp\\Tools\\Version.cs",
       "duplicate": "src\\OldCode\\Tools\\Version.cs",
       "size_bytes": 580
-    },
-    {
-      "hash": "44946e0af1e938b63511b2e466798a3e548b77dbd4f934f9cc8d8bb89535b7cc",
-      "original": "scripts\\archive\\publish-console\\RefactorMCP.ConsoleApp.dll.config",
-      "duplicate": "scripts\\archive\\publish-console-safer\\RefactorMCP.ConsoleApp.dll.config",
-      "size_bytes": 36579
-    },
-    {
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e",
-      "original": "src\\RefactorMCP.Web\\appsettings.json",
-      "duplicate": "scripts\\archive\\publish-deploy\\appsettings.json",
-      "size_bytes": 514
-    },
-    {
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e",
-      "original": "src\\RefactorMCP.Web\\appsettings.json",
-      "duplicate": "scripts\\archive\\publish-web\\appsettings.json",
-      "size_bytes": 514
-    },
-    {
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5",
-      "original": "scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "duplicate": "scripts\\archive\\publish-web\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "size_bytes": 8267
-    },
-    {
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e",
-      "original": "src\\RefactorMCP.Web\\appsettings.json",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\appsettings.json",
-      "size_bytes": 514
-    },
-    {
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5",
-      "original": "scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "size_bytes": 8267
-    },
-    {
-      "hash": "9da639b062d5755fe9ca2e3a732c338b9a46e659f80a8a3db142c4160bb8479e",
-      "original": "src\\RefactorMCP.Web\\appsettings.json",
-      "duplicate": "scripts\\archive\\publish-web-updated\\appsettings.json",
-      "size_bytes": 514
-    },
-    {
-      "hash": "6792295c04c33d101ed6622450958a444e4b4a73e4e21e96e90f3a7f0ec20b34",
-      "original": "scripts\\archive\\publish-web\\RefactorMCP.Web",
-      "duplicate": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web",
-      "size_bytes": 80318444
-    },
-    {
-      "hash": "49fff22dc9624f2250a458413dcd1e85988a5309396308c40b9b0e5eb8723ae5",
-      "original": "scripts\\archive\\publish-deploy\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "duplicate": "scripts\\archive\\publish-web-updated\\RefactorMCP.Web.staticwebassets.endpoints.json",
-      "size_bytes": 8267
-    },
-    {
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "size_bytes": 595253
-    },
-    {
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "size_bytes": 40580
-    },
-    {
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "size_bytes": 64446
-    },
-    {
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "size_bytes": 54640
-    },
-    {
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "size_bytes": 10260
-    },
-    {
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "duplicate": "scripts\\archive\\publish-web-json-fixed\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "size_bytes": 11465
-    },
-    {
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "size_bytes": 595253
-    },
-    {
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "size_bytes": 40580
-    },
-    {
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "size_bytes": 64446
-    },
-    {
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "size_bytes": 54640
-    },
-    {
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "size_bytes": 10260
-    },
-    {
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "duplicate": "scripts\\archive\\publish-web\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "size_bytes": 11465
-    },
-    {
-      "hash": "e7c4858bb5be00257df96e75b67b3e9a8265d5e1df62e203153acbfd388b37b3",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css",
-      "size_bytes": 595253
-    },
-    {
-      "hash": "60f39031ffc9e7e5683e88d7396020712edaa9a31d18b09252bcc6d14118c4bd",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.br",
-      "size_bytes": 40580
-    },
-    {
-      "hash": "7ee558dde8254180963adc5ec84a30342fac3ba0ccdebf6997555dddefd8fc47",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.css.gz",
-      "size_bytes": 64446
-    },
-    {
-      "hash": "958b147150d4aa2a3e5b79ee7e0d63d9c8938fc1482a9a5820a3c722b0c62952",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js",
-      "size_bytes": 54640
-    },
-    {
-      "hash": "f6340fcc0f470e95d6e17ee162dc277b1839cc64e094ae23d3a899bbd6dfbbf9",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.br",
-      "size_bytes": 10260
-    },
-    {
-      "hash": "a04d327d7df63a4621c8119a92842de4e206a100335743cd38ed6567da1d8430",
-      "original": "scripts\\archive\\publish-web-updated\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "duplicate": "scripts\\archive\\publish-deploy\\wwwroot\\_content\\MudBlazor\\MudBlazor.min.js.gz",
-      "size_bytes": 11465
     }
   ],
   "error_files": []

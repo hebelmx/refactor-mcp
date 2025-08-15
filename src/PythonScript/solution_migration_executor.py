@@ -104,9 +104,9 @@ class EnhancedMigrationExecutor:
         try:
             with open(config_file, 'w', encoding='utf-8') as f:
                 json.dump(default_config, f, indent=2)
-            print(f"✅ Created default configuration: {config_file}")
+            print(f"Created default configuration: {config_file}")
         except Exception as e:
-            print(f"⚠️ Warning: Could not create config file: {e}")
+            print(f"Warning: Could not create config file: {e}")
             
         return default_config
     
@@ -125,10 +125,10 @@ class EnhancedMigrationExecutor:
                     with open(plan_path, 'r', encoding='utf-8') as f:
                         return json.load(f)
                 except Exception as e:
-                    print(f"⚠️ Warning: Could not load {plan_file}: {e}")
+                    print(f"Warning: Could not load {plan_file}: {e}")
         
         # If no plan file found, create a simple one by scanning the source
-        print("📋 No migration plan found. Creating one from source directory...")
+        print("No migration plan found. Creating one from source directory...")
         return self._create_migration_plan_from_source()
     
     def _create_migration_plan_from_source(self) -> Dict[str, Any]:
@@ -165,7 +165,7 @@ class EnhancedMigrationExecutor:
                         "hash": self._calculate_file_hash(file_path) if stat.st_size < 10 * 1024 * 1024 else ""  # Hash only small files
                     })
                 except Exception as e:
-                    print(f"⚠️ Warning: Could not process {file_path}: {e}")
+                    print(f"Warning: Could not process {file_path}: {e}")
         
         plan = {
             "plan_timestamp": datetime.now().isoformat(),
@@ -180,9 +180,9 @@ class EnhancedMigrationExecutor:
         try:
             with open(plan_file, 'w', encoding='utf-8') as f:
                 json.dump(plan, f, indent=2)
-            print(f"✅ Generated migration plan: {plan_file}")
+            print(f"Generated migration plan: {plan_file}")
         except Exception as e:
-            print(f"⚠️ Warning: Could not save migration plan: {e}")
+            print(f"Warning: Could not save migration plan: {e}")
         
         return plan
     
@@ -611,11 +611,11 @@ Examples:
     
     args = parser.parse_args()
     
-    print("🔧 Enhanced Solution Migration Executor v2.0")
+    print("Enhanced Solution Migration Executor v2.0")
     print("=" * 60)
     
     if args.dry_run:
-        print("🧪 DRY RUN MODE - No files will be actually copied")
+        print("DRY RUN MODE - No files will be actually copied")
         print("=" * 60)
     
     try:
@@ -630,24 +630,24 @@ Examples:
         
         if success:
             if args.dry_run:
-                print("\n🎉 Dry run completed successfully!")
-                print("🚀 Run without --dry-run to perform the actual migration")
+                print("\nDry run completed successfully!")
+                print("Run without --dry-run to perform the actual migration")
             else:
-                print("\n🎉 Migration completed successfully!")
-                print("📁 Check your clean solution in the destination folder")
-                print("🔨 Try opening the .sln file in Visual Studio")
+                print("\nMigration completed successfully!")
+                print("Check your clean solution in the destination folder")
+                print("Try opening the .sln file in Visual Studio")
         else:
-            print("\n⚠️ Migration completed with some issues.")
-            print("📋 Check the migration logs for details")
+            print("\nMigration completed with some issues.")
+            print("Check the migration logs for details")
             return 1
             
     except KeyboardInterrupt:
-        print("\n⚠️ Migration interrupted by user")
+        print("\nMigration interrupted by user")
         if not args.dry_run:
-            print("🔄 Run the script again to resume from where it left off")
+            print("Run the script again to resume from where it left off")
         return 1
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\nUnexpected error: {e}")
         return 1
     
     return 0
