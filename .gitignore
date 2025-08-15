@@ -436,8 +436,8 @@ TestOutput/codeMetricsCache.json
 .refactor-mcp/
 
 
- publish-deploy/RefactorMCP.Web
- publish-console-safer/RefactorMCP.ConsoleApp
- publish-web-json-fixed/RefactorMCP.Web/publish-console-safer/
-/publish-deploy/
-/publish-web-json-fixed/
+# RefactorMCP specific ignores
+/scripts/temp/
+/scripts/archive/publish-*/
+*.autogen.log
+/tools/temp/

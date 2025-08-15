@@ -1,47 +1,150 @@
 # RefactorMCP
 
-RefactorMCP is a Model Context Protocol server that exposes Roslyn-based refactoring tools for C#.
+**RefactorMCP** is a comprehensive Model Context Protocol (MCP) server that exposes powerful Roslyn-based refactoring tools for C# projects. It provides both console and web interfaces for advanced code refactoring operations.
 
-## Usage
+## 🏗️ Architecture
 
-Run the console application directly or host it as an MCP server:
+RefactorMCP follows a clean, modular architecture:
 
-```bash
-dotnet run --project RefactorMCP.ConsoleApp
+```
+📦 RefactorMCP
+├── 📁 src/                     # Source code
+│   ├── RefactorMCP.Core/       # Core refactoring logic
+│   ├── RefactorMCP.MCP.Server/ # MCP protocol implementation
+│   └── RefactorMCP.Web/        # Blazor web interface
+├── 📁 test/                    # Test projects
+├── 📁 docs/                    # Documentation
+├── 📁 scripts/                 # Automation scripts
+├── 📁 config/                  # Configuration files
+└── 📁 tools/                   # Additional tools
 ```
 
-For usage examples see [EXAMPLES.md](./EXAMPLES.md).
+## 🚀 Quick Start
 
-## Available Refactorings
+### Console Application
+```bash
+dotnet run --project src/RefactorMCP.ConsoleApp
+```
 
-- **Extract Method** – create a new method from selected code and replace the original with a call.
-- **Introduce Field/Parameter/Variable** – turn expressions into new members; fails if a field already exists.
-- **Convert to Static** – make instance methods static using parameters or an instance argument.
-- **Move Static Method** – relocate a static method and keep a wrapper in the original class.
-- **Move Instance Method** – move one or more instance methods to another class and delegate from the source. If a moved method no longer accesses instance members, it is made static automatically. Provide a `methodNames` list along with optional `constructor-injections` and `parameter-injections` to control dependencies.
-- **Move Multiple Methods (instance)** – move several methods and keep them as instance members of the target class. The source instance is injected via the constructor when required.
-- **Move Multiple Methods (static)** – move multiple methods and convert them to static, adding a `this` parameter.
-- **Make Static Then Move** – convert an instance method to static and relocate it to another class in one step.
-- **Move Type to Separate File** – move a top-level type into its own file named after the type.
-- **Make Field Readonly** – move initialization into constructors and mark the field readonly.
-- **Transform Setter to Init** – convert property setters to init-only and initialize in constructors.
-- **Constructor Injection** – convert method parameters to constructor-injected fields or properties.
-- **Safe Delete** – remove fields or variables only after dependency checks.
-- **Extract Class** – create a new class from selected members and compose it with the original.
-- **Inline Method** – replace calls with the method body and delete the original.
-- **Extract Decorator** – create a decorator class that delegates to an existing method.
-- **Create Adapter** – generate an adapter class wrapping an existing method.
-- **Add Observer** – introduce an event and raise it from a method.
-- **Use Interface** – change a method parameter type to one of its implemented interfaces.
-- **List Tools** – display all available refactoring tools as kebab-case names.
+### Web Dashboard
+```bash
+dotnet run --project src/RefactorMCP.Web
+```
 
-Metrics and summaries are also available via the `metrics://` and `summary://` resource schemes.
+### MCP Server Integration
+```bash
+# Host as MCP server (see docs/user-guides/ for details)
+dotnet build src/RefactorMCP.MCP.Server
+```
 
-## Contributing
+## 🛠️ Available Refactoring Tools
 
-* Run `dotnet test` to ensure all tests pass.
-* Format the code with `dotnet format` before opening a pull request.
+### **Method Operations**
+- **Extract Method** – Create new methods from code blocks
+- **Inline Method** – Replace method calls with method body
+- **Move Methods** – Relocate methods between classes
+- **Move Multiple Methods** – Batch move operations with dependency injection
 
-## License
+### **Class & Type Operations**
+- **Extract Class** – Create new classes from existing members
+- **Move Type to File** – Separate types into dedicated files
+- **Extract Decorator/Adapter** – Generate design pattern implementations
+- **Use Interface** – Convert concrete types to interface usage
+
+### **Field & Property Operations**
+- **Introduce Field/Parameter/Variable** – Create new class members
+- **Make Field Readonly** – Convert fields to readonly with constructor init
+- **Transform Setter to Init** – Convert properties to init-only
+- **Constructor Injection** – Convert parameters to injected dependencies
+
+### **Code Quality**
+- **Safe Delete** – Remove unused code with dependency validation
+- **Convert to Static** – Make methods static with proper parameter handling
+- **Add Observer** – Introduce event-driven patterns
+- **Cleanup Usings** – Organize import statements
+
+### **Analysis & Metrics**
+- **Analyze Refactoring Opportunities** – Identify improvement areas
+- **Class Length Metrics** – Measure class complexity
+- **List Available Tools** – Show all refactoring options
+
+## 📚 Documentation
+
+| Category | Location | Description |
+|----------|----------|-------------|
+| **User Guides** | [`docs/user-guides/`](docs/user-guides/) | Step-by-step usage instructions |
+| **Architecture** | [`docs/architecture/`](docs/architecture/) | System design and technical details |
+| **Development** | [`docs/development/`](docs/development/) | Contributor guides and examples |
+| **API Reference** | [`docs/api/`](docs/api/) | API documentation |
+| **Deployment** | [`docs/deployment/`](docs/deployment/) | Deployment guides |
+
+## 🔧 Development
+
+### Building
+```bash
+# Build all projects
+dotnet build
+
+# Run tests
+dotnet test
+
+# Format code
+dotnet format
+```
+
+### Project Structure
+- **RefactorMCP.Core** - Core refactoring engine
+- **RefactorMCP.MCP.Server** - MCP protocol implementation  
+- **RefactorMCP.Web** - Blazor web interface with API
+- **RefactorMCP.ConsoleApp** - Command-line interface
+
+### Testing
+```bash
+# Run all tests
+dotnet test
+
+# Run specific test project
+dotnet test test/RefactorMCP.Core.Tests
+```
+
+## 📁 Scripts & Tools
+
+| Script | Purpose |
+|--------|---------|
+| [`scripts/setup/`](scripts/setup/) | Environment setup scripts |
+| [`scripts/maintenance/`](scripts/maintenance/) | Maintenance and deployment |
+| [`scripts/testing/`](scripts/testing/) | Testing utilities |
+| [`tools/vscode-extension/`](tools/vscode-extension/) | VS Code extension |
+
+## 🌐 Web Interface Features
+
+- **Interactive Dashboard** - Real-time refactoring operations
+- **Metrics & Analytics** - Performance and usage tracking  
+- **Tool Management** - Browse and execute refactoring tools
+- **Project Monitoring** - Track refactoring activities
+- **HTTP API** - RESTful endpoints for automation
+
+## 🔗 Integration
+
+### Model Context Protocol (MCP)
+RefactorMCP implements the MCP standard for seamless integration with AI development tools.
+
+### Supported Formats
+- JSON-RPC over stdio
+- HTTP endpoints  
+- WebSocket connections
+
+## 📄 License
 
 Licensed under the [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/).
+
+## 🤝 Contributing
+
+1. Read [`docs/development/`](docs/development/) for contributor guidelines
+2. Run tests: `dotnet test`
+3. Format code: `dotnet format` 
+4. Submit pull requests with clear descriptions
+
+---
+
+For detailed examples and advanced usage, see the documentation in [`docs/`](docs/).
