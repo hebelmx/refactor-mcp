@@ -1,0 +1,91 @@
+{
+  "scan_settings": {
+    "calculate_hashes": true,
+    "detect_duplicates": true,
+    "follow_symlinks": false,
+    "max_file_size_mb": 500,
+    "chunk_size_bytes": 8192
+  },
+  "file_filters": {
+    "exclude_extensions": [
+      ".tmp",
+      ".temp",
+      ".cache",
+      ".log",
+      ".user",
+      ".exe",
+      ".dll",
+      ".pdb",
+      ".lib",
+      ".exp",
+      ".suo",
+      ".sdf",
+      ".opensdf",
+      ".ncb",
+      ".aps",
+      ".nupkg",
+      ".zip",
+      ".7z",
+      ".rar",
+      ".DS_Store",
+      "Thumbs.db",
+      "desktop.ini"
+    ],
+    "exclude_directories": [
+      "bin",
+      "obj",
+      "Debug",
+      "Release",
+      "x64",
+      "x86",
+      "AnyCPU",
+      ".vs",
+      ".vscode",
+      ".idea",
+      ".git",
+      ".svn",
+      ".hg",
+      "node_modules",
+      "packages",
+      ".nuget",
+      "TestResults",
+      "test-results",
+      "coverage",
+      "_site",
+      "docs/_build"
+    ],
+    "exclude_patterns": [
+      "**/bin/**",
+      "**/obj/**",
+      "**/.vs/**",
+      "**/*.log",
+      "**/*.tmp",
+      "**/packages/**"
+    ],
+    "include_only_extensions": [],
+    "force_include_files": [
+      "*.sln",
+      "*.csproj",
+      "*.props",
+      "*.targets",
+      "*.config",
+      "*.cs",
+      "*.razor",
+      "*.cshtml",
+      "*.js",
+      "*.css",
+      "*.json",
+      "*.md",
+      "*.txt",
+      "*.yml",
+      "*.yaml",
+      "*.xml"
+    ]
+  },
+  "analysis_settings": {
+    "group_by_extension": true,
+    "analyze_project_structure": true,
+    "detect_solution_files": true,
+    "calculate_statistics": true
+  }
+}

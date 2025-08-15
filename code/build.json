@@ -1,0 +1,184 @@
+{
+  "buildConfiguration": {
+    "name": "RefactorMCP Comprehensive Build",
+    "version": "1.0.0",
+    "description": "Complete build configuration for RefactorMCP with external artifact output",
+    
+    "defaultSettings": {
+      "configuration": "Release",
+      "platform": "Any CPU",
+      "outputRoot": "../Refactor",
+      "verbosity": "normal"
+    },
+    
+    "projects": {
+      "sourceProjects": [
+        {
+          "name": "RefactorMCP.Core",
+          "path": "src/RefactorMCP.Core",
+          "type": "Library",
+          "packageable": true,
+          "description": "Core refactoring engine and business logic"
+        },
+        {
+          "name": "RefactorMCP.MCP.Server", 
+          "path": "src/RefactorMCP.MCP.Server",
+          "type": "Library",
+          "packageable": true,
+          "description": "Model Context Protocol server implementation"
+        },
+        {
+          "name": "RefactorMCP.Web",
+          "path": "src/RefactorMCP.Web",
+          "type": "Web",
+          "packageable": false,
+          "publishable": true,
+          "description": "Blazor web interface and HTTP API"
+        },
+        {
+          "name": "RefactorMCP.ConsoleApp",
+          "path": "src/RefactorMCP.ConsoleApp", 
+          "type": "Executable",
+          "packageable": false,
+          "publishable": true,
+          "description": "Command-line interface application"
+        }
+      ],
+      
+      "testProjects": [
+        {
+          "name": "RefactorMCP.Core.Tests",
+          "path": "test/RefactorMCP.Core.Tests",
+          "testFramework": "xUnit",
+          "targetProject": "RefactorMCP.Core"
+        },
+        {
+          "name": "RefactorMCP.MCP.Server.Tests",
+          "path": "test/RefactorMCP.MCP.Server.Tests",
+          "testFramework": "xUnit",
+          "targetProject": "RefactorMCP.MCP.Server"
+        },
+        {
+          "name": "RefactorMCP.Web.Tests",
+          "path": "test/RefactorMCP.Web.Tests",
+          "testFramework": "xUnit",
+          "targetProject": "RefactorMCP.Web"
+        },
+        {
+          "name": "RefactorMCP.Tests",
+          "path": "test/RefactorMCP.Tests",
+          "testFramework": "xUnit",
+          "targetProject": "RefactorMCP.ConsoleApp"
+        }
+      ]
+    },
+    
+    "outputStructure": {
+      "build": "build/{configuration}",
+      "tests": "tests/{configuration}",
+      "packages": "packages",
+      "reports": "reports/{configuration}",
+      "logs": "logs/{configuration}",
+      "artifacts": "artifacts/{configuration}",
+      "intermediate": "intermediate/{configuration}",
+      "symbols": "symbols/{configuration}",
+      "documentation": "docs",
+      "distributions": "distributions"
+    },
+    
+    "buildStages": [
+      {
+        "name": "Clean",
+        "enabled": false,
+        "description": "Clean previous build outputs",
+        "commands": [
+          "dotnet clean --configuration {configuration}",
+          "Remove previous output directories"
+        ]
+      },
+      {
+        "name": "Restore",
+        "enabled": true,
+        "description": "Restore NuGet packages",
+        "commands": [
+          "dotnet restore --verbosity minimal"
+        ]
+      },
+      {
+        "name": "Build",
+        "enabled": true,
+        "description": "Build all projects",
+        "commands": [
+          "dotnet build --configuration {configuration} --no-restore --verbosity {verbosity}"
+        ]
+      },
+      {
+        "name": "Test",
+        "enabled": true,
+        "description": "Run all tests with coverage",
+        "commands": [
+          "dotnet test --configuration {configuration} --no-build --logger trx --collect 'XPlat Code Coverage'"
+        ]
+      },
+      {
+        "name": "Package",
+        "enabled": true,
+        "description": "Create NuGet packages",
+        "commands": [
+          "dotnet pack --configuration {configuration} --no-build --output {packages}"
+        ]
+      },
+      {
+        "name": "Publish",
+        "enabled": true,
+        "description": "Publish applications",
+        "commands": [
+          "dotnet publish --configuration {configuration} --no-build"
+        ]
+      }
+    ],
+    
+    "artifacts": {
+      "collect": [
+        "*.dll",
+        "*.exe",
+        "*.pdb",
+        "*.xml",
+        "*.json",
+        "*.nupkg",
+        "*.snupkg",
+        "test-results.trx",
+        "coverage.xml"
+      ],
+      "exclude": [
+        "*.tmp",
+        "*.cache",
+        "obj/**/*",
+        "**/ref/**/*"
+      ]
+    },
+    
+    "reporting": {
+      "buildManifest": true,
+      "testResults": true,
+      "codecoverage": true,
+      "packageList": true,
+      "buildStatistics": true
+    },
+    
+    "distributions": {
+      "console": {
+        "name": "RefactorMCP-Console",
+        "source": "artifacts/{configuration}/RefactorMCP.ConsoleApp",
+        "format": ["zip", "tar.gz"],
+        "includeRuntime": false
+      },
+      "web": {
+        "name": "RefactorMCP-Web",
+        "source": "artifacts/{configuration}/RefactorMCP.Web", 
+        "format": ["zip", "tar.gz"],
+        "includeRuntime": false
+      }
+    }
+  }
+}

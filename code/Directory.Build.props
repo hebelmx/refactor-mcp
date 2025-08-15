@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <!-- External build configuration - minimal setup for clean builds -->
+    <BaseOutputPath>F:\Dynamic\Refactor\Refactor\bin\</BaseOutputPath>
+    <OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
+    <BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,27 @@
+{
+  "migration_settings": {
+    "verify_checksums": true,
+    "skip_large_files_mb": 100,
+    "retry_attempts": 3,
+    "chunk_size_bytes": 4096
+  },
+  "file_filters": {
+    "exclude_extensions": [
+      ".tmp",
+      ".log",
+      ".cache"
+    ],
+    "exclude_directories": [
+      "bin",
+      "obj",
+      ".vs",
+      "node_modules",
+      ".git"
+    ],
+    "include_only": []
+  },
+  "paths": {
+    "source": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript",
+    "destination": "F:\\Dynamic\\Refactor\\refactor-mcp\\src\\PythonScript\\migrated_solution"
+  }
+}
