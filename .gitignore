@@ -434,3 +434,8 @@ BuildHost-net472/
 BuildHost-netcore/ 
 TestOutput/codeMetricsCache.json
 .refactor-mcp/
+
+
+ publish-deploy/RefactorMCP.Web
+ publish-console-safer/RefactorMCP.ConsoleApp
+ publish-web-json-fixed/RefactorMCP.Web
