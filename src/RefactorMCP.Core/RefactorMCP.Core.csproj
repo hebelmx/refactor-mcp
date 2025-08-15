@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -9,6 +9,7 @@
     <PackageVersion>1.0.0</PackageVersion>
     <Authors>RefactorMCP</Authors>
     <Description>Core library for RefactorMCP - Roslyn-based C# refactoring tools</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +36,18 @@
     <publicsVisibleTo Include="RefactorMCP.Core.Tests" />
     <publicsVisibleTo Include="RefactorMCP.MCP.Server" />
     <publicsVisibleTo Include="RefactorMCP.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageVersion Update="Microsoft.Build.Locator" />
+    <PackageVersion Update="Microsoft.Extensions.Caching.Memory" />
+    <PackageVersion Update="SonarAnalyzer.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Logging\" />
   </ItemGroup>
 
 </Project>

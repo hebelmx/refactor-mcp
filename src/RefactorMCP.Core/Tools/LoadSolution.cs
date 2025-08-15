@@ -4,6 +4,7 @@ using Microsoft.Extensions.Caching.Memory;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
 using RefactorMCP.Core.Move;
+using RefactorMCP.Core.Services;
 
 namespace RefactorMCP.Core.Tools;
 

@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using RefactorMCP.MCP.Server.Tools;
 using RefactorMCP.MCP.Server.Resources;
+using RefactorMCP.Core.Extensions;
 
 namespace RefactorMCP.MCP.Server.Extensions;
 

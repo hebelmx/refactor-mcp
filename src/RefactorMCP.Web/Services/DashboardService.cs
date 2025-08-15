@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using RefactorMCP.Core.Abstractions;
 
 using RefactorMCP.Web.Models;
 
@@ -20,7 +21,7 @@ public class DashboardService : IDashboardService
         try
         {
             var tools = await _refactoringService.ListAvailableToolsAsync();
-            
+
             return new DashboardStats(
                 TotalRefactorings: 0, // TODO: Implement tracking
                 ActiveSolutions: 0, // TODO: Implement tracking
@@ -40,7 +41,7 @@ public class DashboardService : IDashboardService
     {
         // TODO: Implement activity tracking
         await Task.Delay(10);
-        
+
         return new[]
         {
             new RefactoringActivity(
@@ -64,7 +65,7 @@ public class DashboardService : IDashboardService
     public async Task<SystemHealthStatus> GetSystemHealthAsync()
     {
         await Task.Delay(10);
-        
+
         var components = new Dictionary<string, ComponentHealth>
         {
             ["RefactoringService"] = new ComponentHealth(true, "Healthy", LastChecked: DateTime.Now),
@@ -72,7 +73,7 @@ public class DashboardService : IDashboardService
             ["Database"] = new ComponentHealth(true, "Healthy", LastChecked: DateTime.Now),
             ["Logging"] = new ComponentHealth(true, "Healthy", LastChecked: DateTime.Now)
         };
-        
+
         return new SystemHealthStatus(
             IsHealthy: components.Values.All(c => c.IsHealthy),
             Status: "All systems operational",

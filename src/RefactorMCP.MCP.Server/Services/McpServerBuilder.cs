@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -42,13 +43,16 @@ public class McpServerBuilder
 
     public McpServerBuilder WithLogging(Action<ILoggingBuilder> configureLogging)
     {
-        _hostBuilder.ConfigureLogging(configureLogging);
+        _hostBuilder.ConfigureServices((context, services) =>
+        {
+            services.AddLogging(configureLogging);
+        });
         return this;
     }
 
     public IHost Build()
     {
-        _hostBuilder.ConfigureServices(services =>
+        _hostBuilder.ConfigureServices((context, services) =>
         {
             foreach (var service in _services)
             {

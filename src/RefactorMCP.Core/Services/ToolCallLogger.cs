@@ -3,7 +3,7 @@ using System.Text.Json;
 using ModelContextProtocol.Server;
 using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.Core;
+namespace RefactorMCP.Core.Services;
 
 public static class ToolCallLogger
 {
