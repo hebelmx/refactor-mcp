@@ -92,8 +92,7 @@ public class Program
             options
                 .SetResourceBuilder(
                     ResourceBuilder.CreateDefault()
-                        .AddService(serviceName))
-                .AddConsoleExporter();
+                        .AddService(serviceName));
         });
         builder.Services.AddOpenTelemetry()
             .ConfigureResource(resource => resource.AddService(serviceName))
@@ -101,7 +100,6 @@ public class Program
                 .AddAspNetCoreInstrumentation()
                 .AddConsoleExporter())
             .WithMetrics(metrics => metrics
-                .AddAspNetCoreInstrumentation()
                 .AddConsoleExporter());
 
         // Add health checks

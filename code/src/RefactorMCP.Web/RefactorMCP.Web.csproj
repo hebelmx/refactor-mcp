@@ -12,6 +12,7 @@
 
   <ItemGroup>
 	<PackageReference Include="MudBlazor" />
+	<PackageReference Include="Extensions.MudBlazor.StaticInput" />
 	<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
 	<PackageReference Include="Microsoft.Extensions.Hosting" />
 	<PackageReference Include="Serilog.AspNetCore" />
