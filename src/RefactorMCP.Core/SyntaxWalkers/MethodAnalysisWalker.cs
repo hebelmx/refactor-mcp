@@ -1,11 +1,10 @@
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class MethodAnalysisWalker : CSharpSyntaxWalker
+    public class MethodAnalysisWalker : CSharpSyntaxWalker
     {
         private readonly HashSet<string> _instanceMembers;
         private readonly HashSet<string> _methodNames;

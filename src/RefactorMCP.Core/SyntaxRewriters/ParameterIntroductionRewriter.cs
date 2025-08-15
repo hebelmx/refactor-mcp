@@ -1,8 +1,11 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Editing;
+using RefactorMCP.Core.Tools;
 
-internal class ParameterIntroductionRewriter : ExpressionIntroductionRewriter<MethodDeclarationSyntax>
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class ParameterIntroductionRewriter : ExpressionIntroductionRewriter<MethodDeclarationSyntax>
 {
     private readonly string _methodName;
     private readonly SyntaxGenerator _generator;

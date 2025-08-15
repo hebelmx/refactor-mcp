@@ -131,7 +131,7 @@ public class DashboardServiceTests
 
         // Assert
         health.Components.Values.Should().OnlyContain(c => 
-            c.LastChecked.HasValue && c.LastChecked.Value > DateTime.Now.AddMinutes(-1));
+            c.LastChecked > DateTime.Now.AddMinutes(-1));
     }
 }
 
@@ -143,7 +143,7 @@ public static class DashboardTestDataBuilder
         int activeSolutions = 5,
         int availableTools = 15,
         double averageExecutionTime = 2.5,
-        double successRate = 92.5)
+        int successRate = 92)
     {
         return new DashboardStats(
             totalRefactorings,
@@ -182,7 +182,7 @@ public static class DashboardTestDataBuilder
             status,
             components ?? new Dictionary<string, ComponentHealth>
             {
-                ["TestComponent"] = new ComponentHealth(true, "Healthy", DateTime.Now)
+                ["TestComponent"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
             }
         );
     }

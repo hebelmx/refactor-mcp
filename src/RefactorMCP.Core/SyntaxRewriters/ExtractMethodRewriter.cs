@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
 
-internal class ExtractMethodRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class ExtractMethodRewriter : CSharpSyntaxRewriter
 {
     private readonly MethodDeclarationSyntax _containingMethod;
     private readonly ClassDeclarationSyntax? _containingClass;

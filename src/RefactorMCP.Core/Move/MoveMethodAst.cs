@@ -1,18 +1,12 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using System;
-using System.ComponentModel;
-using System.Linq;
 using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis.Text;
-using RefactorMCP.ConsoleApp.SyntaxRewriters;
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
+using ModelContextProtocol;
+using RefactorMCP.Core.SyntaxRewriters;
+using RefactorMCP.Core.SyntaxWalkers;
+using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.ConsoleApp.Move;
+namespace RefactorMCP.Core.Move;
 
 public static partial class MoveMethodAst
 {
@@ -65,7 +59,7 @@ public static partial class MoveMethodAst
             staticFieldNames,
             nestedClassNames,
             sourceClass.Identifier.ValueText);
-        transformedMethod = EnsureMethodIsInternal(transformedMethod);
+        transformedMethod = EnsureMethodIspublic(transformedMethod);
         var stubMethod = CreateStaticStubMethod(
             method,
             methodName,
@@ -76,9 +70,9 @@ public static partial class MoveMethodAst
         foreach (var m in sourceClass.Members.OfType<MethodDeclarationSyntax>())
         {
             if (calledMethods.Contains(m.Identifier.ValueText) &&
-                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.InternalKeyword)))
+                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.PublicKeyword)))
             {
-                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIsInternal(m);
+                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIspublic(m);
             }
         }
         var updatedSourceRoot = UpdateSourceRootWithStub(sourceRoot, method, stubMethod, dependencyUpdates);
@@ -360,7 +354,7 @@ public static partial class MoveMethodAst
             injectedParameters,
             paramMap,
             thisParameterName);
-        transformedMethod = EnsureMethodIsInternal(transformedMethod);
+        transformedMethod = EnsureMethodIspublic(transformedMethod);
 
         if (callsBase && baseWrapper != null)
         {
@@ -401,9 +395,9 @@ public static partial class MoveMethodAst
         foreach (var m in originClass.Members.OfType<MethodDeclarationSyntax>())
         {
             if (calledMethods.Contains(m.Identifier.ValueText) &&
-                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.InternalKeyword)))
+                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.PublicKeyword)))
             {
-                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIsInternal(m);
+                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIspublic(m);
             }
         }
 
@@ -507,7 +501,7 @@ public static partial class MoveMethodAst
 
         transformedMethod = AstTransformations.EnsureStaticModifier(transformedMethod);
 
-        return EnsureMethodIsInternal(transformedMethod);
+        return EnsureMethodIspublic(transformedMethod);
     }
 
     private static MethodDeclarationSyntax AddThisParameterToMethod(
@@ -563,9 +557,9 @@ public static partial class MoveMethodAst
         return method;
     }
 
-    private static MethodDeclarationSyntax EnsureMethodIsInternal(MethodDeclarationSyntax method)
+    private static MethodDeclarationSyntax EnsureMethodIspublic(MethodDeclarationSyntax method)
     {
-        if (method.Modifiers.Any(m => m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.InternalKeyword)))
+        if (method.Modifiers.Any(m => m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.PublicKeyword)))
             return method;
 
         var mods = method.Modifiers.Where(m => !m.IsKind(SyntaxKind.PrivateKeyword) &&
@@ -574,12 +568,12 @@ public static partial class MoveMethodAst
         if (method.Modifiers.Any(SyntaxKind.ProtectedKeyword))
         {
             // Keep the protected modifier for overrides to avoid reducing
-            // accessibility but add internal for cross-class access
+            // accessibility but add public for cross-class access
             mods = mods.Append(SyntaxFactory.Token(SyntaxKind.ProtectedKeyword));
         }
 
         return method.WithModifiers(SyntaxFactory.TokenList(mods)
-            .Add(SyntaxFactory.Token(SyntaxKind.InternalKeyword)));
+            .Add(SyntaxFactory.Token(SyntaxKind.PublicKeyword)));
     }
 
     private static MethodDeclarationSyntax CreateStubMethod(

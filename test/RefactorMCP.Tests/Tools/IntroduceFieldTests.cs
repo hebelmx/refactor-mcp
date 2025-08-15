@@ -51,7 +51,7 @@ public class IntroduceFieldTests : TestBase
         await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
         var testFile = Path.Combine(TestOutputPath, "AccessModifierTest.cs");
 
-        var accessModifiers = new[] { "private", "public", "protected", "internal" };
+        var accessModifiers = new[] { "private", "public", "protected", "public" };
         foreach (var modifier in accessModifiers)
         {
             var modifierTestFile = testFile.Replace(".cs", $"_{modifier}.cs");

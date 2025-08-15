@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class ComplexityWalker : CSharpSyntaxWalker
+    public class ComplexityWalker : CSharpSyntaxWalker
     {
         public int Complexity { get; private set; } = 1;
         private int _depth;

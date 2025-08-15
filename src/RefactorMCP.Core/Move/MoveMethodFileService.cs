@@ -1,18 +1,12 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using System;
-using System.ComponentModel;
-using System.Linq;
 using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis.Text;
-using System.IO;
-using System.Threading;
+using ModelContextProtocol;
+using RefactorMCP.Core.SyntaxRewriters;
+using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.ConsoleApp.Move;
+namespace RefactorMCP.Core.Move;
 
 public static class MoveMethodFileService
 {
@@ -74,13 +68,13 @@ public static class MoveMethodFileService
 
 
 
-    internal static void ValidateFileExists(string filePath)
+    public static void ValidateFileExists(string filePath)
     {
         if (!File.Exists(filePath))
             throw new McpException($"Error: File {filePath} not found (current dir: {Directory.GetCurrentDirectory()})");
     }
 
-    internal static async Task<SyntaxNode> LoadOrCreateTargetRoot(
+    public static async Task<SyntaxNode> LoadOrCreateTargetRoot(
         string targetPath,
         CancellationToken cancellationToken)
     {
@@ -232,7 +226,7 @@ public static class MoveMethodFileService
         return "_" + baseName;
     }
 
-    internal static string GetParameterName(string inj, string sourceClass)
+    public static string GetParameterName(string inj, string sourceClass)
     {
         string baseName;
         if (inj == "this")

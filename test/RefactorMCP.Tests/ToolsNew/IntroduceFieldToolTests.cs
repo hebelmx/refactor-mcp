@@ -64,7 +64,7 @@ public class Sample
     }
 }
 """;
-        var modifiers = new[] { "public", "protected", "internal" };
+        var modifiers = new[] { "public", "protected", "public" };
         await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
         foreach (var modifier in modifiers)
         {

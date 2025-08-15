@@ -1,9 +1,9 @@
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class InstanceMemberNameWalker : NameCollectorWalker
+    public class InstanceMemberNameWalker : NameCollectorWalker
     {
         public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
         {

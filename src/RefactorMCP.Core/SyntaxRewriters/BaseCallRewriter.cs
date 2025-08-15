@@ -2,9 +2,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.ConsoleApp.SyntaxRewriters
+namespace RefactorMCP.Core.SyntaxRewriters
 {
-    internal class BaseCallRewriter : CSharpSyntaxRewriter
+    public class BaseCallRewriter : CSharpSyntaxRewriter
     {
         private readonly string _methodName;
         private readonly string _parameterName;

@@ -1,20 +1,16 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using System;
 using System.ComponentModel;
-using System.Linq;
+using System.Text;
 using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.Text;
-using System.IO;
-using System.Text;
-using System.Threading;
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
+using ModelContextProtocol;
+using ModelContextProtocol.Server;
+using RefactorMCP.Core.SyntaxWalkers;
+using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.ConsoleApp.Move;
+namespace RefactorMCP.Core.Move;
 
 [McpServerToolType]
 public static class MoveMethodTool
@@ -24,7 +20,7 @@ public static class MoveMethodTool
     private static string GetKey(string filePath, string methodName) =>
         $"{Path.GetFullPath(filePath)}::{methodName}";
 
-    internal static void EnsureNotAlreadyMoved(string filePath, string methodName)
+    public static void EnsureNotAlreadyMoved(string filePath, string methodName)
     {
         if (_movedMethods.Contains(GetKey(filePath, methodName)))
         {
@@ -34,7 +30,7 @@ public static class MoveMethodTool
         }
     }
 
-    internal static void MarkMoved(string filePath, string methodName)
+    public static void MarkMoved(string filePath, string methodName)
         => _movedMethods.Add(GetKey(filePath, methodName));
 
     [McpServerTool, Description("Clear the record of moved methods so they can be moved again. Do not use unless explicitly asked to.")]

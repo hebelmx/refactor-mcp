@@ -2,13 +2,10 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.FindSymbols;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class UnusedMembersWalker : CSharpSyntaxWalker
+    public class UnusedMembersWalker : CSharpSyntaxWalker
     {
         private readonly SemanticModel? _model;
         private readonly Solution? _solution;

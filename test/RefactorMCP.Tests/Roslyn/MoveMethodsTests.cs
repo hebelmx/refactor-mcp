@@ -378,7 +378,7 @@ public class Extracted { }";
         {
             var source = @"public class Outer
 {
-    internal class Helper { }
+    public class Helper { }
     public void Do() { Helper h = new Helper(); }
 }
 
@@ -527,7 +527,7 @@ public class Target { }";
             var finalRoot = MoveMethodAst.AddMethodToTargetClass(result.NewSourceRoot, "Target", result.MovedMethod, result.Namespace);
             var formatted = Formatter.Format(finalRoot, new AdhocWorkspace()).ToFullString();
 
-            Assert.Contains("internal void Helper()", formatted);
+            Assert.Contains("public void Helper()", formatted);
         }
 
         [Fact]

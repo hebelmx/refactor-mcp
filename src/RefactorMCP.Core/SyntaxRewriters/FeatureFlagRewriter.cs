@@ -1,9 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Linq;
 
-internal class FeatureFlagRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class FeatureFlagRewriter : CSharpSyntaxRewriter
 {
     private readonly string _flagName;
     private readonly string _interfaceName;
@@ -57,9 +58,9 @@ internal class FeatureFlagRewriter : CSharpSyntaxRewriter
         if (_done && _targetIf != null && node.Span.Contains(_targetIf.Span))
         {
             var fieldDecl = SyntaxFactory.FieldDeclaration(
-                SyntaxFactory.VariableDeclaration(
-                    SyntaxFactory.IdentifierName(_interfaceName))
-                .AddVariables(SyntaxFactory.VariableDeclarator(_strategyField)))
+                    SyntaxFactory.VariableDeclaration(
+                            SyntaxFactory.IdentifierName(_interfaceName))
+                        .AddVariables(SyntaxFactory.VariableDeclarator(_strategyField)))
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PrivateKeyword), SyntaxFactory.Token(SyntaxKind.ReadOnlyKeyword));
             visited = visited.AddMembers(fieldDecl);
             GeneratedMembers = GeneratedMembers.AddRange(CreateStrategyTypes());

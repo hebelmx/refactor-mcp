@@ -1,8 +1,9 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class MethodNameWalker : NameCollectorWalker
+    public class MethodNameWalker : NameCollectorWalker
     {
         public override void VisitMethodDeclaration(MethodDeclarationSyntax node)
         {

@@ -1,10 +1,9 @@
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class AccessMemberTypeWalker : CSharpSyntaxWalker
+    public class AccessMemberTypeWalker : CSharpSyntaxWalker
     {
         private readonly string _memberName;
         public string? MemberType { get; private set; }

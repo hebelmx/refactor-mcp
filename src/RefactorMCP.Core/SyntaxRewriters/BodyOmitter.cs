@@ -2,7 +2,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-internal class BodyOmitter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class BodyOmitter : CSharpSyntaxRewriter
 {
     public override SyntaxNode? VisitBlock(BlockSyntax node)
     {

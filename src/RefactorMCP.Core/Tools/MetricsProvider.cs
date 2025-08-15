@@ -1,12 +1,12 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
+using System.Text.Json;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Caching.Memory;
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
-using System.Text.Json;
-using System.IO;
+using ModelContextProtocol;
+using RefactorMCP.Core.SyntaxWalkers;
+
+namespace RefactorMCP.Core.Tools;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "Utility class")]
 public static class MetricsProvider
@@ -119,7 +119,7 @@ public static class MetricsProvider
                     if (method.Modifiers.Any(SyntaxKind.PublicKeyword))
                         fileMetrics.NumberOfPublicMethods++;
                     else if (method.Modifiers.Any(SyntaxKind.PrivateKeyword) ||
-                             (!method.Modifiers.Any(SyntaxKind.ProtectedKeyword) && !method.Modifiers.Any(SyntaxKind.InternalKeyword)))
+                             (!method.Modifiers.Any(SyntaxKind.ProtectedKeyword) && !method.Modifiers.Any(SyntaxKind.PublicKeyword)))
                         fileMetrics.NumberOfPrivateMethods++;
                 }
                 fileMetrics.Classes.Add(clsMetrics);
@@ -127,7 +127,6 @@ public static class MetricsProvider
             return fileMetrics;
         }
     }
-
 
     private class FileMetrics
     {

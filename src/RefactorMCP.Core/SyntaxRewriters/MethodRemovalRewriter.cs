@@ -1,10 +1,8 @@
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.ConsoleApp.SyntaxRewriters;
+namespace RefactorMCP.Core.SyntaxRewriters;
 
-internal class MethodRemovalRewriter : DeclarationRemovalRewriter<MethodDeclarationSyntax>
+public class MethodRemovalRewriter : DeclarationRemovalRewriter<MethodDeclarationSyntax>
 {
     public MethodRemovalRewriter(string methodName)
         : base(methodName)

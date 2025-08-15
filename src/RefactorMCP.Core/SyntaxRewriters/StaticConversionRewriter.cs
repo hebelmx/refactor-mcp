@@ -1,10 +1,11 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-using System.Linq;
+using RefactorMCP.Core.Tools;
 
-internal class StaticConversionRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class StaticConversionRewriter
 {
     private readonly List<ParameterSyntax> _parameters;
     private readonly string? _instanceParameterName;
@@ -71,8 +72,8 @@ internal class StaticConversionRewriter
         {
             // Remove explicit interface implementation when converting to static
             result = result.WithExplicitInterfaceSpecifier(null)
-                           .WithIdentifier(result.Identifier.WithoutTrivia())
-                           .WithTriviaFrom(result);
+                .WithIdentifier(result.Identifier.WithoutTrivia())
+                .WithTriviaFrom(result);
 
             if (!result.Modifiers.Any(m =>
                     m.IsKind(SyntaxKind.PublicKeyword) ||
@@ -87,10 +88,10 @@ internal class StaticConversionRewriter
                     var ifaceSymbol = _semanticModel.GetSymbolInfo(method.ExplicitInterfaceSpecifier!.Name).Symbol as INamedTypeSymbol;
                     accessToken = ifaceSymbol?.DeclaredAccessibility switch
                     {
-                        Accessibility.Internal => SyntaxFactory.Token(SyntaxKind.InternalKeyword),
+                        Accessibility.Public => SyntaxFactory.Token(SyntaxKind.PublicKeyword),
                         Accessibility.Private => SyntaxFactory.Token(SyntaxKind.PrivateKeyword),
                         Accessibility.Protected => SyntaxFactory.Token(SyntaxKind.ProtectedKeyword),
-                        Accessibility.ProtectedAndInternal or Accessibility.ProtectedOrInternal => SyntaxFactory.Token(SyntaxKind.InternalKeyword),
+                        Accessibility.ProtectedAndInternal or Accessibility.ProtectedOrInternal => SyntaxFactory.Token(SyntaxKind.PublicKeyword),
                         _ => SyntaxFactory.Token(SyntaxKind.PublicKeyword)
                     };
                 }

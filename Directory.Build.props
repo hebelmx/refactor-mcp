@@ -7,8 +7,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <WarningsNotAsErrors />
+    <WarningsAsErrors></WarningsAsErrors>
+    <WarningsNotAsErrors></WarningsNotAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     
     <!-- Version information -->
@@ -20,9 +20,6 @@
     
     <!-- Build information -->
     <BuildId Condition="'$(BuildId)' == ''">dev-$(USER)$([System.DateTime]::Now.ToString('yyyyMMdd-HHmmss'))</BuildId>
-    <AssemblyMetadata Include="BuildId" Value="$(BuildId)" />
-    <AssemblyMetadata Include="BuildConfiguration" Value="$(Configuration)" />
-    <AssemblyMetadata Include="BuildPlatform" Value="$(Platform)" />
     
     <!-- Common assembly attributes -->
     <Product>RefactorMCP</Product>
@@ -38,7 +35,6 @@
     <!-- Package metadata -->
     <PackageTags>refactoring;roslyn;mcp;csharp;dotnet;code-analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>See CHANGELOG.md for release notes</PackageReleaseNotes>
     
     <!-- Source control and deterministic builds -->
@@ -89,21 +85,55 @@
   <!-- Global package references for all projects -->
   <ItemGroup>
     <!-- Source link for better debugging experience -->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     <!-- Code analyzers (only in non-test projects) -->
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507" PrivateAssets="All" Condition="'$(IsTestProject)' != 'true'" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.32.0.97167" PrivateAssets="All" Condition="'$(IsTestProject)' != 'true'" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" Condition="'$(IsTestProject)' != 'true'" />
+    <PackageReference Include="SonarAnalyzer.CSharp" PrivateAssets="All" Condition="'$(IsTestProject)' != 'true'" />
+
+    <!-- Central package versions -->
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.507" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.32.0.97167" />
+    
+    <!-- Roslyn and Code Analysis packages -->
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Features" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.Build.Locator" Version="1.6.10" />
+    
+    <!-- Microsoft Extensions packages -->
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0" />
+    
+    <!-- Model Context Protocol -->
+    <PackageVersion Include="ModelContextProtocol" Version="0.2.0-preview.3" />
   </ItemGroup>
 
   <!-- Test projects package references -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="All" />
-    <PackageReference Include="coverlet.collector" Version="6.0.2" PrivateAssets="All" />
-    <PackageReference Include="FluentAssertions" Version="6.12.1" />
-    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="All" />
+    <PackageReference Include="coverlet.collector" PrivateAssets="All" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Moq" />
+
+    <!-- Central package versions for test dependencies -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageVersion Include="xunit" Version="2.9.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.2" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.1" />
+    <PackageVersion Include="Moq" Version="4.20.72" />
+    
+    <!-- Additional test dependencies -->
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.1" />
+    <PackageVersion Include="AngleSharp" Version="1.1.2" />
+    <PackageVersion Include="bUnit" Version="1.31.3" />
   </ItemGroup>
 
   <!-- Global using statements -->
@@ -154,7 +184,13 @@
     <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" />
     <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" />
     <None Include="$(MSBuildThisFileDirectory)CHANGELOG.md" Pack="true" PackagePath="" Condition="Exists('$(MSBuildThisFileDirectory)CHANGELOG.md')" />
-    <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="" Condition="Exists('$(MSBuildThisFileDirectory)icon.png')" />
+  </ItemGroup>
+
+  <!-- Assembly metadata item group -->
+  <ItemGroup>
+    <AssemblyMetadata Include="BuildId" Value="$(BuildId)" />
+    <AssemblyMetadata Include="BuildConfiguration" Value="$(Configuration)" />
+    <AssemblyMetadata Include="BuildPlatform" Value="$(Platform)" />
   </ItemGroup>
 
   <!-- Custom targets for build information -->

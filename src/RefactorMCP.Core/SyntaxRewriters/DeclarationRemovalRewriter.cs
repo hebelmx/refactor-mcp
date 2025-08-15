@@ -1,9 +1,8 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Linq;
 
-namespace RefactorMCP.ConsoleApp.SyntaxRewriters;
+namespace RefactorMCP.Core.SyntaxRewriters;
 
 /// <summary>
 /// Base rewriter that removes a declaration identified by name. For declarations
@@ -11,7 +10,7 @@ namespace RefactorMCP.ConsoleApp.SyntaxRewriters;
 /// matching variable is removed; otherwise the entire declaration node is
 /// dropped.
 /// </summary>
-internal abstract class DeclarationRemovalRewriter<T> : CSharpSyntaxRewriter where T : SyntaxNode
+public abstract class DeclarationRemovalRewriter<T> : CSharpSyntaxRewriter where T : SyntaxNode
 {
     protected readonly string Name;
 

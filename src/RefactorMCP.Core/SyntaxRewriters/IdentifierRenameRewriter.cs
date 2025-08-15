@@ -1,9 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
 
-internal class IdentifierRenameRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class IdentifierRenameRewriter : CSharpSyntaxRewriter
 {
     private readonly SemanticModel? _semanticModel;
     private readonly Dictionary<ISymbol, string>? _symbolMap;

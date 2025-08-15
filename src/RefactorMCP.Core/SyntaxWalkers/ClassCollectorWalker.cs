@@ -1,9 +1,8 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class ClassCollectorWalker : TypeCollectorWalker<ClassDeclarationSyntax>
+    public class ClassCollectorWalker : TypeCollectorWalker<ClassDeclarationSyntax>
     {
         public Dictionary<string, ClassDeclarationSyntax> Classes => Types;
     }

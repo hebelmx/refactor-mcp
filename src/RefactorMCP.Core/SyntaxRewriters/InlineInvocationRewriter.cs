@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
 
-internal class InlineInvocationRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class InlineInvocationRewriter : CSharpSyntaxRewriter
 {
     private readonly MethodDeclarationSyntax _method;
     private readonly IMethodSymbol? _methodSymbol;
@@ -66,4 +65,3 @@ internal class InlineInvocationRewriter : CSharpSyntaxRewriter
         return node.WithStatements(SyntaxFactory.List(newStatements));
     }
 }
-

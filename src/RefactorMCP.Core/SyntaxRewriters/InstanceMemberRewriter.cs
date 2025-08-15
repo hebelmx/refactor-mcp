@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
 
-internal class InstanceMemberRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class InstanceMemberRewriter : CSharpSyntaxRewriter
 {
     private readonly string _parameterName;
     private readonly HashSet<string> _knownInstanceMembers;
@@ -105,4 +104,3 @@ internal class InstanceMemberRewriter : CSharpSyntaxRewriter
         return base.VisitIdentifierName(node);
     }
 }
-

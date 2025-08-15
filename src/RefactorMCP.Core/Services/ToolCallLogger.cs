@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text.Json;
-using System.Threading.Tasks;
 using ModelContextProtocol.Server;
 
-internal static class ToolCallLogger
+namespace RefactorMCP.Core.Services;
+
+public static class ToolCallLogger
 {
     private const string LogFileEnvVar = "REFACTOR_MCP_LOG_FILE";
     private static string _logFile = "tool-call-log.jsonl";
@@ -152,4 +149,3 @@ internal static class ToolCallLogger
         public DateTime Timestamp { get; set; }
     }
 }
-

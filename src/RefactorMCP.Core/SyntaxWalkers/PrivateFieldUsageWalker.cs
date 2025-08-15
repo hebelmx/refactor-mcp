@@ -1,9 +1,7 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class PrivateFieldUsageWalker : TrackedNameWalker
+    public class PrivateFieldUsageWalker : TrackedNameWalker
     {
         public HashSet<string> UsedFields => Matches;
 

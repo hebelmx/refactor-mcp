@@ -1,13 +1,11 @@
+using System.Text.Json;
 using MudBlazor.Services;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 using RefactorMCP.Core.Logging;
 using RefactorMCP.MCP.Server.Extensions;
 using RefactorMCP.Web.Services;
 using Serilog;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using System.Diagnostics.Metrics;
-using System.Text.Json;
-using RefactorMCP.Web.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -99,4 +97,7 @@ Log.Information("MCP HTTP API: {Url}/api/mcp", app.Urls.FirstOrDefault() ?? "htt
 
 app.Run();
 
-public partial class Program { }
+namespace RefactorMCP.Web
+{
+    public partial class Program { }
+}

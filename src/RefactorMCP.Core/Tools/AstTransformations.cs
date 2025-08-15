@@ -2,25 +2,26 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Editing;
-using System.Linq;
 
-internal static class AstTransformations
+namespace RefactorMCP.Core.Tools;
+
+public static class AstTransformations
 {
-    internal static MethodDeclarationSyntax AddParameter(MethodDeclarationSyntax method, string name, string type)
+    public static MethodDeclarationSyntax AddParameter(MethodDeclarationSyntax method, string name, string type)
     {
         var parameter = SyntaxFactory.Parameter(SyntaxFactory.Identifier(name))
             .WithType(SyntaxFactory.ParseTypeName(type));
         return method.WithParameterList(method.ParameterList.AddParameters(parameter));
     }
 
-    internal static MethodDeclarationSyntax ReplaceThisReferences(MethodDeclarationSyntax method, string parameterName)
+    public static MethodDeclarationSyntax ReplaceThisReferences(MethodDeclarationSyntax method, string parameterName)
     {
         return method.ReplaceNodes(
             method.DescendantNodes().OfType<ThisExpressionSyntax>(),
             (_, _) => SyntaxFactory.IdentifierName(parameterName));
     }
 
-    internal static MethodDeclarationSyntax QualifyInstanceMembers(MethodDeclarationSyntax method, string parameterName, SemanticModel semanticModel, INamedTypeSymbol typeSymbol)
+    public static MethodDeclarationSyntax QualifyInstanceMembers(MethodDeclarationSyntax method, string parameterName, SemanticModel semanticModel, INamedTypeSymbol typeSymbol)
     {
         return method.ReplaceNodes(
             method.DescendantNodes().OfType<IdentifierNameSyntax>().Where(id =>
@@ -36,7 +37,7 @@ internal static class AstTransformations
                 SyntaxFactory.IdentifierName(old.Identifier)));
     }
 
-    internal static MethodDeclarationSyntax QualifyInstanceMembers(MethodDeclarationSyntax method, string parameterName, HashSet<string> members)
+    public static MethodDeclarationSyntax QualifyInstanceMembers(MethodDeclarationSyntax method, string parameterName, HashSet<string> members)
     {
         return method.ReplaceNodes(
             method.DescendantNodes().OfType<IdentifierNameSyntax>().Where(id =>
@@ -47,7 +48,7 @@ internal static class AstTransformations
                 SyntaxFactory.IdentifierName(old.Identifier)));
     }
 
-    internal static MethodDeclarationSyntax EnsureStaticModifier(MethodDeclarationSyntax method)
+    public static MethodDeclarationSyntax EnsureStaticModifier(MethodDeclarationSyntax method)
     {
         var modifiers = method.Modifiers;
         if (!modifiers.Any(m => m.IsKind(SyntaxKind.StaticKeyword)))
@@ -55,7 +56,7 @@ internal static class AstTransformations
         return method.WithModifiers(modifiers);
     }
 
-    internal static InvocationExpressionSyntax AddArgument(
+    public static InvocationExpressionSyntax AddArgument(
         InvocationExpressionSyntax invocation,
         ExpressionSyntax argumentExpression,
         SyntaxGenerator generator)
@@ -64,7 +65,7 @@ internal static class AstTransformations
         return invocation.WithArgumentList(invocation.ArgumentList.AddArguments(argument));
     }
 
-    internal static InvocationExpressionSyntax RemoveArgument(
+    public static InvocationExpressionSyntax RemoveArgument(
         InvocationExpressionSyntax invocation,
         int argumentIndex)
     {

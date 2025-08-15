@@ -1,12 +1,10 @@
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using System.Linq;
 
-namespace RefactorMCP.ConsoleApp.SyntaxRewriters;
+namespace RefactorMCP.Core.SyntaxRewriters;
 
-internal class VariableRemovalRewriter : DeclarationRemovalRewriter<LocalDeclarationStatementSyntax>
+public class VariableRemovalRewriter : DeclarationRemovalRewriter<LocalDeclarationStatementSyntax>
 {
     private readonly TextSpan _span;
 

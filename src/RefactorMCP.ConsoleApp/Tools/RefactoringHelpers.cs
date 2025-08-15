@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 
 
-internal static class RefactoringHelpers
+public static class RefactoringHelpers
 {
     // MemoryCache is thread-safe and Solution objects from Roslyn are immutable.
     // This allows us to store and access Solution instances across threads

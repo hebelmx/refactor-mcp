@@ -1,7 +1,7 @@
 using RefactorMCP.Web.Models;
-using RefactorMCP.Web.Pages;
 using RefactorMCP.Web.Services;
 using Microsoft.Extensions.DependencyInjection;
+using IndexPage = RefactorMCP.Web.Pages.Index;
 
 namespace RefactorMCP.Web.Tests.Components;
 
@@ -10,7 +10,7 @@ public class IndexPageTests : TestContext
     public IndexPageTests()
     {
         // Register MudBlazor services for testing
-        Services.AddMudServices();
+        // Services.AddMudServices(); // TODO: Add MudBlazor test services if needed
         
         // Register mock services
         var mockDashboardService = new Mock<IDashboardService>();
@@ -22,8 +22,8 @@ public class IndexPageTests : TestContext
         mockDashboardService.Setup(x => x.GetSystemHealthAsync())
             .ReturnsAsync(new SystemHealthStatus(true, "All systems operational", new Dictionary<string, ComponentHealth>
             {
-                ["RefactoringService"] = new ComponentHealth(true, "Healthy", DateTime.Now),
-                ["McpServer"] = new ComponentHealth(true, "Healthy", DateTime.Now)
+                ["RefactoringService"] = new ComponentHealth(true, "Healthy", null, DateTime.Now),
+                ["McpServer"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
             }));
             
         mockDashboardService.Setup(x => x.GetRecentActivitiesAsync(It.IsAny<int>()))
@@ -33,8 +33,11 @@ public class IndexPageTests : TestContext
                 new RefactoringActivity(DateTime.Now.AddMinutes(-10), "move-method", "AnotherProject", false, TimeSpan.FromSeconds(1.8), "Target class not found")
             });
 
-        mockMetricsService.Setup(x => x.GetPerformanceMetricsAsync())
-            .ReturnsAsync(new Dictionary<string, double> { ["performance"] = 95.5 });
+        mockMetricsService.Setup(x => x.GetPerformanceMetricsAsync(It.IsAny<TimeSpan>()))
+            .ReturnsAsync(new List<PerformanceMetric> 
+            { 
+                new PerformanceMetric(DateTime.Now, "Performance", 95.5, "%") 
+            });
 
         Services.AddSingleton(mockDashboardService.Object);
         Services.AddSingleton(mockMetricsService.Object);
@@ -44,7 +47,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldRender_WithCorrectTitle()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         component.Find("h3").TextContent.Should().Contain("Welcome to RefactorMCP");
@@ -54,7 +57,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplay_StatsCards()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         // Should have cards for Available Tools, Total Refactorings, Active Solutions, Success Rate
@@ -72,7 +75,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplay_SystemHealthSection()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         component.Markup.Should().Contain("System Health");
@@ -85,7 +88,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplay_RecentActivityTimeline()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         component.Markup.Should().Contain("Recent Activity");
@@ -99,7 +102,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplay_QuickActionButtons()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         component.Markup.Should().Contain("Quick Actions");
@@ -119,7 +122,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldHave_RefreshButton()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         var refreshButton = component.FindAll(".mud-icon-button").FirstOrDefault();
@@ -130,11 +133,11 @@ public class IndexPageTests : TestContext
     public async Task Index_RefreshButton_ShouldTriggerDataRefresh()
     {
         // Arrange
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
         var refreshButton = component.FindAll(".mud-icon-button").First();
 
         // Act
-        await refreshButton.ClickAsync();
+        await refreshButton.ClickAsync(new Microsoft.AspNetCore.Components.Web.MouseEventArgs());
 
         // Assert
         // The component should still render correctly after refresh
@@ -146,7 +149,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplay_StatsWithCorrectValues()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         // Check that the mock values are displayed
@@ -160,7 +163,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldShowActivityDuration()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         // Should show completion times
@@ -172,7 +175,7 @@ public class IndexPageTests : TestContext
     public void Index_ShouldDisplayHealthStatusCorrectly()
     {
         // Act
-        var component = RenderComponent<Index>();
+        var component = RenderComponent<IndexPage>();
 
         // Assert
         // Should show healthy status with success styling

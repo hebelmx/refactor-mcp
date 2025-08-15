@@ -1,9 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
 
-internal class MethodCallRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class MethodCallRewriter : CSharpSyntaxRewriter
 {
     private readonly HashSet<string> _classMethodNames;
     private readonly string _parameterName;

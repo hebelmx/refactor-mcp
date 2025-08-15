@@ -1,31 +1,26 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.MSBuild;
-using Microsoft.Build.Locator;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.CodeAnalysis.CSharp;
-using System;
-using System.IO;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Linq;
-using Microsoft.CodeAnalysis.Text;
 using System.Text;
+using Microsoft.Build.Locator;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Host.Mef;
-using System.Collections.Generic;
+using Microsoft.CodeAnalysis.MSBuild;
+using Microsoft.CodeAnalysis.Text;
+using Microsoft.Extensions.Caching.Memory;
+using ModelContextProtocol;
 
+namespace RefactorMCP.Core.Tools;
 
-
-internal static class RefactoringHelpers
+public static class RefactoringHelpers
 {
     // MemoryCache is thread-safe and Solution objects from Roslyn are immutable.
     // This allows us to store and access Solution instances across threads
     // without additional locking or synchronization.
-    internal static MemoryCache SolutionCache = new(new MemoryCacheOptions());
-    internal static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
-    internal static MemoryCache ModelCache = new(new MemoryCacheOptions());
+    public static MemoryCache SolutionCache = new(new MemoryCacheOptions());
+    public static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
+    public static MemoryCache ModelCache = new(new MemoryCacheOptions());
 
-    internal static void ClearAllCaches()
+    public static void ClearAllCaches()
     {
         SolutionCache.Dispose();
         SolutionCache = new MemoryCache(new MemoryCacheOptions());
@@ -41,7 +36,7 @@ internal static class RefactoringHelpers
     private static bool _msbuildRegistered;
     private static readonly object _msbuildLock = new();
 
-    internal static AdhocWorkspace SharedWorkspace => _workspace.Value;
+    public static AdhocWorkspace SharedWorkspace => _workspace.Value;
 
     private static void EnsureMsBuildRegistered()
     {
@@ -54,7 +49,7 @@ internal static class RefactoringHelpers
         }
     }
 
-    internal static MSBuildWorkspace CreateWorkspace()
+    public static MSBuildWorkspace CreateWorkspace()
     {
         EnsureMsBuildRegistered();
         var host = MefHostServices.Create(MSBuildMefHostServices.DefaultAssemblies);
@@ -64,7 +59,7 @@ internal static class RefactoringHelpers
         return workspace;
     }
 
-    internal static async Task<Solution> GetOrLoadSolution(
+    public static async Task<Solution> GetOrLoadSolution(
         string solutionPath,
         CancellationToken cancellationToken = default)
     {
@@ -83,7 +78,7 @@ internal static class RefactoringHelpers
 
     // Solutions are immutable, so replacing the cached instance is safe even
     // when accessed concurrently by multiple threads.
-    internal static void UpdateSolutionCache(Document updatedDocument)
+    public static void UpdateSolutionCache(Document updatedDocument)
     {
         var solutionPath = updatedDocument.Project.Solution.FilePath;
         if (!string.IsNullOrEmpty(solutionPath))
@@ -96,7 +91,7 @@ internal static class RefactoringHelpers
         }
     }
 
-    internal static Document? GetDocumentByPath(Solution solution, string filePath)
+    public static Document? GetDocumentByPath(Solution solution, string filePath)
     {
         var normalizedPath = Path.GetFullPath(filePath);
         return solution.Projects
@@ -104,7 +99,7 @@ internal static class RefactoringHelpers
             .FirstOrDefault(d => Path.GetFullPath(d.FilePath ?? "") == normalizedPath);
     }
 
-    internal static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
+    public static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
     {
         startLine = startColumn = endLine = endColumn = 0;
         var parts = range.Split('-');
@@ -118,7 +113,7 @@ internal static class RefactoringHelpers
                int.TryParse(endParts[1], out endColumn);
     }
 
-    internal static bool ValidateRange(
+    public static bool ValidateRange(
         SourceText text,
         int startLine,
         int startColumn,
@@ -146,7 +141,7 @@ internal static class RefactoringHelpers
     }
 
 
-    internal static async Task<string> ApplySingleFileEdit(
+    public static async Task<string> ApplySingleFileEdit(
         string filePath,
         Func<string, string> transform,
         string successMessage)
@@ -165,7 +160,7 @@ internal static class RefactoringHelpers
         return successMessage;
     }
 
-    internal static async Task<Document?> FindClassInSolution(
+    public static async Task<Document?> FindClassInSolution(
         Solution solution,
         string className,
         params string[]? excludingFilePaths)
@@ -187,7 +182,7 @@ internal static class RefactoringHelpers
         return null;
     }
 
-    internal static async Task<Document?> FindTypeInSolution(
+    public static async Task<Document?> FindTypeInSolution(
         Solution solution,
         string typeName,
         params string[]? excludingFilePaths)
@@ -211,7 +206,7 @@ internal static class RefactoringHelpers
         return null;
     }
 
-    internal static void AddDocumentToProject(Project project, string filePath)
+    public static void AddDocumentToProject(Project project, string filePath)
     {
         if (project.Documents.Any(d =>
                 Path.GetFullPath(d.FilePath ?? "") == Path.GetFullPath(filePath)))
@@ -239,7 +234,7 @@ internal static class RefactoringHelpers
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
     }
 
-    internal static async Task<SyntaxTree> GetOrParseSyntaxTreeAsync(string filePath)
+    public static async Task<SyntaxTree> GetOrParseSyntaxTreeAsync(string filePath)
     {
         if (SyntaxTreeCache.TryGetValue(filePath, out SyntaxTree? cached))
             return cached!;
@@ -249,7 +244,7 @@ internal static class RefactoringHelpers
         return tree;
     }
 
-    internal static async Task<SemanticModel> GetOrCreateSemanticModelAsync(string filePath)
+    public static async Task<SemanticModel> GetOrCreateSemanticModelAsync(string filePath)
     {
         if (ModelCache.TryGetValue(filePath, out SemanticModel? cached))
             return cached!;
@@ -260,7 +255,7 @@ internal static class RefactoringHelpers
         return model;
     }
 
-    internal static void UpdateFileCaches(string filePath, string newText)
+    public static void UpdateFileCaches(string filePath, string newText)
     {
         var tree = CSharpSyntaxTree.ParseText(newText);
         SyntaxTreeCache.Set(filePath, tree);
@@ -269,7 +264,7 @@ internal static class RefactoringHelpers
         ModelCache.Set(filePath, model);
     }
 
-    internal static async Task<(string Text, Encoding Encoding)> ReadFileWithEncodingAsync(
+    public static async Task<(string Text, Encoding Encoding)> ReadFileWithEncodingAsync(
         string filePath,
         CancellationToken cancellationToken = default)
     {
@@ -279,7 +274,7 @@ internal static class RefactoringHelpers
         return (text, encoding);
     }
 
-    internal static async Task<Encoding> GetFileEncodingAsync(
+    public static async Task<Encoding> GetFileEncodingAsync(
         string filePath,
         CancellationToken cancellationToken = default)
     {
@@ -308,7 +303,7 @@ internal static class RefactoringHelpers
         return Encoding.UTF8;
     }
 
-    internal static async Task WriteFileWithEncodingAsync(
+    public static async Task WriteFileWithEncodingAsync(
         string filePath,
         string text,
         Encoding encoding,
@@ -318,7 +313,7 @@ internal static class RefactoringHelpers
         UpdateFileCaches(filePath, text);
     }
 
-    internal static async Task<string> RunWithSolutionOrFile(
+    public static async Task<string> RunWithSolutionOrFile(
         string solutionPath,
         string filePath,
         Func<Document, Task<string>> withSolution,

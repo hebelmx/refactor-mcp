@@ -196,7 +196,7 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
 }
 
 // Test service implementations
-internal class TestDashboardService : IDashboardService
+public class TestDashboardService : IDashboardService
 {
     public Task<DashboardStats> GetDashboardStatsAsync()
     {
@@ -222,7 +222,7 @@ internal class TestDashboardService : IDashboardService
     }
 }
 
-internal class TestMetricsService : IMetricsService
+public class TestMetricsService : IMetricsService
 {
     public Task<MetricsData> GetMetricsDataAsync()
     {

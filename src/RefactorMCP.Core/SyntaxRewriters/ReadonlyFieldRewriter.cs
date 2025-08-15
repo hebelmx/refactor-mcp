@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
 
-internal class ReadonlyFieldRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class ReadonlyFieldRewriter : CSharpSyntaxRewriter
 {
     private readonly string _fieldName;
     private readonly ExpressionSyntax? _initializer;
@@ -47,4 +46,3 @@ internal class ReadonlyFieldRewriter : CSharpSyntaxRewriter
         return visited;
     }
 }
-

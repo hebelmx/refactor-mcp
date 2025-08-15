@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace RefactorMCP.Core.Services;
 
-internal class RefactoringService : IRefactoringService
+public class RefactoringService : IRefactoringService
 {
     private readonly ILogger<RefactoringService> _logger;
     
@@ -21,7 +21,7 @@ internal class RefactoringService : IRefactoringService
 
         try
         {
-            // This will be implemented to call the internal tool methods
+            // This will be implemented to call the public tool methods
             // For now, return a placeholder result
             await Task.Delay(100, cancellationToken);
             
@@ -140,7 +140,7 @@ internal class RefactoringService : IRefactoringService
     {
         await Task.Delay(10);
         
-        // TODO: Implement tool discovery from internal tools
+        // TODO: Implement tool discovery from public tools
         return new[]
         {
             "extract-method",

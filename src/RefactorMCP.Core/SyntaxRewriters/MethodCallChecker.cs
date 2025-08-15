@@ -1,10 +1,9 @@
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
+using RefactorMCP.Core.SyntaxWalkers;
 
-internal class MethodCallChecker : TrackedNameWalker
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class MethodCallChecker : TrackedNameWalker
 {
     public bool HasMethodCalls => Matches.Count > 0;
 
@@ -23,4 +22,3 @@ internal class MethodCallChecker : TrackedNameWalker
         return false;
     }
 }
-

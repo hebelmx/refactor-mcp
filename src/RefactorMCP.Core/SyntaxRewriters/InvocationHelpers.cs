@@ -1,8 +1,10 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-internal static class InvocationHelpers
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public static class InvocationHelpers
 {
-    internal static string? GetInvokedMethodName(InvocationExpressionSyntax node)
+    public static string? GetInvokedMethodName(InvocationExpressionSyntax node)
         => node.Expression switch
         {
             IdentifierNameSyntax id => id.Identifier.ValueText,
@@ -10,9 +12,9 @@ internal static class InvocationHelpers
             _ => null
         };
 
-    internal static bool IsInvocationOf(InvocationExpressionSyntax node, string methodName)
+    public static bool IsInvocationOf(InvocationExpressionSyntax node, string methodName)
         => GetInvokedMethodName(node) == methodName;
 
-    internal static bool IsBaseInvocationOf(InvocationExpressionSyntax node, string methodName)
+    public static bool IsBaseInvocationOf(InvocationExpressionSyntax node, string methodName)
         => node.Expression is MemberAccessExpressionSyntax { Expression: BaseExpressionSyntax, Name: IdentifierNameSyntax id } && id.Identifier.ValueText == methodName;
 }

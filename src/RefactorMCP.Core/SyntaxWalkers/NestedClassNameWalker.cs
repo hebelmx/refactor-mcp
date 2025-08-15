@@ -1,8 +1,9 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class NestedClassNameWalker : NameCollectorWalker
+    public class NestedClassNameWalker : NameCollectorWalker
     {
         private readonly ClassDeclarationSyntax _origin;
 

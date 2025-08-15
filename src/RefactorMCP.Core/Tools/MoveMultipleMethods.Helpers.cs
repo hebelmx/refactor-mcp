@@ -1,21 +1,13 @@
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using System;
-using System.ComponentModel;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Formatting;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
+using RefactorMCP.Core.SyntaxWalkers;
+
+namespace RefactorMCP.Core.Tools;
 
 public static partial class MoveMultipleMethodsTool
 {
     // ===== HELPER METHODS =====
 
-    internal static Dictionary<string, HashSet<string>> BuildDependencies(
+    public static Dictionary<string, HashSet<string>> BuildDependencies(
         SyntaxNode sourceRoot,
         string[] sourceClasses,
         string[] methodNames)
@@ -52,7 +44,7 @@ public static partial class MoveMultipleMethodsTool
         return deps;
     }
 
-    internal static List<int> OrderOperations(
+    public static List<int> OrderOperations(
         SyntaxNode sourceRoot,
         string[] sourceClasses,
         string[] methodNames)

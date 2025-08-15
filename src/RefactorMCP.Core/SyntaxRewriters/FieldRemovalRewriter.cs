@@ -1,11 +1,9 @@
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Linq;
 
-namespace RefactorMCP.ConsoleApp.SyntaxRewriters;
+namespace RefactorMCP.Core.SyntaxRewriters;
 
-internal class FieldRemovalRewriter : DeclarationRemovalRewriter<FieldDeclarationSyntax>
+public class FieldRemovalRewriter : DeclarationRemovalRewriter<FieldDeclarationSyntax>
 {
     public FieldRemovalRewriter(string fieldName)
         : base(fieldName)

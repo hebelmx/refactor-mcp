@@ -1,11 +1,11 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
+using RefactorMCP.Core.Tools;
 
-internal class ExtensionMethodRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class ExtensionMethodRewriter : CSharpSyntaxRewriter
 {
     private readonly string _parameterName;
     private readonly string _parameterType;
@@ -92,4 +92,3 @@ internal class ExtensionMethodRewriter : CSharpSyntaxRewriter
         return base.VisitIdentifierName(node);
     }
 }
-

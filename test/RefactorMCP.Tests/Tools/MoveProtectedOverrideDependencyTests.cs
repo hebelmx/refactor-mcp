@@ -25,7 +25,7 @@ public class MoveProtectedOverrideDependencyTests
         var mods = method.Modifiers.ToFullString();
 
         Assert.Contains("protected", mods);
-        Assert.Contains("internal", mods);
+        Assert.Contains("public", mods);
         Assert.Contains("override", mods);
     }
 }

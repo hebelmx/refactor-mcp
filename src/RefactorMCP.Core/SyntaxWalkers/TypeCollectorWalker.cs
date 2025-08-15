@@ -1,11 +1,11 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.Core.SyntaxWalkers
 {
 
-    internal class TypeCollectorWalker<T> : CSharpSyntaxWalker where T : TypeDeclarationSyntax
+    public class TypeCollectorWalker<T> : CSharpSyntaxWalker where T : TypeDeclarationSyntax
     {
         public Dictionary<string, T> Types { get; } = new();
 

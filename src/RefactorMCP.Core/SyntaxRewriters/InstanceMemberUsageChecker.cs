@@ -1,7 +1,8 @@
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
-using System.Collections.Generic;
+using RefactorMCP.Core.SyntaxWalkers;
 
-internal class InstanceMemberUsageChecker : TrackedNameWalker
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class InstanceMemberUsageChecker : TrackedNameWalker
 {
     public bool HasInstanceMemberUsage => Matches.Count > 0;
 

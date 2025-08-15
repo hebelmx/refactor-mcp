@@ -2,7 +2,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-internal class VariableIntroductionRewriter : ExpressionIntroductionRewriter<BlockSyntax>
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class VariableIntroductionRewriter : ExpressionIntroductionRewriter<BlockSyntax>
 {
     private readonly StatementSyntax? _containingStatement;
     private readonly int _insertIndex;
@@ -42,4 +44,3 @@ internal class VariableIntroductionRewriter : ExpressionIntroductionRewriter<Blo
         return MaybeInsertDeclaration(node, rewritten);
     }
 }
-

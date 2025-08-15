@@ -1,18 +1,11 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using System;
-using System.ComponentModel;
-using System.Linq;
-using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis.Text;
-using System.IO;
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
+using RefactorMCP.Core.SyntaxRewriters;
+using RefactorMCP.Core.SyntaxWalkers;
+using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.ConsoleApp.Move;
+namespace RefactorMCP.Core.Move;
 
 public static partial class MoveMethodAst
 {
@@ -257,7 +250,7 @@ public static partial class MoveMethodAst
         return walker.Names.Contains(memberName);
     }
 
-    internal static string GenerateAccessMemberName(IEnumerable<string> existingNames, string targetClass)
+    public static string GenerateAccessMemberName(IEnumerable<string> existingNames, string targetClass)
     {
         var baseName = "_" + char.ToLower(targetClass[0]) + targetClass.Substring(1);
         var name = baseName;

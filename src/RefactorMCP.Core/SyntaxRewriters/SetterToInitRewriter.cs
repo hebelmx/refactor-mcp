@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Linq;
 
-internal class SetterToInitRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class SetterToInitRewriter : CSharpSyntaxRewriter
 {
     private readonly string _propertyName;
     public SetterToInitRewriter(string propertyName)
@@ -28,4 +27,3 @@ internal class SetterToInitRewriter : CSharpSyntaxRewriter
         return node.WithAccessorList(newAccessorList);
     }
 }
-

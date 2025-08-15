@@ -2,6 +2,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Editing;
+using RefactorMCP.Core.Tools;
+
+namespace RefactorMCP.Core.SyntaxRewriters;
 
 public class ParameterRemovalRewriter : CSharpSyntaxRewriter
 {

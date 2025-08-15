@@ -2,12 +2,14 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
+namespace RefactorMCP.Core.SyntaxRewriters;
+
 /// <summary>
 /// Base rewriter that replaces a target expression with a provided
 /// reference and inserts a declaration into the specified container
 /// when that container is visited.
 /// </summary>
-internal abstract class ExpressionIntroductionRewriter<TContainer> : CSharpSyntaxRewriter where TContainer : SyntaxNode
+public abstract class ExpressionIntroductionRewriter<TContainer> : CSharpSyntaxRewriter where TContainer : SyntaxNode
 {
     private readonly ExpressionSyntax _targetExpression;
     private readonly ExpressionSyntax _replacement;

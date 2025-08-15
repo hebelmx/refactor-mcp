@@ -1,12 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class MethodMetricsWalker : CSharpSyntaxWalker
+    public class MethodMetricsWalker : CSharpSyntaxWalker
     {
         private readonly SemanticModel? _model;
         public List<string> Suggestions { get; } = new();

@@ -1,10 +1,8 @@
 using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers
 {
-    internal class RefactoringOpportunityWalker
+    public class RefactoringOpportunityWalker
     {
         private readonly MethodMetricsWalker _methodMetrics;
         private readonly ClassMetricsWalker _classMetrics;

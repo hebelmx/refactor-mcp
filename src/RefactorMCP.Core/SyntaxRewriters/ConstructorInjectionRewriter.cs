@@ -1,8 +1,11 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using RefactorMCP.Core.Tools;
 
-internal class ConstructorInjectionRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class ConstructorInjectionRewriter : CSharpSyntaxRewriter
 {
     private readonly string _methodName;
     private readonly string _parameterName;
@@ -127,4 +130,3 @@ internal class ConstructorInjectionRewriter : CSharpSyntaxRewriter
         return visited;
     }
 }
-

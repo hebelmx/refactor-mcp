@@ -1,9 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
 
-internal class NestedClassRewriter : CSharpSyntaxRewriter
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class NestedClassRewriter : CSharpSyntaxRewriter
 {
     private readonly HashSet<string> _classNames;
     private readonly string _outerClass;
@@ -62,19 +63,19 @@ internal class NestedClassRewriter : CSharpSyntaxRewriter
     {
         var parent = node.Parent;
         return (parent is VariableDeclarationSyntax v && v.Type == node)
-            || (parent is ParameterSyntax p && p.Type == node)
-            || (parent is MethodDeclarationSyntax md && md.ReturnType == node)
-            || (parent is LocalFunctionStatementSyntax lf && lf.ReturnType == node)
-            || (parent is ObjectCreationExpressionSyntax o && o.Type == node)
-            || (parent is ForEachStatementSyntax f && f.Type == node)
-            || (parent is ForEachVariableStatementSyntax fv && fv.Variable == node)
-            || (parent is CastExpressionSyntax c && c.Type == node)
-            || (parent is TypeOfExpressionSyntax t && t.Type == node)
-            || (parent is DefaultExpressionSyntax d && d.Type == node)
-            || (parent is AttributeSyntax attr && attr.Name == node)
-            || (parent is TypeConstraintSyntax tc && tc.Type == node)
-            || (parent is BaseTypeSyntax bt && bt.Type == node)
-            || (parent is UsingStatementSyntax us && us.Declaration?.Type == node)
-            || parent is TypeSyntax;
+               || (parent is ParameterSyntax p && p.Type == node)
+               || (parent is MethodDeclarationSyntax md && md.ReturnType == node)
+               || (parent is LocalFunctionStatementSyntax lf && lf.ReturnType == node)
+               || (parent is ObjectCreationExpressionSyntax o && o.Type == node)
+               || (parent is ForEachStatementSyntax f && f.Type == node)
+               || (parent is ForEachVariableStatementSyntax fv && fv.Variable == node)
+               || (parent is CastExpressionSyntax c && c.Type == node)
+               || (parent is TypeOfExpressionSyntax t && t.Type == node)
+               || (parent is DefaultExpressionSyntax d && d.Type == node)
+               || (parent is AttributeSyntax attr && attr.Name == node)
+               || (parent is TypeConstraintSyntax tc && tc.Type == node)
+               || (parent is BaseTypeSyntax bt && bt.Type == node)
+               || (parent is UsingStatementSyntax us && us.Declaration?.Type == node)
+               || parent is TypeSyntax;
     }
 }

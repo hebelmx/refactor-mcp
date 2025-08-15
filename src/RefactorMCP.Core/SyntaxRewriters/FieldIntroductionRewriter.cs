@@ -1,8 +1,9 @@
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-internal class FieldIntroductionRewriter : ExpressionIntroductionRewriter<ClassDeclarationSyntax>
+namespace RefactorMCP.Core.SyntaxRewriters;
+
+public class FieldIntroductionRewriter : ExpressionIntroductionRewriter<ClassDeclarationSyntax>
 {
     private readonly FieldDeclarationSyntax _fieldDeclaration;
 
@@ -27,4 +28,3 @@ internal class FieldIntroductionRewriter : ExpressionIntroductionRewriter<ClassD
         return MaybeInsertDeclaration(node, rewritten);
     }
 }
-
