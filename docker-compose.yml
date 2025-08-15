@@ -1,0 +1,37 @@
+services:
+  seq:
+    image: datalust/seq:latest
+    container_name: refactor-mcp-seq
+    restart: unless-stopped
+    pull_policy: if_not_present
+    ports:
+      - "5341:5341"
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
+    volumes:
+      - seq_data:/data
+    networks:
+      - refactor-mcp-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5341/api"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "refactor-mcp.service=seq"
+      - "refactor-mcp.description=Structured logging server"
+
+volumes:
+  seq_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/seq/data
+
+networks:
+  refactor-mcp-network:
+    driver: bridge
+    name: refactor-mcp-network
