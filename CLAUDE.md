@@ -17,6 +17,12 @@
 
 ---
 
+## Legacy Architecture Reference
+
+For developers working with the original console-based RefactorMCP architecture, see **[CLAUDE.LEGACY.md](./CLAUDE.LEGACY.md)** which contains the complete original architectural guidance and tool usage patterns.
+
+---
+
 ## Original Task (COMPLETED)
 🛠️ TASK: Migrate the console project to an HTML server with proper logging, metrics and observability
 Assigned Task:

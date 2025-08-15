@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="RefactorMCP.Tests" />
+    <InternalsVisibleTo Include="RefactorMCP.Core.Tests" />
     <InternalsVisibleTo Include="RefactorMCP.MCP.Server" />
     <InternalsVisibleTo Include="RefactorMCP.Web" />
   </ItemGroup>
