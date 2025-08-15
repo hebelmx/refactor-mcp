@@ -88,10 +88,10 @@ public class StaticConversionRewriter
                     var ifaceSymbol = _semanticModel.GetSymbolInfo(method.ExplicitInterfaceSpecifier!.Name).Symbol as INamedTypeSymbol;
                     accessToken = ifaceSymbol?.DeclaredAccessibility switch
                     {
-                        Accessibility.Public => SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                        Accessibility.Internal => SyntaxFactory.Token(SyntaxKind.InternalKeyword),
                         Accessibility.Private => SyntaxFactory.Token(SyntaxKind.PrivateKeyword),
                         Accessibility.Protected => SyntaxFactory.Token(SyntaxKind.ProtectedKeyword),
-                        Accessibility.ProtectedAndInternal or Accessibility.ProtectedOrInternal => SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                        Accessibility.ProtectedAndInternal or Accessibility.ProtectedOrInternal => SyntaxFactory.Token(SyntaxKind.InternalKeyword),
                         _ => SyntaxFactory.Token(SyntaxKind.PublicKeyword)
                     };
                 }

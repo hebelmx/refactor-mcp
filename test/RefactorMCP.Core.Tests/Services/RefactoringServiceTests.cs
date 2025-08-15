@@ -1,6 +1,4 @@
 using Microsoft.Extensions.Logging;
-using RefactorMCP.Core.Abstractions;
-using RefactorMCP.Core.Services;
 
 namespace RefactorMCP.Core.Tests.Services;
 
@@ -49,7 +47,7 @@ public class RefactoringServiceTests
         // Assert
         result.Success.Should().BeFalse();
         result.Message.Should().Contain("not yet implemented");
-        
+
         // Verify logging
         _mockLogger.Verify(
             x => x.Log(
@@ -76,7 +74,7 @@ public class RefactoringServiceTests
         // Assert
         result.Success.Should().BeFalse();
         result.Message.Should().Contain("not yet implemented");
-        
+
         // Verify logging
         _mockLogger.Verify(
             x => x.Log(

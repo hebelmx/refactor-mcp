@@ -1,9 +1,4 @@
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class MoveMethodsFileTests : TestBase
 {

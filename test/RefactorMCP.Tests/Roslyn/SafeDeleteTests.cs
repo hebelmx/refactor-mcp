@@ -1,10 +1,4 @@
-using Xunit;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Roslyn;
 
 public partial class RoslynTransformationTests
 {

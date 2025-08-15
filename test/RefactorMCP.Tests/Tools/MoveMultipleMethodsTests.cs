@@ -1,10 +1,4 @@
-using Xunit;
-using System;
-using System.Linq;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Formatting;
-using RefactorMCP.Core.Move;
+namespace RefactorMCP.Tests.Tools;
 
 public class MoveMultipleMethodsTests
 {
@@ -185,7 +179,7 @@ class SourceClass
         var sourceCode = @"
 using System;
 
-public class PostingItem
+public class PostingItem 
 {
     public PostingItem(decimal amount, string description) { }
 }
@@ -194,7 +188,7 @@ public class cResRoom
 {
     public decimal DepositAmount { get; set; }
     public string Description { get; set; }
-
+    
     public PostingItem CreatePostingItem()
     {
         return new PostingItem(
@@ -204,7 +198,7 @@ public class cResRoom
     }
 }
 
-public class DepositManager
+public class DepositManager 
 {
 }";
 
@@ -215,7 +209,7 @@ public class DepositManager
         var result = MoveMethodAst.MoveInstanceMethodAst(
             root,
             "cResRoom",
-            "CreatePostingItem",
+            "CreatePostingItem", 
             "DepositManager",
             "instance",
             "instance"
@@ -242,7 +236,7 @@ public class DepositTransaction
 public class cResRoom
 {
     public DepositTransaction Transaction { get; set; }
-
+    
     public void AddDepositFromDepositTransaction()
     {
         Transaction?.ProcessedDate = DateTime.Now;
@@ -250,7 +244,7 @@ public class cResRoom
     }
 }
 
-public class DepositManager
+public class DepositManager 
 {
 }";
 
@@ -261,7 +255,7 @@ public class DepositManager
         // The main verification is that no exception is thrown
         var result = MoveMethodAst.MoveInstanceMethodAst(
             root,
-            "cResRoom",
+            "cResRoom", 
             "AddDepositFromDepositTransaction",
             "DepositManager",
             "instance",
@@ -290,7 +284,7 @@ public class cResRoom
 {
     public List<string> Items { get; set; }
     public decimal Amount { get; set; }
-
+    
     public void GenerateInvoice()
     {
         if (Items?.Any() == true)
@@ -303,7 +297,7 @@ public class cResRoom
     }
 }
 
-public class DepositManager
+public class DepositManager 
 {
 }";
 
@@ -315,7 +309,7 @@ public class DepositManager
             root,
             "cResRoom",
             "GenerateInvoice",
-            "DepositManager",
+            "DepositManager", 
             "instance",
             "instance"
         );
@@ -344,7 +338,7 @@ public class cResRoom
     private object _dbContextFactory;
     private string strBookRef;
     private int iRoomPickID;
-
+    
     public IEnumerable<int> GetInvoicedTransactionIds()
     {
         var reportList = new cReportList(this, dbContextFactory: _dbContextFactory);
@@ -369,7 +363,7 @@ public class TargetManager { }";
 
         // Verify the operation succeeded without throwing exceptions
         Assert.NotNull(result);
-
+        
         // The main success criteria is that no InvalidCastException was thrown
         // This test reproduces the exact casting bug that was happening with
         // named arguments containing member access expressions like _dbContextFactory

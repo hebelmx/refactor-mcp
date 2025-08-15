@@ -1,14 +1,9 @@
-using ModelContextProtocol.Server;
-using ModelContextProtocol;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.MSBuild;
-using Microsoft.Extensions.Caching.Memory;
-using RefactorMCP.Core.Move;
-using RefactorMCP.Core.Services;
 using System.ComponentModel;
-using System.IO;
-using System.Collections.Generic;
-using System.Threading;
+using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.Caching.Memory;
+using ModelContextProtocol;
+using ModelContextProtocol.Server;
+using RefactorMCP.Core.Move;
 
 namespace RefactorMCP.Core.Tools;
 

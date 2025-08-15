@@ -1,11 +1,4 @@
-using ModelContextProtocol;
-using Microsoft.CodeAnalysis;
-using System.Linq;
-using System.IO;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class RenameSymbolTests : TestBase
 {
@@ -16,10 +9,9 @@ public class RenameSymbolTests : TestBase
         await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
         var testFile = Path.Combine(TestOutputPath, "RenameSymbol.cs");
         await TestUtilities.CreateTestFile(testFile, TestUtilities.GetSampleCodeForRenameSymbol());
-        // TODO: These method calls have been commented out because RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject do not exist
-        // var solution = await RefactoringHelpers.GetOrLoadSolution(SolutionPath);
-        // var project = solution.Projects.First();
-        // RefactoringHelpers.AddDocumentToProject(project, testFile);
+        var solution = await RefactoringHelpers.GetOrLoadSolution(SolutionPath);
+        var project = solution.Projects.First();
+        RefactoringHelpers.AddDocumentToProject(project, testFile);
 
         var result = await RenameSymbolTool.RenameSymbol(
             SolutionPath,
@@ -35,17 +27,16 @@ public class RenameSymbolTests : TestBase
         Assert.Contains("values.Add", content);
     }
 
-    [Fact(Skip = "RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject methods do not exist")]
+    [Fact]
     public async Task RenameSymbol_InvalidName_ReturnsError()
     {
         UnloadSolutionTool.ClearSolutionCache();
         await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
         var testFile = Path.Combine(TestOutputPath, "RenameInvalid.cs");
         await TestUtilities.CreateTestFile(testFile, TestUtilities.GetSampleCodeForRenameSymbol());
-        // TODO: These method calls have been commented out because RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject do not exist
-        // var solution = await RefactoringHelpers.GetOrLoadSolution(SolutionPath);
-        // var project = solution.Projects.First();
-        // RefactoringHelpers.AddDocumentToProject(project, testFile);
+        var solution = await RefactoringHelpers.GetOrLoadSolution(SolutionPath);
+        var project = solution.Projects.First();
+        RefactoringHelpers.AddDocumentToProject(project, testFile);
 
         await Assert.ThrowsAsync<McpException>(() =>
             RenameSymbolTool.RenameSymbol(

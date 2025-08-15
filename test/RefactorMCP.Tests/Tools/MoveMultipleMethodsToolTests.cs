@@ -1,14 +1,8 @@
-using ModelContextProtocol;
-using System.IO;
-using System.Threading.Tasks;
-using RefactorMCP.Core.Move;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class MoveMultipleMethodsToolTests : TestBase
 {
-    [Fact(Skip = "RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject methods do not exist")]
+    [Fact]
     public async Task MoveMultipleMethods_FailureDoesNotRecordHistory()
     {
         UnloadSolutionTool.ClearSolutionCache();
@@ -37,7 +31,7 @@ public class MoveMultipleMethodsToolTests : TestBase
         Assert.Contains("Successfully moved", result);
     }
 
-    [Fact(Skip = "RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject methods do not exist")]
+    [Fact]
     public async Task MoveMultipleMethods_NestedClassGenerics_ShouldSucceed()
     {
         UnloadSolutionTool.ClearSolutionCache();

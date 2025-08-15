@@ -1,6 +1,4 @@
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Roslyn;
 
 public partial class RoslynTransformationTests
 {

@@ -1,11 +1,4 @@
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Formatting;
-using RefactorMCP.Core.Move;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class MoveProtectedOverrideDependencyTests
 {
@@ -25,7 +18,7 @@ public class MoveProtectedOverrideDependencyTests
         var mods = method.Modifiers.ToFullString();
 
         Assert.Contains("protected", mods);
-        Assert.Contains("public", mods);
+        Assert.Contains("internal", mods);
         Assert.Contains("override", mods);
     }
 }

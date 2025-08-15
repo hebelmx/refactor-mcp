@@ -2,7 +2,6 @@ using Microsoft.CodeAnalysis.CSharp;
 
 namespace RefactorMCP.Core.SyntaxWalkers
 {
-
     public abstract class NameCollectorWalker : CSharpSyntaxWalker
     {
         public HashSet<string> Names { get; } = new();

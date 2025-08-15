@@ -89,6 +89,7 @@ public static partial class MoveMethodAst
         };
     }
 
+
     private static MethodDeclarationSyntax FindStaticMethod(SyntaxNode sourceRoot, string methodName)
     {
         var method = sourceRoot.DescendantNodes()
@@ -109,19 +110,19 @@ public static partial class MoveMethodAst
             nodes.Add(method.Body);
         if (method.ExpressionBody != null)
             nodes.Add(method.ExpressionBody);
-
+        
         var allNodes = nodes.SelectMany(n => n.DescendantNodes());
-
+        
         // Check for direct identifier usage
         var hasIdentifierUsage = allNodes
             .OfType<IdentifierNameSyntax>()
             .Any(id => id.Identifier.ValueText == parameterName);
-
+            
         // Check for usage in member access expressions (e.g., parameterName.SomeProperty)
         var hasMemberAccessUsage = allNodes
             .OfType<MemberAccessExpressionSyntax>()
             .Any(ma => ma.Expression is IdentifierNameSyntax id && id.Identifier.ValueText == parameterName);
-
+            
         return hasIdentifierUsage || hasMemberAccessUsage;
     }
 
@@ -417,6 +418,7 @@ public static partial class MoveMethodAst
         };
     }
 
+
     private static ClassDeclarationSyntax FindSourceClass(SyntaxNode sourceRoot, string sourceClass)
     {
         var originClass = sourceRoot.DescendantNodes()
@@ -440,6 +442,7 @@ public static partial class MoveMethodAst
 
         return method;
     }
+
 
     private static MethodDeclarationSyntax TransformMethodForMove(
         MethodDeclarationSyntax method,
@@ -494,6 +497,7 @@ public static partial class MoveMethodAst
             var nestedRewriter = new NestedClassRewriter(nestedClassNames, sourceClassName);
             transformedMethod = (MethodDeclarationSyntax)nestedRewriter.Visit(transformedMethod)!;
         }
+
 
         transformedMethod = AstTransformations.EnsureStaticModifier(transformedMethod);
 
@@ -834,19 +838,5 @@ public static partial class MoveMethodAst
         }
 
         return targetRoot;
-    }
-
-    public static string GenerateAccessMemberName(IEnumerable<string> existingNames, string targetClass)
-    {
-        var baseName = "_" + char.ToLower(targetClass[0]) + targetClass.Substring(1);
-        var name = baseName;
-        var counter = 1;
-        var nameSet = new HashSet<string>(existingNames);
-        while (nameSet.Contains(name))
-        {
-            name = baseName + counter;
-            counter++;
-        }
-        return name;
     }
 }

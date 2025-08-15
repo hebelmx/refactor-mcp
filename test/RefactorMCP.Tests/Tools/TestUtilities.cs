@@ -1,8 +1,4 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public static class TestUtilities
 {

@@ -11,21 +11,21 @@ public static partial class MoveMethodAst
 {
     // ===== HELPER METHODS =====
 
-    public static bool HasInstanceMemberUsage(MethodDeclarationSyntax method, HashSet<string> knownMembers)
+    private static bool HasInstanceMemberUsage(MethodDeclarationSyntax method, HashSet<string> knownMembers)
     {
         var usageChecker = new InstanceMemberUsageChecker(knownMembers);
         usageChecker.Visit(method);
         return usageChecker.HasInstanceMemberUsage;
     }
 
-    public static bool HasMethodCalls(MethodDeclarationSyntax method, HashSet<string> methodNames)
+    private static bool HasMethodCalls(MethodDeclarationSyntax method, HashSet<string> methodNames)
     {
         var callChecker = new MethodCallChecker(methodNames);
         callChecker.Visit(method);
         return callChecker.HasMethodCalls;
     }
 
-    public static bool HasStaticFieldReferences(MethodDeclarationSyntax method, HashSet<string> staticFieldNames)
+    private static bool HasStaticFieldReferences(MethodDeclarationSyntax method, HashSet<string> staticFieldNames)
     {
         var fieldChecker = new StaticFieldChecker(staticFieldNames);
         fieldChecker.Visit(method);
@@ -87,7 +87,7 @@ public static partial class MoveMethodAst
         return formatted.ToFullString();
     }
 
-    public static string? GetSimpleTypeName(TypeSyntax type)
+    private static string? GetSimpleTypeName(TypeSyntax type)
     {
         return type switch
         {
@@ -98,7 +98,7 @@ public static partial class MoveMethodAst
         };
     }
 
-    public static HashSet<string> GetInstanceMemberNames(ClassDeclarationSyntax originClass)
+    private static HashSet<string> GetInstanceMemberNames(ClassDeclarationSyntax originClass)
     {
         var root = originClass.SyntaxTree.GetRoot();
 
@@ -153,7 +153,7 @@ public static partial class MoveMethodAst
     }
 
     // New: Get method names in the class
-    public static HashSet<string> GetMethodNames(ClassDeclarationSyntax originClass)
+    private static HashSet<string> GetMethodNames(ClassDeclarationSyntax originClass)
     {
         var root = originClass.SyntaxTree.GetRoot();
 
@@ -208,28 +208,28 @@ public static partial class MoveMethodAst
     }
 
     // New: Get static field names in the class
-    public static HashSet<string> GetStaticFieldNames(ClassDeclarationSyntax originClass)
+    private static HashSet<string> GetStaticFieldNames(ClassDeclarationSyntax originClass)
     {
         var walker = new StaticFieldNameWalker();
         walker.Visit(originClass);
         return walker.Names;
     }
 
-    public static HashSet<string> GetNestedClassNames(ClassDeclarationSyntax originClass)
+    private static HashSet<string> GetNestedClassNames(ClassDeclarationSyntax originClass)
     {
         var walker = new NestedClassNameWalker(originClass);
         walker.Visit(originClass);
         return walker.Names;
     }
 
-    public static Dictionary<string, TypeSyntax> GetPrivateFieldInfos(ClassDeclarationSyntax originClass)
+    private static Dictionary<string, TypeSyntax> GetPrivateFieldInfos(ClassDeclarationSyntax originClass)
     {
         var walker = new PrivateFieldInfoWalker();
         walker.Visit(originClass);
         return walker.Infos;
     }
 
-    public static HashSet<string> GetUsedPrivateFields(MethodDeclarationSyntax method, HashSet<string> privateFieldNames)
+    private static HashSet<string> GetUsedPrivateFields(MethodDeclarationSyntax method, HashSet<string> privateFieldNames)
     {
         var walker = new PrivateFieldUsageWalker(privateFieldNames);
         walker.Visit(method);
@@ -250,6 +250,19 @@ public static partial class MoveMethodAst
         return walker.Names.Contains(memberName);
     }
 
+    public static string GenerateAccessMemberName(IEnumerable<string> existingNames, string targetClass)
+    {
+        var baseName = "_" + char.ToLower(targetClass[0]) + targetClass.Substring(1);
+        var name = baseName;
+        var counter = 1;
+        var nameSet = new HashSet<string>(existingNames);
+        while (nameSet.Contains(name))
+        {
+            name = baseName + counter;
+            counter++;
+        }
+        return name;
+    }
 
     private static MemberDeclarationSyntax CreateAccessMember(string accessMemberType, string accessMemberName, string targetClass)
     {
@@ -274,4 +287,6 @@ public static partial class MoveMethodAst
                         })))
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PrivateKeyword), SyntaxFactory.Token(SyntaxKind.ReadOnlyKeyword));
     }
+
+
 }

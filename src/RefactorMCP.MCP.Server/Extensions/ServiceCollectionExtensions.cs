@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using RefactorMCP.Core.Extensions;
+
 using RefactorMCP.MCP.Server.Tools;
 using RefactorMCP.MCP.Server.Resources;
 
@@ -11,11 +11,11 @@ public static class ServiceCollectionExtensions
     {
         // Add core services
         services.AddRefactorMcpCore();
-        
+
         // Add MCP tools and resources
         services.AddScoped<ListToolsMcp>();
         services.AddScoped<MetricsResourceMcp>();
-        
+
         return services;
     }
 }

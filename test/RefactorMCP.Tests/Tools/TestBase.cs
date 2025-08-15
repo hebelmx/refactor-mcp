@@ -1,7 +1,4 @@
-using System;
-using System.IO;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public abstract class TestBase : IDisposable
 {

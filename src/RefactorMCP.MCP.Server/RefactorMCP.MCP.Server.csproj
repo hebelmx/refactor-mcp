@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RefactorMCP.Core\RefactorMCP.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <publicsVisibleTo Include="RefactorMCP.Tests" />
     <publicsVisibleTo Include="RefactorMCP.Web" />
   </ItemGroup>

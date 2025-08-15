@@ -19,5 +19,8 @@
     <Compile Remove="TestOutput\**\*.cs" />
     <None Include="TestOutput\**\*.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
+  </ItemGroup>
 
 </Project>

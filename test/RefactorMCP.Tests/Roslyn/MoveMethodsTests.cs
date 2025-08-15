@@ -527,7 +527,7 @@ public class Target { }";
             var finalRoot = MoveMethodAst.AddMethodToTargetClass(result.NewSourceRoot, "Target", result.MovedMethod, result.Namespace);
             var formatted = Formatter.Format(finalRoot, new AdhocWorkspace()).ToFullString();
 
-            Assert.Contains("public void Helper()", formatted);
+            Assert.Contains("internal void Helper()", formatted);
         }
 
         [Fact]

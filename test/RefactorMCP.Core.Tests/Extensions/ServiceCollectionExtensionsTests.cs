@@ -1,6 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using RefactorMCP.Core.Abstractions;
-using RefactorMCP.Core.Extensions;
 
 namespace RefactorMCP.Core.Tests.Extensions;
 
@@ -17,21 +15,21 @@ public class ServiceCollectionExtensionsTests
 
         // Assert
         var serviceProvider = services.BuildServiceProvider();
-        
+
         // Verify IRefactoringService is registered
         var refactoringService = serviceProvider.GetService<IRefactoringService>();
         refactoringService.Should().NotBeNull();
-        
+
         // Verify it's registered as scoped
         var refactoringService1 = serviceProvider.GetService<IRefactoringService>();
         var refactoringService2 = serviceProvider.GetService<IRefactoringService>();
-        
+
         using var scope1 = serviceProvider.CreateScope();
         using var scope2 = serviceProvider.CreateScope();
-        
+
         var scopedService1 = scope1.ServiceProvider.GetService<IRefactoringService>();
         var scopedService2 = scope2.ServiceProvider.GetService<IRefactoringService>();
-        
+
         // Services should be different across scopes but same within scope
         scopedService1.Should().NotBeSameAs(scopedService2);
     }
@@ -61,7 +59,7 @@ public class ServiceCollectionExtensionsTests
 
         // Assert
         var serviceProvider = services.BuildServiceProvider();
-        
+
         // Should be able to resolve ILogger dependencies
         var refactoringService = serviceProvider.GetService<IRefactoringService>();
         refactoringService.Should().NotBeNull();

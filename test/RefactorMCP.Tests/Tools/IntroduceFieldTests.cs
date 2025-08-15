@@ -1,9 +1,4 @@
-using ModelContextProtocol;
-using System.IO;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class IntroduceFieldTests : TestBase
 {
@@ -51,7 +46,7 @@ public class IntroduceFieldTests : TestBase
         await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
         var testFile = Path.Combine(TestOutputPath, "AccessModifierTest.cs");
 
-        var accessModifiers = new[] { "private", "public", "protected", "public" };
+        var accessModifiers = new[] { "private", "public", "protected", "internal" };
         foreach (var modifier in accessModifiers)
         {
             var modifierTestFile = testFile.Replace(".cs", $"_{modifier}.cs");

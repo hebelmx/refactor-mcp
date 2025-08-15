@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.IO;
 using System.Threading.Tasks;
+using RefactorMCP.Tests.Tools;
 using Xunit;
 
 namespace RefactorMCP.Tests;

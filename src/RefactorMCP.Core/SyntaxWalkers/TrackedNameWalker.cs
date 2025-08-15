@@ -4,7 +4,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RefactorMCP.Core.SyntaxWalkers
 {
-
     public abstract class TrackedNameWalker : CSharpSyntaxWalker
     {
         private readonly HashSet<string> _names;

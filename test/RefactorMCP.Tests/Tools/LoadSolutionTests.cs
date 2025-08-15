@@ -1,8 +1,4 @@
-using ModelContextProtocol;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class LoadSolutionTests : TestBase
 {

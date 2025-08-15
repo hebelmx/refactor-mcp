@@ -1,14 +1,13 @@
 using System.ComponentModel;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
-using RefactorMCP.Core.Tools;
+using RefactorMCP.Core.Move;
 using RefactorMCP.Core.SyntaxWalkers;
 
-namespace RefactorMCP.Core.Move;
+namespace RefactorMCP.Core.Tools;
 
 [McpServerToolType]
 public static partial class MoveMultipleMethodsTool
@@ -177,6 +176,8 @@ public static partial class MoveMultipleMethodsTool
 
         return string.Join("\n", results);
     }
+
+
 
     // Solution/Document operations that use the AST layer
 

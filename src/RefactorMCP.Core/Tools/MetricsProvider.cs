@@ -119,7 +119,7 @@ public static class MetricsProvider
                     if (method.Modifiers.Any(SyntaxKind.PublicKeyword))
                         fileMetrics.NumberOfPublicMethods++;
                     else if (method.Modifiers.Any(SyntaxKind.PrivateKeyword) ||
-                             (!method.Modifiers.Any(SyntaxKind.ProtectedKeyword) && !method.Modifiers.Any(SyntaxKind.PublicKeyword)))
+                             (!method.Modifiers.Any(SyntaxKind.ProtectedKeyword) && !method.Modifiers.Any(SyntaxKind.InternalKeyword)))
                         fileMetrics.NumberOfPrivateMethods++;
                 }
                 fileMetrics.Classes.Add(clsMetrics);
@@ -127,6 +127,7 @@ public static class MetricsProvider
             return fileMetrics;
         }
     }
+
 
     private class FileMetrics
     {

@@ -19,5 +19,7 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Configuration;
 
 // RefactorMCP Core and MCP Server
-global using RefactorMCP.Core.Abstractions;
-global using RefactorMCP.MCP.Server.Services;
+global using RefactorMCP.Core.Move;
+global using RefactorMCP.Core.SyntaxRewriters;
+global using RefactorMCP.Core.SyntaxWalkers;
+global using RefactorMCP.Core.Tools;

@@ -1,8 +1,5 @@
-using ModelContextProtocol.Server;
-using Microsoft.Extensions.Caching.Memory;
 using System.ComponentModel;
-using System.IO;
-using System.Threading;
+using ModelContextProtocol.Server;
 
 namespace RefactorMCP.Core.Tools;
 

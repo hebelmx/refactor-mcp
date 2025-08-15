@@ -1,8 +1,9 @@
 using System.Reflection;
 using System.Text.Json;
 using ModelContextProtocol.Server;
+using RefactorMCP.Core.Tools;
 
-namespace RefactorMCP.Core.Services;
+namespace RefactorMCP.Core;
 
 public static class ToolCallLogger
 {
@@ -121,7 +122,7 @@ public static class ToolCallLogger
 
     private static MethodInfo? GetToolMethod(string toolName)
     {
-        return Assembly.GetExecutingAssembly()
+        return typeof(LoadSolutionTool).Assembly
             .GetTypes()
             .Where(t => t.GetCustomAttributes(typeof(McpServerToolTypeAttribute), false).Length > 0)
             .SelectMany(t => t.GetMethods(BindingFlags.Public | BindingFlags.Static))

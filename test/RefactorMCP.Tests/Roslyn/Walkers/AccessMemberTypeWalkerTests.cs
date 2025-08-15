@@ -1,9 +1,4 @@
-using System.Linq;
-using Microsoft.CodeAnalysis.CSharp;
-using RefactorMCP.Core.SyntaxWalkers;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Roslyn.Walkers;
 
 public partial class RoslynTransformationTests
 {

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace RefactorMCP.Tests.Examples
+namespace RefactorMCP.Tests
 {
     // Example class for demonstrating refactoring tools
     public class Calculator

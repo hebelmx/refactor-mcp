@@ -1,16 +1,8 @@
-using ModelContextProtocol;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using RefactorMCP.Core.Move;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class MoveMultipleMethodsConstructorInjectionTests : TestBase
 {
-    [Fact(Skip = "RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject methods do not exist")]
+    [Fact]
     public async Task MoveMultipleMethods_ConstructorInjection_UsesThis()
     {
         UnloadSolutionTool.ClearSolutionCache();
@@ -35,7 +27,7 @@ public class MoveMultipleMethodsConstructorInjectionTests : TestBase
         Assert.DoesNotContain("_a", content);
     }
 
-    [Fact(Skip = "RefactoringHelpers.GetOrLoadSolution and AddDocumentToProject methods do not exist")]
+    [Fact]
     public async Task MoveMultipleMethods_ParameterInjection_AddsParameter()
     {
         UnloadSolutionTool.ClearSolutionCache();

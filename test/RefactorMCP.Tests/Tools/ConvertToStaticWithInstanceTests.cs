@@ -1,9 +1,4 @@
-using ModelContextProtocol;
-using System.IO;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace RefactorMCP.Tests;
+namespace RefactorMCP.Tests.Tools;
 
 public class ConvertToStaticWithInstanceTests : TestBase
 {
