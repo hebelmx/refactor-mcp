@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using RefactorMCP.Core.Move;
 using Xunit;
 
 namespace RefactorMCP.Tests;

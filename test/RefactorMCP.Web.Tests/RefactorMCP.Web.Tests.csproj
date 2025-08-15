@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\RefactorMCP.Web\RefactorMCP.Web.csproj" />
-    <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
     <ProjectReference Include="..\..\src\RefactorMCP.MCP.Server\RefactorMCP.MCP.Server.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,6 @@
 using ModelContextProtocol;
 using System.IO;
 using System.Threading.Tasks;
-using RefactorMCP.ConsoleApp.Move;
 using Xunit;
 
 namespace RefactorMCP.Tests;

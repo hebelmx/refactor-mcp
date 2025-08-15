@@ -1,6 +1,6 @@
 using Xunit;
 using System.Collections.Generic;
-using RefactorMCP.ConsoleApp.Move;
+using RefactorMCP.Core.Move;
 
 namespace RefactorMCP.Tests;
 

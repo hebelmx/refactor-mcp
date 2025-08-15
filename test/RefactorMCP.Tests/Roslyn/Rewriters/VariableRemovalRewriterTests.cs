@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
-using RefactorMCP.ConsoleApp.SyntaxRewriters;
+using RefactorMCP.Core.SyntaxRewriters;
 using Xunit;
 
 namespace RefactorMCP.Tests;

@@ -11,16 +11,17 @@ using ModelContextProtocol;
 
 namespace RefactorMCP.Core.Tools;
 
-public static class RefactoringHelpers
+internal static class RefactoringHelpers
 {
     // MemoryCache is thread-safe and Solution objects from Roslyn are immutable.
     // This allows us to store and access Solution instances across threads
     // without additional locking or synchronization.
-    public static MemoryCache SolutionCache = new(new MemoryCacheOptions());
-    public static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
-    public static MemoryCache ModelCache = new(new MemoryCacheOptions());
+    internal static MemoryCache SolutionCache = new(new MemoryCacheOptions());
 
-    public static void ClearAllCaches()
+    internal static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
+    internal static MemoryCache ModelCache = new(new MemoryCacheOptions());
+
+    internal static void ClearAllCaches()
     {
         SolutionCache.Dispose();
         SolutionCache = new MemoryCache(new MemoryCacheOptions());
@@ -36,7 +37,7 @@ public static class RefactoringHelpers
     private static bool _msbuildRegistered;
     private static readonly object _msbuildLock = new();
 
-    public static AdhocWorkspace SharedWorkspace => _workspace.Value;
+    internal static AdhocWorkspace SharedWorkspace => _workspace.Value;
 
     private static void EnsureMsBuildRegistered()
     {
@@ -49,7 +50,7 @@ public static class RefactoringHelpers
         }
     }
 
-    public static MSBuildWorkspace CreateWorkspace()
+    internal static MSBuildWorkspace CreateWorkspace()
     {
         EnsureMsBuildRegistered();
         var host = MefHostServices.Create(MSBuildMefHostServices.DefaultAssemblies);
@@ -59,11 +60,10 @@ public static class RefactoringHelpers
         return workspace;
     }
 
-    public static async Task<Solution> GetOrLoadSolution(
+    internal static async Task<Solution> GetOrLoadSolution(
         string solutionPath,
         CancellationToken cancellationToken = default)
     {
-
         if (SolutionCache.TryGetValue(solutionPath, out Solution? cachedSolution))
         {
             Directory.SetCurrentDirectory(Path.GetDirectoryName(solutionPath)!);
@@ -78,7 +78,7 @@ public static class RefactoringHelpers
 
     // Solutions are immutable, so replacing the cached instance is safe even
     // when accessed concurrently by multiple threads.
-    public static void UpdateSolutionCache(Document updatedDocument)
+    internal static void UpdateSolutionCache(Document updatedDocument)
     {
         var solutionPath = updatedDocument.Project.Solution.FilePath;
         if (!string.IsNullOrEmpty(solutionPath))
@@ -91,7 +91,7 @@ public static class RefactoringHelpers
         }
     }
 
-    public static Document? GetDocumentByPath(Solution solution, string filePath)
+    internal static Document? GetDocumentByPath(Solution solution, string filePath)
     {
         var normalizedPath = Path.GetFullPath(filePath);
         return solution.Projects
@@ -99,7 +99,7 @@ public static class RefactoringHelpers
             .FirstOrDefault(d => Path.GetFullPath(d.FilePath ?? "") == normalizedPath);
     }
 
-    public static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
+    internal static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
     {
         startLine = startColumn = endLine = endColumn = 0;
         var parts = range.Split('-');
@@ -113,7 +113,7 @@ public static class RefactoringHelpers
                int.TryParse(endParts[1], out endColumn);
     }
 
-    public static bool ValidateRange(
+    internal static bool ValidateRange(
         SourceText text,
         int startLine,
         int startColumn,
@@ -140,8 +140,7 @@ public static class RefactoringHelpers
         return true;
     }
 
-
-    public static async Task<string> ApplySingleFileEdit(
+    internal static async Task<string> ApplySingleFileEdit(
         string filePath,
         Func<string, string> transform,
         string successMessage)
@@ -160,7 +159,7 @@ public static class RefactoringHelpers
         return successMessage;
     }
 
-    public static async Task<Document?> FindClassInSolution(
+    internal static async Task<Document?> FindClassInSolution(
         Solution solution,
         string className,
         params string[]? excludingFilePaths)
@@ -182,7 +181,7 @@ public static class RefactoringHelpers
         return null;
     }
 
-    public static async Task<Document?> FindTypeInSolution(
+    internal static async Task<Document?> FindTypeInSolution(
         Solution solution,
         string typeName,
         params string[]? excludingFilePaths)
@@ -206,7 +205,7 @@ public static class RefactoringHelpers
         return null;
     }
 
-    public static void AddDocumentToProject(Project project, string filePath)
+    internal static void AddDocumentToProject(Project project, string filePath)
     {
         if (project.Documents.Any(d =>
                 Path.GetFullPath(d.FilePath ?? "") == Path.GetFullPath(filePath)))
@@ -234,7 +233,7 @@ public static class RefactoringHelpers
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
     }
 
-    public static async Task<SyntaxTree> GetOrParseSyntaxTreeAsync(string filePath)
+    internal static async Task<SyntaxTree> GetOrParseSyntaxTreeAsync(string filePath)
     {
         if (SyntaxTreeCache.TryGetValue(filePath, out SyntaxTree? cached))
             return cached!;
@@ -244,7 +243,7 @@ public static class RefactoringHelpers
         return tree;
     }
 
-    public static async Task<SemanticModel> GetOrCreateSemanticModelAsync(string filePath)
+    internal static async Task<SemanticModel> GetOrCreateSemanticModelAsync(string filePath)
     {
         if (ModelCache.TryGetValue(filePath, out SemanticModel? cached))
             return cached!;
@@ -255,7 +254,7 @@ public static class RefactoringHelpers
         return model;
     }
 
-    public static void UpdateFileCaches(string filePath, string newText)
+    internal static void UpdateFileCaches(string filePath, string newText)
     {
         var tree = CSharpSyntaxTree.ParseText(newText);
         SyntaxTreeCache.Set(filePath, tree);
@@ -264,7 +263,7 @@ public static class RefactoringHelpers
         ModelCache.Set(filePath, model);
     }
 
-    public static async Task<(string Text, Encoding Encoding)> ReadFileWithEncodingAsync(
+    internal static async Task<(string Text, Encoding Encoding)> ReadFileWithEncodingAsync(
         string filePath,
         CancellationToken cancellationToken = default)
     {
@@ -274,7 +273,7 @@ public static class RefactoringHelpers
         return (text, encoding);
     }
 
-    public static async Task<Encoding> GetFileEncodingAsync(
+    internal static async Task<Encoding> GetFileEncodingAsync(
         string filePath,
         CancellationToken cancellationToken = default)
     {
@@ -303,7 +302,7 @@ public static class RefactoringHelpers
         return Encoding.UTF8;
     }
 
-    public static async Task WriteFileWithEncodingAsync(
+    internal static async Task WriteFileWithEncodingAsync(
         string filePath,
         string text,
         Encoding encoding,
@@ -313,7 +312,7 @@ public static class RefactoringHelpers
         UpdateFileCaches(filePath, text);
     }
 
-    public static async Task<string> RunWithSolutionOrFile(
+    internal static async Task<string> RunWithSolutionOrFile(
         string solutionPath,
         string filePath,
         Func<Document, Task<string>> withSolution,

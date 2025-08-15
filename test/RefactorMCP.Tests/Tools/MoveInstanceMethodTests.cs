@@ -2,7 +2,7 @@ using ModelContextProtocol;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RefactorMCP.ConsoleApp.Move;
+using RefactorMCP.Core.Move;
 
 namespace RefactorMCP.Tests;
 

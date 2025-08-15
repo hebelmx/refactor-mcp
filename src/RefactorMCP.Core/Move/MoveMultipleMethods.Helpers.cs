@@ -1,13 +1,13 @@
 using Microsoft.CodeAnalysis;
 using RefactorMCP.Core.SyntaxWalkers;
 
-namespace RefactorMCP.Core.Tools;
+namespace RefactorMCP.Core.Move;
 
 public static partial class MoveMultipleMethodsTool
 {
     // ===== HELPER METHODS =====
 
-    public static Dictionary<string, HashSet<string>> BuildDependencies(
+    internal static Dictionary<string, HashSet<string>> BuildDependencies(
         SyntaxNode sourceRoot,
         string[] sourceClasses,
         string[] methodNames)
@@ -44,7 +44,7 @@ public static partial class MoveMultipleMethodsTool
         return deps;
     }
 
-    public static List<int> OrderOperations(
+    internal static List<int> OrderOperations(
         SyntaxNode sourceRoot,
         string[] sourceClasses,
         string[] methodNames)

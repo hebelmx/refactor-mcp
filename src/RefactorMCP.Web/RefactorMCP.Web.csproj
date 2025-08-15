@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RefactorMCP.Core\RefactorMCP.Core.csproj" />
     <ProjectReference Include="..\RefactorMCP.MCP.Server\RefactorMCP.MCP.Server.csproj" />
   </ItemGroup>
 

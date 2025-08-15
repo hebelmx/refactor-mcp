@@ -9,6 +9,7 @@ global using System;
 global using System.Collections.Generic;
 global using System.IO;
 global using System.Linq;
+global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Diagnostics;
 
@@ -17,18 +18,21 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Configuration;
 
-// RefactorMCP
-global using RefactorMCP.Core.Abstractions;
-global using RefactorMCP.Core.Services;
-
-// RefactorMCP ConsoleApp namespaces
-global using RefactorMCP.ConsoleApp.Move;
-global using RefactorMCP.ConsoleApp.SyntaxWalkers;
-global using RefactorMCP.ConsoleApp.SyntaxRewriters;
-
 // RefactorMCP Core namespaces
+global using RefactorMCP.Core;
+global using RefactorMCP.Core.Abstractions;
+global using RefactorMCP.Core.Extensions;
+global using RefactorMCP.Core.Logging;
+global using RefactorMCP.Core.Move;
+global using RefactorMCP.Core.Services;
 global using RefactorMCP.Core.SyntaxRewriters;
 global using RefactorMCP.Core.SyntaxWalkers;
+global using RefactorMCP.Core.Tools;
+
+// Roslyn namespaces commonly used in tests
+global using Microsoft.CodeAnalysis;
+global using Microsoft.CodeAnalysis.CSharp;
+global using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 // Model Context Protocol
 global using ModelContextProtocol;

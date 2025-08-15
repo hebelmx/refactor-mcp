@@ -7,8 +7,8 @@ using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.Text;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
-using RefactorMCP.Core.SyntaxWalkers;
 using RefactorMCP.Core.Tools;
+using RefactorMCP.Core.SyntaxWalkers;
 
 namespace RefactorMCP.Core.Move;
 
@@ -39,6 +39,7 @@ public static class MoveMethodTool
         _movedMethods.Clear();
         return "Cleared move history";
     }
+
     [McpServerTool, Description("Move a static method to another class (preferred for large C# file refactoring). " +
         "Leaves a delegating method in the original class to preserve the interface." +
         "The target class will be automatically created if it doesn't exist.")]
@@ -78,7 +79,7 @@ public static class MoveMethodTool
         }
     }
 
-    private class StaticMethodMoveContext
+    public class StaticMethodMoveContext
     {
         public string SourcePath { get; set; } = string.Empty;
         public string TargetPath { get; set; } = string.Empty;
@@ -90,13 +91,13 @@ public static class MoveMethodTool
         public string? Namespace { get; set; }
     }
 
-    private class SourceAndTargetRoots
+    public class SourceAndTargetRoots
     {
         public SyntaxNode UpdatedSourceRoot { get; set; } = null!;
         public SyntaxNode UpdatedTargetRoot { get; set; } = null!;
     }
 
-    private static async Task<StaticMethodMoveContext> PrepareStaticMethodMove(
+    public static async Task<StaticMethodMoveContext> PrepareStaticMethodMove(
         string filePath,
         string? targetFilePath,
         string targetClass,
@@ -453,7 +454,6 @@ public static class MoveMethodTool
 
         foreach (var methodName in methodNames)
         {
-
             var targetPath = targetFilePath ?? currentDocument.FilePath!;
             var sameFile = targetPath == currentDocument.FilePath;
 

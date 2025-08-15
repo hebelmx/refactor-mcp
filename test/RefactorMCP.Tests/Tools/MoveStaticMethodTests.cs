@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RefactorMCP.ConsoleApp.Move;
 using Xunit;
 
 namespace RefactorMCP.Tests;

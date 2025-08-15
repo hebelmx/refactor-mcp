@@ -1,5 +1,5 @@
 using Microsoft.CodeAnalysis.CSharp;
-using RefactorMCP.ConsoleApp.SyntaxWalkers;
+using RefactorMCP.Core.SyntaxWalkers;
 using Xunit;
 
 namespace RefactorMCP.Tests.SyntaxWalkers;

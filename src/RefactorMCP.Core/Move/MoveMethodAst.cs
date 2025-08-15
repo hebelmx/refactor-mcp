@@ -59,7 +59,7 @@ public static partial class MoveMethodAst
             staticFieldNames,
             nestedClassNames,
             sourceClass.Identifier.ValueText);
-        transformedMethod = EnsureMethodIspublic(transformedMethod);
+        transformedMethod = EnsureMethodIsInternal(transformedMethod);
         var stubMethod = CreateStaticStubMethod(
             method,
             methodName,
@@ -70,9 +70,9 @@ public static partial class MoveMethodAst
         foreach (var m in sourceClass.Members.OfType<MethodDeclarationSyntax>())
         {
             if (calledMethods.Contains(m.Identifier.ValueText) &&
-                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.PublicKeyword)))
+                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.InternalKeyword)))
             {
-                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIspublic(m);
+                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIsInternal(m);
             }
         }
         var updatedSourceRoot = UpdateSourceRootWithStub(sourceRoot, method, stubMethod, dependencyUpdates);
@@ -88,7 +88,6 @@ public static partial class MoveMethodAst
             Namespace = ns
         };
     }
-
 
     private static MethodDeclarationSyntax FindStaticMethod(SyntaxNode sourceRoot, string methodName)
     {
@@ -110,19 +109,19 @@ public static partial class MoveMethodAst
             nodes.Add(method.Body);
         if (method.ExpressionBody != null)
             nodes.Add(method.ExpressionBody);
-        
+
         var allNodes = nodes.SelectMany(n => n.DescendantNodes());
-        
+
         // Check for direct identifier usage
         var hasIdentifierUsage = allNodes
             .OfType<IdentifierNameSyntax>()
             .Any(id => id.Identifier.ValueText == parameterName);
-            
+
         // Check for usage in member access expressions (e.g., parameterName.SomeProperty)
         var hasMemberAccessUsage = allNodes
             .OfType<MemberAccessExpressionSyntax>()
             .Any(ma => ma.Expression is IdentifierNameSyntax id && id.Identifier.ValueText == parameterName);
-            
+
         return hasIdentifierUsage || hasMemberAccessUsage;
     }
 
@@ -354,7 +353,7 @@ public static partial class MoveMethodAst
             injectedParameters,
             paramMap,
             thisParameterName);
-        transformedMethod = EnsureMethodIspublic(transformedMethod);
+        transformedMethod = EnsureMethodIsInternal(transformedMethod);
 
         if (callsBase && baseWrapper != null)
         {
@@ -395,9 +394,9 @@ public static partial class MoveMethodAst
         foreach (var m in originClass.Members.OfType<MethodDeclarationSyntax>())
         {
             if (calledMethods.Contains(m.Identifier.ValueText) &&
-                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.PublicKeyword)))
+                !m.Modifiers.Any(t => t.IsKind(SyntaxKind.PublicKeyword) || t.IsKind(SyntaxKind.InternalKeyword)))
             {
-                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIspublic(m);
+                dependencyUpdates[m.Identifier.ValueText] = EnsureMethodIsInternal(m);
             }
         }
 
@@ -417,7 +416,6 @@ public static partial class MoveMethodAst
             Namespace = ns
         };
     }
-
 
     private static ClassDeclarationSyntax FindSourceClass(SyntaxNode sourceRoot, string sourceClass)
     {
@@ -442,7 +440,6 @@ public static partial class MoveMethodAst
 
         return method;
     }
-
 
     private static MethodDeclarationSyntax TransformMethodForMove(
         MethodDeclarationSyntax method,
@@ -498,10 +495,9 @@ public static partial class MoveMethodAst
             transformedMethod = (MethodDeclarationSyntax)nestedRewriter.Visit(transformedMethod)!;
         }
 
-
         transformedMethod = AstTransformations.EnsureStaticModifier(transformedMethod);
 
-        return EnsureMethodIspublic(transformedMethod);
+        return EnsureMethodIsInternal(transformedMethod);
     }
 
     private static MethodDeclarationSyntax AddThisParameterToMethod(
@@ -557,9 +553,9 @@ public static partial class MoveMethodAst
         return method;
     }
 
-    private static MethodDeclarationSyntax EnsureMethodIspublic(MethodDeclarationSyntax method)
+    private static MethodDeclarationSyntax EnsureMethodIsInternal(MethodDeclarationSyntax method)
     {
-        if (method.Modifiers.Any(m => m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.PublicKeyword)))
+        if (method.Modifiers.Any(m => m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.InternalKeyword)))
             return method;
 
         var mods = method.Modifiers.Where(m => !m.IsKind(SyntaxKind.PrivateKeyword) &&
@@ -568,12 +564,12 @@ public static partial class MoveMethodAst
         if (method.Modifiers.Any(SyntaxKind.ProtectedKeyword))
         {
             // Keep the protected modifier for overrides to avoid reducing
-            // accessibility but add public for cross-class access
+            // accessibility but add internal for cross-class access
             mods = mods.Append(SyntaxFactory.Token(SyntaxKind.ProtectedKeyword));
         }
 
         return method.WithModifiers(SyntaxFactory.TokenList(mods)
-            .Add(SyntaxFactory.Token(SyntaxKind.PublicKeyword)));
+            .Add(SyntaxFactory.Token(SyntaxKind.InternalKeyword)));
     }
 
     private static MethodDeclarationSyntax CreateStubMethod(
@@ -838,5 +834,19 @@ public static partial class MoveMethodAst
         }
 
         return targetRoot;
+    }
+
+    public static string GenerateAccessMemberName(IEnumerable<string> existingNames, string targetClass)
+    {
+        var baseName = "_" + char.ToLower(targetClass[0]) + targetClass.Substring(1);
+        var name = baseName;
+        var counter = 1;
+        var nameSet = new HashSet<string>(existingNames);
+        while (nameSet.Contains(name))
+        {
+            name = baseName + counter;
+            counter++;
+        }
+        return name;
     }
 }
