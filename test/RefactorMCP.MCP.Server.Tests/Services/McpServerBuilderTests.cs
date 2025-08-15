@@ -1,21 +1,20 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using RefactorMCP.MCP.Server.Services;
 using RefactorMCP.Core.Abstractions;
 
 namespace RefactorMCP.MCP.Server.Tests.Services;
 
-// TODO: Rewrite these tests to match the actual McpServerBuilder API
-// The current tests are testing a non-existent API
-public class McpServerBuilderTests_DISABLED
+public class McpServerBuilderTests
 {
     [Fact]
-    public void Build_ShouldReturnNonNull_McpServerBuilder()
+    public void Constructor_ShouldReturnNonNull_McpServerBuilder()
     {
         // Arrange
-        var services = new ServiceCollection();
+        var hostBuilder = Host.CreateDefaultBuilder();
 
         // Act
-        var builder = McpServerBuilder.Create(services);
+        var builder = new McpServerBuilder(hostBuilder);
 
         // Assert
         builder.Should().NotBeNull();
@@ -23,29 +22,25 @@ public class McpServerBuilderTests_DISABLED
     }
 
     [Fact]
-    public void WithRefactoringCore_ShouldRegisterCoreServices()
+    public void CreateMcpServerBuilder_Extension_ShouldReturnBuilder()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddLogging();
-        var builder = McpServerBuilder.Create(services);
+        var hostBuilder = Host.CreateDefaultBuilder();
 
         // Act
-        builder.WithRefactoringCore();
-        var serviceProvider = services.BuildServiceProvider();
+        var builder = hostBuilder.CreateMcpServerBuilder();
 
         // Assert
-        var refactoringService = serviceProvider.GetService<IRefactoringService>();
-        refactoringService.Should().NotBeNull();
+        builder.Should().NotBeNull();
+        builder.Should().BeOfType<McpServerBuilder>();
     }
 
     [Fact]
     public void WithStdioTransport_ShouldConfigureStdioTransport()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddLogging();
-        var builder = McpServerBuilder.Create(services);
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
 
         // Act
         var result = builder.WithStdioTransport();
@@ -55,15 +50,14 @@ public class McpServerBuilderTests_DISABLED
     }
 
     [Fact]
-    public void WithHttpTransport_ShouldConfigureHttpTransport()
+    public void WithWebSocketTransport_ShouldConfigureWebSocketTransport()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddLogging();
-        var builder = McpServerBuilder.Create(services);
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
 
         // Act
-        var result = builder.WithHttpTransport(7042);
+        var result = builder.WithWebSocketTransport(7042);
 
         // Assert
         result.Should().BeSameAs(builder); // Should return same instance for fluent interface
@@ -73,23 +67,37 @@ public class McpServerBuilderTests_DISABLED
     public void FluentInterface_ShouldAllowChaining()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddLogging();
+        var hostBuilder = Host.CreateDefaultBuilder();
 
         // Act & Assert - Should not throw
-        var action = () => McpServerBuilder.Create(services)
-            .WithRefactoringCore()
+        var action = () => hostBuilder.CreateMcpServerBuilder()
+            .WithRefactoringTools()
             .WithStdioTransport()
-            .WithHttpTransport(7042);
+            .WithWebSocketTransport(7042);
 
         action.Should().NotThrow();
     }
 
     [Fact]
-    public void Create_WithNullServices_ShouldThrowArgumentNullException()
+    public void Build_ShouldReturnIHost()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
+
+        // Act
+        var host = builder.Build();
+
+        // Assert
+        host.Should().NotBeNull();
+        host.Should().BeAssignableTo<IHost>();
+    }
+
+    [Fact]
+    public void Constructor_WithNullHostBuilder_ShouldThrowArgumentNullException()
     {
         // Act & Assert
-        var action = () => McpServerBuilder.Create(null!);
+        var action = () => new McpServerBuilder(null!);
         action.Should().Throw<ArgumentNullException>();
     }
 }

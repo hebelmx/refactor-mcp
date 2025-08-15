@@ -13,7 +13,7 @@ public class McpServerBuilder
 
     public McpServerBuilder(IHostBuilder hostBuilder)
     {
-        _hostBuilder = hostBuilder;
+        _hostBuilder = hostBuilder ?? throw new ArgumentNullException(nameof(hostBuilder));
         _services = new ServiceCollection();
     }
 

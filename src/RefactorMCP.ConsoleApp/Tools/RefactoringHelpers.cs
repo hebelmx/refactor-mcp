@@ -21,11 +21,11 @@ public static class RefactoringHelpers
     // MemoryCache is thread-safe and Solution objects from Roslyn are immutable.
     // This allows us to store and access Solution instances across threads
     // without additional locking or synchronization.
-    internal static MemoryCache SolutionCache = new(new MemoryCacheOptions());
-    internal static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
-    internal static MemoryCache ModelCache = new(new MemoryCacheOptions());
+    public static MemoryCache SolutionCache = new(new MemoryCacheOptions());
+    public static MemoryCache SyntaxTreeCache = new(new MemoryCacheOptions());
+    public static MemoryCache ModelCache = new(new MemoryCacheOptions());
 
-    internal static void ClearAllCaches()
+    public static void ClearAllCaches()
     {
         SolutionCache.Dispose();
         SolutionCache = new MemoryCache(new MemoryCacheOptions());
@@ -41,7 +41,7 @@ public static class RefactoringHelpers
     private static bool _msbuildRegistered;
     private static readonly object _msbuildLock = new();
 
-    internal static AdhocWorkspace SharedWorkspace => _workspace.Value;
+    public static AdhocWorkspace SharedWorkspace => _workspace.Value;
 
     private static void EnsureMsBuildRegistered()
     {
@@ -64,7 +64,7 @@ public static class RefactoringHelpers
         return workspace;
     }
 
-    internal static async Task<Solution> GetOrLoadSolution(
+    public static async Task<Solution> GetOrLoadSolution(
         string solutionPath,
         CancellationToken cancellationToken = default)
     {
@@ -104,7 +104,7 @@ public static class RefactoringHelpers
             .FirstOrDefault(d => Path.GetFullPath(d.FilePath ?? "") == normalizedPath);
     }
 
-    internal static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
+    public static bool TryParseRange(string range, out int startLine, out int startColumn, out int endLine, out int endColumn)
     {
         startLine = startColumn = endLine = endColumn = 0;
         var parts = range.Split('-');
@@ -118,7 +118,7 @@ public static class RefactoringHelpers
                int.TryParse(endParts[1], out endColumn);
     }
 
-    internal static bool ValidateRange(
+    public static bool ValidateRange(
         SourceText text,
         int startLine,
         int startColumn,
@@ -211,7 +211,7 @@ public static class RefactoringHelpers
         return null;
     }
 
-    internal static void AddDocumentToProject(Project project, string filePath)
+    public static void AddDocumentToProject(Project project, string filePath)
     {
         if (project.Documents.Any(d =>
                 Path.GetFullPath(d.FilePath ?? "") == Path.GetFullPath(filePath)))
