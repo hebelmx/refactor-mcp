@@ -441,3 +441,8 @@ TestOutput/codeMetricsCache.json
 /scripts/archive/publish-*/
 *.autogen.log
 /tools/temp/
+
+nul
+/nul
+/nul/
+nul/
