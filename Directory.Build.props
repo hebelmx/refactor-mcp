@@ -10,7 +10,11 @@
     <WarningsAsErrors />
     <WarningsNotAsErrors>NU1903;NU1510;NU5104;xUnit1051</WarningsNotAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    
+
+    <!-- Avoid network issues -->
+    <RestoreNoHttpCache>true</RestoreNoHttpCache>
+    <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+
     <!-- Version information -->
     <MajorVersion>1</MajorVersion>
     <MinorVersion>0</MinorVersion>

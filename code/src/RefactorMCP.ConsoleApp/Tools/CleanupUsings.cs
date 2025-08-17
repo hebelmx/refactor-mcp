@@ -89,6 +89,12 @@ public static class CleanupUsingsTool
             .ToList();
 
         var newRoot = root.RemoveNodes(unused, SyntaxRemoveOptions.KeepNoTrivia);
+        //Check if this null work does the jobs
+        if (newRoot is null)
+        {
+            var rootFormated = Formatter.Format(root, RefactoringHelpers.SharedWorkspace);
+            return rootFormated.ToFullString();
+        }
         var formatted = Formatter.Format(newRoot, RefactoringHelpers.SharedWorkspace);
         return formatted.ToFullString();
     }

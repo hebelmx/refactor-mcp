@@ -46,7 +46,9 @@ internal class ConstructorInjectionRewriter : CSharpSyntaxRewriter
         {
             return SyntaxFactory.IdentifierName(_fieldName).WithTriviaFrom(node);
         }
+#pragma warning disable CS8603 // Possible null reference return.
         return base.VisitIdentifierName(node);
+#pragma warning restore CS8603 // Possible null reference return.
     }
 
     public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
@@ -127,4 +129,3 @@ internal class ConstructorInjectionRewriter : CSharpSyntaxRewriter
         return visited;
     }
 }
-

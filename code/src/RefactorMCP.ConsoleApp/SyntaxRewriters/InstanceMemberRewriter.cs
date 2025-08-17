@@ -34,6 +34,10 @@ internal class InstanceMemberRewriter : CSharpSyntaxRewriter
         // Handle cases like this.member?.Property or member?.Property
         // We need to rewrite the expression before the ?. but leave the binding expression alone
         var rewrittenExpression = (ExpressionSyntax?)Visit(node.Expression);
+        if (rewrittenExpression is null)
+        {
+            return default;
+        }
         if (rewrittenExpression != node.Expression)
         {
             return node.WithExpression(rewrittenExpression);
@@ -105,4 +109,3 @@ internal class InstanceMemberRewriter : CSharpSyntaxRewriter
         return base.VisitIdentifierName(node);
     }
 }
-

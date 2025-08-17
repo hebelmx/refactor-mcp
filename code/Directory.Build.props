@@ -6,12 +6,16 @@
 		<OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
 		<BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
 		<IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
-		
+
+		<!-- Avoid network issues -->
+		<RestoreNoHttpCache>true</RestoreNoHttpCache>
+		<RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+
 		<!-- Warning Configuration -->
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<WarningsNotAsErrors>NU1903;NU1510;NU5104;xUnit1051</WarningsNotAsErrors>
-		
+
 		<!-- Suppress warnings we can't control -->
 		<NoWarn>NU1903;NU1510;NU5104;xUnit1051</NoWarn>
 	</PropertyGroup>

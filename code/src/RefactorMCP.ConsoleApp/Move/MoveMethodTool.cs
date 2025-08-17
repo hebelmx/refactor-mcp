@@ -43,6 +43,7 @@ public static class MoveMethodTool
         _movedMethods.Clear();
         return "Cleared move history";
     }
+
     [McpServerTool, Description("Move a static method to another class (preferred for large C# file refactoring). " +
         "Leaves a delegating method in the original class to preserve the interface." +
         "The target class will be automatically created if it doesn't exist.")]
@@ -185,12 +186,12 @@ public static class MoveMethodTool
     {
         var targetCompilationUnit = targetRoot as CompilationUnitSyntax ?? throw new InvalidOperationException("Expected compilation unit");
         var targetUsingNames = targetCompilationUnit.Usings
-            .Select(u => u.Name.ToString())
+            .Select(u => u.Name?.ToString())
             .ToHashSet();
 
         var missingUsings = context.SourceUsings
-            .Where(u => !targetUsingNames.Contains(u.Name.ToString()))
-            .Where(u => context.Namespace == null || u.Name.ToString() != context.Namespace)
+            .Where(u => !targetUsingNames.Contains(u.Name?.ToString()))
+            .Where(u => context.Namespace == null || u.Name?.ToString() != context.Namespace)
             .ToArray();
 
         if (missingUsings.Length > 0)
@@ -457,7 +458,6 @@ public static class MoveMethodTool
 
         foreach (var methodName in methodNames)
         {
-
             var targetPath = targetFilePath ?? currentDocument.FilePath!;
             var sameFile = targetPath == currentDocument.FilePath;
 
@@ -487,6 +487,10 @@ public static class MoveMethodTool
                 var solution = document.Project.Solution.WithDocumentSyntaxRoot(currentDocument.Id, newSourceRoot);
 
                 var project = solution.GetProject(document.Project.Id);
+                if (project is null)
+                {
+                    continue;
+                }
                 var targetDocument = project.Documents.FirstOrDefault(d => d.FilePath == targetPath);
                 if (targetDocument == null)
                 {

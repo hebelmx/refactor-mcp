@@ -95,7 +95,6 @@ public static partial class MoveMethodAst
         };
     }
 
-
     private static MethodDeclarationSyntax FindStaticMethod(SyntaxNode sourceRoot, string methodName)
     {
         var method = sourceRoot.DescendantNodes()
@@ -116,19 +115,19 @@ public static partial class MoveMethodAst
             nodes.Add(method.Body);
         if (method.ExpressionBody != null)
             nodes.Add(method.ExpressionBody);
-        
+
         var allNodes = nodes.SelectMany(n => n.DescendantNodes());
-        
+
         // Check for direct identifier usage
         var hasIdentifierUsage = allNodes
             .OfType<IdentifierNameSyntax>()
             .Any(id => id.Identifier.ValueText == parameterName);
-            
+
         // Check for usage in member access expressions (e.g., parameterName.SomeProperty)
         var hasMemberAccessUsage = allNodes
             .OfType<MemberAccessExpressionSyntax>()
             .Any(ma => ma.Expression is IdentifierNameSyntax id && id.Identifier.ValueText == parameterName);
-            
+
         return hasIdentifierUsage || hasMemberAccessUsage;
     }
 
@@ -424,7 +423,6 @@ public static partial class MoveMethodAst
         };
     }
 
-
     private static ClassDeclarationSyntax FindSourceClass(SyntaxNode sourceRoot, string sourceClass)
     {
         var originClass = sourceRoot.DescendantNodes()
@@ -448,7 +446,6 @@ public static partial class MoveMethodAst
 
         return method;
     }
-
 
     private static MethodDeclarationSyntax TransformMethodForMove(
         MethodDeclarationSyntax method,
@@ -503,7 +500,6 @@ public static partial class MoveMethodAst
             var nestedRewriter = new NestedClassRewriter(nestedClassNames, sourceClassName);
             transformedMethod = (MethodDeclarationSyntax)nestedRewriter.Visit(transformedMethod)!;
         }
-
 
         transformedMethod = AstTransformations.EnsureStaticModifier(transformedMethod);
 
@@ -831,11 +827,11 @@ public static partial class MoveMethodAst
 
         var targetCompilationUnit = targetRoot as CompilationUnitSyntax ?? throw new InvalidOperationException("Expected compilation unit");
         var targetUsingNames = targetCompilationUnit.Usings
-            .Select(u => u.Name.ToString())
+            .Select(u => u.Name?.ToString())
             .ToHashSet();
         var missingUsings = sourceUsings
-            .Where(u => !targetUsingNames.Contains(u.Name.ToString()))
-            .Where(u => namespaceName == null || u.Name.ToString() != namespaceName)
+            .Where(u => !targetUsingNames.Contains(u.Name?.ToString()))
+            .Where(u => namespaceName == null || u.Name?.ToString() != namespaceName)
             .ToArray();
 
         if (missingUsings.Length > 0)
