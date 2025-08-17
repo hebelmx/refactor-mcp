@@ -1,9 +1,10 @@
 <Project>
-  <PropertyGroup>
-    <!-- External build configuration - minimal setup for clean builds -->
-    <BaseOutputPath>F:\Dynamic\Refactor\Refactor\bin\</BaseOutputPath>
-    <OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
-    <BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<!-- External build configuration - minimal setup for clean builds -->
+		<TargetFramework>net10.0</TargetFramework>
+		<BaseOutputPath>F:\Dynamic\Refactor\Refactor\bin\</BaseOutputPath>
+		<OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
+		<BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
+		<IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
+	</PropertyGroup>
 </Project>
