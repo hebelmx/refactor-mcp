@@ -1,21 +1,20 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class ClassMetricsWalker : CSharpSyntaxWalker
 {
-    public class ClassMetricsWalker : CSharpSyntaxWalker
+    public List<string> Suggestions { get; } = new();
+
+    public override void VisitClassDeclaration(ClassDeclarationSyntax node)
     {
-        public List<string> Suggestions { get; } = new();
+        base.VisitClassDeclaration(node);
 
-        public override void VisitClassDeclaration(ClassDeclarationSyntax node)
-        {
-            base.VisitClassDeclaration(node);
-
-            var members = node.Members.Count;
-            var span = node.GetLocation().GetLineSpan();
-            var lines = span.EndLinePosition.Line - span.StartLinePosition.Line + 1;
-            if (members > 15 || lines > 300)
-                Suggestions.Add($"Class '{node.Identifier}' is large ({members} members) -> consider splitting or move-method");
-        }
+        var members = node.Members.Count;
+        var span = node.GetLocation().GetLineSpan();
+        var lines = span.EndLinePosition.Line - span.StartLinePosition.Line + 1;
+        if (members > 15 || lines > 300)
+            Suggestions.Add($"Class '{node.Identifier}' is large ({members} members) -> consider splitting or move-method");
     }
 }

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using RefactorMCP.Core.Extensions;
 using RefactorMCP.Web.Services;
-using RefactorMCP.Web.Models;
 using System.Text.Json;
 using System.Text;
 using RefactorMCP.Web.Controllers;
@@ -197,42 +196,3 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
 }
 
 // Test service implementations
-public class TestDashboardService : IDashboardService
-{
-    public Task<DashboardStats> GetDashboardStatsAsync()
-    {
-        return Task.FromResult(new DashboardStats(10, 2, 5, 1.5, 95));
-    }
-
-    public Task<IEnumerable<RefactoringActivity>> GetRecentActivitiesAsync(int count = 20)
-    {
-        var activities = new[]
-        {
-            new RefactoringActivity(DateTime.Now, "test-tool", "TestProject", true, TimeSpan.FromSeconds(1))
-        };
-        return Task.FromResult<IEnumerable<RefactoringActivity>>(activities);
-    }
-
-    public Task<SystemHealthStatus> GetSystemHealthAsync()
-    {
-        var components = new Dictionary<string, ComponentHealth>
-        {
-            ["Test"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
-        };
-        return Task.FromResult(new SystemHealthStatus(true, "Healthy", components));
-    }
-}
-
-public class TestMetricsService : IMetricsService
-{
-    public Task<MetricsData> GetMetricsDataAsync()
-    {
-        return Task.FromResult(new MetricsData(10, 1.5, 2, 1024 * 1024 * 100, 5.0));
-    }
-
-    public Task<IEnumerable<PerformanceMetric>> GetPerformanceMetricsAsync(TimeSpan period)
-    {
-        var metrics = new[] { new PerformanceMetric(DateTime.Now, "test", 1.0, "unit") };
-        return Task.FromResult<IEnumerable<PerformanceMetric>>(metrics);
-    }
-}

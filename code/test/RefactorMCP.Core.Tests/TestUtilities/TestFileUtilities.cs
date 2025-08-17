@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace RefactorMCP.Core.Tests.TestUtilities;
+namespace RefactorMCP.Core.Tests.TestUtilities.TestUtilities;
 
 /// <summary>
 /// Utility class for creating test files and solutions for refactoring tests.

@@ -1,29 +1,28 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class MethodCollectorWalker : CSharpSyntaxWalker
 {
-    public class MethodCollectorWalker : CSharpSyntaxWalker
+    private readonly HashSet<string> _targets;
+    public Dictionary<string, MethodDeclarationSyntax> Methods { get; } = new();
+
+    public MethodCollectorWalker(HashSet<string> targets)
     {
-        private readonly HashSet<string> _targets;
-        public Dictionary<string, MethodDeclarationSyntax> Methods { get; } = new();
+        _targets = targets;
+    }
 
-        public MethodCollectorWalker(HashSet<string> targets)
+    public override void VisitMethodDeclaration(MethodDeclarationSyntax node)
+    {
+        if (node.Parent is ClassDeclarationSyntax cls)
         {
-            _targets = targets;
-        }
-
-        public override void VisitMethodDeclaration(MethodDeclarationSyntax node)
-        {
-            if (node.Parent is ClassDeclarationSyntax cls)
+            var key = $"{cls.Identifier.ValueText}.{node.Identifier.ValueText}";
+            if (_targets.Contains(key) && !Methods.ContainsKey(key))
             {
-                var key = $"{cls.Identifier.ValueText}.{node.Identifier.ValueText}";
-                if (_targets.Contains(key) && !Methods.ContainsKey(key))
-                {
-                    Methods[key] = node;
-                }
+                Methods[key] = node;
             }
-            base.VisitMethodDeclaration(node);
         }
+        base.VisitMethodDeclaration(node);
     }
 }

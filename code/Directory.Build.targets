@@ -1,0 +1,37 @@
+<Project>
+  <!-- Force NuGet stability settings at target evaluation time -->
+  <PropertyGroup>
+    <!-- These override any conflicting settings -->
+    <RestoreNoHttpCache>true</RestoreNoHttpCache>
+    <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+    <RestoreForceEvaluate>true</RestoreForceEvaluate>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="Exists('packages.lock.json')">true</RestoreLockedMode>
+    
+    <!-- Additional stability settings -->
+    <RestoreRecursive>false</RestoreRecursive>
+    <RestoreDisableParallel>false</RestoreDisableParallel>
+    <RestoreConfigFile>$(MSBuildThisFileDirectory)NuGet.config</RestoreConfigFile>
+  </PropertyGroup>
+  
+  <!-- Force these settings during restore evaluation -->
+  <Target Name="ForceRestoreSettings" BeforeTargets="Restore;_IsProjectRestoreSupported;CollectPackageReferences">
+    <PropertyGroup>
+      <RestoreNoHttpCache>true</RestoreNoHttpCache>
+      <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+      <RestoreForceEvaluate>true</RestoreForceEvaluate>
+      <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+      <!-- Force aggressive retry settings -->
+      <RestoreMaxDegreeOfConcurrency>1</RestoreMaxDegreeOfConcurrency>
+      <RestoreDisableParallel>true</RestoreDisableParallel>
+    </PropertyGroup>
+    <Message Text="Applying enhanced NuGet stability settings (serial restore)" Importance="normal" />
+  </Target>
+  
+  <!-- Additional target to force complete restore -->
+  <Target Name="EnsureCompleteRestore" BeforeTargets="Build">
+    <PropertyGroup>
+      <RestoreForce>true</RestoreForce>
+    </PropertyGroup>
+  </Target>
+</Project>

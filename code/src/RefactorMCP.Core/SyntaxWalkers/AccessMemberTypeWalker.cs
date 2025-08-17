@@ -1,39 +1,38 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class AccessMemberTypeWalker : CSharpSyntaxWalker
 {
-    public class AccessMemberTypeWalker : CSharpSyntaxWalker
+    private readonly string _memberName;
+    public string? MemberType { get; private set; }
+
+    public AccessMemberTypeWalker(string memberName)
     {
-        private readonly string _memberName;
-        public string? MemberType { get; private set; }
+        _memberName = memberName;
+    }
 
-        public AccessMemberTypeWalker(string memberName)
+    public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
+    {
+        foreach (var variable in node.Declaration.Variables)
         {
-            _memberName = memberName;
-        }
-
-        public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
-        {
-            foreach (var variable in node.Declaration.Variables)
+            if (variable.Identifier.ValueText == _memberName)
             {
-                if (variable.Identifier.ValueText == _memberName)
-                {
-                    MemberType = "field";
-                    return;
-                }
-            }
-            base.VisitFieldDeclaration(node);
-        }
-
-        public override void VisitPropertyDeclaration(PropertyDeclarationSyntax node)
-        {
-            if (node.Identifier.ValueText == _memberName)
-            {
-                MemberType = "property";
+                MemberType = "field";
                 return;
             }
-            base.VisitPropertyDeclaration(node);
         }
+        base.VisitFieldDeclaration(node);
+    }
+
+    public override void VisitPropertyDeclaration(PropertyDeclarationSyntax node)
+    {
+        if (node.Identifier.ValueText == _memberName)
+        {
+            MemberType = "property";
+            return;
+        }
+        base.VisitPropertyDeclaration(node);
     }
 }

@@ -1,13 +1,11 @@
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class PrivateFieldUsageWalker : TrackedNameWalker
 {
+    public HashSet<string> UsedFields => Matches;
 
-    public class PrivateFieldUsageWalker : TrackedNameWalker
+    public PrivateFieldUsageWalker(HashSet<string> privateFieldNames)
+        : base(privateFieldNames)
     {
-        public HashSet<string> UsedFields => Matches;
-
-        public PrivateFieldUsageWalker(HashSet<string> privateFieldNames)
-            : base(privateFieldNames)
-        {
-        }
     }
 }

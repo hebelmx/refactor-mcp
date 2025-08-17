@@ -7,9 +7,12 @@
 		<BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
 		<IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
 
-		<!-- Avoid network issues -->
+		<!-- Avoid network issues - Enhanced NuGet stability -->
 		<RestoreNoHttpCache>true</RestoreNoHttpCache>
 		<RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+		<RestoreForceEvaluate>true</RestoreForceEvaluate>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<RestoreLockedMode Condition="Exists('packages.lock.json')">true</RestoreLockedMode>
 
 		<!-- Warning Configuration -->
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>

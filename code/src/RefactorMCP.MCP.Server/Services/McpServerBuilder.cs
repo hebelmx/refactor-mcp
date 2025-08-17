@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
-
 namespace RefactorMCP.MCP.Server.Services;
 
 public class McpServerBuilder
@@ -61,13 +60,5 @@ public class McpServerBuilder
         });
 
         return _hostBuilder.Build();
-    }
-}
-
-public static class McpServerBuilderExtensions
-{
-    public static McpServerBuilder CreateMcpServerBuilder(this IHostBuilder hostBuilder)
-    {
-        return new McpServerBuilder(hostBuilder);
     }
 }

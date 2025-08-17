@@ -2,24 +2,23 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class MethodStaticWalker : CSharpSyntaxWalker
 {
-    public class MethodStaticWalker : CSharpSyntaxWalker
+    private readonly HashSet<string> _methodNames;
+    public Dictionary<string, bool> IsStaticMap { get; } = new();
+
+    public MethodStaticWalker(IEnumerable<string> methodNames)
     {
-        private readonly HashSet<string> _methodNames;
-        public Dictionary<string, bool> IsStaticMap { get; } = new();
+        _methodNames = new HashSet<string>(methodNames);
+    }
 
-        public MethodStaticWalker(IEnumerable<string> methodNames)
-        {
-            _methodNames = new HashSet<string>(methodNames);
-        }
-
-        public override void VisitMethodDeclaration(MethodDeclarationSyntax node)
-        {
-            var name = node.Identifier.ValueText;
-            if (_methodNames.Contains(name))
-                IsStaticMap[name] = node.Modifiers.Any(SyntaxKind.StaticKeyword);
-            base.VisitMethodDeclaration(node);
-        }
+    public override void VisitMethodDeclaration(MethodDeclarationSyntax node)
+    {
+        var name = node.Identifier.ValueText;
+        if (_methodNames.Contains(name))
+            IsStaticMap[name] = node.Modifiers.Any(SyntaxKind.StaticKeyword);
+        base.VisitMethodDeclaration(node);
     }
 }

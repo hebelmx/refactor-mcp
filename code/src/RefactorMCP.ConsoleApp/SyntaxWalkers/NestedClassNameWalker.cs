@@ -1,28 +1,27 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-namespace RefactorMCP.ConsoleApp.SyntaxWalkers
+
+namespace RefactorMCP.ConsoleApp.SyntaxWalkers;
+
+internal class NestedClassNameWalker : NameCollectorWalker
 {
+    private readonly ClassDeclarationSyntax _origin;
 
-    internal class NestedClassNameWalker : NameCollectorWalker
+    public NestedClassNameWalker(ClassDeclarationSyntax origin)
     {
-        private readonly ClassDeclarationSyntax _origin;
+        _origin = origin;
+    }
 
-        public NestedClassNameWalker(ClassDeclarationSyntax origin)
-        {
-            _origin = origin;
-        }
+    public override void VisitClassDeclaration(ClassDeclarationSyntax node)
+    {
+        if (node.Parent == _origin)
+            Add(node.Identifier.ValueText);
+        base.VisitClassDeclaration(node);
+    }
 
-        public override void VisitClassDeclaration(ClassDeclarationSyntax node)
-        {
-            if (node.Parent == _origin)
-                Add(node.Identifier.ValueText);
-            base.VisitClassDeclaration(node);
-        }
-
-        public override void VisitEnumDeclaration(EnumDeclarationSyntax node)
-        {
-            if (node.Parent == _origin)
-                Add(node.Identifier.ValueText);
-            base.VisitEnumDeclaration(node);
-        }
+    public override void VisitEnumDeclaration(EnumDeclarationSyntax node)
+    {
+        if (node.Parent == _origin)
+            Add(node.Identifier.ValueText);
+        base.VisitEnumDeclaration(node);
     }
 }

@@ -1,69 +1,67 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class MethodAnalysisWalker : CSharpSyntaxWalker
 {
+    private readonly HashSet<string> _instanceMembers;
+    private readonly HashSet<string> _methodNames;
+    private readonly string _methodName;
 
-    public class MethodAnalysisWalker : CSharpSyntaxWalker
+    public bool UsesInstanceMembers { get; private set; }
+    public bool CallsOtherMethods { get; private set; }
+    public bool IsRecursive { get; private set; }
+
+    public MethodAnalysisWalker(HashSet<string> instanceMembers, HashSet<string> methodNames, string methodName)
     {
-        private readonly HashSet<string> _instanceMembers;
-        private readonly HashSet<string> _methodNames;
-        private readonly string _methodName;
+        _instanceMembers = instanceMembers;
+        _methodNames = methodNames;
+        _methodName = methodName;
+    }
 
-        public bool UsesInstanceMembers { get; private set; }
-        public bool CallsOtherMethods { get; private set; }
-        public bool IsRecursive { get; private set; }
-
-        public MethodAnalysisWalker(HashSet<string> instanceMembers, HashSet<string> methodNames, string methodName)
+    public override void VisitIdentifierName(IdentifierNameSyntax node)
+    {
+        if (_instanceMembers.Contains(node.Identifier.ValueText))
         {
-            _instanceMembers = instanceMembers;
-            _methodNames = methodNames;
-            _methodName = methodName;
+            var parent = node.Parent;
+            if (parent is not MemberAccessExpressionSyntax ||
+                (parent is MemberAccessExpressionSyntax ma && ma.Expression == node))
+            {
+                UsesInstanceMembers = true;
+            }
         }
 
-        public override void VisitIdentifierName(IdentifierNameSyntax node)
+        if (_methodNames.Contains(node.Identifier.ValueText))
         {
-            if (_instanceMembers.Contains(node.Identifier.ValueText))
+            var parent = node.Parent;
+            if (parent is not InvocationExpressionSyntax &&
+                (parent is not MemberAccessExpressionSyntax ||
+                 (parent is MemberAccessExpressionSyntax ma && ma.Expression is ThisExpressionSyntax)))
             {
-                var parent = node.Parent;
-                if (parent is not MemberAccessExpressionSyntax ||
-                    (parent is MemberAccessExpressionSyntax ma && ma.Expression == node))
-                {
-                    UsesInstanceMembers = true;
-                }
-            }
-
-            if (_methodNames.Contains(node.Identifier.ValueText))
-            {
-                var parent = node.Parent;
-                if (parent is not InvocationExpressionSyntax &&
-                    (parent is not MemberAccessExpressionSyntax ||
-                     (parent is MemberAccessExpressionSyntax ma && ma.Expression is ThisExpressionSyntax)))
-                {
-                    if (node.Identifier.ValueText == _methodName)
-                        IsRecursive = true;
-                    else
-                        CallsOtherMethods = true;
-                }
-            }
-
-            base.VisitIdentifierName(node);
-        }
-
-        public override void VisitInvocationExpression(InvocationExpressionSyntax node)
-        {
-            if (node.Expression is IdentifierNameSyntax id && _methodNames.Contains(id.Identifier.ValueText))
-            {
-                if (id.Identifier.ValueText == _methodName)
-                {
+                if (node.Identifier.ValueText == _methodName)
                     IsRecursive = true;
-                }
                 else
-                {
                     CallsOtherMethods = true;
-                }
             }
-            base.VisitInvocationExpression(node);
         }
+
+        base.VisitIdentifierName(node);
+    }
+
+    public override void VisitInvocationExpression(InvocationExpressionSyntax node)
+    {
+        if (node.Expression is IdentifierNameSyntax id && _methodNames.Contains(id.Identifier.ValueText))
+        {
+            if (id.Identifier.ValueText == _methodName)
+            {
+                IsRecursive = true;
+            }
+            else
+            {
+                CallsOtherMethods = true;
+            }
+        }
+        base.VisitInvocationExpression(node);
     }
 }

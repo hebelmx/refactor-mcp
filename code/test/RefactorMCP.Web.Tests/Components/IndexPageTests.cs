@@ -11,28 +11,28 @@ public class IndexPageTests : TestContext
     {
         // Register MudBlazor services for testing
         // Services.AddMudServices(); // TODO: Add MudBlazor test services if needed
-        
+
         // Register mock services
         var mockDashboardService = Substitute.For<IDashboardService>();
         var mockMetricsService = Substitute.For<IMetricsService>();
-        
+
         mockDashboardService.GetDashboardStatsAsync().Returns(new DashboardStats(25, 3, 12, 2.1, 94));
-            
+
         mockDashboardService.GetSystemHealthAsync().Returns(new SystemHealthStatus(true, "All systems operational", new Dictionary<string, ComponentHealth>
         {
             ["RefactoringService"] = new ComponentHealth(true, "Healthy", null, DateTime.Now),
             ["McpServer"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
         }));
-            
+
         mockDashboardService.GetRecentActivitiesAsync(Arg.Any<int>()).Returns(new[]
         {
             new RefactoringActivity(DateTime.Now.AddMinutes(-5), "extract-method", "TestProject", true, TimeSpan.FromSeconds(2.3)),
             new RefactoringActivity(DateTime.Now.AddMinutes(-10), "move-method", "AnotherProject", false, TimeSpan.FromSeconds(1.8), "Target class not found")
         });
 
-        mockMetricsService.GetPerformanceMetricsAsync(Arg.Any<TimeSpan>()).Returns(new List<PerformanceMetric> 
-        { 
-            new PerformanceMetric(DateTime.Now, "Performance", 95.5, "%") 
+        mockMetricsService.GetPerformanceMetricsAsync(Arg.Any<TimeSpan>()).Returns(new List<PerformanceMetric>
+        {
+            new PerformanceMetric(DateTime.Now, "Performance", 95.5, "%")
         });
 
         Services.AddSingleton(mockDashboardService);
@@ -59,7 +59,7 @@ public class IndexPageTests : TestContext
         // Should have cards for Available Tools, Total Refactorings, Active Solutions, Success Rate
         var cards = component.FindAll(".mud-card");
         cards.Count.Should().BeGreaterOrEqualTo(4);
-        
+
         // Check for specific stats
         component.Markup.Should().Contain("Available Tools");
         component.Markup.Should().Contain("Total Refactorings");
@@ -106,7 +106,7 @@ public class IndexPageTests : TestContext
         component.Markup.Should().Contain("View Metrics");
         component.Markup.Should().Contain("System Monitor");
         component.Markup.Should().Contain("View Logs");
-        
+
         // Check for correct links
         component.FindAll("a[href='/tools']").Should().NotBeEmpty();
         component.FindAll("a[href='/metrics']").Should().NotBeEmpty();
@@ -150,7 +150,7 @@ public class IndexPageTests : TestContext
         // Assert
         // Check that the mock values are displayed
         component.Markup.Should().Contain("12"); // Available Tools
-        component.Markup.Should().Contain("25"); // Total Refactorings  
+        component.Markup.Should().Contain("25"); // Total Refactorings
         component.Markup.Should().Contain("3");  // Active Solutions
         component.Markup.Should().Contain("94"); // Success Rate
     }
@@ -182,8 +182,3 @@ public class IndexPageTests : TestContext
 }
 
 // Additional component tests can be added here for other pages
-public class ToolsPageTests : TestContext
-{
-    // This would test the Tools.razor page once it's more developed
-    // For now, just a placeholder structure
-}

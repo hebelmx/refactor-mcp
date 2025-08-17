@@ -102,11 +102,11 @@
   <!-- Test projects package references -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="All" />
     <PackageReference Include="coverlet.collector" PrivateAssets="All" />
     <PackageReference Include="FluentAssertions" />
-    <PackageReference Include="Moq" />
+    <PackageReference Include="NSubstitute" />
 
     <!-- Central package versions moved to Directory.Packages.props -->
   </ItemGroup>
@@ -123,7 +123,7 @@
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <Using Include="Xunit" />
     <Using Include="FluentAssertions" />
-    <Using Include="Moq" />
+    <Using Include="NSubstitute" />
   </ItemGroup>
 
   <!-- Compiler constants -->

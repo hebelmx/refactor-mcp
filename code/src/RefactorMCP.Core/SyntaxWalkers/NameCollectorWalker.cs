@@ -1,11 +1,10 @@
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace RefactorMCP.Core.SyntaxWalkers
-{
-    public abstract class NameCollectorWalker : CSharpSyntaxWalker
-    {
-        public HashSet<string> Names { get; } = new();
+namespace RefactorMCP.Core.SyntaxWalkers;
 
-        protected void Add(string name) => Names.Add(name);
-    }
+public abstract class NameCollectorWalker : CSharpSyntaxWalker
+{
+    public HashSet<string> Names { get; } = new();
+
+    protected void Add(string name) => Names.Add(name);
 }

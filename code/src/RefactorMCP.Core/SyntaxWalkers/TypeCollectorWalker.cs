@@ -2,22 +2,20 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
+namespace RefactorMCP.Core.SyntaxWalkers;
+
+public class TypeCollectorWalker<T> : CSharpSyntaxWalker where T : TypeDeclarationSyntax
 {
+    public Dictionary<string, T> Types { get; } = new();
 
-    public class TypeCollectorWalker<T> : CSharpSyntaxWalker where T : TypeDeclarationSyntax
+    public override void Visit(SyntaxNode? node)
     {
-        public Dictionary<string, T> Types { get; } = new();
-
-        public override void Visit(SyntaxNode? node)
+        if (node is T typed)
         {
-            if (node is T typed)
-            {
-                var name = typed.Identifier.ValueText;
-                if (!Types.ContainsKey(name))
-                    Types[name] = typed;
-            }
-            base.Visit(node);
+            var name = typed.Identifier.ValueText;
+            if (!Types.ContainsKey(name))
+                Types[name] = typed;
         }
+        base.Visit(node);
     }
 }

@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Http;
 using ModelContextProtocol.Server;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -35,19 +33,19 @@ public class McpController : ControllerBase
             var method = FindToolMethod(request.ToolName);
             if (method == null)
             {
-                return BadRequest(new McpErrorResponse 
-                { 
+                return BadRequest(new McpErrorResponse
+                {
                     Error = "Tool not found",
-                    Code = -32601 
+                    Code = -32601
                 });
             }
 
             // Convert parameters
             var parameters = ConvertParameters(method, request.Parameters);
-            
+
             // Invoke the tool
             var result = method.Invoke(null, parameters);
-            
+
             // Handle async results
             string responseText;
             if (result is Task<string> taskStr)
@@ -79,10 +77,10 @@ public class McpController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error executing MCP tool {ToolName}", request.ToolName);
-            return BadRequest(new McpErrorResponse 
-            { 
+            return BadRequest(new McpErrorResponse
+            {
                 Error = ex.Message,
-                Code = -32000 
+                Code = -32000
             });
         }
     }
@@ -209,7 +207,7 @@ public class McpController : ControllerBase
         if (type == typeof(string[])) return "array";
         return "string";
     }
-    
+
     private static string ToKebabCase(string name)
     {
         var sb = new StringBuilder();
@@ -225,79 +223,5 @@ public class McpController : ControllerBase
 }
 
 // MCP Request/Response Models with JSON serialization attributes
-[JsonSerializable(typeof(McpToolCallRequest))]
-[JsonSerializable(typeof(McpToolCallResponse))]
-[JsonSerializable(typeof(McpContent))]
-[JsonSerializable(typeof(McpErrorResponse))]
-[JsonSerializable(typeof(McpListToolsResponse))]
-[JsonSerializable(typeof(McpTool))]
-[JsonSerializable(typeof(McpServerInfo))]
-[JsonSerializable(typeof(McpCapabilities))]
-[JsonSerializable(typeof(McpToolsCapability))]
-[JsonSerializable(typeof(McpResourcesCapability))]
-[JsonSerializable(typeof(List<McpTool>))]
-[JsonSerializable(typeof(List<McpContent>))]
-[JsonSerializable(typeof(Dictionary<string, JsonElement>))]
-public partial class McpJsonContext : JsonSerializerContext { }
-
-public class McpToolCallRequest
-{
-    public string ToolName { get; set; } = string.Empty;
-    public Dictionary<string, JsonElement>? Parameters { get; set; }
-}
-
-public class McpToolCallResponse
-{
-    public List<McpContent> Content { get; set; } = new();
-}
-
-public class McpContent
-{
-    public string Type { get; set; } = string.Empty;
-    public string Text { get; set; } = string.Empty;
-}
-
-public class McpErrorResponse
-{
-    public string Error { get; set; } = string.Empty;
-    public int Code { get; set; }
-}
-
-public class McpListToolsResponse
-{
-    public List<McpTool> Tools { get; set; } = new();
-}
-
-public class McpTool
-{
-    public string Name { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public object? InputSchema { get; set; }
-}
-
-public class McpServerInfo
-{
-    public string Name { get; set; } = string.Empty;
-    public string Version { get; set; } = string.Empty;
-    public string ProtocolVersion { get; set; } = string.Empty;
-    public McpCapabilities? Capabilities { get; set; }
-}
-
-public class McpCapabilities
-{
-    public McpToolsCapability? Tools { get; set; }
-    public McpResourcesCapability? Resources { get; set; }
-}
-
-public class McpToolsCapability
-{
-    public bool ListChanged { get; set; } = false;
-}
-
-public class McpResourcesCapability
-{
-    public bool Subscribe { get; set; } = false;
-    public bool ListChanged { get; set; } = false;
-}
 
 // These attributes are provided by ModelContextProtocol.Server package

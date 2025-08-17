@@ -2,6 +2,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RefactorMCP.Core.Tools;
+using RefactorMCP.Core.Exceptions;
 
 namespace RefactorMCP.Core.Tests.Tools;
 
@@ -17,7 +18,7 @@ public class CleanupUsingsToolTests : IDisposable
         Directory.CreateDirectory(_testDirectory);
         _testSolutionPath = Path.Combine(_testDirectory, "TestSolution.sln");
         _testFilePath = Path.Combine(_testDirectory, "TestClass.cs");
-        
+
         CreateTestSolution();
     }
 
@@ -32,16 +33,16 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         Console.WriteLine(""Hello"");
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -61,7 +62,7 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var list = new List<string>();
         var result = list.Where(x => x.Length > 0).ToList();
@@ -69,10 +70,10 @@ public class TestClass
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -88,16 +89,16 @@ public class TestClass
         var sourceCode = @"
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var x = 1;
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -116,17 +117,17 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var list = new List<string>();
         var result = list.Where(x => x.Length > 0).ToList();
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -147,17 +148,17 @@ using MyAlias = System.Collections.Generic.List<string>;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var list = new MyAlias();
         Console.WriteLine(list.Count);
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -179,17 +180,17 @@ using static System.Math;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         WriteLine(""Hello"");
         var result = Sqrt(16);
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -212,7 +213,7 @@ namespace TestNamespace
 {
     public class TestClass
     {
-        public void TestMethod() 
+        public void TestMethod()
         {
             var list = new List<string>();
             var result = list.Where(x => x.Length > 0).ToList();
@@ -221,10 +222,10 @@ namespace TestNamespace
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -243,7 +244,7 @@ using System.Collections.Generic;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         // This will cause compilation errors
         var invalid = new NonExistentType();
@@ -251,10 +252,10 @@ public class TestClass
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         // Should still attempt to clean up usings even with compilation errors
@@ -271,7 +272,7 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var list = new List<string>();
         var result = list.Where(x => x.Length > 0).ToList();
@@ -279,10 +280,10 @@ public class TestClass
     }
 }";
         await File.WriteAllTextAsync(_testFilePath, sourceCode);
-        
+
         // Act
         var result = await CleanupUsingsTool.CleanupUsings(_testSolutionPath, _testFilePath);
-        
+
         // Assert
         result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
@@ -296,9 +297,9 @@ public class TestClass
     {
         // Arrange
         var nonExistentPath = Path.Combine(_testDirectory, "NonExistent.cs");
-        
+
         // Act & Assert
-        await Assert.ThrowsAsync<McpException>(() => 
+        await Assert.ThrowsAsync<McpException>(() =>
             CleanupUsingsTool.CleanupUsings(null, nonExistentPath));
     }
 
@@ -313,15 +314,15 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         Console.WriteLine(""Hello"");
     }
 }";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         result.Should().NotContain("using System.Collections.Generic;");
         result.Should().NotContain("using System.Linq;");
@@ -340,17 +341,17 @@ using System.Linq;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         var list = new List<string>();
         var result = list.Where(x => x.Length > 0).ToList();
         Console.WriteLine(result.Count.ToString());
     }
 }";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         result.Should().Contain("using System;");
         result.Should().Contain("using System.Collections.Generic;");
@@ -367,17 +368,17 @@ using System.Collections.Generic;
 
 public class TestClass
 {
-    public void TestMethod() 
+    public void TestMethod()
     {
         // This will cause compilation errors
         var invalid = new NonExistentType();
         Console.WriteLine(invalid);
     }
 }";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         // Should return original content when compilation fails
         result.Should().Contain("using System.Collections.Generic;");
@@ -388,10 +389,10 @@ public class TestClass
     {
         // Arrange
         var sourceCode = "";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         result.Should().BeEmpty();
     }
@@ -405,10 +406,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 ";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         // All usings should be removed since none are used
         result.Should().NotContain("using System;");
@@ -430,15 +431,15 @@ using System.Linq;
 
 public class TestClass
 {{
-    public void TestMethod() 
+    public void TestMethod()
     {{
         var x = 1;
     }}
 }}";
-        
+
         // Act
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
-        
+
         // Assert
         result.Should().NotContain(usingDirective);
         result.Should().Contain("public class TestClass");
@@ -466,14 +467,14 @@ Global
 		{12345678-1234-1234-1234-123456789012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal";
-        
+
         var projectContent = @"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 </Project>";
-        
+
         File.WriteAllText(_testSolutionPath, solutionContent);
         File.WriteAllText(Path.Combine(_testDirectory, "TestProject.csproj"), projectContent);
     }

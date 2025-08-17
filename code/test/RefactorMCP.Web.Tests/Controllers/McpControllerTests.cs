@@ -36,7 +36,7 @@ public class McpControllerTests
         result.Should().BeOfType<BadRequestObjectResult>();
         var badRequestResult = result as BadRequestObjectResult;
         badRequestResult!.Value.Should().BeOfType<McpErrorResponse>();
-        
+
         var errorResponse = badRequestResult.Value as McpErrorResponse;
         errorResponse!.Error.Should().Contain("Tool not found");
         errorResponse.Code.Should().Be(-32601);
@@ -74,7 +74,7 @@ public class McpControllerTests
         result.Should().BeOfType<OkObjectResult>();
         var okResult = result as OkObjectResult;
         okResult!.Value.Should().BeOfType<McpListToolsResponse>();
-        
+
         var response = okResult.Value as McpListToolsResponse;
         response!.Tools.Should().NotBeNull();
         response.Tools.Should().BeOfType<List<McpTool>>();
@@ -90,7 +90,7 @@ public class McpControllerTests
         result.Should().BeOfType<OkObjectResult>();
         var okResult = result as OkObjectResult;
         okResult!.Value.Should().BeOfType<McpServerInfo>();
-        
+
         var serverInfo = okResult.Value as McpServerInfo;
         serverInfo!.Name.Should().Be("RefactorMCP");
         serverInfo.Version.Should().Be("1.0.0");
@@ -110,7 +110,7 @@ public class McpControllerTests
         var result = _controller.ListTools();
         var okResult = result as OkObjectResult;
         var response = okResult!.Value as McpListToolsResponse;
-        
+
         // The tools list should contain kebab-case names
         response!.Tools.Select(t => t.Name).Should().Contain(name => name.Contains("-"));
     }
@@ -144,25 +144,3 @@ public class McpControllerTests
 }
 
 // Test data builders for better test organization
-public static class McpTestDataBuilder
-{
-    public static McpToolCallRequest CreateToolCallRequest(string toolName, Dictionary<string, JsonElement>? parameters = null)
-    {
-        return new McpToolCallRequest
-        {
-            ToolName = toolName,
-            Parameters = parameters ?? new Dictionary<string, JsonElement>()
-        };
-    }
-
-    public static Dictionary<string, JsonElement> CreateParameters(params (string key, object value)[] parameters)
-    {
-        var result = new Dictionary<string, JsonElement>();
-        foreach (var (key, value) in parameters)
-        {
-            var json = JsonSerializer.Serialize(value);
-            result[key] = JsonSerializer.Deserialize<JsonElement>(json);
-        }
-        return result;
-    }
-}

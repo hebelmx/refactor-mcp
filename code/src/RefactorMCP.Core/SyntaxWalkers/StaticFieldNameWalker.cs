@@ -2,19 +2,17 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RefactorMCP.Core.SyntaxWalkers
-{
+namespace RefactorMCP.Core.SyntaxWalkers;
 
-    public class StaticFieldNameWalker : NameCollectorWalker
+public class StaticFieldNameWalker : NameCollectorWalker
+{
+    public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
     {
-        public override void VisitFieldDeclaration(FieldDeclarationSyntax node)
+        if (node.Modifiers.Any(SyntaxKind.StaticKeyword))
         {
-            if (node.Modifiers.Any(SyntaxKind.StaticKeyword))
-            {
-                foreach (var variable in node.Declaration.Variables)
-                    Add(variable.Identifier.ValueText);
-            }
-            base.VisitFieldDeclaration(node);
+            foreach (var variable in node.Declaration.Variables)
+                Add(variable.Identifier.ValueText);
         }
+        base.VisitFieldDeclaration(node);
     }
 }
