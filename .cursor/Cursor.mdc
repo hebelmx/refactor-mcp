@@ -1,0 +1,51 @@
+## Cursor Agent & Programming Best Practices
+
+This document defines how agents should operate in this repository, which programming standards apply by default, and how to load rules efficiently. It is designed to minimize context size while maximizing rule enforcement.
+
+### 1) Rule Loading Strategy
+- Always load `.cursor/rules/rules.json` first to determine relevant packs.
+- Select rule packs based on task goal and file signals:
+  - refactoring, testing, architecture, cqrs, docs, tooling
+- Load only the referenced rules from the selected pack(s), not the entire rule set.
+- Cite rule IDs in plans and edits.
+
+### 2) Mandatory Tooling (MCP Servers)
+- **Serena**: project activation, file IO, code search, symbol overview, safe shell commands.
+  - Prefer: `mcp_serena_activate_project`, `mcp_serena_search_for_pattern`, `mcp_serena_get_symbols_overview`, `mcp_serena_read_file`, `mcp_serena_execute_shell_command`.
+- **SequentialThinking**: plan multi-step refactors, risk assessment, decision logs.
+  - Use: `mcp_sequential-thinking_sequentialthinking` before complex or high-impact operations.
+- **Microsoft Learn**: authoritative .NET/Azure research; ground framework guidance.
+  - Use: `mcp_microsoft-docs_microsoft_docs_search` and `mcp_microsoft-docs_microsoft_docs_fetch`.
+- **RefactorMCP**: automated, safe code transformations (post-approval only).
+  - Use: `mcp_refactorMcp_*` family (e.g., `replace_regex`, `rename_symbol`, `extract_method`).
+
+### 3) Programming Standards (Default)
+- Follow modern C# guidelines: immutability, expression-bodied members, null-safety, async/await.
+- Do not throw exceptions for control flow; prefer `Result`/`Result<T>`.
+- Propagate `CancellationToken` in APIs and xUnit v3 tests via `TestContext.Current.CancellationToken`.
+- Avoid `#region`; extract smaller classes/methods instead.
+- Prefer source-generated regex (`[GeneratedRegex]`) over `RegexOptions.Compiled`.
+- Structured logging with `ILogger<T>`; no string concatenation for logs.
+- One public type per file; separate interfaces from implementations.
+- XML documentation on all public classes/methods/properties.
+
+### 4) Planning & Approval Flow
+- Use `.cursor/plans/templates/Refactor_AuditPlan_Template.md` to prepare each batch.
+- Reference applicable rule packs and rule IDs in the plan.
+- Do not execute RefactorMCP until explicit approval is recorded.
+
+### 5) Minimal Working Set (Examples)
+- Refactoring batch → load: `rules.json.pack.refactoring` → rules `[1034, 1033, 1032, 1030, 1028]`.
+- Testing task → load: `rules.json.pack.testing` → rules `[1029, 305, 306, 307]`.
+
+### 6) Safety & CI Hooks
+- Plans must list selected packs and rules.
+- CI may verify pack existence and run targeted scans (regions, compiled regex, sync-over-async).
+
+### 7) References
+- `.cursor/rules/rules.json` (central index)
+- `.cursor/rules/1034_GeneralRefactoringStandards.mdc`
+- `.cursor/rules/1033_EXXER200NullParameterRefactoring.mdc`
+- `.cursor/rules/1032_SourceGeneratedRegexBestPractices.mdc`
+- `.cursor/rules/1030_ToolUsageBestPractices.mdc`
+- `.cursor/rules/1029_ExxerAITestingStandards.mdc`

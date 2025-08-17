@@ -12,3 +12,5 @@ global using RefactorMCP.Core.SyntaxRewriters;
 global using RefactorMCP.Core.SyntaxWalkers;
 global using RefactorMCP.Core.Tools;
 global using System.Text.Json;
+global using NSubstitute;
+global using Xunit;

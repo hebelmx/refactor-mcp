@@ -1,43 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
   <PropertyGroup>
-	<!--CENTRALLY MANAGED DO NOT ADD ANOTHER ON HERE  TargetFramework  -->
-	  <OutputType>Exe</OutputType>
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
 
-	  <ImplicitUsings>enable</ImplicitUsings>
-
-	<Nullable>enable</Nullable>
-	<IsPackable>false</IsPackable>
-	<IsTestProject>true</IsTestProject>
-	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-
-	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-	  <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-	  </PropertyGroup>
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
   <ItemGroup>
-	<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
-	<PackageReference Include="AngleSharp" />
-	<PackageReference Include="Moq" />	
-	<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-	<PackageReference Include="MudBlazor" />
-	<PackageReference Include="Extensions.MudBlazor.StaticInput" />
-	<PackageReference Include="bunit" />
-	<PackageReference Include="coverlet.collector" />
-	<PackageReference Include="FluentAssertions" />
-	<PackageReference Include="Microsoft.NET.Test.Sdk" />
-	<PackageReference Include="xunit.v3" />
-	<PackageReference Include="xunit.runner.visualstudio">
-	  <PrivateAssets>all</PrivateAssets>
-	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
+    <!-- Microsoft ASP.NET Core & Extensions -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    
+    <!-- UI Framework & Components -->
+    <PackageReference Include="MudBlazor" />
+    <PackageReference Include="Extensions.MudBlazor.StaticInput" />
+    <PackageReference Include="AngleSharp" />
+    
+    <!-- Testing Framework & Tools -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.v3.runner.msbuild">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Test Coverage & Mocking -->
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NSubstitute" />
+    
+    <!-- Component Testing -->
+    <PackageReference Include="bunit" />
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
   <ItemGroup>
-	<ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
-	<ProjectReference Include="..\..\src\RefactorMCP.Web\RefactorMCP.Web.csproj" />
-	<ProjectReference Include="..\..\src\RefactorMCP.MCP.Server\RefactorMCP.MCP.Server.csproj" />
+    <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
+    <ProjectReference Include="..\..\src\RefactorMCP.Web\RefactorMCP.Web.csproj" />
+    <ProjectReference Include="..\..\src\RefactorMCP.MCP.Server\RefactorMCP.MCP.Server.csproj" />
   </ItemGroup>
-
-
 
 </Project>

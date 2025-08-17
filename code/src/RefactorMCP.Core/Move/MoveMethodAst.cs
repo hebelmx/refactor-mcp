@@ -749,7 +749,10 @@ public static partial class MoveMethodAst
         }
 
         var newOriginClass = sourceClass.WithMembers(SyntaxFactory.List(originMembers));
-        return sourceClass.SyntaxTree.GetRoot().ReplaceNode(sourceClass, newOriginClass);
+        var root = sourceClass.SyntaxTree.GetRoot();
+        if (root == null)
+            throw new InvalidOperationException("Could not get syntax tree root");
+        return root.ReplaceNode(sourceClass, newOriginClass);
     }
 
     private static int FindAccessMemberInsertionIndex(List<MemberDeclarationSyntax> members)
@@ -825,11 +828,12 @@ public static partial class MoveMethodAst
 
         var targetCompilationUnit = targetRoot as CompilationUnitSyntax ?? throw new InvalidOperationException("Expected compilation unit");
         var targetUsingNames = targetCompilationUnit.Usings
-            .Select(u => u.Name.ToString())
+            .Where(u => u.Name != null)
+            .Select(u => u.Name!.ToString())
             .ToHashSet();
         var missingUsings = sourceUsings
-            .Where(u => !targetUsingNames.Contains(u.Name.ToString()))
-            .Where(u => namespaceName == null || u.Name.ToString() != namespaceName)
+            .Where(u => u.Name != null && !targetUsingNames.Contains(u.Name.ToString()))
+            .Where(u => u.Name != null && (namespaceName == null || u.Name.ToString() != namespaceName))
             .ToArray();
 
         if (missingUsings.Length > 0)

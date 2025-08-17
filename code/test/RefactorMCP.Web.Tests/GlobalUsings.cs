@@ -1,17 +1,25 @@
-// Global using statements for RefactorMCP.Web.Tests
+// =====================================================================
+// Global Using Statements for RefactorMCP.Web.Tests
+// =====================================================================
 
-// Testing frameworks
+// =====================================================================
+// Testing Frameworks
+// =====================================================================
 global using Xunit;
 global using FluentAssertions;
-global using Moq;
+global using NSubstitute;
 global using Bunit;
 
-// ASP.NET Core Testing
+// =====================================================================
+// Microsoft ASP.NET Core Testing
+// =====================================================================
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Http;
 
-// System namespaces commonly used in tests
+// =====================================================================
+// System Namespaces
+// =====================================================================
 global using System;
 global using System.Collections.Generic;
 global using System.IO;
@@ -20,12 +28,16 @@ global using System.Net.Http;
 global using System.Threading.Tasks;
 global using System.Text.Json;
 
-// Microsoft Extensions
+// =====================================================================
+// Microsoft Extensions & Configuration
+// =====================================================================
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Configuration;
 
-// RefactorMCP
+// =====================================================================
+// RefactorMCP Core Libraries
+// =====================================================================
 global using RefactorMCP.Core.Move;
 global using RefactorMCP.Core.SyntaxRewriters;
 global using RefactorMCP.Core.SyntaxWalkers;

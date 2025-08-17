@@ -13,34 +13,30 @@ public class IndexPageTests : TestContext
         // Services.AddMudServices(); // TODO: Add MudBlazor test services if needed
         
         // Register mock services
-        var mockDashboardService = new Mock<IDashboardService>();
-        var mockMetricsService = new Mock<IMetricsService>();
+        var mockDashboardService = Substitute.For<IDashboardService>();
+        var mockMetricsService = Substitute.For<IMetricsService>();
         
-        mockDashboardService.Setup(x => x.GetDashboardStatsAsync())
-            .ReturnsAsync(new DashboardStats(25, 3, 12, 2.1, 94));
+        mockDashboardService.GetDashboardStatsAsync().Returns(new DashboardStats(25, 3, 12, 2.1, 94));
             
-        mockDashboardService.Setup(x => x.GetSystemHealthAsync())
-            .ReturnsAsync(new SystemHealthStatus(true, "All systems operational", new Dictionary<string, ComponentHealth>
-            {
-                ["RefactoringService"] = new ComponentHealth(true, "Healthy", null, DateTime.Now),
-                ["McpServer"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
-            }));
+        mockDashboardService.GetSystemHealthAsync().Returns(new SystemHealthStatus(true, "All systems operational", new Dictionary<string, ComponentHealth>
+        {
+            ["RefactoringService"] = new ComponentHealth(true, "Healthy", null, DateTime.Now),
+            ["McpServer"] = new ComponentHealth(true, "Healthy", null, DateTime.Now)
+        }));
             
-        mockDashboardService.Setup(x => x.GetRecentActivitiesAsync(It.IsAny<int>()))
-            .ReturnsAsync(new[]
-            {
-                new RefactoringActivity(DateTime.Now.AddMinutes(-5), "extract-method", "TestProject", true, TimeSpan.FromSeconds(2.3)),
-                new RefactoringActivity(DateTime.Now.AddMinutes(-10), "move-method", "AnotherProject", false, TimeSpan.FromSeconds(1.8), "Target class not found")
-            });
+        mockDashboardService.GetRecentActivitiesAsync(Arg.Any<int>()).Returns(new[]
+        {
+            new RefactoringActivity(DateTime.Now.AddMinutes(-5), "extract-method", "TestProject", true, TimeSpan.FromSeconds(2.3)),
+            new RefactoringActivity(DateTime.Now.AddMinutes(-10), "move-method", "AnotherProject", false, TimeSpan.FromSeconds(1.8), "Target class not found")
+        });
 
-        mockMetricsService.Setup(x => x.GetPerformanceMetricsAsync(It.IsAny<TimeSpan>()))
-            .ReturnsAsync(new List<PerformanceMetric> 
-            { 
-                new PerformanceMetric(DateTime.Now, "Performance", 95.5, "%") 
-            });
+        mockMetricsService.GetPerformanceMetricsAsync(Arg.Any<TimeSpan>()).Returns(new List<PerformanceMetric> 
+        { 
+            new PerformanceMetric(DateTime.Now, "Performance", 95.5, "%") 
+        });
 
-        Services.AddSingleton(mockDashboardService.Object);
-        Services.AddSingleton(mockMetricsService.Object);
+        Services.AddSingleton(mockDashboardService);
+        Services.AddSingleton(mockMetricsService);
     }
 
     [Fact]

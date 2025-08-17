@@ -3,7 +3,7 @@
 // Testing frameworks
 global using Xunit;
 global using FluentAssertions;
-global using Moq;
+global using NSubstitute;
 
 // System namespaces commonly used in tests
 global using System;

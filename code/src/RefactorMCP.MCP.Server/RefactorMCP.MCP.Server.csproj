@@ -1,46 +1,63 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
   <PropertyGroup>
-    <!--CENTRALLY MANAGED DO NOT ADD ANOTHER ON HERE  TargetFramework  -->
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    
+    <!-- Package Information -->
     <PackageId>RefactorMCP.MCP.Server</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
     <Authors>RefactorMCP</Authors>
     <Description>MCP Server library for RefactorMCP - Model Context Protocol integration</Description>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
   <ItemGroup>
+    <!-- Microsoft Extensions & Hosting -->
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
-    <PackageReference Include="ModelContextProtocol" />
+    
+    <!-- UI Framework & Components -->
+    <PackageReference Include="MudBlazor" />
+    
+    <!-- System & JSON -->
     <PackageReference Include="System.Text.Json" />
+    
+    <!-- Protocol & Communication -->
+    <PackageReference Include="ModelContextProtocol" />
   </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="MudBlazor" />
-		
-	</ItemGroup>
-
-
-	<ItemGroup>
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
     <ProjectReference Include="..\RefactorMCP.Core\RefactorMCP.Core.csproj" />
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- InternalsVisibleTo Configuration                                       -->
+  <!-- ===================================================================== -->
   <ItemGroup>
-    <publicsVisibleTo Include="RefactorMCP.Tests" />
-    <publicsVisibleTo Include="RefactorMCP.Web" />
+    <InternalsVisibleTo Include="RefactorMCP.Tests" />
+    <InternalsVisibleTo Include="RefactorMCP.Web" />
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Package Version Overrides                                              -->
+  <!-- ===================================================================== -->
   <ItemGroup>
-    <PackageVersion Update="Microsoft.Extensions.Hosting"  />
-    <PackageVersion Update="SonarAnalyzer.CSharp"  />
+    <PackageVersion Update="Microsoft.Extensions.Hosting" />
+    <PackageVersion Update="SonarAnalyzer.CSharp" />
   </ItemGroup>
-
-
 
 </Project>

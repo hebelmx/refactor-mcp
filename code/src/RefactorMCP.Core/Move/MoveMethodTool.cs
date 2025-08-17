@@ -39,6 +39,7 @@ public static class MoveMethodTool
         _movedMethods.Clear();
         return "Cleared move history";
     }
+
     [McpServerTool, Description("Move a static method to another class (preferred for large C# file refactoring). " +
         "Leaves a delegating method in the original class to preserve the interface." +
         "The target class will be automatically created if it doesn't exist.")]
@@ -103,7 +104,10 @@ public static class MoveMethodTool
         CancellationToken cancellationToken)
     {
         var (sourceText, sourceEncoding) = await RefactoringHelpers.ReadFileWithEncodingAsync(filePath, cancellationToken);
-        var targetPath = targetFilePath ?? Path.Combine(Path.GetDirectoryName(filePath)!, $"{targetClass}.cs");
+        var directoryName = Path.GetDirectoryName(filePath);
+        if (directoryName == null)
+            throw new InvalidOperationException($"Could not determine directory for file {filePath}");
+        var targetPath = targetFilePath ?? Path.Combine(directoryName, $"{targetClass}.cs");
 
         var syntaxTree = CSharpSyntaxTree.ParseText(sourceText);
         var syntaxRoot = await syntaxTree.GetRootAsync(cancellationToken);
@@ -147,9 +151,11 @@ public static class MoveMethodTool
         var targetRoot = await PrepareTargetRootForStaticMove(context, cancellationToken);
         var updatedTargetRoot = MoveMethodAst.AddMethodToTargetClass(targetRoot, context.TargetClassName, method, context.Namespace);
 
+        if (newSourceRoot == null)
+            throw new InvalidOperationException("Could not remove method from source root");
         return new SourceAndTargetRoots
         {
-            UpdatedSourceRoot = newSourceRoot!,
+            UpdatedSourceRoot = newSourceRoot,
             UpdatedTargetRoot = updatedTargetRoot
         };
     }
@@ -180,19 +186,25 @@ public static class MoveMethodTool
     private static SyntaxNode PropagateUsingsToTarget(StaticMethodMoveContext context, SyntaxNode targetRoot)
     {
         var targetCompilationUnit = targetRoot as CompilationUnitSyntax ?? throw new InvalidOperationException("Expected compilation unit");
-        var targetUsingNames = targetCompilationUnit.Usings
-            .Select(u => u.Name.ToString())
+        var targetUsingsWithName = targetCompilationUnit.Usings.Where(u => u.Name != null).ToList();
+        var targetUsingNames = targetUsingsWithName
+            .Select(u => u.Name!.ToString())
             .ToHashSet();
 
-        var missingUsings = context.SourceUsings
-            .Where(u => !targetUsingNames.Contains(u.Name.ToString()))
-            .Where(u => context.Namespace == null || u.Name.ToString() != context.Namespace)
+        var sourceUsingsWithName = context.SourceUsings.Where(u => u.Name != null).ToList();
+        var missingUsings = sourceUsingsWithName
+            .Where(u => !targetUsingNames.Contains(u.Name!.ToString()))
+            .Where(u => context.Namespace == null || u.Name!.ToString() != context.Namespace)
             .ToArray();
 
         if (missingUsings.Length > 0)
         {
-            targetCompilationUnit = targetCompilationUnit.AddUsings(missingUsings);
-            return targetCompilationUnit;
+            var validUsings = missingUsings.Where(u => u != null).ToArray();
+            if (validUsings.Length > 0)
+            {
+                targetCompilationUnit = targetCompilationUnit.AddUsings(validUsings);
+                return targetCompilationUnit;
+            }
         }
 
         return targetRoot;
@@ -213,7 +225,9 @@ public static class MoveMethodTool
             progress?.Report(context.SourcePath);
         }
 
-        Directory.CreateDirectory(Path.GetDirectoryName(context.TargetPath)!);
+        var targetDirectory = Path.GetDirectoryName(context.TargetPath);
+        if (targetDirectory != null)
+            Directory.CreateDirectory(targetDirectory);
         var targetEncoding = File.Exists(context.TargetPath)
             ? await RefactoringHelpers.GetFileEncodingAsync(context.TargetPath, cancellationToken)
             : context.SourceEncoding;
@@ -252,11 +266,14 @@ public static class MoveMethodTool
             var solution = await RefactoringHelpers.GetOrLoadSolution(solutionPath, cancellationToken);
             var document = RefactoringHelpers.GetDocumentByPath(solution, filePath);
 
+            var directoryName = Path.GetDirectoryName(filePath);
+            if (directoryName == null)
+                throw new McpException($"Error: Could not determine directory for file {filePath}");
             var duplicateDoc = await RefactoringHelpers.FindClassInSolution(
                 solution,
                 targetClass,
                 filePath,
-                targetFilePath ?? Path.Combine(Path.GetDirectoryName(filePath)!, $"{targetClass}.cs"));
+                targetFilePath ?? Path.Combine(directoryName, $"{targetClass}.cs"));
             if (duplicateDoc != null)
                 throw new McpException($"Error: Class {targetClass} already exists in {duplicateDoc.FilePath}");
 
@@ -266,7 +283,9 @@ public static class MoveMethodTool
             SyntaxNode? rootNode = document != null
                 ? await document.GetSyntaxRootAsync(cancellationToken)
                 : (await CSharpSyntaxTree.ParseText((await RefactoringHelpers.ReadFileWithEncodingAsync(filePath, cancellationToken)).Item1).GetRootAsync(cancellationToken));
-            var sourceClassNode = rootNode!.DescendantNodes().OfType<ClassDeclarationSyntax>()
+            if (rootNode == null)
+                throw new McpException($"Error: Could not get syntax root for file {filePath}");
+            var sourceClassNode = rootNode.DescendantNodes().OfType<ClassDeclarationSyntax>()
                 .FirstOrDefault(c => c.Identifier.ValueText == sourceClass);
             if (sourceClassNode == null)
                 throw new McpException($"Error: Source class '{sourceClass}' not found");
@@ -423,7 +442,9 @@ public static class MoveMethodTool
             progress?.Report(filePath);
 
             var formattedTarget = Formatter.Format(targetRoot, RefactoringHelpers.SharedWorkspace);
-            Directory.CreateDirectory(Path.GetDirectoryName(targetPath)!);
+            var targetDirectory = Path.GetDirectoryName(targetPath);
+            if (targetDirectory != null)
+                Directory.CreateDirectory(targetDirectory);
             var targetEncoding = File.Exists(targetPath)
                 ? await RefactoringHelpers.GetFileEncodingAsync(targetPath, cancellationToken)
                 : sourceEncoding;
@@ -453,12 +474,11 @@ public static class MoveMethodTool
 
         foreach (var methodName in methodNames)
         {
-
-            var targetPath = targetFilePath ?? currentDocument.FilePath!;
-            var sameFile = targetPath == currentDocument.FilePath;
+            var targetPath = targetFilePath ?? currentDocument.FilePath ?? throw new InvalidOperationException("Document has no file path");
+            var sameFile = targetPath == (currentDocument.FilePath ?? throw new InvalidOperationException("Document has no file path"));
 
             var message = await MoveMethodFileService.MoveInstanceMethodInFile(
-                currentDocument.FilePath!,
+                currentDocument.FilePath ?? throw new InvalidOperationException("Document has no file path"),
                 sourceClassName,
                 methodName,
                 constructorInjections,
@@ -474,15 +494,22 @@ public static class MoveMethodTool
             {
                 var (newText, _) = await RefactoringHelpers.ReadFileWithEncodingAsync(targetPath, cancellationToken);
                 var newRoot = await CSharpSyntaxTree.ParseText(newText).GetRootAsync(cancellationToken);
-                currentDocument = document.Project.Solution.WithDocumentSyntaxRoot(currentDocument.Id, newRoot).GetDocument(currentDocument.Id)!;
+                var newDocument = document.Project.Solution.WithDocumentSyntaxRoot(currentDocument.Id, newRoot).GetDocument(currentDocument.Id);
+                if (newDocument == null)
+                    throw new InvalidOperationException("Could not get updated document");
+                currentDocument = newDocument;
             }
             else
             {
-                var (newSourceText, _) = await RefactoringHelpers.ReadFileWithEncodingAsync(currentDocument.FilePath!, cancellationToken);
+                var (newSourceText, _) = await RefactoringHelpers.ReadFileWithEncodingAsync(currentDocument.FilePath ?? throw new InvalidOperationException("Document has no file path"), cancellationToken);
                 var newSourceRoot = await CSharpSyntaxTree.ParseText(newSourceText).GetRootAsync(cancellationToken);
                 var solution = document.Project.Solution.WithDocumentSyntaxRoot(currentDocument.Id, newSourceRoot);
 
                 var project = solution.GetProject(document.Project.Id);
+                if (project is null)
+                {
+                    continue;
+                }
                 var targetDocument = project.Documents.FirstOrDefault(d => d.FilePath == targetPath);
                 if (targetDocument == null)
                 {
@@ -497,10 +524,13 @@ public static class MoveMethodTool
                     var targetSourceText = SourceText.From(targetText, targetEnc);
                     solution = solution.WithDocumentText(targetDocument.Id, targetSourceText);
                 }
-                currentDocument = solution.GetDocument(currentDocument.Id)!;
+                var newDocument = solution.GetDocument(currentDocument.Id);
+                if (newDocument == null)
+                    throw new InvalidOperationException("Could not get updated document");
+                currentDocument = newDocument;
             }
 
-            RefactoringHelpers.UpdateSolutionCache(currentDocument!);
+            RefactoringHelpers.UpdateSolutionCache(currentDocument);
             messages.Add(message);
         }
 

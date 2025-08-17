@@ -12,9 +12,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.Testing.Platform" />
+    <PackageReference Include="NSubstitute" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.v3.runner.msbuild">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <!-- Exclude generated test files from compilation -->
@@ -32,8 +53,8 @@
     <PackageVersion Update="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
     <PackageVersion Update="Microsoft.Extensions.Logging.Console" Version="9.0.8" />
     <PackageVersion Update="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageVersion Update="xunit" Version="2.9.3" />
-    <PackageVersion Update="xunit.runner.visualstudio" Version="3.1.3" />
+    <PackageVersion Update="xunit" Version="2.6.6" />
+    <PackageVersion Update="xunit.runner.visualstudio" Version="2.6.6" />
   </ItemGroup>
 
 </Project>

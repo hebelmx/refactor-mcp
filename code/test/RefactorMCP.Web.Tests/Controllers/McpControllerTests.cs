@@ -8,15 +8,15 @@ namespace RefactorMCP.Web.Tests.Controllers;
 
 public class McpControllerTests
 {
-    private readonly Mock<IServiceProvider> _mockServiceProvider;
-    private readonly Mock<ILogger<McpController>> _mockLogger;
+    private readonly IServiceProvider _mockServiceProvider;
+    private readonly ILogger<McpController> _mockLogger;
     private readonly McpController _controller;
 
     public McpControllerTests()
     {
-        _mockServiceProvider = new Mock<IServiceProvider>();
-        _mockLogger = new Mock<ILogger<McpController>>();
-        _controller = new McpController(_mockServiceProvider.Object, _mockLogger.Object);
+        _mockServiceProvider = Substitute.For<IServiceProvider>();
+        _mockLogger = Substitute.For<ILogger<McpController>>();
+        _controller = new McpController(_mockServiceProvider, _mockLogger);
     }
 
     [Fact]
@@ -56,14 +56,12 @@ public class McpControllerTests
         await _controller.HandleToolCall(request);
 
         // Assert
-        _mockLogger.Verify(
-            x => x.Log(
-                LogLevel.Information,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains("MCP tool call: test-tool")),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.Once);
+        _mockLogger.Received(1).Log(
+            LogLevel.Information,
+            Arg.Any<EventId>(),
+            Arg.Is<object>(v => v.ToString()!.Contains("MCP tool call: test-tool")),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<object, Exception?, string>>());
     }
 
     [Fact]
@@ -136,14 +134,12 @@ public class McpControllerTests
         badRequestResult!.Value.Should().BeOfType<McpErrorResponse>();
 
         // Verify error was logged
-        _mockLogger.Verify(
-            x => x.Log(
-                LogLevel.Error,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains("Error executing MCP tool")),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.Once);
+        _mockLogger.Received(1).Log(
+            LogLevel.Error,
+            Arg.Any<EventId>(),
+            Arg.Is<object>(v => v.ToString()!.Contains("Error executing MCP tool")),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<object, Exception?, string>>());
     }
 }
 

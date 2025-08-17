@@ -6,9 +6,9 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningsAsErrors></WarningsAsErrors>
-    <WarningsNotAsErrors></WarningsNotAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <WarningsNotAsErrors>NU1903;NU1510;NU5104;xUnit1051</WarningsNotAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     
     <!-- Version information -->
@@ -55,6 +55,11 @@
     <BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
     <OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
+    
+    <!-- NuGet Cache Configuration - Always use local cache first -->
+    <RestoreNoHttpCache>true</RestoreNoHttpCache>
+    <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+    <RestoreDisableParallel>false</RestoreDisableParallel>
     
     <!-- Assembly and file versioning -->
     <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">$(MajorVersion).$(MinorVersion).0.0</AssemblyVersion>

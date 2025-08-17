@@ -1,39 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
   <PropertyGroup>
-    <!--CENTRALLY MANAGED DO NOT ADD ANOTHER ON HERE  TargetFramework  -->
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
     <OutputType>Exe</OutputType>
-
-	  <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-
-	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-	  <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
   <ItemGroup>
+    <!-- Microsoft Extensions & Configuration -->
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-
-    <PackageReference Include="coverlet.collector" />
-    <PackageReference Include="FluentAssertions" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    
+    <!-- Testing Framework & Tools -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit.v3" />
-    <PackageReference Include="xunit.runner.visualstudio" >
+    <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="xunit.v3.runner.msbuild">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Test Coverage & Assertions -->
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" />
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\RefactorMCP.MCP.Server\RefactorMCP.MCP.Server.csproj" />
     <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
   </ItemGroup>
-
-  
 
 </Project>

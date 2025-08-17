@@ -3,7 +3,7 @@
 // Testing frameworks
 global using Xunit;
 global using FluentAssertions;
-global using Moq;
+global using NSubstitute;
 global using Bunit;
 
 // ASP.NET Core Testing

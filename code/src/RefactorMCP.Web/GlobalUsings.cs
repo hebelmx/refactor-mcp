@@ -1,20 +1,26 @@
-// Global using statements for RefactorMCP.Core.Tests
+// =====================================================================
+// Global Using Statements for RefactorMCP.Web
+// =====================================================================
 
-// Testing frameworks
-
-// System namespaces commonly used in tests
+// =====================================================================
+// System Namespaces
+// =====================================================================
 global using System;
 global using System.Collections.Generic;
 global using System.IO;
 global using System.Linq;
 global using System.Threading.Tasks;
 
-// Microsoft Extensions
+// =====================================================================
+// Microsoft Extensions & Configuration
+// =====================================================================
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Configuration;
 
-// RefactorMCP Core
+// =====================================================================
+// RefactorMCP Core Libraries
+// =====================================================================
 global using RefactorMCP.Core.Move;
 global using RefactorMCP.Core.SyntaxRewriters;
 global using RefactorMCP.Core.SyntaxWalkers;

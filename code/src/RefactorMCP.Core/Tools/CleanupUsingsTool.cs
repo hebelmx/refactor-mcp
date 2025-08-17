@@ -53,7 +53,9 @@ public static class CleanupUsingsTool
             .ToList();
 
         var newRoot = root!.RemoveNodes(unused, SyntaxRemoveOptions.KeepNoTrivia);
-        var formatted = Formatter.Format(newRoot!, RefactoringHelpers.SharedWorkspace);
+        if (newRoot == null)
+            return $"Could not remove unused usings from {document.FilePath}";
+        var formatted = Formatter.Format(newRoot, RefactoringHelpers.SharedWorkspace);
         var encoding = await RefactoringHelpers.GetFileEncodingAsync(document.FilePath!);
         await File.WriteAllTextAsync(document.FilePath!, formatted.ToFullString(), encoding);
 
@@ -87,6 +89,8 @@ public static class CleanupUsingsTool
             .ToList();
 
         var newRoot = root.RemoveNodes(unused, SyntaxRemoveOptions.KeepNoTrivia);
+        if (newRoot == null)
+            return sourceText; // Return original if we can't remove nodes
         var formatted = Formatter.Format(newRoot, RefactoringHelpers.SharedWorkspace);
         return formatted.ToFullString();
     }

@@ -8,15 +8,15 @@ namespace RefactorMCP.Web.Tests.Services;
 
 public class DashboardServiceTests
 {
-    private readonly Mock<IRefactoringService> _mockRefactoringService;
-    private readonly Mock<ILogger<DashboardService>> _mockLogger;
+    private readonly IRefactoringService _mockRefactoringService;
+    private readonly ILogger<DashboardService> _mockLogger;
     private readonly DashboardService _service;
 
     public DashboardServiceTests()
     {
-        _mockRefactoringService = new Mock<IRefactoringService>();
-        _mockLogger = new Mock<ILogger<DashboardService>>();
-        _service = new DashboardService(_mockRefactoringService.Object, _mockLogger.Object);
+        _mockRefactoringService = Substitute.For<IRefactoringService>();
+        _mockLogger = Substitute.For<ILogger<DashboardService>>();
+        _service = new DashboardService(_mockRefactoringService, _mockLogger);
     }
 
     [Fact]
@@ -24,8 +24,7 @@ public class DashboardServiceTests
     {
         // Arrange
         var expectedTools = new[] { "tool1", "tool2", "tool3", "tool4", "tool5" };
-        _mockRefactoringService.Setup(x => x.ListAvailableToolsAsync())
-            .ReturnsAsync(expectedTools);
+        _mockRefactoringService.ListAvailableToolsAsync().Returns(expectedTools);
 
         // Act
         var stats = await _service.GetDashboardStatsAsync();
@@ -43,8 +42,7 @@ public class DashboardServiceTests
     public async Task GetDashboardStatsAsync_ShouldHandleException_AndReturnDefaultStats()
     {
         // Arrange
-        _mockRefactoringService.Setup(x => x.ListAvailableToolsAsync())
-            .ThrowsAsync(new InvalidOperationException("Service unavailable"));
+        _mockRefactoringService.ListAvailableToolsAsync().Throws(new InvalidOperationException("Service unavailable"));
 
         // Act
         var stats = await _service.GetDashboardStatsAsync();
@@ -58,14 +56,12 @@ public class DashboardServiceTests
         stats.SuccessRate.Should().Be(0);
 
         // Verify error was logged
-        _mockLogger.Verify(
-            x => x.Log(
-                LogLevel.Error,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains("Error getting dashboard stats")),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.Once);
+        _mockLogger.Received(1).Log(
+            LogLevel.Error,
+            Arg.Any<EventId>(),
+            Arg.Is<object>(v => v.ToString()!.Contains("Error getting dashboard stats")),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<object, Exception?, string>>());
     }
 
     [Fact]

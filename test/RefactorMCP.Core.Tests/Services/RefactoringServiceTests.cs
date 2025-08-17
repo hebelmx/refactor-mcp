@@ -4,13 +4,13 @@ namespace RefactorMCP.Core.Tests.Services;
 
 public class RefactoringServiceTests
 {
-    private readonly Mock<ILogger<RefactoringService>> _mockLogger;
+    private readonly ILogger<RefactoringService> _mockLogger;
     private readonly RefactoringService _service;
 
     public RefactoringServiceTests()
     {
-        _mockLogger = new Mock<ILogger<RefactoringService>>();
-        _service = new RefactoringService(_mockLogger.Object);
+        _mockLogger = Substitute.For<ILogger<RefactoringService>>();
+        _service = new RefactoringService(_mockLogger);
     }
 
     [Fact]
@@ -49,14 +49,12 @@ public class RefactoringServiceTests
         result.Message.Should().Contain("not yet implemented");
 
         // Verify logging
-        _mockLogger.Verify(
-            x => x.Log(
-                LogLevel.Information,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains("Extracting method")),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.Once);
+        _mockLogger.Received(1).Log(
+            LogLevel.Information,
+            Arg.Any<EventId>(),
+            Arg.Is<object>(v => v.ToString()!.Contains("Extracting method")),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<object, Exception?, string>>());
     }
 
     [Fact]
@@ -76,14 +74,12 @@ public class RefactoringServiceTests
         result.Message.Should().Contain("not yet implemented");
 
         // Verify logging
-        _mockLogger.Verify(
-            x => x.Log(
-                LogLevel.Information,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains("Moving method")),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.Once);
+        _mockLogger.Received(1).Log(
+            LogLevel.Information,
+            Arg.Any<EventId>(),
+            Arg.Is<object>(v => v.ToString()!.Contains("Moving method")),
+            Arg.Any<Exception>(),
+            Arg.Any<Func<object, Exception?, string>>());
     }
 
     [Fact]

@@ -1,43 +1,70 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
   <PropertyGroup>
-    <!--CENTRALLY MANAGED DO NOT ADD ANOTHER ON HERE  TargetFramework  -->
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
     <OutputType>Exe</OutputType>
-
-	  <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-
-	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-	  <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableMSTestRunner>true</EnableMSTestRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
   <ItemGroup>
-    <PackageReference Include="coverlet.collector">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <!-- Testing Framework & Tools -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="xunit.v3.runner.msbuild">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Test Coverage -->
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Global Using Statements                                                -->
+  <!-- ===================================================================== -->
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Build Configuration                                                    -->
+  <!-- ===================================================================== -->
   <!-- Exclude generated test files from compilation -->
   <ItemGroup>
     <Compile Remove="TestOutput\**\*.cs" />
     <None Include="TestOutput\**\*.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\RefactorMCP.Core\RefactorMCP.Core.csproj" />
-  </ItemGroup>
-
 
 </Project>

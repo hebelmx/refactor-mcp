@@ -40,7 +40,8 @@ public class ConstructorInjectionRewriter : CSharpSyntaxRewriter
             }
             return visited;
         }
-        return base.VisitMethodDeclaration(node);
+        var baseResult = base.VisitMethodDeclaration(node);
+        return baseResult ?? node;
     }
 
     public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
@@ -49,7 +50,8 @@ public class ConstructorInjectionRewriter : CSharpSyntaxRewriter
         {
             return SyntaxFactory.IdentifierName(_fieldName).WithTriviaFrom(node);
         }
-        return base.VisitIdentifierName(node);
+        var baseResult = base.VisitIdentifierName(node);
+        return baseResult ?? node;
     }
 
     public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
@@ -65,7 +67,10 @@ public class ConstructorInjectionRewriter : CSharpSyntaxRewriter
 
     public override SyntaxNode VisitConstructorDeclaration(ConstructorDeclarationSyntax node)
     {
-        var visited = (ConstructorDeclarationSyntax)base.VisitConstructorDeclaration(node)!;
+        var baseResult = base.VisitConstructorDeclaration(node);
+        if (baseResult == null)
+            return node;
+        var visited = (ConstructorDeclarationSyntax)baseResult;
         if (!visited.ParameterList.Parameters.Any(p => p.Identifier.ValueText == _parameterName))
         {
             var param = SyntaxFactory.Parameter(SyntaxFactory.Identifier(_parameterName))
