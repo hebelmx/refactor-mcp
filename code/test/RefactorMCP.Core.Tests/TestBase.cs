@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-
+using RefactorMCP.Core.Extensions;
 
 namespace RefactorMCP.Core.Tests;
 
@@ -105,7 +105,7 @@ public static class TestUtilities
     {
         methods ??= new[] { "TestMethod" };
         var methodsCode = string.Join("\n    ", methods.Select(m => $"public void {m}() {{ }}"));
-        
+
         return $@"
 using System;
 

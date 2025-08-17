@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-
+using RefactorMCP.Core.Extensions;
 using RefactorMCP.Web.Services;
 using RefactorMCP.Web.Models;
 using System.Text.Json;
 using System.Text;
 using RefactorMCP.Web.Controllers;
+using RefactorMCP.Core.Abstractions;
 
 namespace RefactorMCP.Web.Tests.Integration;
 
@@ -24,10 +25,10 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
                 services.AddScoped<IDashboardService, TestDashboardService>();
                 services.AddScoped<IMetricsService, TestMetricsService>();
             });
-            
+
             builder.UseEnvironment("Testing");
         });
-        
+
         _client = _factory.CreateClient();
     }
 
@@ -63,7 +64,7 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
         // Assert
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync();
-        
+
         // Prometheus metrics should contain specific format
         // This is a basic check - in a real scenario, you'd validate specific metrics
         content.Should().NotBeNullOrEmpty();
@@ -78,13 +79,13 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
         // Assert
         response.EnsureSuccessStatusCode();
         response.Content.Headers.ContentType?.MediaType.Should().Be("application/json");
-        
+
         var content = await response.Content.ReadAsStringAsync();
         var toolsResponse = JsonSerializer.Deserialize<McpListToolsResponse>(content, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
-        
+
         toolsResponse.Should().NotBeNull();
         toolsResponse!.Tools.Should().NotBeNull();
     }
@@ -97,13 +98,13 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
 
         // Assert
         response.EnsureSuccessStatusCode();
-        
+
         var content = await response.Content.ReadAsStringAsync();
         var serverInfo = JsonSerializer.Deserialize<McpServerInfo>(content, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
-        
+
         serverInfo.Should().NotBeNull();
         serverInfo!.Name.Should().Be("RefactorMCP");
         serverInfo.Version.Should().Be("1.0.0");
@@ -118,7 +119,7 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
             ToolName = "nonexistent-tool", // This should fail gracefully
             Parameters = new Dictionary<string, JsonElement>()
         };
-        
+
         var json = JsonSerializer.Serialize(request);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -128,13 +129,13 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
         // Assert
         // Should return BadRequest for nonexistent tool, but not crash
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
-        
+
         var responseContent = await response.Content.ReadAsStringAsync();
         var errorResponse = JsonSerializer.Deserialize<McpErrorResponse>(responseContent, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });
-        
+
         errorResponse.Should().NotBeNull();
         errorResponse!.Error.Should().Contain("Tool not found");
     }

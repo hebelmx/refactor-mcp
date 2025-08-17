@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using RefactorMCP.Core.Extensions;
+using RefactorMCP.Core.Abstractions;
 
 namespace RefactorMCP.Core.Tests.Extensions;
 
