@@ -1,0 +1,47 @@
+FluentAssertions to Shouldly Conversion Report
+==================================================
+Timestamp: 2025-08-17 17:12:56.261748
+Mode: DRY RUN
+Total conversions: 157
+
+Conversions by pattern:
+  Contain: 59
+  Be: 26
+  BeFalse: 15
+  NotContain: 14
+  HaveCount: 14
+  NotBeNull: 9
+  BeEmpty: 4
+  BeTrue: 4
+  BeSameAs: 3
+  NotBeSameAs: 2
+  NotThrow: 2
+  BeOfType: 2
+  BeNull: 2
+  NotBeEmpty: 1
+
+Sample conversions:
+  File: ServiceCollectionExtensionsTests.cs
+  Line 67:
+    From: .Should().NotBeNull()
+    To:   .ShouldNotBeNull()
+
+  File: ServiceCollectionExtensionsTests.cs
+  Line 23:
+    From: .Should().NotBeNull()
+    To:   .ShouldNotBeNull()
+
+  File: ServiceCollectionExtensionsTests.cs
+  Line 36:
+    From: .Should().NotBeSameAs(scopedService2)
+    To:   .ShouldNotBeSameAs(scopedService2)
+
+  File: ServiceCollectionExtensionsTests.cs
+  Line 50:
+    From: act2.Should().NotThrow()
+    To:   Should.NotThrow(act2)
+
+  File: ServiceCollectionExtensionsTests.cs
+  Line 49:
+    From: act1.Should().NotThrow()
+    To:   Should.NotThrow(act1)

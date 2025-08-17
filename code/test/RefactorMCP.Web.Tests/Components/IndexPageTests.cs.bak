@@ -46,7 +46,7 @@ public class IndexPageTests : TestContext
         var component = RenderComponent<IndexPage>();
 
         // Assert
-        component.Find("h3").TextContent.ShouldContain("Welcome to RefactorMCP");
+        component.Find("h3").TextContent.Should().Contain("Welcome to RefactorMCP");
     }
 
     [Fact]
@@ -58,13 +58,13 @@ public class IndexPageTests : TestContext
         // Assert
         // Should have cards for Available Tools, Total Refactorings, Active Solutions, Success Rate
         var cards = component.FindAll(".mud-card");
-        cards.Count.ShouldBeGreaterThanOrEqualTo(4);
+        cards.Count.Should().BeGreaterOrEqualTo(4);
 
         // Check for specific stats
-        component.Markup.ShouldContain("Available Tools");
-        component.Markup.ShouldContain("Total Refactorings");
-        component.Markup.ShouldContain("Active Solutions");
-        component.Markup.ShouldContain("Success Rate");
+        component.Markup.Should().Contain("Available Tools");
+        component.Markup.Should().Contain("Total Refactorings");
+        component.Markup.Should().Contain("Active Solutions");
+        component.Markup.Should().Contain("Success Rate");
     }
 
     [Fact]
@@ -74,10 +74,10 @@ public class IndexPageTests : TestContext
         var component = RenderComponent<IndexPage>();
 
         // Assert
-        component.Markup.ShouldContain("System Health");
-        component.Markup.ShouldContain("All systems operational");
-        component.Markup.ShouldContain("RefactoringService");
-        component.Markup.ShouldContain("McpServer");
+        component.Markup.Should().Contain("System Health");
+        component.Markup.Should().Contain("All systems operational");
+        component.Markup.Should().Contain("RefactoringService");
+        component.Markup.Should().Contain("McpServer");
     }
 
     [Fact]
@@ -87,11 +87,11 @@ public class IndexPageTests : TestContext
         var component = RenderComponent<IndexPage>();
 
         // Assert
-        component.Markup.ShouldContain("Recent Activity");
-        component.Markup.ShouldContain("extract-method");
-        component.Markup.ShouldContain("TestProject");
-        component.Markup.ShouldContain("move-method");
-        component.Markup.ShouldContain("AnotherProject");
+        component.Markup.Should().Contain("Recent Activity");
+        component.Markup.Should().Contain("extract-method");
+        component.Markup.Should().Contain("TestProject");
+        component.Markup.Should().Contain("move-method");
+        component.Markup.Should().Contain("AnotherProject");
     }
 
     [Fact]
@@ -101,17 +101,17 @@ public class IndexPageTests : TestContext
         var component = RenderComponent<IndexPage>();
 
         // Assert
-        component.Markup.ShouldContain("Quick Actions");
-        component.Markup.ShouldContain("Browse Tools");
-        component.Markup.ShouldContain("View Metrics");
-        component.Markup.ShouldContain("System Monitor");
-        component.Markup.ShouldContain("View Logs");
+        component.Markup.Should().Contain("Quick Actions");
+        component.Markup.Should().Contain("Browse Tools");
+        component.Markup.Should().Contain("View Metrics");
+        component.Markup.Should().Contain("System Monitor");
+        component.Markup.Should().Contain("View Logs");
 
         // Check for correct links
-        component.FindAll("a[href='/tools']").ShouldNotBeEmpty();
-        component.FindAll("a[href='/metrics']").ShouldNotBeEmpty();
-        component.FindAll("a[href='/monitoring']").ShouldNotBeEmpty();
-        component.FindAll("a[href='/logs']").ShouldNotBeEmpty();
+        component.FindAll("a[href='/tools']").Should().NotBeEmpty();
+        component.FindAll("a[href='/metrics']").Should().NotBeEmpty();
+        component.FindAll("a[href='/monitoring']").Should().NotBeEmpty();
+        component.FindAll("a[href='/logs']").Should().NotBeEmpty();
     }
 
     [Fact]
@@ -122,7 +122,7 @@ public class IndexPageTests : TestContext
 
         // Assert
         var refreshButton = component.FindAll(".mud-icon-button").FirstOrDefault();
-        refreshButton.ShouldNotBeNull();
+        refreshButton.Should().NotBeNull();
     }
 
     [Fact]
@@ -137,8 +137,8 @@ public class IndexPageTests : TestContext
 
         // Assert
         // The component should still render correctly after refresh
-        component.Markup.ShouldContain("Welcome to RefactorMCP");
-        component.Markup.ShouldContain("System Health");
+        component.Markup.Should().Contain("Welcome to RefactorMCP");
+        component.Markup.Should().Contain("System Health");
     }
 
     [Fact]
@@ -149,10 +149,10 @@ public class IndexPageTests : TestContext
 
         // Assert
         // Check that the mock values are displayed
-        component.Markup.ShouldContain("12"); // Available Tools
-        component.Markup.ShouldContain("25"); // Total Refactorings
-        component.Markup.ShouldContain("3");  // Active Solutions
-        component.Markup.ShouldContain("94"); // Success Rate
+        component.Markup.Should().Contain("12"); // Available Tools
+        component.Markup.Should().Contain("25"); // Total Refactorings
+        component.Markup.Should().Contain("3");  // Active Solutions
+        component.Markup.Should().Contain("94"); // Success Rate
     }
 
     [Fact]
@@ -163,8 +163,8 @@ public class IndexPageTests : TestContext
 
         // Assert
         // Should show completion times
-        component.Markup.ShouldContain("2.3s");
-        component.Markup.ShouldContain("1.8s");
+        component.Markup.Should().Contain("2.3s");
+        component.Markup.Should().Contain("1.8s");
     }
 
     [Fact]
@@ -175,9 +175,9 @@ public class IndexPageTests : TestContext
 
         // Assert
         // Should show healthy status with success styling
-        component.Markup.ShouldContain("Healthy");
+        component.Markup.Should().Contain("Healthy");
         // MudAlert with Success severity should be present
-        component.FindAll(".mud-alert-filled-success").ShouldNotBeEmpty();
+        component.FindAll(".mud-alert-filled-success").Should().NotBeEmpty();
     }
 }
 

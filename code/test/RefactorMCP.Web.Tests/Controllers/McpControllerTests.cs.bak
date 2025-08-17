@@ -33,13 +33,13 @@ public class McpControllerTests
         var result = await _controller.HandleToolCall(request);
 
         // Assert
-        result.ShouldBeOfType<BadRequestObjectResult>();
+        result.Should().BeOfType<BadRequestObjectResult>();
         var badRequestResult = result as BadRequestObjectResult;
-        badRequestResult!.Value.ShouldBeOfType<McpErrorResponse>();
+        badRequestResult!.Value.Should().BeOfType<McpErrorResponse>();
 
         var errorResponse = badRequestResult.Value as McpErrorResponse;
-        errorResponse!.Error.ShouldContain("Tool not found");
-        errorResponse.Code.ShouldBe(-32601);
+        errorResponse!.Error.Should().Contain("Tool not found");
+        errorResponse.Code.Should().Be(-32601);
     }
 
     [Fact]
@@ -71,12 +71,12 @@ public class McpControllerTests
         var result = _controller.ListTools();
 
         // Assert
-        result.ShouldBeOfType<OkObjectResult>();
+        result.Should().BeOfType<OkObjectResult>();
         var okResult = result as OkObjectResult;
-        okResult!.Value.ShouldBeOfType<McpListToolsResponse>();
+        okResult!.Value.Should().BeOfType<McpListToolsResponse>();
 
         var response = okResult.Value as McpListToolsResponse;
-        response!.Tools.ShouldNotBeNull();
+        response!.Tools.Should().NotBeNull();
         response.Tools.Should().BeOfType<List<McpTool>>();
     }
 
@@ -87,17 +87,17 @@ public class McpControllerTests
         var result = _controller.GetServerInfo();
 
         // Assert
-        result.ShouldBeOfType<OkObjectResult>();
+        result.Should().BeOfType<OkObjectResult>();
         var okResult = result as OkObjectResult;
-        okResult!.Value.ShouldBeOfType<McpServerInfo>();
+        okResult!.Value.Should().BeOfType<McpServerInfo>();
 
         var serverInfo = okResult.Value as McpServerInfo;
-        serverInfo!.Name.ShouldBe("RefactorMCP");
-        serverInfo.Version.ShouldBe("1.0.0");
-        serverInfo.ProtocolVersion.ShouldBe("2024-11-05");
-        serverInfo.Capabilities.ShouldNotBeNull();
-        serverInfo.Capabilities!.Tools.ShouldNotBeNull();
-        serverInfo.Capabilities.Resources.ShouldNotBeNull();
+        serverInfo!.Name.Should().Be("RefactorMCP");
+        serverInfo.Version.Should().Be("1.0.0");
+        serverInfo.ProtocolVersion.Should().Be("2024-11-05");
+        serverInfo.Capabilities.Should().NotBeNull();
+        serverInfo.Capabilities!.Tools.Should().NotBeNull();
+        serverInfo.Capabilities.Resources.Should().NotBeNull();
     }
 
     [Theory]
@@ -112,7 +112,7 @@ public class McpControllerTests
         var response = okResult!.Value as McpListToolsResponse;
 
         // The tools list should contain kebab-case names
-        response!.Tools.Select(t => t.Name).ShouldContain(name => name.Contains("-"));
+        response!.Tools.Select(t => t.Name).Should().Contain(name => name.Contains("-"));
     }
 
     [Fact]
@@ -129,9 +129,9 @@ public class McpControllerTests
         var result = await _controller.HandleToolCall(request);
 
         // Assert
-        result.ShouldBeOfType<BadRequestObjectResult>();
+        result.Should().BeOfType<BadRequestObjectResult>();
         var badRequestResult = result as BadRequestObjectResult;
-        badRequestResult!.Value.ShouldBeOfType<McpErrorResponse>();
+        badRequestResult!.Value.Should().BeOfType<McpErrorResponse>();
 
         // Verify error was logged
         _mockLogger.Received(1).Log(

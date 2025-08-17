@@ -1,0 +1,55 @@
+FluentAssertions to Shouldly Conversion Report
+==================================================
+Timestamp: 2025-08-17 17:16:07.121260
+Mode: LIVE
+Total conversions: 265
+
+Conversions by pattern:
+  Contain: 92
+  Be: 46
+  NotBeNull: 29
+  BeFalse: 15
+  NotContain: 14
+  HaveCount: 14
+  BeOfType: 12
+  NotBeEmpty: 9
+  BeTrue: 5
+  BeSameAs: 5
+  ContainKey: 4
+  BeEmpty: 4
+  OnlyContain: 3
+  NotThrow: 3
+  NotBeSameAs: 2
+  BeNull: 2
+  BeGreaterOrEqualTo: 1
+  HaveCountGreaterThan: 1
+  BePositive: 1
+  BeCloseTo: 1
+  BeAssignableTo: 1
+  Throw: 1
+
+Sample conversions:
+  File: IndexPageTests.cs
+  Line 125:
+    From: .Should().NotBeNull()
+    To:   .ShouldNotBeNull()
+
+  File: IndexPageTests.cs
+  Line 178:
+    From: .Should().Contain("Healthy")
+    To:   .ShouldContain("Healthy")
+
+  File: IndexPageTests.cs
+  Line 167:
+    From: .Should().Contain("1.8s")
+    To:   .ShouldContain("1.8s")
+
+  File: IndexPageTests.cs
+  Line 166:
+    From: .Should().Contain("2.3s")
+    To:   .ShouldContain("2.3s")
+
+  File: IndexPageTests.cs
+  Line 155:
+    From: .Should().Contain("94")
+    To:   .ShouldContain("94")

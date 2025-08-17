@@ -166,6 +166,6 @@ public class RefactoringServiceTests
 
         result.ShouldNotBeNull();
         result.Success.ShouldBeFalse();
-        result.Message.ShouldNotBeNullOrEmpty();
+        result.Message.Should().NotBeNullOrEmpty();
     }
 }

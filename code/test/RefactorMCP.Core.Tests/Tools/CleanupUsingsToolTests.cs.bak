@@ -44,11 +44,11 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldNotContain("using System.Collections.Generic;");
-        cleanedCode.ShouldNotContain("using System.Linq;");
-        cleanedCode.ShouldContain("using System;");
+        cleanedCode.Should().NotContain("using System.Collections.Generic;");
+        cleanedCode.Should().NotContain("using System.Linq;");
+        cleanedCode.Should().Contain("using System;");
     }
 
     [Fact]
@@ -75,11 +75,11 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("using System;");
-        cleanedCode.ShouldContain("using System.Collections.Generic;");
-        cleanedCode.ShouldContain("using System.Linq;");
+        cleanedCode.Should().Contain("using System;");
+        cleanedCode.Should().Contain("using System.Collections.Generic;");
+        cleanedCode.Should().Contain("using System.Linq;");
     }
 
     [Fact]
@@ -100,9 +100,9 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldBe(sourceCode); // No changes expected
+        cleanedCode.Should().Be(sourceCode); // No changes expected
     }
 
     [Fact]
@@ -129,11 +129,11 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("global using System;");
-        cleanedCode.ShouldContain("global using System.Collections.Generic;");
-        cleanedCode.ShouldContain("using System.Linq;");
+        cleanedCode.Should().Contain("global using System;");
+        cleanedCode.Should().Contain("global using System.Collections.Generic;");
+        cleanedCode.Should().Contain("using System.Linq;");
     }
 
     [Fact]
@@ -160,12 +160,12 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("using System;");
-        cleanedCode.ShouldContain("using MyAlias = System.Collections.Generic.List<string>;");
-        cleanedCode.ShouldNotContain("using System.Collections.Generic;"); // Should be removed as it's not directly used
-        cleanedCode.ShouldNotContain("using System.Linq;"); // Should be removed as it's not used
+        cleanedCode.Should().Contain("using System;");
+        cleanedCode.Should().Contain("using MyAlias = System.Collections.Generic.List<string>;");
+        cleanedCode.Should().NotContain("using System.Collections.Generic;"); // Should be removed as it's not directly used
+        cleanedCode.Should().NotContain("using System.Linq;"); // Should be removed as it's not used
     }
 
     [Fact]
@@ -192,12 +192,12 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("using System;");
-        cleanedCode.ShouldContain("using static System.Console;");
-        cleanedCode.ShouldContain("using static System.Math;");
-        cleanedCode.ShouldNotContain("using System.Collections.Generic;"); // Should be removed
+        cleanedCode.Should().Contain("using System;");
+        cleanedCode.Should().Contain("using static System.Console;");
+        cleanedCode.Should().Contain("using static System.Math;");
+        cleanedCode.Should().NotContain("using System.Collections.Generic;"); // Should be removed
     }
 
     [Fact]
@@ -227,11 +227,11 @@ namespace TestNamespace
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("using System;");
-        cleanedCode.ShouldContain("using System.Collections.Generic;");
-        cleanedCode.ShouldContain("using System.Linq;");
+        cleanedCode.Should().Contain("using System;");
+        cleanedCode.Should().Contain("using System.Collections.Generic;");
+        cleanedCode.Should().Contain("using System.Linq;");
     }
 
     [Fact]
@@ -257,7 +257,7 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(null, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         // Should still attempt to clean up usings even with compilation errors
     }
 
@@ -285,11 +285,11 @@ public class TestClass
         var result = await CleanupUsingsTool.CleanupUsings(_testSolutionPath, _testFilePath);
 
         // Assert
-        result.ShouldContain("Removed unused usings");
+        result.Should().Contain("Removed unused usings");
         var cleanedCode = await File.ReadAllTextAsync(_testFilePath);
-        cleanedCode.ShouldContain("using System;");
-        cleanedCode.ShouldContain("using System.Collections.Generic;");
-        cleanedCode.ShouldContain("using System.Linq;");
+        cleanedCode.Should().Contain("using System;");
+        cleanedCode.Should().Contain("using System.Collections.Generic;");
+        cleanedCode.Should().Contain("using System.Linq;");
     }
 
     [Fact]
@@ -324,10 +324,10 @@ public class TestClass
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
 
         // Assert
-        result.ShouldNotContain("using System.Collections.Generic;");
-        result.ShouldNotContain("using System.Linq;");
-        result.ShouldContain("using System;");
-        result.ShouldContain("public class TestClass");
+        result.Should().NotContain("using System.Collections.Generic;");
+        result.Should().NotContain("using System.Linq;");
+        result.Should().Contain("using System;");
+        result.Should().Contain("public class TestClass");
     }
 
     [Fact]
@@ -353,9 +353,9 @@ public class TestClass
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
 
         // Assert
-        result.ShouldContain("using System;");
-        result.ShouldContain("using System.Collections.Generic;");
-        result.ShouldContain("using System.Linq;");
+        result.Should().Contain("using System;");
+        result.Should().Contain("using System.Collections.Generic;");
+        result.Should().Contain("using System.Linq;");
     }
 
     [Fact]
@@ -381,7 +381,7 @@ public class TestClass
 
         // Assert
         // Should return original content when compilation fails
-        result.ShouldContain("using System.Collections.Generic;");
+        result.Should().Contain("using System.Collections.Generic;");
     }
 
     [Fact]
@@ -394,7 +394,7 @@ public class TestClass
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
 
         // Assert
-        result.ShouldBeEmpty();
+        result.Should().BeEmpty();
     }
 
     [Fact]
@@ -412,9 +412,9 @@ using System.Linq;
 
         // Assert
         // All usings should be removed since none are used
-        result.ShouldNotContain("using System;");
-        result.ShouldNotContain("using System.Collections.Generic;");
-        result.ShouldNotContain("using System.Linq;");
+        result.Should().NotContain("using System;");
+        result.Should().NotContain("using System.Collections.Generic;");
+        result.Should().NotContain("using System.Linq;");
     }
 
     [Theory]
@@ -441,8 +441,8 @@ public class TestClass
         var result = CleanupUsingsTool.CleanupUsingsInSource(sourceCode);
 
         // Assert
-        result.ShouldNotContain(usingDirective);
-        result.ShouldContain("public class TestClass");
+        result.Should().NotContain(usingDirective);
+        result.Should().Contain("public class TestClass");
     }
 
     private void CreateTestSolution()

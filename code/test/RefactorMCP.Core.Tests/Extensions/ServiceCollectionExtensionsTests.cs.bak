@@ -20,7 +20,7 @@ public class ServiceCollectionExtensionsTests
 
         // Verify IRefactoringService is registered
         var refactoringService = serviceProvider.GetService<IRefactoringService>();
-        refactoringService.ShouldNotBeNull();
+        refactoringService.Should().NotBeNull();
 
         // Verify it's registered as scoped
         var refactoringService1 = serviceProvider.GetService<IRefactoringService>();
@@ -33,7 +33,7 @@ public class ServiceCollectionExtensionsTests
         var scopedService2 = scope2.ServiceProvider.GetService<IRefactoringService>();
 
         // Services should be different across scopes but same within scope
-        scopedService1.ShouldNotBeSameAs(scopedService2);
+        scopedService1.Should().NotBeSameAs(scopedService2);
     }
 
     [Fact]
@@ -46,8 +46,8 @@ public class ServiceCollectionExtensionsTests
         var act1 = () => services.AddRefactorMcpCore();
         var act2 = () => services.AddRefactorMcpCore();
 
-        Should.NotThrow(act1);
-        Should.NotThrow(act2);
+        act1.Should().NotThrow();
+        act2.Should().NotThrow();
     }
 
     [Fact]
@@ -64,6 +64,6 @@ public class ServiceCollectionExtensionsTests
 
         // Should be able to resolve ILogger dependencies
         var refactoringService = serviceProvider.GetService<IRefactoringService>();
-        refactoringService.ShouldNotBeNull();
+        refactoringService.Should().NotBeNull();
     }
 }

@@ -29,10 +29,10 @@ public class TestClass
         
         // Assert
         var methodDecl = result.DescendantNodes().OfType<MethodDeclarationSyntax>().First();
-        methodDecl.ParameterList.Parameters.Count().ShouldBe(2);
-        methodDecl.ParameterList.Parameters.ShouldNotContain(p => p.Identifier.Text == "param2");
-        methodDecl.ParameterList.Parameters.ShouldContain(p => p.Identifier.Text == "param1");
-        methodDecl.ParameterList.Parameters.ShouldContain(p => p.Identifier.Text == "param3");
+        methodDecl.ParameterList.Parameters.Should().HaveCount(2);
+        methodDecl.ParameterList.Parameters.Should().NotContain(p => p.Identifier.Text == "param2");
+        methodDecl.ParameterList.Parameters.Should().Contain(p => p.Identifier.Text == "param1");
+        methodDecl.ParameterList.Parameters.Should().Contain(p => p.Identifier.Text == "param3");
     }
 
     [Fact]
@@ -63,8 +63,8 @@ public class TestClass
         // Assert
         var otherMethod = result.DescendantNodes().OfType<MethodDeclarationSyntax>()
             .First(m => m.Identifier.Text == "OtherMethod");
-        otherMethod.ParameterList.Parameters.Count().ShouldBe(2);
-        otherMethod.ParameterList.Parameters.ShouldContain(p => p.Identifier.Text == "param2");
+        otherMethod.ParameterList.Parameters.Should().HaveCount(2);
+        otherMethod.ParameterList.Parameters.Should().Contain(p => p.Identifier.Text == "param2");
     }
 
     [Fact]
@@ -90,8 +90,8 @@ public class TestClass
         
         // Assert
         var identifierNames = result.DescendantNodes().OfType<IdentifierNameSyntax>().ToList();
-        identifierNames.ShouldContain(i => i.Identifier.Text == "_param2");
-        identifierNames.ShouldNotContain(i => i.Identifier.Text == "param2");
+        identifierNames.Should().Contain(i => i.Identifier.Text == "_param2");
+        identifierNames.Should().NotContain(i => i.Identifier.Text == "param2");
     }
 
     [Fact]
@@ -117,8 +117,8 @@ public class TestClass
         
         // Assert
         var identifierNames = result.DescendantNodes().OfType<IdentifierNameSyntax>().ToList();
-        identifierNames.ShouldContain(i => i.Identifier.Text == "param1");
-        identifierNames.ShouldContain(i => i.Identifier.Text == "_param2");
+        identifierNames.Should().Contain(i => i.Identifier.Text == "param1");
+        identifierNames.Should().Contain(i => i.Identifier.Text == "_param2");
     }
 
     [Fact]
@@ -149,8 +149,8 @@ public class TestClass
         // Assert
         var invocation = result.DescendantNodes().OfType<InvocationExpressionSyntax>()
             .First(i => i.Expression.ToString().Contains("TestMethod"));
-        invocation.ArgumentList.Arguments.Count().ShouldBe(2);
-        invocation.ArgumentList.Arguments.ShouldNotContain(a => a.ToString().Contains("42"));
+        invocation.ArgumentList.Arguments.Should().HaveCount(2);
+        invocation.ArgumentList.Arguments.Should().NotContain(a => a.ToString().Contains("42"));
     }
 
     [Fact]
@@ -180,13 +180,13 @@ public class TestClass
         
         // Assert
         var constructor = result.DescendantNodes().OfType<ConstructorDeclarationSyntax>().First();
-        constructor.ParameterList.Parameters.Count().ShouldBe(1);
-        constructor.ParameterList.Parameters.ShouldContain(p => p.Identifier.Text == "param2");
+        constructor.ParameterList.Parameters.Should().HaveCount(1);
+        constructor.ParameterList.Parameters.Should().Contain(p => p.Identifier.Text == "param2");
         
         var classDecl = result.DescendantNodes().OfType<ClassDeclarationSyntax>().First();
-        classDecl.Members.OfType<FieldDeclarationSyntax>().Count().ShouldBe(1);
+        classDecl.Members.OfType<FieldDeclarationSyntax>().Should().HaveCount(1);
         classDecl.Members.OfType<FieldDeclarationSyntax>().First()
-            .Declaration.Variables.ShouldContain(v => v.Identifier.Text == "_param2");
+            .Declaration.Variables.Should().Contain(v => v.Identifier.Text == "_param2");
     }
 
     [Fact]
@@ -216,8 +216,8 @@ public class TestClass
         
         // Assert
         var constructor = result.DescendantNodes().OfType<ConstructorDeclarationSyntax>().First();
-        constructor.ParameterList.Parameters.Count().ShouldBe(1);
-        constructor.ParameterList.Parameters.ShouldContain(p => p.Identifier.Text == "param2");
+        constructor.ParameterList.Parameters.Should().HaveCount(1);
+        constructor.ParameterList.Parameters.Should().Contain(p => p.Identifier.Text == "param2");
     }
 
     [Fact]
@@ -247,10 +247,10 @@ public class TestClass
         
         // Assert
         var classDecl = result.DescendantNodes().OfType<ClassDeclarationSyntax>().First();
-        classDecl.Members.OfType<PropertyDeclarationSyntax>().Count().ShouldBe(1);
+        classDecl.Members.OfType<PropertyDeclarationSyntax>().Should().HaveCount(1);
         classDecl.Members.OfType<PropertyDeclarationSyntax>().First()
-            .Identifier.Text.ShouldBe("_param2");
-        classDecl.Members.OfType<FieldDeclarationSyntax>().ShouldBeEmpty();
+            .Identifier.Text.Should().Be("_param2");
+        classDecl.Members.OfType<FieldDeclarationSyntax>().Should().BeEmpty();
     }
 
     [Fact]
@@ -280,10 +280,10 @@ public class TestClass
         
         // Assert
         var classDecl = result.DescendantNodes().OfType<ClassDeclarationSyntax>().First();
-        classDecl.Members.OfType<FieldDeclarationSyntax>().Count().ShouldBe(1);
+        classDecl.Members.OfType<FieldDeclarationSyntax>().Should().HaveCount(1);
         classDecl.Members.OfType<FieldDeclarationSyntax>().First()
-            .Declaration.Variables.ShouldContain(v => v.Identifier.Text == "_param2");
-        classDecl.Members.OfType<PropertyDeclarationSyntax>().ShouldBeEmpty();
+            .Declaration.Variables.Should().Contain(v => v.Identifier.Text == "_param2");
+        classDecl.Members.OfType<PropertyDeclarationSyntax>().Should().BeEmpty();
     }
 
     [Fact]
@@ -315,7 +315,7 @@ public class TestClass
         
         // Assert
         var classDecl = result.DescendantNodes().OfType<ClassDeclarationSyntax>().First();
-        classDecl.Members.OfType<FieldDeclarationSyntax>().Count().ShouldBe(1);
+        classDecl.Members.OfType<FieldDeclarationSyntax>().Should().HaveCount(1);
     }
 
     [Fact]
@@ -347,7 +347,7 @@ public class TestClass
         
         // Assert
         var classDecl = result.DescendantNodes().OfType<ClassDeclarationSyntax>().First();
-        classDecl.Members.OfType<PropertyDeclarationSyntax>().Count().ShouldBe(1);
+        classDecl.Members.OfType<PropertyDeclarationSyntax>().Should().HaveCount(1);
     }
 
     [Fact]
@@ -377,15 +377,15 @@ public class TestClass
         
         // Assert
         var constructor = result.DescendantNodes().OfType<ConstructorDeclarationSyntax>().First();
-        constructor.Body!.Statements.Count().ShouldBe(1);
-        constructor.Body.Statements.First().ShouldBeOfType<ExpressionStatementSyntax>();
+        constructor.Body!.Statements.Should().HaveCount(1);
+        constructor.Body.Statements.First().Should().BeOfType<ExpressionStatementSyntax>();
         
         var assignment = constructor.Body.Statements.First() as ExpressionStatementSyntax;
-        assignment!.Expression.ShouldBeOfType<AssignmentExpressionSyntax>();
+        assignment!.Expression.Should().BeOfType<AssignmentExpressionSyntax>();
         
         var assignmentExpr = assignment.Expression as AssignmentExpressionSyntax;
-        assignmentExpr!.Left.ToString().ShouldBe("_param2");
-        assignmentExpr.Right.ToString().ShouldBe("param2");
+        assignmentExpr!.Left.ToString().Should().Be("_param2");
+        assignmentExpr.Right.ToString().Should().Be("param2");
     }
 
     [Fact]
@@ -416,8 +416,8 @@ public class TestClass
         
         // Assert
         var constructor = result.DescendantNodes().OfType<ConstructorDeclarationSyntax>().First();
-        constructor.Body!.Statements.Count().ShouldBe(3); // Original 2 + new assignment
-        constructor.Body.Statements.ShouldContain(s => s.ToString().Contains("_param2 = param2"));
+        constructor.Body!.Statements.Should().HaveCount(3); // Original 2 + new assignment
+        constructor.Body.Statements.Should().Contain(s => s.ToString().Contains("_param2 = param2"));
     }
 
     [Fact]
@@ -444,9 +444,9 @@ public class TestClass
         
         // Assert
         var constructor = result.DescendantNodes().OfType<ConstructorDeclarationSyntax>().First();
-        constructor.Body.ShouldNotBeNull();
-        constructor.Body!.Statements.Count().ShouldBe(1);
-        constructor.Body.Statements.First().ToString().ShouldContain("_param2 = param2");
+        constructor.Body.Should().NotBeNull();
+        constructor.Body!.Statements.Should().HaveCount(1);
+        constructor.Body.Statements.First().ToString().Should().Contain("_param2 = param2");
     }
 
     [Theory]
@@ -475,6 +475,6 @@ public class TestClass
         // Assert
         // Should not throw exception, but may not modify as expected
         var methodDecl = result.DescendantNodes().OfType<MethodDeclarationSyntax>().First();
-        methodDecl.ShouldNotBeNull();
+        methodDecl.Should().NotBeNull();
     }
 }

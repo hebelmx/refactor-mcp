@@ -77,8 +77,8 @@ public class DashboardServiceTests
 
         // Check the structure of returned activities
         var firstActivity = activityList.First();
-        firstActivity.ToolName.ShouldNotBeNullOrEmpty();
-        firstActivity.ProjectName.ShouldNotBeNullOrEmpty();
+        firstActivity.ToolName.Should().NotBeNullOrEmpty();
+        firstActivity.ProjectName.Should().NotBeNullOrEmpty();
         firstActivity.Timestamp.ShouldBe(DateTime.Now, tolerance: TimeSpan.FromMinutes(15));
         firstActivity.Duration.ShouldBeGreaterThan(0);
     }

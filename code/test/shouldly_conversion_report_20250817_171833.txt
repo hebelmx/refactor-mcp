@@ -1,0 +1,29 @@
+FluentAssertions to Shouldly Conversion Report
+==================================================
+Timestamp: 2025-08-17 17:18:33.001683
+Mode: LIVE
+Total conversions: 4
+
+Conversions by pattern:
+  NotBeNullOrEmpty: 4
+
+Sample conversions:
+  File: WebApplicationTests.cs
+  Line 69:
+    From: .Should().NotBeNullOrEmpty()
+    To:   .ShouldNotBeNullOrEmpty()
+
+  File: DashboardServiceTests.cs
+  Line 81:
+    From: .Should().NotBeNullOrEmpty()
+    To:   .ShouldNotBeNullOrEmpty()
+
+  File: DashboardServiceTests.cs
+  Line 80:
+    From: .Should().NotBeNullOrEmpty()
+    To:   .ShouldNotBeNullOrEmpty()
+
+  File: RefactoringServiceTests.cs
+  Line 169:
+    From: .Should().NotBeNullOrEmpty()
+    To:   .ShouldNotBeNullOrEmpty()

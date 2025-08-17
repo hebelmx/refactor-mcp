@@ -6,7 +6,7 @@
 // Testing Frameworks
 // =====================================================================
 global using Xunit;
-global using FluentAssertions;
+global using Shouldly;
 global using NSubstitute;
 
 // =====================================================================

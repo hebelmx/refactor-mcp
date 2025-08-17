@@ -6,7 +6,6 @@ using System.Text.Json;
 using System.Text;
 using RefactorMCP.Web.Controllers;
 using RefactorMCP.Core.Abstractions;
-using Shouldly;
 
 namespace RefactorMCP.Web.Tests.Integration;
 
@@ -67,7 +66,7 @@ public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
 
         // Prometheus metrics should contain specific format
         // This is a basic check - in a real scenario, you'd validate specific metrics
-        content.ShouldNotBeNullOrEmpty();
+        content.Should().NotBeNullOrEmpty();
     }
 
     [Fact]

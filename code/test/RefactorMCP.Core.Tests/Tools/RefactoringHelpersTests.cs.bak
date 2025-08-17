@@ -35,11 +35,11 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.TryParseRange(range, out var startLine, out var startColumn, out var endLine, out var endColumn);
 
         // Assert
-        result.ShouldBeTrue();
-        startLine.ShouldBe(10);
-        startColumn.ShouldBe(5);
-        endLine.ShouldBe(15);
-        endColumn.ShouldBe(10);
+        result.Should().BeTrue();
+        startLine.Should().Be(10);
+        startColumn.Should().Be(5);
+        endLine.Should().Be(15);
+        endColumn.Should().Be(10);
     }
 
     [Theory]
@@ -55,11 +55,11 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.TryParseRange(range ?? "", out var startLine, out var startColumn, out var endLine, out var endColumn);
 
         // Assert
-        result.ShouldBeFalse();
-        startLine.ShouldBe(0);
-        startColumn.ShouldBe(0);
-        endLine.ShouldBe(0);
-        endColumn.ShouldBe(0);
+        result.Should().BeFalse();
+        startLine.Should().Be(0);
+        startColumn.Should().Be(0);
+        endLine.Should().Be(0);
+        endColumn.Should().Be(0);
     }
 
     [Fact]
@@ -76,8 +76,8 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.ValidateRange(sourceText, startLine, startColumn, endLine, endColumn, out var error);
 
         // Assert
-        result.ShouldBeTrue();
-        error.ShouldBeEmpty();
+        result.Should().BeTrue();
+        error.Should().BeEmpty();
     }
 
     [Theory]
@@ -94,8 +94,8 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.ValidateRange(sourceText, startLine, startColumn, endLine, endColumn, out var error);
 
         // Assert
-        result.ShouldBeFalse();
-        error.ShouldContain(expectedError);
+        result.Should().BeFalse();
+        error.Should().Contain(expectedError);
     }
 
     [Fact]
@@ -112,8 +112,8 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.ValidateRange(sourceText, startLine, startColumn, endLine, endColumn, out var error);
 
         // Assert
-        result.ShouldBeFalse();
-        error.ShouldContain("Range start must precede end");
+        result.Should().BeFalse();
+        error.Should().Contain("Range start must precede end");
     }
 
     [Fact]
@@ -130,8 +130,8 @@ public class RefactoringHelpersTests : IDisposable
         var result = RefactoringHelpers.ValidateRange(sourceText, startLine, startColumn, endLine, endColumn, out var error);
 
         // Assert
-        result.ShouldBeFalse();
-        error.ShouldContain("Range exceeds file length");
+        result.Should().BeFalse();
+        error.Should().Contain("Range exceeds file length");
     }
 
     [Fact]
@@ -146,9 +146,9 @@ public class RefactoringHelpersTests : IDisposable
         var result = await RefactoringHelpers.ApplySingleFileEdit(_testFilePath, transform, "Success");
 
         // Assert
-        result.ShouldBe("Success");
+        result.Should().Be("Success");
         var modifiedContent = await File.ReadAllTextAsync(_testFilePath);
-        modifiedContent.ShouldBe("Modified content");
+        modifiedContent.Should().Be("Modified content");
     }
 
     [Fact]
@@ -174,7 +174,7 @@ public class RefactoringHelpersTests : IDisposable
         var result = await RefactoringHelpers.ApplySingleFileEdit(_testFilePath, transform, "Success");
 
         // Assert
-        result.ShouldBe("Error: Something went wrong");
+        result.Should().Be("Error: Something went wrong");
     }
 
     [Fact]
@@ -187,8 +187,8 @@ public class RefactoringHelpersTests : IDisposable
         var document = await RefactoringHelpers.FindClassInSolution(solution, "TestClass");
 
         // Assert
-        document.ShouldNotBeNull();
-        document!.FilePath.ShouldBe(_testFilePath);
+        document.Should().NotBeNull();
+        document!.FilePath.Should().Be(_testFilePath);
     }
 
     [Fact]
@@ -201,7 +201,7 @@ public class RefactoringHelpersTests : IDisposable
         var document = await RefactoringHelpers.FindClassInSolution(solution, "NonExistentClass");
 
         // Assert
-        document.ShouldBeNull();
+        document.Should().BeNull();
     }
 
     [Fact]
@@ -214,7 +214,7 @@ public class RefactoringHelpersTests : IDisposable
         var document = await RefactoringHelpers.FindClassInSolution(solution, "TestClass", _testFilePath);
 
         // Assert
-        document.ShouldBeNull();
+        document.Should().BeNull();
     }
 
     [Fact]
@@ -227,8 +227,8 @@ public class RefactoringHelpersTests : IDisposable
         var document = await RefactoringHelpers.FindTypeInSolution(solution, "TestClass");
 
         // Assert
-        document.ShouldNotBeNull();
-        document!.FilePath.ShouldBe(_testFilePath);
+        document.Should().NotBeNull();
+        document!.FilePath.Should().Be(_testFilePath);
     }
 
     [Fact]
@@ -243,8 +243,8 @@ public class RefactoringHelpersTests : IDisposable
         var tree2 = await RefactoringHelpers.GetOrParseSyntaxTreeAsync(_testFilePath);
 
         // Assert
-        tree1.ShouldBeSameAs(tree2);
-        tree1.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().Count().ShouldBe(1);
+        tree1.Should().BeSameAs(tree2);
+        tree1.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().Should().HaveCount(1);
     }
 
     [Fact]
@@ -259,8 +259,8 @@ public class RefactoringHelpersTests : IDisposable
         var model2 = await RefactoringHelpers.GetOrCreateSemanticModelAsync(_testFilePath);
 
         // Assert
-        model1.ShouldBeSameAs(model2);
-        model1.SyntaxTree.ShouldNotBeNull();
+        model1.Should().BeSameAs(model2);
+        model1.SyntaxTree.Should().NotBeNull();
     }
 
     [Fact]
@@ -278,9 +278,9 @@ public class RefactoringHelpersTests : IDisposable
         var newTree = RefactoringHelpers.SyntaxTreeCache.Get<SyntaxTree>(_testFilePath);
 
         // Assert
-        originalTree.ShouldNotBeSameAs(newTree);
+        originalTree.Should().NotBeSameAs(newTree);
         newTree!.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>()
-            .First().Identifier.Text.ShouldBe("NewClass");
+            .First().Identifier.Text.Should().Be("NewClass");
     }
 
     [Fact]
@@ -294,8 +294,8 @@ public class RefactoringHelpersTests : IDisposable
         var (text, encoding) = await RefactoringHelpers.ReadFileWithEncodingAsync(_testFilePath);
 
         // Assert
-        text.ShouldBe(content);
-        encoding.ShouldBe(Encoding.UTF8);
+        text.Should().Be(content);
+        encoding.Should().Be(Encoding.UTF8);
     }
 
     [Fact]
@@ -310,8 +310,8 @@ public class RefactoringHelpersTests : IDisposable
         var (text, encoding) = await RefactoringHelpers.ReadFileWithEncodingAsync(_testFilePath);
 
         // Assert
-        text.ShouldBe(content);
-        encoding.ShouldBe(utf8WithBom);
+        text.Should().Be(content);
+        encoding.Should().Be(utf8WithBom);
     }
 
     [Fact]
@@ -326,8 +326,8 @@ public class RefactoringHelpersTests : IDisposable
 
         // Assert
         var (readText, readEncoding) = await RefactoringHelpers.ReadFileWithEncodingAsync(_testFilePath);
-        readText.ShouldBe(content);
-        readEncoding.ShouldBe(encoding);
+        readText.Should().Be(content);
+        readEncoding.Should().Be(encoding);
     }
 
     [Fact]
@@ -336,7 +336,7 @@ public class RefactoringHelpersTests : IDisposable
         // Arrange
         var solution = await RefactoringHelpers.GetOrLoadSolution(_testSolutionPath);
         var document = RefactoringHelpers.GetDocumentByPath(solution, _testFilePath);
-        document.ShouldNotBeNull();
+        document.Should().NotBeNull();
 
         var solutionCalled = false;
         var singleFileCalled = false;
@@ -349,9 +349,9 @@ public class RefactoringHelpersTests : IDisposable
              (path) => { singleFileCalled = true; return Task.FromResult("single"); });
 
         // Assert
-        result.ShouldBe("solution");
-        solutionCalled.ShouldBeTrue();
-        singleFileCalled.ShouldBeFalse();
+        result.Should().Be("solution");
+        solutionCalled.Should().BeTrue();
+        singleFileCalled.Should().BeFalse();
     }
 
     [Fact]
@@ -371,9 +371,9 @@ public class RefactoringHelpersTests : IDisposable
              (path) => { singleFileCalled = true; return Task.FromResult("single"); });
 
         // Assert
-        result.ShouldBe("single");
-        solutionCalled.ShouldBeFalse();
-        singleFileCalled.ShouldBeTrue();
+        result.Should().Be("single");
+        solutionCalled.Should().BeFalse();
+        singleFileCalled.Should().BeTrue();
     }
 
     [Fact]
@@ -388,9 +388,9 @@ public class RefactoringHelpersTests : IDisposable
         RefactoringHelpers.ClearAllCaches();
 
         // Assert
-        RefactoringHelpers.SolutionCache.TryGetValue("test", out _).ShouldBeFalse();
-        RefactoringHelpers.SyntaxTreeCache.TryGetValue("test", out _).ShouldBeFalse();
-        RefactoringHelpers.ModelCache.TryGetValue("test", out _).ShouldBeFalse();
+        RefactoringHelpers.SolutionCache.TryGetValue("test", out _).Should().BeFalse();
+        RefactoringHelpers.SyntaxTreeCache.TryGetValue("test", out _).Should().BeFalse();
+        RefactoringHelpers.ModelCache.TryGetValue("test", out _).Should().BeFalse();
     }
 
     [Fact]
@@ -401,7 +401,7 @@ public class RefactoringHelpersTests : IDisposable
         var workspace2 = RefactoringHelpers.SharedWorkspace;
 
         // Assert
-        workspace1.ShouldBeSameAs(workspace2);
+        workspace1.Should().BeSameAs(workspace2);
     }
 
     private void CreateTestSolution()
