@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
+  <PropertyGroup>
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <!-- UI Framework & Components -->
+    <PackageReference Include="MudBlazor" />
+    <PackageReference Include="Extensions.MudBlazor.StaticInput" />
+    
+    <!-- Microsoft ASP.NET Core & Extensions -->
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    
+    <!-- Logging Framework (Serilog) -->
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Sinks.Seq" />
+    <PackageReference Include="Serilog.Enrichers.OpenTelemetry" />
+    
+    <!-- Observability & Telemetry (OpenTelemetry) -->
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+    <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
+    
+    <!-- System & JSON -->
+    <PackageReference Include="System.Text.Json" />
+    
+    <!-- Protocol & Communication -->
+    <PackageReference Include="ModelContextProtocol" />
+    
+
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <ProjectReference Include="..\ExxerFactor.Mcp.Core\ExxerFactor.Mcp.Core.csproj" />
+    <ProjectReference Include="..\ExxerFactor.Mcp.Server\ExxerFactor.Mcp.Server.csproj" />
+  </ItemGroup>
+
+</Project>

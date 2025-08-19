@@ -1,11 +1,11 @@
-# Refactor MCP VS Code Extension
+# ExxerFactor MCP VS Code Extension
 
-This extension exposes [RefactorMCP](../README.md) tools to Visual Studio Code.
+This extension exposes [ExxerFactorMCP](../README.md) tools to Visual Studio Code.
 
 ## Features
 
-- **Extract Method** – Right click a selection and run `RefactorMCP: Extract Method` to refactor the selected code using the `ExtractMethod` tool.
-- **Run Tool** – Command palette entry `RefactorMCP: Run Tool` lists all available refactoring tools and executes them with JSON parameters.
+- **Extract Method** – Right click a selection and run `ExxerFactorMCP: Extract Method` to ExxerFactor the selected code using the `ExtractMethod` tool.
+- **Run Tool** – Command palette entry `ExxerFactorMCP: Run Tool` lists all available ExxerFactoring tools and executes them with JSON parameters.
 
 ### Available Tools
 
@@ -34,7 +34,7 @@ version
 
 ## Requirements
 
-The extension requires that you open a workspace containing the `RefactorMCP.ConsoleApp` project. `dotnet` must also be available on your PATH. Use the setting `refactorMcp.dotnetPath` to override the path if necessary.
+The extension requires that you open a workspace containing the `ExxerFactorMCP.ConsoleApp` project. `dotnet` must also be available on your PATH. Use the setting `ExxerFactorMcp.dotnetPath` to override the path if necessary.
 
 ## Development
 

@@ -1,0 +1,188 @@
+@page "/metrics"
+
+<PageTitle>Metrics - ExxerFactor.Mcp</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h3" Class="mb-3">Performance Metrics</MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            ExxerFactor.Mcp exposes metrics via OpenTelemetry and Prometheus for monitoring performance and usage.
+        </MudText>
+    </MudPaper>
+
+    <!-- Metrics Sources -->
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Prometheus Metrics</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Filled.OpenInNew"
+                                  Href="http://localhost:7042/metrics" Target="_blank">
+                            View Raw
+                        </MudButton>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Standard Prometheus metrics for HTTP requests, system resources, and custom application metrics.
+                    </MudText>
+                    <MudAlert Severity="Severity.Info">
+                        <strong>Endpoint:</strong> http://localhost:7042/metrics
+                    </MudAlert>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Application Metrics</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Custom ExxerFactor.Mcp metrics for tool usage, ExxerFactoring operations, and performance tracking.
+                    </MudText>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Text="Tool execution counts" />
+                        <MudListItem T="string" Text="ExxerFactoring operation duration" />
+                        <MudListItem T="string" Text="Success/failure rates" />
+                        <MudListItem T="string" Text="Solution processing metrics" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Available Metrics -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Available Metrics</MudText>
+        
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="HTTP Metrics">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    ASP.NET Core and HTTP-related metrics:
+                </MudText>
+                <MudList T="string" Dense="true">
+                    <MudListItem T="string" Text="http_requests_total - Total HTTP requests" />
+                    <MudListItem T="string" Text="http_request_duration_seconds - Request duration" />
+                    <MudListItem T="string" Text="http_requests_currently_active - Active requests" />
+                    <MudListItem T="string" Text="aspnetcore_hosting_requests_total - ASP.NET Core requests" />
+                </MudList>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="System Metrics">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    System resource and runtime metrics:
+                </MudText>
+                <MudList T="string" Dense="true">
+                    <MudListItem T="string" Text="process_cpu_seconds_total - CPU usage" />
+                    <MudListItem T="string" Text="process_working_set_bytes - Memory usage" />
+                    <MudListItem T="string" Text="dotnet_gc_collections_total - Garbage collection" />
+                    <MudListItem T="string" Text="dotnet_gc_memory_total_available_bytes - Available memory" />
+                </MudList>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="ExxerFactor.Mcp Metrics">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Custom application metrics:
+                </MudText>
+                <MudList T="string" Dense="true">
+                    <MudListItem T="string" Text="ExxerFactor_Mcp_tools_executed_total - Tool executions" />
+                    <MudListItem T="string" Text="ExxerFactor_Mcp_operation_duration_seconds - Operation timing" />
+                    <MudListItem T="string" Text="ExxerFactor_Mcp_solutions_loaded_total - Solutions processed" />
+                    <MudListItem T="string" Text="ExxerFactor_Mcp_errors_total - Error counts" />
+                </MudList>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+
+    <!-- Metrics Integration -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Metrics Integration</MudText>
+        
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudCard>
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">Prometheus Configuration</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudText Typo="Typo.body2" Class="mb-3">
+                            Add this to your prometheus.yml:
+                        </MudText>
+                        <MudPaper Class="pa-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+scrape_configs:
+  - job_name: 'ExxerFactor-Mcp'
+    static_configs:
+      - targets: ['localhost:7042']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+                        </MudPaper>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            
+            <MudItem xs="12" md="6">
+                <MudCard>
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">Grafana Dashboard</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudText Typo="Typo.body2" Class="mb-3">
+                            Example Grafana queries:
+                        </MudText>
+                        <MudPaper Class="pa-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Request rate
+rate(http_requests_total[5m])
+
+# Error rate
+rate(http_requests_total{status=~"5.."}[5m])
+
+# Tool usage
+ExxerFactor_Mcp_tools_executed_total
+                        </MudPaper>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Quick Actions -->
+    <MudPaper Elevation="2" Class="pa-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Quick Actions</MudText>
+        <MudGrid>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" 
+                          StartIcon="@Icons.Material.Filled.Analytics"
+                          Href="http://localhost:7042/metrics" Target="_blank">
+                    View Prometheus Metrics
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Secondary" 
+                          StartIcon="@Icons.Material.Filled.MonitorHeart"
+                          Href="http://localhost:7042/health" Target="_blank">
+                    Check Health Status
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Info" 
+                          StartIcon="@Icons.Material.Filled.Monitor"
+                          Href="/monitoring">
+                    System Monitoring
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>

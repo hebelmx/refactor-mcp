@@ -1,0 +1,23 @@
+namespace ExxerFactor.Mcp.Tests.Tools;
+
+public class ConvertToStaticWithInstanceTests : TestBase
+{
+    [Fact]
+    public async Task ConvertToStaticWithInstance_ReturnsSuccess()
+    {
+        await LoadSolutionTool.LoadSolution(SolutionPath, null, CancellationToken.None);
+        var testFile = Path.Combine(TestOutputPath, "ConvertToStaticInstance.cs");
+        await TestUtilities.CreateTestFile(testFile, TestUtilities.GetSampleCodeForConvertToStaticInstance());
+
+        var result = await ConvertToStaticWithInstanceTool.ConvertToStaticWithInstance(
+            SolutionPath,
+            testFile,
+            "GetFormattedNumber",
+            "instance");
+
+        Assert.Contains("Successfully converted method 'GetFormattedNumber' to static with instance parameter", result);
+        var fileContent = await File.ReadAllTextAsync(testFile);
+        Assert.Contains("static string GetFormattedNumber", fileContent);
+        Assert.Contains("Calculator instance", fileContent);
+    }
+}

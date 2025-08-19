@@ -433,10 +433,10 @@ runtimes/
 BuildHost-net472/
 BuildHost-netcore/ 
 TestOutput/codeMetricsCache.json
-.refactor-mcp/
+.ExxerFactor-mcp/
 
 
-# RefactorMCP specific ignores
+# ExxerFactorMCP specific ignores
 /scripts/temp/
 /scripts/archive/publish-*/
 *.autogen.log

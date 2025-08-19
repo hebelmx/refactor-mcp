@@ -1,0 +1,211 @@
+@page "/Mcp"
+@inject HttpClient HttpClient
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Mcp Server - ExxerFactor.Mcp</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h3" Class="mb-3">Model Context Protocol Server</MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            ExxerFactor.Mcp provides both stdio and HTTP transport methods for Mcp clients. 
+            The HTTP API allows web-based and RESTful integration with the ExxerFactoring tools.
+        </MudText>
+        
+        <MudAlert Severity="Severity.Info" Class="mb-4">
+            <strong>Server Status:</strong> HTTP Mcp API is running at <code>/api/Mcp</code>
+        </MudAlert>
+    </MudPaper>
+
+    <!-- Connection Methods -->
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">HTTP Transport</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Use RESTful HTTP endpoints for web integration:
+                    </MudText>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Icon="@Icons.Material.Filled.Api">
+                            <code>GET /api/Mcp/server-info</code>
+                        </MudListItem>
+                        <MudListItem T="string" Icon="@Icons.Material.Filled.Build">
+                            <code>GET /api/Mcp/tools</code>
+                        </MudListItem>
+                        <MudListItem T="string" Icon="@Icons.Material.Filled.PlayArrow">
+                            <code>POST /api/Mcp/tools</code>
+                        </MudListItem>
+                    </MudList>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" 
+                              StartIcon="@Icons.Material.Filled.OpenInNew"
+                              OnClick="TestHttpApi" Class="mt-3">
+                        Test HTTP API
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Stdio Transport</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Use the console application for stdio Mcp:
+                    </MudText>
+                    <MudAlert Severity="Severity.Normal" Class="mb-3">
+                        <code>./ExxerFactor.Mcp.ConsoleApp</code>
+                    </MudAlert>
+                    <MudText Typo="Typo.caption" Color="Color.Default">
+                        Standard Mcp clients (like Claude Desktop) use stdio transport.
+                        The console application provides full Mcp protocol compliance.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- API Examples -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">HTTP API Examples</MudText>
+        
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="Get Server Information">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+curl -X GET @(_baseUrl)/api/Mcp/server-info
+                </MudPaper>
+                <MudText Typo="Typo.body2">Returns server capabilities and version information.</MudText>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="List Available Tools">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+curl -X GET @(_baseUrl)/api/Mcp/tools
+                </MudPaper>
+                <MudText Typo="Typo.body2">Returns all available ExxerFactoring tools with their schemas.</MudText>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="Execute ExxerFactoring Tool">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+curl -X POST @(_baseUrl)/api/Mcp/tools \
+  -H "Content-Type: application/json" \
+  -d '{
+    "toolName": "LoadSolution",
+    "parameters": {
+      "solutionPath": "/path/to/solution.sln"
+    }
+  }'
+                </MudPaper>
+                <MudText Typo="Typo.body2">Executes a ExxerFactoring tool with specified parameters.</MudText>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+
+    <!-- Usage Instructions -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Client Integration</MudText>
+        
+        <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true">
+            <MudTabPanel Text="Claude Desktop">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Add to your Claude Desktop Mcp configuration:
+                </MudText>
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+{
+  "McpServers": {
+    "ExxerFactor-Mcp": {
+      "command": "/opt/ExxerFactor-Mcp/ExxerFactor.Mcp.ConsoleApp",
+      "env": {}
+    }
+  }
+}
+                </MudPaper>
+            </MudTabPanel>
+            
+            <MudTabPanel Text="HTTP Client">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Use any HTTP client to integrate with the Mcp API:
+                </MudText>
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+// JavaScript example
+const response = await fetch('@(_baseUrl)/api/Mcp/tools', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    toolName: 'ExtractMethod',
+    parameters: {
+      solutionPath: '/path/to/solution.sln',
+      filePath: '/path/to/file.cs',
+      startLine: 10,
+      endLine: 20
+    }
+  })
+});
+                </MudPaper>
+            </MudTabPanel>
+            
+            <MudTabPanel Text="cURL Examples">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Command-line examples for testing:
+                </MudText>
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">
+# List tools
+curl @(_baseUrl)/api/Mcp/tools
+
+# Execute tool
+curl -X POST @(_baseUrl)/api/Mcp/tools \
+  -H "Content-Type: application/json" \
+  -d '{"toolName":"LoadSolution","parameters":{"solutionPath":"/path/to/solution.sln"}}'
+                </MudPaper>
+            </MudTabPanel>
+        </MudTabs>
+    </MudPaper>
+
+    <!-- Test Results -->
+    @if (!string.IsNullOrEmpty(_testResult))
+    {
+        <MudPaper Elevation="2" Class="pa-6">
+            <MudText Typo="Typo.h5" Class="mb-3">Test Results</MudText>
+            <MudPaper Class="pa-3" Style="background-color: var(--mud-palette-surface); font-family: monospace; white-space: pre-wrap;">@_testResult</MudPaper>
+        </MudPaper>
+    }
+
+</MudContainer>
+
+@code {
+    private string _baseUrl = "";
+    private string _testResult = "";
+
+    protected override void OnInitialized()
+    {
+        _baseUrl = "http://localhost:5000"; // This should be dynamic in production
+    }
+
+    private async Task TestHttpApi()
+    {
+        try
+        {
+            using var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(_baseUrl);
+            
+            var response = await httpClient.GetAsync("/api/Mcp/server-info");
+            var content = await response.Content.ReadAsStringAsync();
+            
+            _testResult = $"Status: {response.StatusCode}\nResponse:\n{content}";
+        }
+        catch (Exception ex)
+        {
+            _testResult = $"Error: {ex.Message}";
+        }
+        
+        StateHasChanged();
+    }
+}

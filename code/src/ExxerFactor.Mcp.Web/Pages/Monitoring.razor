@@ -1,0 +1,196 @@
+@page "/monitoring"
+
+<PageTitle>System Monitoring - ExxerFactor.Mcp</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h3" Class="mb-3">System Monitoring</MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            Monitor ExxerFactor.Mcp system health, performance metrics, and service status.
+        </MudText>
+    </MudPaper>
+
+    <!-- Service Status Cards -->
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Web" Size="Size.Large" Color="Color.Success" Class="mb-2" />
+                    <MudText Typo="Typo.h6">Web Service</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Success">Running</MudText>
+                    <MudText Typo="Typo.caption">Port 7042/7043</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Api" Size="Size.Large" Color="Color.Success" Class="mb-2" />
+                    <MudText Typo="Typo.h6">Mcp API</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Success">Available</MudText>
+                    <MudText Typo="Typo.caption">HTTP & Stdio</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Storage" Size="Size.Large" Color="Color.Success" Class="mb-2" />
+                    <MudText Typo="Typo.h6">Seq Logging</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Success">Connected</MudText>
+                    <MudText Typo="Typo.caption">Port 5341</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Monitoring Tools -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Monitoring Tools</MudText>
+        
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudCard>
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">Health Checks</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudList T="string" Dense="true">
+                            <MudListItem T="string" Icon="@Icons.Material.Filled.MonitorHeart">
+                                <MudLink Href="http://localhost:7042/health" Target="_blank">
+                                    Application Health
+                                </MudLink>
+                            </MudListItem>
+                            <MudListItem T="string" Icon="@Icons.Material.Filled.Api">
+                                <MudLink Href="http://localhost:7042/api/Mcp/server-info" Target="_blank">
+                                    Mcp Server Status
+                                </MudLink>
+                            </MudListItem>
+                        </MudList>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            
+            <MudItem xs="12" md="6">
+                <MudCard>
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">Metrics</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudList T="string" Dense="true">
+                            <MudListItem T="string" Icon="@Icons.Material.Filled.Analytics">
+                                <MudLink Href="http://localhost:7042/metrics" Target="_blank">
+                                    Prometheus Metrics
+                                </MudLink>
+                            </MudListItem>
+                            <MudListItem T="string" Icon="@Icons.Material.Filled.Timeline">
+                                <MudLink Href="/metrics">
+                                    public Metrics Dashboard
+                                </MudLink>
+                            </MudListItem>
+                        </MudList>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- System Commands -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">System Commands</MudText>
+        
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="Service Management">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Check service status
+sudo systemctl status ExxerFactor-Mcp
+
+# Start/stop/restart service
+sudo systemctl start ExxerFactor-Mcp
+sudo systemctl stop ExxerFactor-Mcp
+sudo systemctl restart ExxerFactor-Mcp
+
+# Enable/disable autostart
+sudo systemctl enable ExxerFactor-Mcp
+sudo systemctl disable ExxerFactor-Mcp
+                </MudPaper>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="Container Management">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Check Seq container
+docker ps -f name=ExxerFactor-Mcp-seq
+
+# Restart Seq container
+docker restart ExxerFactor-Mcp-seq
+
+# View container logs
+docker logs -f ExxerFactor-Mcp-seq
+
+# Container resource usage
+docker stats ExxerFactor-Mcp-seq
+                </MudPaper>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="Performance Monitoring">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Process monitoring
+top -p $(pgrep ExxerFactor.Mcp.Web)
+
+# Memory usage
+ps aux | grep ExxerFactor.Mcp.Web
+
+# Network connections
+netstat -tlnp | grep -E "(7042|7043|5341)"
+
+# Disk usage
+df -h /opt/ExxerFactor-Mcp
+du -sh /var/log/ExxerFactor-Mcp
+                </MudPaper>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+
+    <!-- Quick Actions -->
+    <MudPaper Elevation="2" Class="pa-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Quick Actions</MudText>
+        <MudGrid>
+            <MudItem xs="12" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Success" 
+                          StartIcon="@Icons.Material.Filled.MonitorHeart"
+                          Href="http://localhost:7042/health" Target="_blank">
+                    Check Health
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" 
+                          StartIcon="@Icons.Material.Filled.Analytics"
+                          Href="http://localhost:7042/metrics" Target="_blank">
+                    View Metrics
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Secondary" 
+                          StartIcon="@Icons.Material.Filled.Storage"
+                          Href="http://localhost:5341" Target="_blank">
+                    Open Seq
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Info" 
+                          StartIcon="@Icons.Material.Filled.Subject"
+                          Href="/logs">
+                    View Logs
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>

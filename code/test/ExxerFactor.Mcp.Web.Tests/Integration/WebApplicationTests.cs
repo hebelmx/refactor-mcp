@@ -1,0 +1,195 @@
+using System.Text;
+using ExxerFactor.Mcp.Core.Abstractions;
+using ExxerFactor.Mcp.Web;
+using ExxerFactor.Mcp.Web.Controllers;
+using ExxerFactor.Mcp.Web.Services;
+
+namespace ExxerFactor.Mcp.Web.Tests.Integration;
+
+public class WebApplicationTests : IClassFixture<WebApplicationFactory<Program>>
+{
+    private readonly WebApplicationFactory<Program> _factory;
+    private readonly HttpClient _client;
+
+    public WebApplicationTests(WebApplicationFactory<Program> factory)
+    {
+        _factory = factory.WithWebHostBuilder(builder =>
+        {
+            builder.ConfigureServices(services =>
+            {
+                // Override services for testing
+                services.AddScoped<IDashboardService, TestDashboardService>();
+                services.AddScoped<IMetricsService, TestMetricsService>();
+            });
+
+            builder.UseEnvironment("Testing");
+        });
+
+        _client = _factory.CreateClient();
+    }
+
+    [Fact]
+    public async Task Get_HomePage_ReturnsSuccessAndCorrectContentType()
+    {
+        // Act
+        var response = await _client.GetAsync("/");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        response.Content.Headers.ContentType?.ToString().ShouldContain("text/html");
+    }
+
+    [Fact]
+    public async Task Get_HealthCheck_ReturnsHealthy()
+    {
+        // Act
+        var response = await _client.GetAsync("/health");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+        content.ShouldBe("Healthy");
+    }
+
+    [Fact]
+    public async Task Get_PrometheusMetrics_ReturnsMetricsFormat()
+    {
+        // Act
+        var response = await _client.GetAsync("/metrics");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+
+        // Prometheus metrics should contain specific format
+        // This is a basic check - in a real scenario, you'd validate specific metrics
+        content.ShouldNotBeNullOrEmpty();
+    }
+
+    [Fact]
+    public async Task Get_McpTools_ReturnsToolsList()
+    {
+        // Act
+        var response = await _client.GetAsync("/api/Mcp/tools");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        response.Content.Headers.ContentType?.MediaType.ShouldBe("application/json");
+
+        var content = await response.Content.ReadAsStringAsync();
+        var toolsResponse = JsonSerializer.Deserialize<McpListToolsResponse>(content, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        toolsResponse.ShouldNotBeNull();
+        toolsResponse!.Tools.ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task Get_McpServerInfo_ReturnsCorrectInfo()
+    {
+        // Act
+        var response = await _client.GetAsync("/api/Mcp/server-info");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+
+        var content = await response.Content.ReadAsStringAsync();
+        var serverInfo = JsonSerializer.Deserialize<McpServerInfo>(content, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        serverInfo.ShouldNotBeNull();
+        serverInfo!.Name.ShouldBe("ExxerFactor.Mcp");
+        serverInfo.Version.ShouldBe("1.0.0");
+    }
+
+    [Fact]
+    public async Task Post_McpTools_WithValidRequest_ReturnsSuccess()
+    {
+        // Arrange
+        var request = new McpToolCallRequest
+        {
+            ToolName = "nonexistent-tool", // This should fail gracefully
+            Parameters = new Dictionary<string, JsonElement>()
+        };
+
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        // Act
+        var response = await _client.PostAsync("/api/Mcp/tools", content);
+
+        // Assert
+        // Should return BadRequest for nonexistent tool, but not crash
+        response.StatusCode.ShouldBe(System.Net.HttpStatusCode.BadRequest);
+
+        var responseContent = await response.Content.ReadAsStringAsync();
+        var errorResponse = JsonSerializer.Deserialize<McpErrorResponse>(responseContent, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+
+        errorResponse.ShouldNotBeNull();
+        errorResponse!.Error.ShouldContain("Tool not found");
+    }
+
+    [Fact]
+    public async Task Get_ToolsPage_ReturnsSuccessAndCorrectContent()
+    {
+        // Act
+        var response = await _client.GetAsync("/tools");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        response.Content.Headers.ContentType?.ToString().ShouldContain("text/html");
+    }
+
+    [Fact]
+    public async Task Get_MetricsPage_ReturnsSuccessAndCorrectContent()
+    {
+        // Act
+        var response = await _client.GetAsync("/metrics");
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+        // Note: This might conflict with Prometheus /metrics endpoint
+        // In a real app, you'd want different paths
+    }
+
+    [Theory]
+    [InlineData("/")]
+    [InlineData("/tools")]
+    [InlineData("/monitoring")]
+    [InlineData("/logs")]
+    public async Task Get_PublicPages_ReturnsSuccess(string url)
+    {
+        // Act
+        var response = await _client.GetAsync(url);
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+    }
+
+    [Fact]
+    public async Task Application_ShouldRegisterRequiredServices()
+    {
+        // Arrange & Act
+        using var scope = _factory.Services.CreateScope();
+        var serviceProvider = scope.ServiceProvider;
+
+        // Assert - Verify key services are registered
+        var dashboardService = serviceProvider.GetService<IDashboardService>();
+        dashboardService.ShouldNotBeNull();
+
+        var ExxerFactoringService = serviceProvider.GetService<IExxerFactoringService>();
+        ExxerFactoringService.ShouldNotBeNull();
+
+        var metricsService = serviceProvider.GetService<IMetricsService>();
+        metricsService.ShouldNotBeNull();
+    }
+}
+
+// Test service implementations

@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
+  <PropertyGroup>
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    
+    <!-- Package Information -->
+    <PackageId>ExxerFactor.Mcp.Core</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>ExxerFactor.Mcp</Authors>
+    <Description>Core library for ExxerFactor.Mcp - Roslyn-based C# ExxerFactoring tools</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <!-- Roslyn Compiler Platform & Code Analysis -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
+    <PackageReference Include="Microsoft.Build.Locator" />
+    
+    <!-- Microsoft Extensions & Configuration -->
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    
+    <!-- Logging Framework (Serilog) -->
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Sinks.Seq" />
+    
+    <!-- System & JSON -->
+    <PackageReference Include="System.Text.Json" />
+    
+    <!-- Protocol & Communication -->
+    <PackageReference Include="ModelContextProtocol" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- InternalsVisibleTo Configuration                                       -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Tests" />
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Core.Tests" />
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Server" />
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Web" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Version Overrides                                              -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <PackageVersion Update="Microsoft.Build.Locator" />
+    <PackageVersion Update="Microsoft.Extensions.Caching.Memory" />
+    <PackageVersion Update="SonarAnalyzer.CSharp" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Project Structure Folders                                              -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+
+</Project>

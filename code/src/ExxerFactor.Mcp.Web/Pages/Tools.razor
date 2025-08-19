@@ -1,0 +1,129 @@
+@page "/tools"
+
+<PageTitle>ExxerFactoring Tools - ExxerFactor.Mcp</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h3" Class="mb-3">ExxerFactoring Tools</MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            ExxerFactor.Mcp provides 30+ powerful C# ExxerFactoring tools using Roslyn. 
+            These tools can be accessed via Mcp protocol or HTTP API.
+        </MudText>
+    </MudPaper>
+
+    <!-- Tool Categories -->
+    <MudGrid>
+        <MudItem xs="12" md="6" lg="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Code Movement</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Text="Move Method" />
+                        <MudListItem T="string" Text="Move Multiple Methods" />
+                        <MudListItem T="string" Text="Extract Method" />
+                        <MudListItem T="string" Text="Extract Class" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6" lg="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Code Generation</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Text="Add Constructor Parameter" />
+                        <MudListItem T="string" Text="Add Observer Pattern" />
+                        <MudListItem T="string" Text="Generate Properties" />
+                        <MudListItem T="string" Text="Add Interface" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6" lg="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Analysis</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Text="List Tools" />
+                        <MudListItem T="string" Text="Load Solution" />
+                        <MudListItem T="string" Text="Get Metrics" />
+                        <MudListItem T="string" Text="Validate Code" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Usage Instructions -->
+    <MudPaper Elevation="2" Class="pa-6 mt-6">
+        <MudText Typo="Typo.h5" Class="mb-4">How to Use</MudText>
+        
+        <MudTabs Elevation="2" Rounded="true">
+            <MudTabPanel Text="HTTP API">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Use HTTP requests to execute ExxerFactoring tools:
+                </MudText>
+                <MudPaper Class="pa-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# List available tools
+curl http://localhost:7042/api/Mcp/tools
+
+# Execute a tool
+curl -X POST http://localhost:7042/api/Mcp/tools \
+  -H "Content-Type: application/json" \
+  -d '{"toolName":"LoadSolution","parameters":{"solutionPath":"/path/to/solution.sln"}}'
+                </MudPaper>
+            </MudTabPanel>
+            
+            <MudTabPanel Text="Mcp Client">
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    Use with Mcp-compatible clients like Claude Desktop:
+                </MudText>
+                <MudPaper Class="pa-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+{
+  "McpServers": {
+    "ExxerFactor-Mcp": {
+      "command": "/opt/ExxerFactor-Mcp/ExxerFactor.Mcp.ConsoleApp",
+      "env": {}
+    }
+  }
+}
+                </MudPaper>
+            </MudTabPanel>
+        </MudTabs>
+    </MudPaper>
+
+    <!-- Quick Actions -->
+    <MudPaper Elevation="2" Class="pa-6 mt-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Quick Actions</MudText>
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" 
+                          StartIcon="@Icons.Material.Filled.Api" Href="/Mcp">
+                    View Mcp API Documentation
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Secondary" 
+                          StartIcon="@Icons.Material.Filled.Analytics" Href="/metrics">
+                    View Usage Metrics
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>

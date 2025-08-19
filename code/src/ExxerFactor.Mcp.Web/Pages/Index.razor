@@ -1,0 +1,200 @@
+@page "/"
+@inject IDashboardService DashboardService
+@inject IMetricsService MetricsService
+
+<PageTitle>ExxerFactor.Mcp Dashboard</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    
+    <!-- Welcome Section -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudGrid>
+            <MudItem xs="12" md="8">
+                <MudText Typo="Typo.h3" Class="mb-3">Welcome to ExxerFactor.Mcp</MudText>
+                <MudText Typo="Typo.body1" Class="mb-4">
+                    ExxerFactor.Mcp is a powerful Model Context Protocol server that provides advanced C# ExxerFactoring capabilities using Roslyn. 
+                    This dashboard gives you real-time insights into your ExxerFactoring operations, system health, and performance metrics.
+                </MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Build" Href="/tools">
+                    Explore ExxerFactoring Tools
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Api" Href="/Mcp" Class="ml-3">
+                    Mcp Server Status
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="4" Class="d-flex justify-center">
+                <MudIcon Icon="@Icons.Material.Filled.Code" Size="Size.Large" Style="font-size: 8rem; color: var(--mud-palette-primary);" />
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Stats Cards -->
+    <MudGrid Class="mb-6">
+        <MudItem xs="6" md="3">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Build" Size="Size.Large" Color="Color.Primary" Class="mb-2" />
+                    <MudText Typo="Typo.h4">@_stats?.AvailableTools</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Default">Available Tools</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="6" md="3">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Assignment" Size="Size.Large" Color="Color.Success" Class="mb-2" />
+                    <MudText Typo="Typo.h4">@_stats?.TotalExxerFactorings</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Default">Total ExxerFactorings</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="6" md="3">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Folder" Size="Size.Large" Color="Color.Warning" Class="mb-2" />
+                    <MudText Typo="Typo.h4">@_stats?.ActiveSolutions</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Default">Active Solutions</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="6" md="3">
+            <MudCard>
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Size="Size.Large" Color="Color.Info" Class="mb-2" />
+                    <MudText Typo="Typo.h4">@_stats?.SuccessRate%</MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Default">Success Rate</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- System Health and Recent Activity -->
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">System Health</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Icon="@Icons.Material.Filled.Refresh" Color="Color.Default" OnClick="RefreshData" />
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (_health != null)
+                    {
+                        <MudAlert Severity="@(_health.IsHealthy ? Severity.Success : Severity.Error)" Class="mb-3">
+                            @_health.Status
+                        </MudAlert>
+                        
+                        @foreach (var component in _health.Components)
+                        {
+                            <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-2">
+                                <MudText>@component.Key</MudText>
+                                <MudChip T="string" Size="Size.Small" Color="@(component.Value.IsHealthy ? Color.Success : Color.Error)">
+                                    @component.Value.Status
+                                </MudChip>
+                            </MudStack>
+                        }
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Recent Activity</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    @if (_activities != null)
+                    {
+                        <MudTimeline>
+                            @foreach (var activity in _activities.Take(5))
+                            {
+                                <MudTimelineItem Color="@(activity.Success ? Color.Success : Color.Error)" Size="Size.Small">
+                                    <ItemOpposite>
+                                        <MudText Typo="Typo.caption" Color="Color.Default">
+                                            @activity.Timestamp.ToString("HH:mm")
+                                        </MudText>
+                                    </ItemOpposite>
+                                    <ItemContent>
+                                        <MudText Typo="Typo.body2" Class="mb-1">
+                                            <strong>@activity.ToolName</strong> on @activity.ProjectName
+                                        </MudText>
+                                        <MudText Typo="Typo.caption" Color="Color.Default">
+                                            @(activity.Success ? "Completed" : "Failed") in @activity.Duration.TotalSeconds.ToString("F1")s
+                                        </MudText>
+                                    </ItemContent>
+                                </MudTimelineItem>
+                            }
+                        </MudTimeline>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Quick Actions -->
+    <MudPaper Elevation="2" Class="pa-6 mt-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Quick Actions</MudText>
+        <MudGrid>
+            <MudItem xs="6" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Build" Href="/tools">
+                    Browse Tools
+                </MudButton>
+            </MudItem>
+            <MudItem xs="6" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Analytics" Href="/metrics">
+                    View Metrics
+                </MudButton>
+            </MudItem>
+            <MudItem xs="6" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Monitor" Href="/monitoring">
+                    System Monitor
+                </MudButton>
+            </MudItem>
+            <MudItem xs="6" md="3">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Subject" Href="/logs">
+                    View Logs
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>
+
+@code {
+    private DashboardStats? _stats;
+    private SystemHealthStatus? _health;
+    private IEnumerable<ExxerFactoringActivity>? _activities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshData();
+    }
+
+    private async Task RefreshData()
+    {
+        try
+        {
+            var statsTask = DashboardService.GetDashboardStatsAsync();
+            var healthTask = DashboardService.GetSystemHealthAsync();
+            var activitiesTask = DashboardService.GetRecentActivitiesAsync(10);
+
+            await Task.WhenAll(statsTask, healthTask, activitiesTask);
+            
+            _stats = await statsTask;
+            _health = await healthTask;
+            _activities = await activitiesTask;
+            
+            StateHasChanged();
+        }
+        catch (Exception)
+        {
+            // Handle error gracefully
+        }
+    }
+}

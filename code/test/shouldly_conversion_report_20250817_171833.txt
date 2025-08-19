@@ -23,7 +23,7 @@ Sample conversions:
     From: .Should().NotBeNullOrEmpty()
     To:   .ShouldNotBeNullOrEmpty()
 
-  File: RefactoringServiceTests.cs
+  File: ExxerFactoringServiceTests.cs
   Line 169:
     From: .Should().NotBeNullOrEmpty()
     To:   .ShouldNotBeNullOrEmpty()

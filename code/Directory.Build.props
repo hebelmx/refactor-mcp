@@ -2,21 +2,20 @@
 	<PropertyGroup>
 		<!-- External build configuration - minimal setup for clean builds -->
 		<TargetFramework>net10.0</TargetFramework>
-		<BaseOutputPath>F:\Dynamic\Refactor\Refactor\bin\</BaseOutputPath>
+		<BaseOutputPath>F:\Dynamic\ExxerFactor\ExxerFactor\bin\</BaseOutputPath>
 		<OutputPath>$(BaseOutputPath)$(MSBuildProjectName)\$(Configuration)\</OutputPath>
-		<BaseIntermediateOutputPath>F:\Dynamic\Refactor\Refactor\obj\</BaseIntermediateOutputPath>
+		<BaseIntermediateOutputPath>F:\Dynamic\ExxerFactor\ExxerFactor\obj\</BaseIntermediateOutputPath>
 		<IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\$(Configuration)\</IntermediateOutputPath>
 
 		<!-- Avoid network issues - Enhanced NuGet stability -->
-		<RestoreNoHttpCache>true</RestoreNoHttpCache>
-		<RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
-		<RestoreForceEvaluate>true</RestoreForceEvaluate>
-		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-		<RestoreLockedMode Condition="Exists('packages.lock.json')">true</RestoreLockedMode>
+		<!--<RestoreNoHttpCache>true</RestoreNoHttpCache>-->
+		<!--<RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>-->
+		<!--<RestoreForceEvaluate>true</RestoreForceEvaluate>-->
+		<!--<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>-->
+		<!--<RestoreLockedMode Condition="Exists('packages.lock.json')">true</RestoreLockedMode>-->
 
 		<!-- Warning Configuration -->
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<WarningsAsErrors />
+		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
 		<WarningsNotAsErrors>NU1903;NU1510;NU5104;xUnit1051</WarningsNotAsErrors>
 
 		<!-- Suppress warnings we can't control -->

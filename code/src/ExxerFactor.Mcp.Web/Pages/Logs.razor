@@ -1,0 +1,134 @@
+@page "/logs"
+
+<PageTitle>Logs - ExxerFactor.Mcp</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h3" Class="mb-3">Logs & Monitoring</MudText>
+        <MudText Typo="Typo.body1" Class="mb-4">
+            ExxerFactor.Mcp uses structured logging with Serilog, sending logs to both files and Seq for analysis.
+        </MudText>
+    </MudPaper>
+
+    <!-- Log Sources -->
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Seq Structured Logs</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Filled.OpenInNew"
+                                  Href="http://localhost:5341" Target="_blank">
+                            Open Seq
+                        </MudButton>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Rich structured logging with filtering, search, and alerting capabilities.
+                    </MudText>
+                    <MudAlert Severity="Severity.Info" Class="mb-3">
+                        <strong>URL:</strong> http://localhost:5341
+                    </MudAlert>
+                    <MudText Typo="Typo.body2">
+                        Seq provides powerful log analysis with structured data, custom queries, and dashboards.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">System Logs</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2" Class="mb-3">
+                        Traditional file-based and systemd journal logs.
+                    </MudText>
+                    <MudList T="string" Dense="true">
+                        <MudListItem T="string" Icon="@Icons.Material.Filled.Description" 
+                                    Text="File: /var/log/ExxerFactor-Mcp/ExxerFactor-Mcp-*.log" />
+                        <MudListItem T="string" Icon="@Icons.Material.Filled.Terminal" 
+                                    Text="Systemd: journalctl -u ExxerFactor-Mcp -f" />
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Log Commands -->
+    <MudPaper Elevation="2" Class="pa-6 mb-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Useful Commands</MudText>
+        
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="View Real-time Service Logs">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Follow ExxerFactor.Mcp service logs
+journalctl -u ExxerFactor-Mcp -f
+
+# Show recent logs with details
+journalctl -u ExxerFactor-Mcp --no-pager -l -n 50
+                </MudPaper>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="File Log Commands">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# View today's log file
+tail -f /var/log/ExxerFactor-Mcp/ExxerFactor-Mcp-$(date +%Y%m%d).log
+
+# Search for errors
+grep -i error /var/log/ExxerFactor-Mcp/ExxerFactor-Mcp-*.log
+
+# View all log files
+ls -la /var/log/ExxerFactor-Mcp/
+                </MudPaper>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="Seq Container Management">
+                <MudPaper Class="pa-3 mb-3" Style="background-color: var(--mud-palette-surface); font-family: monospace;">
+# Check Seq container status
+docker ps -f name=ExxerFactor-Mcp-seq
+
+# View Seq container logs
+docker logs -f ExxerFactor-Mcp-seq
+
+# Restart Seq container
+docker restart ExxerFactor-Mcp-seq
+                </MudPaper>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+
+    <!-- Service Status -->
+    <MudPaper Elevation="2" Class="pa-6">
+        <MudText Typo="Typo.h5" Class="mb-4">Service Status</MudText>
+        <MudGrid>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" 
+                          StartIcon="@Icons.Material.Filled.OpenInNew"
+                          Href="http://localhost:5341" Target="_blank">
+                    Open Seq Dashboard
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Secondary" 
+                          StartIcon="@Icons.Material.Filled.Monitor" Href="/monitoring">
+                    System Monitoring
+                </MudButton>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudButton FullWidth="true" Variant="Variant.Outlined" Color="Color.Info" 
+                          StartIcon="@Icons.Material.Filled.Analytics" Href="/metrics">
+                    View Metrics
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+</MudContainer>

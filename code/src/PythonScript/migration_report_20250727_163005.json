@@ -106,8 +106,8 @@
       "timestamp": "2025-07-27T16:30:05.489980"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\.cursor\\mcp.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\.cursor\\mcp.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\.cursor\\Mcp.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\.cursor\\Mcp.json",
       "size_bytes": 372,
       "timestamp": "2025-07-27T16:30:05.495550"
     },
@@ -256,8 +256,8 @@
       "timestamp": "2025-07-27T16:30:05.867171"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\MCP_Server_Implementation_Report.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\MCP_Server_Implementation_Report.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Mcp_Server_Implementation_Report.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Mcp_Server_Implementation_Report.md",
       "size_bytes": 9418,
       "timestamp": "2025-07-27T16:30:05.877692"
     },
@@ -298,8 +298,8 @@
       "timestamp": "2025-07-27T16:30:05.955967"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\REFACTORING_SUMMARY.txt",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\REFACTORING_SUMMARY.txt",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\ExxerFactorING_SUMMARY.txt",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\ExxerFactorING_SUMMARY.txt",
       "size_bytes": 924,
       "timestamp": "2025-07-27T16:30:05.958515"
     },
@@ -436,8 +436,8 @@
       "timestamp": "2025-07-27T16:30:06.647158"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Context Refactor.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Context Refactor.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Context ExxerFactor.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Context ExxerFactor.md",
       "size_bytes": 7390,
       "timestamp": "2025-07-27T16:30:06.675821"
     },
@@ -448,14 +448,14 @@
       "timestamp": "2025-07-27T16:30:06.704476"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\FinishRefactoringStubTests.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\FinishRefactoringStubTests.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\FinishExxerFactoringStubTests.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\FinishExxerFactoringStubTests.md",
       "size_bytes": 4487,
       "timestamp": "2025-07-27T16:30:06.713443"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Taks Refactor Logging to Structured Logging F.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Taks Refactor Logging to Structured Logging F.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Taks ExxerFactor Logging to Structured Logging F.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Taks ExxerFactor Logging to Structured Logging F.md",
       "size_bytes": 2524,
       "timestamp": "2025-07-27T16:30:06.723354"
     },
@@ -466,8 +466,8 @@
       "timestamp": "2025-07-27T16:30:06.752473"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASKRefactoringHandlerUsingDBContext.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASKRefactoringHandlerUsingDBContext.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASKExxerFactoringHandlerUsingDBContext.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASKExxerFactoringHandlerUsingDBContext.md",
       "size_bytes": 7389,
       "timestamp": "2025-07-27T16:30:06.761073"
     },
@@ -484,20 +484,20 @@
       "timestamp": "2025-07-27T16:30:06.796713"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishRefactoringApplicationStubTests.Md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishRefactoringApplicationStubTests.Md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishExxerFactoringApplicationStubTests.Md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishExxerFactoringApplicationStubTests.Md",
       "size_bytes": 17647,
       "timestamp": "2025-07-27T16:30:06.821252"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishRefactoringDomainStubTests.Md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishRefactoringDomainStubTests.Md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishExxerFactoringDomainStubTests.Md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishExxerFactoringDomainStubTests.Md",
       "size_bytes": 17647,
       "timestamp": "2025-07-27T16:30:06.841414"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishRefactoringStubTests.Md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishRefactoringStubTests.Md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\TASK_FinishExxerFactoringStubTests.Md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\TASK_FinishExxerFactoringStubTests.Md",
       "size_bytes": 16489,
       "timestamp": "2025-07-27T16:30:06.862752"
     },
@@ -508,8 +508,8 @@
       "timestamp": "2025-07-27T16:30:06.888385"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Task_refactorplancontextest.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Task_refactorplancontextest.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Agents\\Task\\Task_ExxerFactorplancontextest.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Agents\\Task\\Task_ExxerFactorplancontextest.md",
       "size_bytes": 4720,
       "timestamp": "2025-07-27T16:30:06.909022"
     },
@@ -826,8 +826,8 @@
       "timestamp": "2025-07-27T16:30:07.530438"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Application\\Interfaces\\IMCPGoogleDriveService.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Application\\Interfaces\\IMCPGoogleDriveService.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Application\\Interfaces\\IMcpGoogleDriveService.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Application\\Interfaces\\IMcpGoogleDriveService.cs",
       "size_bytes": 4534,
       "timestamp": "2025-07-27T16:30:07.534322"
     },
@@ -1354,44 +1354,44 @@
       "timestamp": "2025-07-27T16:30:08.516586"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPDocumentMetadata.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPDocumentMetadata.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpDocumentMetadata.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpDocumentMetadata.cs",
       "size_bytes": 1330,
       "timestamp": "2025-07-27T16:30:08.520403"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPDocumentRequest.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPDocumentRequest.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpDocumentRequest.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpDocumentRequest.cs",
       "size_bytes": 762,
       "timestamp": "2025-07-27T16:30:08.522637"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPHealthStatus.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPHealthStatus.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpHealthStatus.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpHealthStatus.cs",
       "size_bytes": 1028,
       "timestamp": "2025-07-27T16:30:08.525789"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPResponse.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPResponse.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpResponse.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpResponse.cs",
       "size_bytes": 892,
       "timestamp": "2025-07-27T16:30:08.527661"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPUploadResult.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPUploadResult.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpUploadResult.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpUploadResult.cs",
       "size_bytes": 899,
       "timestamp": "2025-07-27T16:30:08.530327"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPWatchOptions.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPWatchOptions.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpWatchOptions.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpWatchOptions.cs",
       "size_bytes": 1010,
       "timestamp": "2025-07-27T16:30:08.533701"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPWatchSession.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\MCPWatchSession.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpWatchSession.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Core\\ExxerAI.Domain\\DocumentProcessing\\McpWatchSession.cs",
       "size_bytes": 878,
       "timestamp": "2025-07-27T16:30:08.536888"
     },
@@ -8830,494 +8830,494 @@
       "timestamp": "2025-07-27T16:30:27.972518"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\appsettings.Development.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\appsettings.Development.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\appsettings.Development.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\appsettings.Development.json",
       "size_bytes": 119,
       "timestamp": "2025-07-27T16:30:27.978955"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\appsettings.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\appsettings.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\appsettings.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\appsettings.json",
       "size_bytes": 540,
       "timestamp": "2025-07-27T16:30:27.986174"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\ExxerAI.MCPServer.csproj",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\ExxerAI.MCPServer.csproj",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\ExxerAI.McpServer.csproj",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\ExxerAI.McpServer.csproj",
       "size_bytes": 5069,
       "timestamp": "2025-07-27T16:30:28.012845"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\GlobalUsings.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\GlobalUsings.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\GlobalUsings.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\GlobalUsings.cs",
       "size_bytes": 436,
       "timestamp": "2025-07-27T16:30:28.018521"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Program.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Program.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Program.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Program.cs",
       "size_bytes": 5102,
       "timestamp": "2025-07-27T16:30:28.043150"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\README_GOOGLE_DRIVE_SETUP.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\README_GOOGLE_DRIVE_SETUP.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\README_GOOGLE_DRIVE_SETUP.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\README_GOOGLE_DRIVE_SETUP.md",
       "size_bytes": 7127,
       "timestamp": "2025-07-27T16:30:28.061603"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\TestADC.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\TestADC.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\TestADC.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\TestADC.cs",
       "size_bytes": 2530,
       "timestamp": "2025-07-27T16:30:28.080120"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\McpServerToolTypeAttribute.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\McpServerToolTypeAttribute.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\McpServerToolTypeAttribute.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\McpServerToolTypeAttribute.cs",
       "size_bytes": 0,
       "timestamp": "2025-07-27T16:30:28.082440"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IDocumentProcessingTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IDocumentProcessingTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IDocumentProcessingTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IDocumentProcessingTools.cs",
       "size_bytes": 3278,
       "timestamp": "2025-07-27T16:30:28.102195"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveCredentialResolver.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveCredentialResolver.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveCredentialResolver.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveCredentialResolver.cs",
       "size_bytes": 836,
       "timestamp": "2025-07-27T16:30:28.104890"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveService.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveService.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveService.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveService.cs",
       "size_bytes": 2733,
       "timestamp": "2025-07-27T16:30:28.109403"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\IGoogleDriveTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\IGoogleDriveTools.cs",
       "size_bytes": 3343,
       "timestamp": "2025-07-27T16:30:28.125563"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\ISystemTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Interfaces\\ISystemTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\ISystemTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Interfaces\\ISystemTools.cs",
       "size_bytes": 2043,
       "timestamp": "2025-07-27T16:30:28.129504"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\DocumentChange.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\DocumentChange.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\DocumentChange.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\DocumentChange.cs",
       "size_bytes": 468,
       "timestamp": "2025-07-27T16:30:28.136015"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveCredentialResolver.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveCredentialResolver.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveCredentialResolver.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveCredentialResolver.cs",
       "size_bytes": 21791,
       "timestamp": "2025-07-27T16:30:28.159055"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveFileMetadata.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveFileMetadata.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveFileMetadata.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveFileMetadata.cs",
       "size_bytes": 545,
       "timestamp": "2025-07-27T16:30:28.165667"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveService.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\GoogleDriveService.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveService.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\GoogleDriveService.cs",
       "size_bytes": 23700,
       "timestamp": "2025-07-27T16:30:28.191149"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\ModernGoogleDriveCredentialResolver.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\ModernGoogleDriveCredentialResolver.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\ModernGoogleDriveCredentialResolver.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\ModernGoogleDriveCredentialResolver.cs",
       "size_bytes": 6561,
       "timestamp": "2025-07-27T16:30:28.216801"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\WatchSession.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Services\\WatchSession.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\WatchSession.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Services\\WatchSession.cs",
       "size_bytes": 960,
       "timestamp": "2025-07-27T16:30:28.219606"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\DocumentProcessingTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\DocumentProcessingTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\DocumentProcessingTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\DocumentProcessingTools.cs",
       "size_bytes": 17614,
       "timestamp": "2025-07-27T16:30:28.241159"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\GoogleDriveTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\GoogleDriveTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\GoogleDriveTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\GoogleDriveTools.cs",
       "size_bytes": 18449,
       "timestamp": "2025-07-27T16:30:28.260880"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\SystemTools.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Application\\Tools\\SystemTools.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\SystemTools.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Application\\Tools\\SystemTools.cs",
       "size_bytes": 13964,
       "timestamp": "2025-07-27T16:30:28.282816"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\App.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\App.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\App.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\App.razor",
       "size_bytes": 1027,
       "timestamp": "2025-07-27T16:30:28.319052"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Routes.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Routes.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Routes.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Routes.razor",
       "size_bytes": 600,
       "timestamp": "2025-07-27T16:30:28.322147"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\_Imports.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\_Imports.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\_Imports.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\_Imports.razor",
       "size_bytes": 521,
       "timestamp": "2025-07-27T16:30:28.330572"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityComponentsEndpointRouteBuilderExtensions.cs",
       "size_bytes": 5300,
       "timestamp": "2025-07-27T16:30:28.335110"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityNoOpEmailSender.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityNoOpEmailSender.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityNoOpEmailSender.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityNoOpEmailSender.cs",
       "size_bytes": 1265,
       "timestamp": "2025-07-27T16:30:28.340515"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityRedirectManager.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityRedirectManager.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityRedirectManager.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityRedirectManager.cs",
       "size_bytes": 2410,
       "timestamp": "2025-07-27T16:30:28.363170"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityRevalidatingAuthenticationStateProvider.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityRevalidatingAuthenticationStateProvider.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityRevalidatingAuthenticationStateProvider.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityRevalidatingAuthenticationStateProvider.cs",
       "size_bytes": 2142,
       "timestamp": "2025-07-27T16:30:28.367980"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityUserAccessor.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\IdentityUserAccessor.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityUserAccessor.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\IdentityUserAccessor.cs",
       "size_bytes": 938,
       "timestamp": "2025-07-27T16:30:28.371127"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\AccessDenied.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\AccessDenied.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\AccessDenied.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\AccessDenied.razor",
       "size_bytes": 160,
       "timestamp": "2025-07-27T16:30:28.376566"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ConfirmEmail.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ConfirmEmail.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ConfirmEmail.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ConfirmEmail.razor",
       "size_bytes": 1380,
       "timestamp": "2025-07-27T16:30:28.408118"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ConfirmEmailChange.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ConfirmEmailChange.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ConfirmEmailChange.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ConfirmEmailChange.razor",
       "size_bytes": 2007,
       "timestamp": "2025-07-27T16:30:28.413602"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ExternalLogin.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ExternalLogin.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ExternalLogin.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ExternalLogin.razor",
       "size_bytes": 7585,
       "timestamp": "2025-07-27T16:30:28.445994"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ForgotPassword.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ForgotPassword.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ForgotPassword.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ForgotPassword.razor",
       "size_bytes": 2691,
       "timestamp": "2025-07-27T16:30:28.478388"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ForgotPasswordConfirmation.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ForgotPasswordConfirmation.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ForgotPasswordConfirmation.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ForgotPasswordConfirmation.razor",
       "size_bytes": 290,
       "timestamp": "2025-07-27T16:30:28.483662"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\InvalidPasswordReset.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\InvalidPasswordReset.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\InvalidPasswordReset.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\InvalidPasswordReset.razor",
       "size_bytes": 183,
       "timestamp": "2025-07-27T16:30:28.488709"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\InvalidUser.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\InvalidUser.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\InvalidUser.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\InvalidUser.razor",
       "size_bytes": 111,
       "timestamp": "2025-07-27T16:30:28.494678"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Lockout.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Lockout.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Lockout.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Lockout.razor",
       "size_bytes": 229,
       "timestamp": "2025-07-27T16:30:28.500785"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Login.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Login.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Login.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Login.razor",
       "size_bytes": 4592,
       "timestamp": "2025-07-27T16:30:28.540836"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\LoginWith2fa.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\LoginWith2fa.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\LoginWith2fa.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\LoginWith2fa.razor",
       "size_bytes": 4026,
       "timestamp": "2025-07-27T16:30:28.576190"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\LoginWithRecoveryCode.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\LoginWithRecoveryCode.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\LoginWithRecoveryCode.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\LoginWithRecoveryCode.razor",
       "size_bytes": 3070,
       "timestamp": "2025-07-27T16:30:28.580875"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Register.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Register.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Register.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Register.razor",
       "size_bytes": 6030,
       "timestamp": "2025-07-27T16:30:28.616900"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\RegisterConfirmation.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\RegisterConfirmation.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\RegisterConfirmation.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\RegisterConfirmation.razor",
       "size_bytes": 2472,
       "timestamp": "2025-07-27T16:30:28.647912"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResendEmailConfirmation.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResendEmailConfirmation.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResendEmailConfirmation.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResendEmailConfirmation.razor",
       "size_bytes": 2570,
       "timestamp": "2025-07-27T16:30:28.651793"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResetPassword.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResetPassword.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResetPassword.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResetPassword.razor",
       "size_bytes": 4094,
       "timestamp": "2025-07-27T16:30:28.655653"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResetPasswordConfirmation.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\ResetPasswordConfirmation.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResetPasswordConfirmation.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\ResetPasswordConfirmation.razor",
       "size_bytes": 307,
       "timestamp": "2025-07-27T16:30:28.661465"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\_Imports.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\_Imports.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\_Imports.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\_Imports.razor",
       "size_bytes": 114,
       "timestamp": "2025-07-27T16:30:28.666162"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ChangePassword.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ChangePassword.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ChangePassword.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ChangePassword.razor",
       "size_bytes": 4175,
       "timestamp": "2025-07-27T16:30:28.696786"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\DeletePersonalData.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\DeletePersonalData.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\DeletePersonalData.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\DeletePersonalData.razor",
       "size_bytes": 2945,
       "timestamp": "2025-07-27T16:30:28.725590"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Disable2fa.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Disable2fa.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Disable2fa.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Disable2fa.razor",
       "size_bytes": 2180,
       "timestamp": "2025-07-27T16:30:28.749428"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Email.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Email.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Email.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Email.razor",
       "size_bytes": 4618,
       "timestamp": "2025-07-27T16:30:28.774560"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\EnableAuthenticator.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\EnableAuthenticator.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\EnableAuthenticator.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\EnableAuthenticator.razor",
       "size_bytes": 6875,
       "timestamp": "2025-07-27T16:30:28.778353"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ExternalLogins.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ExternalLogins.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ExternalLogins.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ExternalLogins.razor",
       "size_bytes": 5222,
       "timestamp": "2025-07-27T16:30:28.782321"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\GenerateRecoveryCodes.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\GenerateRecoveryCodes.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\GenerateRecoveryCodes.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\GenerateRecoveryCodes.razor",
       "size_bytes": 2465,
       "timestamp": "2025-07-27T16:30:28.785367"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Index.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\Index.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Index.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\Index.razor",
       "size_bytes": 2642,
       "timestamp": "2025-07-27T16:30:28.811197"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\PersonalData.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\PersonalData.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\PersonalData.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\PersonalData.razor",
       "size_bytes": 1352,
       "timestamp": "2025-07-27T16:30:28.815633"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ResetAuthenticator.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\ResetAuthenticator.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ResetAuthenticator.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\ResetAuthenticator.razor",
       "size_bytes": 1991,
       "timestamp": "2025-07-27T16:30:28.844148"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\SetPassword.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\SetPassword.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\SetPassword.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\SetPassword.razor",
       "size_bytes": 3520,
       "timestamp": "2025-07-27T16:30:28.876233"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\TwoFactorAuthentication.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\TwoFactorAuthentication.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\TwoFactorAuthentication.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\TwoFactorAuthentication.razor",
       "size_bytes": 4246,
       "timestamp": "2025-07-27T16:30:28.881291"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\_Imports.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Pages\\Manage\\_Imports.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\_Imports.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Pages\\Manage\\_Imports.razor",
       "size_bytes": 82,
       "timestamp": "2025-07-27T16:30:28.887951"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
       "size_bytes": 1571,
       "timestamp": "2025-07-27T16:30:28.894404"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ManageLayout.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ManageLayout.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ManageLayout.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ManageLayout.razor",
       "size_bytes": 388,
       "timestamp": "2025-07-27T16:30:28.901431"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ManageNavMenu.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ManageNavMenu.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ManageNavMenu.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ManageNavMenu.razor",
       "size_bytes": 1125,
       "timestamp": "2025-07-27T16:30:28.906692"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\RedirectToLogin.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\RedirectToLogin.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\RedirectToLogin.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\RedirectToLogin.razor",
       "size_bytes": 243,
       "timestamp": "2025-07-27T16:30:28.914148"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ShowRecoveryCodes.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\ShowRecoveryCodes.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ShowRecoveryCodes.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\ShowRecoveryCodes.razor",
       "size_bytes": 704,
       "timestamp": "2025-07-27T16:30:28.917385"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\StatusMessage.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Account\\Shared\\StatusMessage.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\StatusMessage.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Account\\Shared\\StatusMessage.razor",
       "size_bytes": 808,
       "timestamp": "2025-07-27T16:30:28.920545"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Layout\\MainLayout.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Layout\\MainLayout.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Layout\\MainLayout.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Layout\\MainLayout.razor",
       "size_bytes": 1020,
       "timestamp": "2025-07-27T16:30:28.925287"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Layout\\NavMenu.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Layout\\NavMenu.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Layout\\NavMenu.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Layout\\NavMenu.razor",
       "size_bytes": 2052,
       "timestamp": "2025-07-27T16:30:28.952891"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Auth.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Auth.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Auth.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Auth.razor",
       "size_bytes": 298,
       "timestamp": "2025-07-27T16:30:28.965127"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Counter.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Counter.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Counter.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Counter.razor",
       "size_bytes": 417,
       "timestamp": "2025-07-27T16:30:28.975412"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Error.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Error.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Error.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Error.razor",
       "size_bytes": 1179,
       "timestamp": "2025-07-27T16:30:29.001622"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Home.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Home.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Home.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Home.razor",
       "size_bytes": 2981,
       "timestamp": "2025-07-27T16:30:29.030982"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Weather.razor",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Components\\Pages\\Weather.razor",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Weather.razor",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Components\\Pages\\Weather.razor",
       "size_bytes": 2465,
       "timestamp": "2025-07-27T16:30:29.035094"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Data\\ApplicationDbContext.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Data\\ApplicationDbContext.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Data\\ApplicationDbContext.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Data\\ApplicationDbContext.cs",
       "size_bytes": 463,
       "timestamp": "2025-07-27T16:30:29.045002"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Data\\ApplicationUser.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Data\\ApplicationUser.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Data\\ApplicationUser.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Data\\ApplicationUser.cs",
       "size_bytes": 368,
       "timestamp": "2025-07-27T16:30:29.048917"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
       "size_bytes": 10539,
       "timestamp": "2025-07-27T16:30:29.065686"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\CreateIdentitySchema.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\CreateIdentitySchema.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\CreateIdentitySchema.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\CreateIdentitySchema.cs",
       "size_bytes": 10395,
       "timestamp": "2025-07-27T16:30:29.095125"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\CreateIdentitySchema.Designer.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Data\\Migrations\\CreateIdentitySchema.Designer.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\CreateIdentitySchema.Designer.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Data\\Migrations\\CreateIdentitySchema.Designer.cs",
       "size_bytes": 11115,
       "timestamp": "2025-07-27T16:30:29.118995"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Properties\\launchSettings.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Properties\\launchSettings.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Properties\\launchSettings.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Properties\\launchSettings.json",
       "size_bytes": 658,
       "timestamp": "2025-07-27T16:30:29.125400"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Properties\\serviceDependencies.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Properties\\serviceDependencies.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Properties\\serviceDependencies.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Properties\\serviceDependencies.json",
       "size_bytes": 139,
       "timestamp": "2025-07-27T16:30:29.131498"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.MCPServer\\Properties\\serviceDependencies.local.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.MCPServer\\Properties\\serviceDependencies.local.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAi.McpServer\\Properties\\serviceDependencies.local.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAi.McpServer\\Properties\\serviceDependencies.local.json",
       "size_bytes": 145,
       "timestamp": "2025-07-27T16:30:29.137234"
     },
@@ -9340,8 +9340,8 @@
       "timestamp": "2025-07-27T16:30:29.182659"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAI.Nexus\\.mcp\\server.json",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAI.Nexus\\.mcp\\server.json",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\Infraestructure\\ExxerAI.Nexus\\.Mcp\\server.json",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\Infraestructure\\ExxerAI.Nexus\\.Mcp\\server.json",
       "size_bytes": 601,
       "timestamp": "2025-07-27T16:30:29.187065"
     },
@@ -11290,8 +11290,8 @@
       "timestamp": "2025-07-27T16:30:33.550119"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\README-MCP-Testing.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\README-MCP-Testing.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\README-Mcp-Testing.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\README-Mcp-Testing.md",
       "size_bytes": 6306,
       "timestamp": "2025-07-27T16:30:33.556455"
     },
@@ -11872,8 +11872,8 @@
       "timestamp": "2025-07-27T16:30:35.119071"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.Domain.Tests\\DocumentProcessing\\SchemaAndPatterns\\MCPTypesTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.Domain.Tests\\DocumentProcessing\\SchemaAndPatterns\\MCPTypesTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.Domain.Tests\\DocumentProcessing\\SchemaAndPatterns\\McpTypesTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.Domain.Tests\\DocumentProcessing\\SchemaAndPatterns\\McpTypesTests.cs",
       "size_bytes": 24575,
       "timestamp": "2025-07-27T16:30:35.145978"
     },
@@ -12088,8 +12088,8 @@
       "timestamp": "2025-07-27T16:30:35.697842"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\INTEGRATION_TEST_REFACTORING_PLAN.md",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\INTEGRATION_TEST_REFACTORING_PLAN.md",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\INTEGRATION_TEST_ExxerFactorING_PLAN.md",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\INTEGRATION_TEST_ExxerFactorING_PLAN.md",
       "size_bytes": 7681,
       "timestamp": "2025-07-27T16:30:35.701436"
     },
@@ -12262,32 +12262,32 @@
       "timestamp": "2025-07-27T16:30:36.216429"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\MCP\\DocumentIngestionChainTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\MCP\\DocumentIngestionChainTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\Mcp\\DocumentIngestionChainTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\Mcp\\DocumentIngestionChainTests.cs",
       "size_bytes": 29039,
       "timestamp": "2025-07-27T16:30:36.239519"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\MCP\\DocumentProcessingToolsTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\MCP\\DocumentProcessingToolsTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\Mcp\\DocumentProcessingToolsTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\Mcp\\DocumentProcessingToolsTests.cs",
       "size_bytes": 5442,
       "timestamp": "2025-07-27T16:30:36.245370"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\MCP\\GoogleDriveIntegrationTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\MCP\\GoogleDriveIntegrationTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\Mcp\\GoogleDriveIntegrationTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\Mcp\\GoogleDriveIntegrationTests.cs",
       "size_bytes": 21211,
       "timestamp": "2025-07-27T16:30:36.269125"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\MCP\\GoogleDriveToolsTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\MCP\\GoogleDriveToolsTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\Mcp\\GoogleDriveToolsTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\Mcp\\GoogleDriveToolsTests.cs",
       "size_bytes": 16079,
       "timestamp": "2025-07-27T16:30:36.295782"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\MCP\\MCPEdgeCasesAndErrorTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\MCP\\MCPEdgeCasesAndErrorTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAI.IntegrationTests\\Mcp\\McpEdgeCasesAndErrorTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAI.IntegrationTests\\Mcp\\McpEdgeCasesAndErrorTests.cs",
       "size_bytes": 27080,
       "timestamp": "2025-07-27T16:30:36.322164"
     },
@@ -12352,20 +12352,20 @@
       "timestamp": "2025-07-27T16:30:36.586104"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.MCPServer.Tests\\ExxerAi.MCPServer.Tests.csproj",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.MCPServer.Tests\\ExxerAi.MCPServer.Tests.csproj",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.McpServer.Tests\\ExxerAi.McpServer.Tests.csproj",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.McpServer.Tests\\ExxerAi.McpServer.Tests.csproj",
       "size_bytes": 3294,
       "timestamp": "2025-07-27T16:30:36.603757"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.MCPServer.Tests\\GoogleDriveToolsTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.MCPServer.Tests\\GoogleDriveToolsTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.McpServer.Tests\\GoogleDriveToolsTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.McpServer.Tests\\GoogleDriveToolsTests.cs",
       "size_bytes": 16398,
       "timestamp": "2025-07-27T16:30:36.632188"
     },
     {
-      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.MCPServer.Tests\\Services\\GoogleDriveServiceTests.cs",
-      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.MCPServer.Tests\\Services\\GoogleDriveServiceTests.cs",
+      "source": "F:\\Dynamic\\ExxerAi\\ExxerAI\\code\\src\\tests\\ExxerAi.McpServer.Tests\\Services\\GoogleDriveServiceTests.cs",
+      "destination": "F:\\Dynamic\\ExxerAi\\ExxerAI\\vs\\tests\\ExxerAi.McpServer.Tests\\Services\\GoogleDriveServiceTests.cs",
       "size_bytes": 15771,
       "timestamp": "2025-07-27T16:30:36.654984"
     },

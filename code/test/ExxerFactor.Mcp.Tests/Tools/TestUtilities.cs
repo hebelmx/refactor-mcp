@@ -1,0 +1,256 @@
+namespace ExxerFactor.Mcp.Tests.Tools;
+
+public static class TestUtilities
+{
+    public static string GetSolutionPath()
+    {
+        var currentDir = Directory.GetCurrentDirectory();
+        var dir = new DirectoryInfo(currentDir);
+        while (dir != null)
+        {
+            var solutionFile = Path.Combine(dir.FullName, "ExxerFactor.Mcp.sln");
+            if (File.Exists(solutionFile))
+                return solutionFile;
+            dir = dir.Parent;
+        }
+        return "./ExxerFactor.Mcp.sln";
+    }
+
+    public static async Task CreateTestFile(string filePath, string content)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+        await File.WriteAllTextAsync(filePath, content);
+    }
+
+    public static string GetSampleCodeForExtractMethod() => """
+using System;
+public class TestClass
+{
+    public int Calculate(int a, int b)
+    {
+        if (a < 0 || b < 0)
+        {
+            throw new ArgumentException(\"Negative numbers not allowed\");
+        }
+
+        var result = a + b;
+        return result;
+    }
+}
+""";
+
+    public static string GetSampleCodeForIntroduceField() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForIntroduceVariable() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForMakeFieldReadonly() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForMakeFieldReadonlyNoInit() => """
+using System;
+public class TestClass
+{
+    private string description;
+}
+""";
+
+    public static string GetSampleCodeForTransformSetter() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForConvertToStaticInstance() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForMoveStaticMethod() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForMoveStaticMethodWithUsings() => """
+using System;
+using System.Collections.Generic;
+
+public class TestClass
+{
+    public static void PrintList(List<int> numbers)
+    {
+        Console.WriteLine(string.Join(",", numbers));
+    }
+}
+
+public class UtilClass { }
+""";
+
+    public static string GetSampleCodeForMoveInstanceMethod() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForConvertToExtension() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForSafeDelete() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForMoveInstanceMethodWithDependencies() => """
+using System;
+using System.Collections.Generic;
+
+namespace Test.Domain
+{
+    public class OrderProcessor
+    {
+        private readonly string processorId;
+        private List<string> log = new();
+
+        public OrderProcessor(string id)
+        {
+            processorId = id;
+        }
+
+        public bool ValidateOrder(decimal amount)
+        {
+            return amount > 0;
+        }
+
+        // This method should be moved to PaymentService
+        private bool ProcessPayment(decimal amount, string cardNumber)
+        {
+            if (string.IsNullOrEmpty(cardNumber))
+                return false;
+
+            log.Add($"Processing payment of {amount} for processor {processorId}");
+
+            // Simulate payment processing
+            return amount <= 1000;
+        }
+
+        public void CompleteOrder(decimal amount, string cardNumber)
+        {
+            if (ValidateOrder(amount) && ProcessPayment(amount, cardNumber))
+            {
+                log.Add("Order completed successfully");
+            }
+        }
+    }
+
+    public class PaymentService
+    {
+        // Target class for the moved method
+    }
+}
+""";
+
+    public static string GetSampleCodeForInlineMethod() => """
+using System;
+
+public class InlineSample
+{
+    private void Helper()
+    {
+        Console.WriteLine("Hi");
+    }
+
+    public void Call()
+    {
+        Helper();
+        Console.WriteLine("Done");
+    }
+}
+""";
+
+    public static string GetSampleCodeForCleanupUsings() => """
+using System;
+using System.Text;
+
+public class CleanupSample
+{
+    public void Say() => Console.WriteLine("Hi");
+}
+""";
+
+    public static string GetSampleCodeForMoveTypeToFile() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForRenameSymbol() =>
+        File.ReadAllText(Path.Combine(Path.GetDirectoryName(GetSolutionPath())!, "ExxerFactor.Mcp.Tests", "ExampleCode.cs"));
+
+    public static string GetSampleCodeForExtractInterface() => """
+public class Person
+{
+    public string Name { get; set; }
+    public void Greet() { }
+}
+""";
+
+    public static string GetSampleCodeForFeatureFlag() => """
+using System;
+
+public class FeatureService
+{
+    private readonly IFeatureFlags featureFlags;
+
+    public FeatureService(IFeatureFlags featureFlags)
+    {
+        this.featureFlags = featureFlags;
+    }
+
+    public void DoWork()
+    {
+        if (featureFlags.IsEnabled("CoolFeature"))
+        {
+            Console.WriteLine("New path");
+        }
+        else
+        {
+            Console.WriteLine("Old path");
+        }
+    }
+}
+
+public interface IFeatureFlags
+{
+    bool IsEnabled(string name);
+}
+""";
+
+    public static string GetSampleCodeForDecorator() => """
+public class Greeter
+{
+    public void Greet(string name)
+    {
+        Console.WriteLine("Hello {name}");
+    }
+}
+""";
+
+    public static string GetSampleCodeForAdapter() => """
+public class LegacyLogger
+{
+    public void Write(string message)
+    {
+        Console.WriteLine(message);
+    }
+}
+""";
+
+    public static string GetSampleCodeForObserver() => """
+public class Counter
+{
+    private int _value;
+    public void Update(int value)
+    {
+        _value = value;
+    }
+}
+""";
+
+    public static string GetSampleCodeForUseInterface() => """
+public interface IWriter { void Write(string value); }
+public class FileWriter : IWriter { public void Write(string value) { } }
+public class C
+{
+    public void DoWork(FileWriter writer)
+    {
+        writer.Write("hi");
+    }
+}
+""";
+}

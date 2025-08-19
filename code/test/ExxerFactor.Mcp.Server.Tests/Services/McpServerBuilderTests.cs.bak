@@ -1,0 +1,103 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using ExxerFactor.Mcp.Server.Services;
+
+
+namespace ExxerFactor.Mcp.Server.Tests.Services;
+
+public class McpServerBuilderTests
+{
+    [Fact]
+    public void Constructor_ShouldReturnNonNull_McpServerBuilder()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+
+        // Act
+        var builder = new McpServerBuilder(hostBuilder);
+
+        // Assert
+        builder.Should().NotBeNull();
+        builder.Should().BeOfType<McpServerBuilder>();
+    }
+
+    [Fact]
+    public void CreateMcpServerBuilder_Extension_ShouldReturnBuilder()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+
+        // Act
+        var builder = hostBuilder.CreateMcpServerBuilder();
+
+        // Assert
+        builder.Should().NotBeNull();
+        builder.Should().BeOfType<McpServerBuilder>();
+    }
+
+    [Fact]
+    public void WithStdioTransport_ShouldConfigureStdioTransport()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
+
+        // Act
+        var result = builder.WithStdioTransport();
+
+        // Assert
+        result.Should().BeSameAs(builder); // Should return same instance for fluent interface
+    }
+
+    [Fact]
+    public void WithWebSocketTransport_ShouldConfigureWebSocketTransport()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
+
+        // Act
+        var result = builder.WithWebSocketTransport(7042);
+
+        // Assert
+        result.Should().BeSameAs(builder); // Should return same instance for fluent interface
+    }
+
+    [Fact]
+    public void FluentInterface_ShouldAllowChaining()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+
+        // Act & Assert - Should not throw
+        var action = () => hostBuilder.CreateMcpServerBuilder()
+            .WithExxerFactoringTools()
+            .WithStdioTransport()
+            .WithWebSocketTransport(7042);
+
+        action.Should().NotThrow();
+    }
+
+    [Fact]
+    public void Build_ShouldReturnIHost()
+    {
+        // Arrange
+        var hostBuilder = Host.CreateDefaultBuilder();
+        var builder = new McpServerBuilder(hostBuilder);
+
+        // Act
+        var host = builder.Build();
+
+        // Assert
+        host.Should().NotBeNull();
+        host.Should().BeAssignableTo<IHost>();
+    }
+
+    [Fact]
+    public void Constructor_WithNullHostBuilder_ShouldThrowArgumentNullException()
+    {
+        // Act & Assert
+        var action = () => new McpServerBuilder(null!);
+        action.Should().Throw<ArgumentNullException>();
+    }
+}

@@ -1,0 +1,61 @@
+using System.ComponentModel;
+using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.Caching.Memory;
+using ModelContextProtocol;
+using ModelContextProtocol.Server;
+using ExxerFactor.Mcp.Core.Move;
+using ExxerFactor.Mcp.Core.Services;
+
+namespace ExxerFactor.Mcp.Core.Tools;
+
+[McpServerToolType]
+public static class LoadSolutionTool
+{
+    [McpServerTool, Description("Start a new session by clearing caches then load a solution file and set the current directory")]
+    public static async Task<string> LoadSolution(
+        [Description("Absolute path to the solution file (.sln)")] string solutionPath,
+        IProgress<string>? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            if (!File.Exists(solutionPath))
+            {
+                throw new McpException($"Error: Solution file not found at {solutionPath}");
+            }
+
+            ExxerFactoringHelpers.ClearAllCaches();
+            MoveMethodTool.ResetMoveHistory();
+
+            var logDir = Path.Combine(Path.GetDirectoryName(solutionPath)!, ".ExxerFactor-Mcp");
+            ToolCallLogger.SetLogDirectory(logDir);
+            ToolCallLogger.Log(nameof(LoadSolution), new Dictionary<string, string?> { ["solutionPath"] = solutionPath });
+
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(solutionPath)!);
+            progress?.Report($"Loading {solutionPath}");
+
+            if (ExxerFactoringHelpers.SolutionCache.TryGetValue(solutionPath, out Solution? cached))
+            {
+                var cachedProjects = cached!.Projects.Select(p => p.Name).ToList();
+                return $"Successfully loaded solution '{Path.GetFileName(solutionPath)}' with {cachedProjects.Count} projects: {string.Join(", ", cachedProjects)}";
+            }
+
+            using var workspace = ExxerFactoringHelpers.CreateWorkspace();
+            var solution = await workspace.OpenSolutionAsync(solutionPath, progress: null, cancellationToken);
+
+            ExxerFactoringHelpers.SolutionCache.Set(solutionPath, solution);
+
+            var metricsDir = Path.Combine(Path.GetDirectoryName(solutionPath)!, ".ExxerFactor-Mcp", "metrics");
+            Directory.CreateDirectory(metricsDir);
+
+            var projects = solution.Projects.Select(p => p.Name).ToList();
+            var message = $"Successfully loaded solution '{Path.GetFileName(solutionPath)}' with {projects.Count} projects: {string.Join(", ", projects)}";
+            progress?.Report(message);
+            return message;
+        }
+        catch (Exception ex)
+        {
+            throw new McpException($"Error loading solution: {ex.Message}", ex);
+        }
+    }
+}

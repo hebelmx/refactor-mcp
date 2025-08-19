@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
+  <PropertyGroup>
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    
+    <!-- Package Information -->
+    <PackageId>ExxerFactor.Mcp.Server</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>ExxerFactor.Mcp</Authors>
+    <Description>Mcp Server library for ExxerFactor.Mcp - Model Context Protocol integration</Description>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <!-- Microsoft Extensions & Hosting -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    
+    <!-- UI Framework & Components -->
+    <PackageReference Include="MudBlazor" />
+    
+    <!-- System & JSON -->
+    <PackageReference Include="System.Text.Json" />
+    
+    <!-- Protocol & Communication -->
+    <PackageReference Include="ModelContextProtocol" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <ProjectReference Include="..\ExxerFactor.Mcp.Core\ExxerFactor.Mcp.Core.csproj" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- InternalsVisibleTo Configuration                                       -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Tests" />
+    <InternalsVisibleTo Include="ExxerFactor.Mcp.Web" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Version Overrides                                              -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <PackageVersion Update="Microsoft.Extensions.Hosting" />
+    <PackageVersion Update="SonarAnalyzer.CSharp" />
+  </ItemGroup>
+
+</Project>

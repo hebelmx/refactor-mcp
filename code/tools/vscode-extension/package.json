@@ -1,7 +1,7 @@
 {
-  "name": "refactor-mcp-extension",
-  "displayName": "Refactor MCP",
-  "description": "Invoke RefactorMCP refactoring tools from VS Code",
+  "name": "ExxerFactor-mcp-extension",
+  "displayName": "ExxerFactor MCP",
+  "description": "Invoke ExxerFactorMCP ExxerFactoring tools from VS Code",
   "version": "0.0.1",
   "publisher": "dave-hillier",
   "engines": {
@@ -11,42 +11,42 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:refactorMcp.extractMethod",
-    "onCommand:refactorMcp.runTool"
+    "onCommand:ExxerFactorMcp.extractMethod",
+    "onCommand:ExxerFactorMcp.runTool"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "refactorMcp.extractMethod",
-        "title": "RefactorMCP: Extract Method",
-        "category": "RefactorMCP"
+        "command": "ExxerFactorMcp.extractMethod",
+        "title": "ExxerFactorMCP: Extract Method",
+        "category": "ExxerFactorMCP"
       },
       {
-        "command": "refactorMcp.runTool",
-        "title": "RefactorMCP: Run Tool",
-        "category": "RefactorMCP"
+        "command": "ExxerFactorMcp.runTool",
+        "title": "ExxerFactorMCP: Run Tool",
+        "category": "ExxerFactorMCP"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "refactorMcp.extractMethod",
+          "command": "ExxerFactorMcp.extractMethod",
           "when": "editorHasSelection"
         },
         {
-          "command": "refactorMcp.runTool"
+          "command": "ExxerFactorMcp.runTool"
         }
       ]
     },
     "configuration": {
       "type": "object",
-      "title": "Refactor MCP",
+      "title": "ExxerFactor MCP",
       "properties": {
-        "refactorMcp.dotnetPath": {
+        "ExxerFactorMcp.dotnetPath": {
           "type": "string",
           "default": "dotnet",
-          "description": "Path to the dotnet executable used to run RefactorMCP"
+          "description": "Path to the dotnet executable used to run ExxerFactorMCP"
         }
       }
     }

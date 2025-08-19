@@ -1,43 +1,43 @@
 {
   "buildConfiguration": {
-    "name": "RefactorMCP Comprehensive Build",
+    "name": "ExxerFactorMCP Comprehensive Build",
     "version": "1.0.0",
-    "description": "Complete build configuration for RefactorMCP with external artifact output",
+    "description": "Complete build configuration for ExxerFactorMCP with external artifact output",
     
     "defaultSettings": {
       "configuration": "Release",
       "platform": "Any CPU",
-      "outputRoot": "../Refactor",
+      "outputRoot": "../ExxerFactor",
       "verbosity": "normal"
     },
     
     "projects": {
       "sourceProjects": [
         {
-          "name": "RefactorMCP.Core",
-          "path": "src/RefactorMCP.Core",
+          "name": "ExxerFactorMCP.Core",
+          "path": "src/ExxerFactorMCP.Core",
           "type": "Library",
           "packageable": true,
-          "description": "Core refactoring engine and business logic"
+          "description": "Core ExxerFactoring engine and business logic"
         },
         {
-          "name": "RefactorMCP.MCP.Server", 
-          "path": "src/RefactorMCP.MCP.Server",
+          "name": "ExxerFactorMCP.MCP.Server", 
+          "path": "src/ExxerFactorMCP.MCP.Server",
           "type": "Library",
           "packageable": true,
           "description": "Model Context Protocol server implementation"
         },
         {
-          "name": "RefactorMCP.Web",
-          "path": "src/RefactorMCP.Web",
+          "name": "ExxerFactorMCP.Web",
+          "path": "src/ExxerFactorMCP.Web",
           "type": "Web",
           "packageable": false,
           "publishable": true,
           "description": "Blazor web interface and HTTP API"
         },
         {
-          "name": "RefactorMCP.ConsoleApp",
-          "path": "src/RefactorMCP.ConsoleApp", 
+          "name": "ExxerFactorMCP.ConsoleApp",
+          "path": "src/ExxerFactorMCP.ConsoleApp", 
           "type": "Executable",
           "packageable": false,
           "publishable": true,
@@ -47,28 +47,28 @@
       
       "testProjects": [
         {
-          "name": "RefactorMCP.Core.Tests",
-          "path": "test/RefactorMCP.Core.Tests",
+          "name": "ExxerFactorMCP.Core.Tests",
+          "path": "test/ExxerFactorMCP.Core.Tests",
           "testFramework": "xUnit",
-          "targetProject": "RefactorMCP.Core"
+          "targetProject": "ExxerFactorMCP.Core"
         },
         {
-          "name": "RefactorMCP.MCP.Server.Tests",
-          "path": "test/RefactorMCP.MCP.Server.Tests",
+          "name": "ExxerFactorMCP.MCP.Server.Tests",
+          "path": "test/ExxerFactorMCP.MCP.Server.Tests",
           "testFramework": "xUnit",
-          "targetProject": "RefactorMCP.MCP.Server"
+          "targetProject": "ExxerFactorMCP.MCP.Server"
         },
         {
-          "name": "RefactorMCP.Web.Tests",
-          "path": "test/RefactorMCP.Web.Tests",
+          "name": "ExxerFactorMCP.Web.Tests",
+          "path": "test/ExxerFactorMCP.Web.Tests",
           "testFramework": "xUnit",
-          "targetProject": "RefactorMCP.Web"
+          "targetProject": "ExxerFactorMCP.Web"
         },
         {
-          "name": "RefactorMCP.Tests",
-          "path": "test/RefactorMCP.Tests",
+          "name": "ExxerFactorMCP.Tests",
+          "path": "test/ExxerFactorMCP.Tests",
           "testFramework": "xUnit",
-          "targetProject": "RefactorMCP.ConsoleApp"
+          "targetProject": "ExxerFactorMCP.ConsoleApp"
         }
       ]
     },
@@ -168,14 +168,14 @@
     
     "distributions": {
       "console": {
-        "name": "RefactorMCP-Console",
-        "source": "artifacts/{configuration}/RefactorMCP.ConsoleApp",
+        "name": "ExxerFactorMCP-Console",
+        "source": "artifacts/{configuration}/ExxerFactorMCP.ConsoleApp",
         "format": ["zip", "tar.gz"],
         "includeRuntime": false
       },
       "web": {
-        "name": "RefactorMCP-Web",
-        "source": "artifacts/{configuration}/RefactorMCP.Web", 
+        "name": "ExxerFactorMCP-Web",
+        "source": "artifacts/{configuration}/ExxerFactorMCP.Web", 
         "format": ["zip", "tar.gz"],
         "includeRuntime": false
       }

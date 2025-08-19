@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ===================================================================== -->
+  <!-- Project Properties & Configuration                                      -->
+  <!-- ===================================================================== -->
+  <PropertyGroup>
+    <!-- CENTRALLY MANAGED - DO NOT ADD ANOTHER TargetFramework HERE -->
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Package Dependencies                                                   -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <!-- Roslyn Compiler Platform & Code Analysis -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
+    <PackageReference Include="Microsoft.Build.Locator" />
+    
+    <!-- Microsoft Extensions & Hosting -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    
+    <!-- Protocol & Communication -->
+    <PackageReference Include="ModelContextProtocol" />
+  </ItemGroup>
+
+  <!-- ===================================================================== -->
+  <!-- Project References                                                     -->
+  <!-- ===================================================================== -->
+  <ItemGroup>
+    <ProjectReference Include="..\ExxerFactor.Mcp.Core\ExxerFactor.Mcp.Core.csproj" />
+  </ItemGroup>
+
+</Project>
