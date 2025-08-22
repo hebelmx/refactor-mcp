@@ -1,7 +1,3 @@
-using ExxerFactor.Mcp.App.SyntaxRewriters;
-using ExxerFactor.Mcp.App.SyntaxWalkers;
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App.Move;
 
 public static partial class MoveMethodAst

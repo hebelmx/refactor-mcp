@@ -1,7 +1,3 @@
-using System.Reflection;
-using System.Text.Json;
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App;
 
 internal static class ToolCallLogger

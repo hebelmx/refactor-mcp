@@ -64,7 +64,6 @@
   <!-- ===================================================================== -->
   <ItemGroup>
     <PackageVersion Update="Microsoft.Build.Locator" />
-    <PackageVersion Update="Microsoft.Extensions.Caching.Memory" />
     <PackageVersion Update="SonarAnalyzer.CSharp" />
   </ItemGroup>
 

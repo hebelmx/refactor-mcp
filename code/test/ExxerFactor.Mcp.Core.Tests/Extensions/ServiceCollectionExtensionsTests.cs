@@ -5,13 +5,13 @@ namespace ExxerFactor.Mcp.Core.Tests.Extensions;
 public class ServiceCollectionExtensionsTests
 {
     [Fact]
-    public void AddExxerFactor.McpCore_ShouldRegisterRequiredServices()
+    public void AddExxerFactorMcpCore_ShouldRegisterRequiredServices()
     {
         // Arrange
         var services = new ServiceCollection();
 
         // Act
-        services.AddExxerFactor.McpCore();
+        services.AddExxerFactorMcpCore();
 
         // Assert
         var serviceProvider = services.BuildServiceProvider();

@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace ExxerFactor.Mcp.App.Tools;
 
 [McpServerToolType]

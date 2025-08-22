@@ -1,9 +1,6 @@
-using System.ComponentModel;
-using System.Text;
-using ExxerFactor.Mcp.App.SyntaxWalkers;
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App.Move;
+
+using Microsoft.CodeAnalysis.Formatting;
 
 [McpServerToolType]
 public static class MoveMethodTool
@@ -198,11 +195,11 @@ public static class MoveMethodTool
         IProgress<string>? progress,
         CancellationToken cancellationToken)
     {
-        var formattedTarget = Formatter.Format(updatedRoots.UpdatedTargetRoot, ExxerFactoringHelpers.SharedWorkspace);
+        var formattedTarget = Microsoft.CodeAnalysis.Formatting.Formatter.Format(updatedRoots.UpdatedTargetRoot, ExxerFactoringHelpers.SharedWorkspace);
 
         if (!context.SameFile)
         {
-            var formattedSource = Formatter.Format(updatedRoots.UpdatedSourceRoot, ExxerFactoringHelpers.SharedWorkspace);
+            var formattedSource = Microsoft.CodeAnalysis.Formatting.Formatter.Format(updatedRoots.UpdatedSourceRoot, ExxerFactoringHelpers.SharedWorkspace);
             await File.WriteAllTextAsync(context.SourcePath, formattedSource.ToFullString(), context.SourceEncoding, cancellationToken);
             progress?.Report(context.SourcePath);
         }

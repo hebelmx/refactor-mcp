@@ -1,5 +1,3 @@
-using ExxerFactor.Mcp.App.SyntaxWalkers;
-
 namespace ExxerFactor.Mcp.App.Tools;
 
 public static partial class MoveMultipleMethodsTool

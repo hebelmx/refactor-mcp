@@ -1,5 +1,3 @@
-using ExxerFactor.Mcp.App.SyntaxWalkers;
-
 namespace ExxerFactor.Mcp.App.SyntaxRewriters;
 
 internal class InstanceMemberUsageChecker : TrackedNameWalker

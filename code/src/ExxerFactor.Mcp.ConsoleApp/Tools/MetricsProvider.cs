@@ -1,6 +1,3 @@
-using System.Text.Json;
-using ExxerFactor.Mcp.App.SyntaxWalkers;
-
 namespace ExxerFactor.Mcp.App.Tools;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "Utility class")]

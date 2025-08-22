@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System.Text.Json;
-
 namespace ExxerFactor.Mcp.App.Tools;
 
 [McpServerResourceType]

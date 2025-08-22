@@ -1,4 +1,4 @@
-using System.Text;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ExxerFactor.Mcp.App.Tools;
 
@@ -41,7 +41,7 @@ public static class ExxerFactoringHelpers
         }
     }
 
-    internal static MSBuildWorkspace CreateWorkspace()
+    public static MSBuildWorkspace CreateWorkspace()
     {
         EnsureMsBuildRegistered();
         var host = MefHostServices.Create(MSBuildMefHostServices.DefaultAssemblies);

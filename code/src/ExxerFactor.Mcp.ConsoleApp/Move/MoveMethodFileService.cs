@@ -1,6 +1,3 @@
-using ExxerFactor.Mcp.App.SyntaxRewriters;
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App.Move;
 
 public static class MoveMethodFileService

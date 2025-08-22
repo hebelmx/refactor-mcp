@@ -1,5 +1,3 @@
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App.SyntaxRewriters;
 
 internal class ParameterIntroductionRewriter : ExpressionIntroductionRewriter<MethodDeclarationSyntax>

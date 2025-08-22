@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using ExxerFactor.Mcp.App.Move;
-
 namespace ExxerFactor.Mcp.App.Tools;
 
 [McpServerToolType]

@@ -1,5 +1,3 @@
-using ExxerFactor.Mcp.App.Tools;
-
 namespace ExxerFactor.Mcp.App.SyntaxRewriters;
 
 public class ParameterRemovalRewriter : CSharpSyntaxRewriter
