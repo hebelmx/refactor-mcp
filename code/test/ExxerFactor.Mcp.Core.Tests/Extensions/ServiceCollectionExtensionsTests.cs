@@ -1,4 +1,5 @@
 using ExxerFactor.Mcp.Core.Abstractions;
+using ExxerFactor.Mcp.Core.Extensions;
 
 namespace ExxerFactor.Mcp.Core.Tests.Extensions;
 
@@ -35,27 +36,27 @@ public class ServiceCollectionExtensionsTests
     }
 
     [Fact]
-    public void AddExxerFactor.McpCore_ShouldNotThrow_WhenCalledMultipleTimes()
+    public void AddExxerFactorMcpCore_ShouldNotThrow_WhenCalledMultipleTimes()
     {
         // Arrange
         var services = new ServiceCollection();
 
         // Act & Assert
-        var act1 = () => services.AddExxerFactor.McpCore();
-        var act2 = () => services.AddExxerFactor.McpCore();
+        var act1 = () => services.AddExxerFactorMcpCore();
+        var act2 = () => services.AddExxerFactorMcpCore();
 
         Should.NotThrow(act1);
         Should.NotThrow(act2);
     }
 
     [Fact]
-    public void AddExxerFactor.McpCore_ShouldRegisterLoggingServices()
+    public void AddExxerFactorMcpCore_ShouldRegisterLoggingServices()
     {
         // Arrange
         var services = new ServiceCollection();
 
         // Act
-        services.AddExxerFactor.McpCore();
+        services.AddExxerFactorMcpCore();
 
         // Assert
         var serviceProvider = services.BuildServiceProvider();
